@@ -16,7 +16,7 @@
     width: 390px; z-index: 3200;
     transform: translate(-50%, 10%) scale(0.8);
     transform-origin: center center;
-    transition: transform 0.5s $cubicAnimation;
+    transition: transform 0.2s $cubicAnimation;
     visibility: hidden;
   }
 

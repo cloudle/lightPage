@@ -4,7 +4,7 @@
   z-index: 1000;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
-  background-color: $themeColor;
+  background-color: white;
   transform: translate(0, 0);
   transition: transform 0.2s $cubicAnimation;
   //border-bottom: solid 3px $themeColor;
@@ -42,7 +42,7 @@
       line-height: $navigationHeight;
       padding: 0 25px; box-sizing: border-box;
       text-transform: uppercase; user-select: none;
-      color: white; font-size: 14px;
+      color: $themeColor; font-size: 14px;
       position: relative;
 
       .sub-navigations {
