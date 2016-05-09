@@ -1,7 +1,16 @@
+<popup enable="appCtrl.subscriptionPopup">
+	<subscription-form wrapper-class="subscription-form"></subscription-form>
+</popup>
+
 <div class="slider">
-	<div class="sticky-note">
-		4 tiện ích lần đầu tiên xuất hiện tại River City!
-	</div>
+	<subscription-form wrapper-class="subscription-form floating" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+	<!--<div class="sticky-note">-->
+		<!--4 tiện ích lần đầu tiên xuất hiện tại River City!-->
+	<!--</div>-->
+</div>
+
+<div class="back-line">
+	<span>4 tiện ích lần đầu tiên xuất hiện tại River City!</span>
 </div>
 
 <div class="content-wrapper">

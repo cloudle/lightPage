@@ -5,7 +5,17 @@
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
   background-color: $themeColor;
+  transform: translate(0, 0);
+  transition: transform 0.2s $cubicAnimation;
   //border-bottom: solid 3px $themeColor;
+
+  &.burgering {
+    transform: translate(-$burgerSize, 0);
+
+    .burger-menu-wrapper .backdrop {
+      opacity: 1; visibility: visible;
+    }
+  }
 
   .content-wrapper {
     height: $navigationHeight;
@@ -13,13 +23,12 @@
   }
 
   .site-logo {
-    float: left; height: 80px; width: 99px;
+    float: left; height: $navigationHeight; width: 120px;
     margin-left: 20px;
+    background-color: white;
     background-image: url('images/logo.gif');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
   }
 
   .navigation-menu {
@@ -101,6 +110,13 @@
       display: block;
     }
   }
+
+  .subscription-activator {
+    float: right; padding: 8px 12px; margin: 15px 15px 0 15px;
+    color: white; background-color: #ffdd00;
+    cursor: pointer; user-select: none;
+    border-radius: 3px;
+  }
 }
 
 .burger-menu-wrapper {
@@ -112,14 +128,14 @@
     z-index: 2000; opacity: 0;
     transition: opacity 0.2s linear;
     visibility: hidden;
+    height: 100vh;
   }
 
   .burger-menu {
     position: fixed; top: 0; right: 0; bottom: 0;
-    width: $burgerSize; z-index: 2015;
+    width: $burgerSize; height: 100vh; z-index: 2015;
     background-color: $themeColor; color: white;
     transform: translate($burgerSize, 0);
-    transition: transform 0.2s $cubicAnimation;
 
     .menu-heading {
       line-height: $navigationHeight;
@@ -156,16 +172,6 @@
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
       }
-    }
-  }
-
-  &.active {
-    .backdrop {
-      opacity: 1; visibility: visible;
-    }
-
-    .burger-menu {
-      transform: translate(0, 0);
     }
   }
 }

@@ -1,0 +1,51 @@
+@import "../variables";
+
+.subscription-form {
+  width: $subscriptionFormWidth;
+  min-height: 300px; border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 25px 20px;
+
+  &.floating {
+    float: right;
+    margin-right: 50px;
+
+    @media screen and (max-width: 600px){
+      float: none; margin: 0 auto;
+    }
+  }
+
+  .heading {
+    font-size: 14px; color: white;
+    text-align: center;
+    line-height: 28px;
+  }
+
+  .strong {
+    font-weight: bold; color: #ffdd00;
+
+    &.ultra {
+      font-size: 20px;
+    }
+  }
+
+  input, textarea {
+    border: none; border-radius: 3px;
+    padding: 12px 16px; width: 100%;
+    margin-top: 15px; font-size: 14px;
+    box-sizing: border-box;
+    resize: none;
+  }
+
+  .submit {
+    border-radius: 3px; color: white; user-select: none;
+    background-color: #ffdd00; cursor: pointer;
+    transition: background-color 0.5s $cubicAnimation;
+    padding: 10px 16px; display: inline-block;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: $themeColor;
+    }
+  }
+}

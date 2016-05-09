@@ -4,6 +4,7 @@ export class applicationController {
 	ready = false;
 	activePage = 'splash';
 	burgerActive = false;
+	subscriptionPopup = true;
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window) {
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {

@@ -1,0 +1,33 @@
+@import "../variables";
+
+.popup-wrapper {
+  user-select: none;
+
+  .popup-backdrop {
+    position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0; z-index: 3000;
+    transition: opacity 0.2s linear;
+    visibility: hidden;
+  }
+
+  .popup-content {
+    position: fixed; top: 0; left: 50%; bottom: 0; right: 0;
+    width: 390px; z-index: 3200;
+    transform: translate(-50%, 10%) scale(0.8);
+    transform-origin: center center;
+    transition: transform 0.5s $cubicAnimation;
+    visibility: hidden;
+  }
+
+  &.active {
+    .popup-backdrop {
+      opacity: 1; visibility: visible;
+    }
+
+    .popup-content {
+      transform: translate(-50%, 15%) scale(1);
+      visibility: visible;
+    }
+  }
+}

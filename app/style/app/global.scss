@@ -14,3 +14,7 @@
     transform: translate(-$burgerSize, 0);
   }
 }
+
+input, textarea {
+  outline: none; color: #404040;
+}
