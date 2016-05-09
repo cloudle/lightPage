@@ -7,4 +7,6 @@ app.get('/', function(req, res) {
 	res.render('index', {});
 });
 
-app.listen(7020);
+const port = 7020;
+console.log(`Server is running user port ${port}`);
+app.listen(port);
