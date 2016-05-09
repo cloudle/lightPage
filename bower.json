@@ -1,0 +1,32 @@
+{
+  "name": "roi-showpad",
+  "description": "Hickup's application",
+  "main": "server.js",
+  "authors": [
+    "Hickup"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "angular": "^1.5.3",
+    "jquery": "1.11.1",
+    "fastclick": "~1.0.6",
+    "accounting": "^0.3.2",
+    "hammerjs": "hammer.js#^2.0.6",
+    "AngularHammer": "ryanmullins-angular-hammer#^2.1.10",
+    "angular-animate": "^1.5.3",
+    "gsap": "^1.18.2",
+    "underscore": "^1.8.3",
+    "moment": "^2.12.0"
+  }
+}

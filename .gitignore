@@ -1,0 +1,9 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node and bower libs
+node_modules
+www/lib
+!www/lib/ftScroller.js

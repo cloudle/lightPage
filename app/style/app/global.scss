@@ -1,0 +1,16 @@
+@import "../variables";
+@import "../mixins";
+
+.content-wrapper {
+  @extend .clearfix;
+  max-width: $maxWidth; margin: 0 auto;
+}
+
+.view-injection {
+  padding-top: $navigationHeight;
+  transition: transform 0.2s $cubicAnimation;
+
+  &.burgering {
+    transform: translate(-$burgerSize, 0);
+  }
+}
