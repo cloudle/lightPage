@@ -23,4 +23,12 @@ App.run(() => {
 	FastClick.attach(document.body);
 });
 
+App.filter('unsafe', [
+	'$sce', function ($sce) {
+		return function (val) {
+			return $sce.trustAsHtml(val);
+		};
+	}
+]);
+
 angular.bootstrap(document, ['application']);
