@@ -30,8 +30,9 @@ export class applicationController {
 
 		this.name = "Light Page!";
 
-		$http.get('http://128.199.227.132/menu/get/json').success((data) => {
-			console.log(data.results);
+		$http.get('http://128.199.227.132/menu/get/json', {
+			params: { site: location.host }
+		}).success((data) => {
 			this.links = data.results;
 		})
 	}
