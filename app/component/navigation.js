@@ -3,7 +3,8 @@ export default [function () {
 		restrict: 'E',
 		replace: true,
 		scope: {
-			burgerActive: '='
+			burgerActive: '=',
+			links: '='
 		},
 		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive}">
 			<div class="content-wrapper">
@@ -24,31 +25,15 @@ export default [function () {
 				<div class="burger-menu">
 					<div class="menu-heading" ng-click="toggleBurger()"></div>
 					<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">
-						<div class="menu-item" ng-bind="item.title"></div>
+						<div class="menu-item" ng-bind="item.name"></div>
 						<div class="sub-menus" ng-if="item.children">
-							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.title" ng-repeat="child in item.children"></div>
+							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>`,
 		link: (scope, element, attrs) => {
-			scope.links = [{
-				title: 'trang chủ',
-				active: true
-			}, {
-				title: 'vị trí và tiện ích',
-				children: [
-					{title: 'vị trí'},
-					{title: 'tiện ích khu vực'},
-					{title: 'tiện ích nội khu'}
-				]
-			}, {
-				title: 'ưu đãi thanh toán'
-			}, {
-				title: 'mặt bằng'
-			}];
-
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
 			};
