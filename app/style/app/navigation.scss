@@ -1,5 +1,8 @@
 @import "../variables";
 
+$burgerResolution: 1100px;
+$navigationBackground: $themeColor;
+
 .navigation-wrapper {
   z-index: 1000;
   position: fixed; top: 0; left: 0; right: 0;
@@ -7,7 +10,8 @@
   background-color: white;
   transform: translate(0, 0);
   transition: transform 0.2s $cubicAnimation;
-  //border-bottom: solid 3px $themeColor;
+  //border-bottom: solid 3px $navigationBackground;
+  box-shadow: 0px 1px 5px -1px rgba(0,0,0,0.75);
 
   &.burgering {
     transform: translate(-$burgerSize, 0);
@@ -23,17 +27,20 @@
   }
 
   .site-logo {
-    float: left; height: $navigationHeight; width: 120px;
-    margin-left: 20px;
+    float: left; height: 100px; width: 150px;
+    margin-left: 20px; cursor: pointer;
     background-color: white;
-    background-image: url('images/logo.gif');
+    background-image: url('images/logo.jpg');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0px 1px 9px -1px rgba(0,0,0,0.75);
   }
 
   .navigation-menu {
     float: right;
-    @media screen and (max-width: 1024px){
+    @media screen and (max-width: $burgerResolution){
       display: none;
     }
 
@@ -42,19 +49,18 @@
       line-height: $navigationHeight;
       padding: 0 28px; box-sizing: border-box;
       text-transform: uppercase; user-select: none;
-      color: $themeColor; font-size: 14px;
+      color: $navigationBackground; font-size: 14px;
       position: relative;
 
       .sub-navigations {
         position: absolute; top: $navigationHeight; left: 0;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
-        background-color: $themeColor;
-        width: 100%;
-        visibility: hidden;
+        background-color: $navigationBackground;
+        width: 100%; visibility: hidden;
         transform: translate(0, 5px);
         transition: transform 0.5s $cubicAnimation;
-        border-top: solid 5px lighten($themeColor, 5);
+        border-top: solid 5px lighten($navigationBackground, 5);
 
         .sub-link {
           cursor: pointer;
@@ -69,7 +75,7 @@
           }
 
           &:hover {
-            background-color: lighten($themeColor, 5);
+            background-color: lighten($navigationBackground, 5);
           }
 
           &:last-child {
@@ -86,11 +92,11 @@
       }
 
       &.active {
-        background-color: $themeColor; color: white;
+        background-color: $navigationBackground; color: white;
       }
 
       &:hover {
-        background-color: lighten($themeColor, 5); color: white;
+        background-color: lighten($navigationBackground, 5); color: white;
 
         .sub-navigations {
           visibility: visible;
@@ -103,17 +109,17 @@
   .burger-menu-activator {
     display: none; float: right;
     line-height: $navigationHeight;
-    color: white; font-size: 30px;
+    color: $darkColor; font-size: 30px;
     cursor: pointer;
 
-    @media screen and (max-width: 1024px){
+    @media screen and (max-width: $burgerResolution){
       display: block;
     }
   }
 
   .subscription-activator {
-    float: right; padding: 8px 12px; margin: 15px 15px 0 15px;
-    color: white; background-color: #ffdd00;
+    float: right; padding: 14px 24px; margin: 10px 15px 0 15px;
+    color: white; font-weight: 700; background-color: $orangeColor;
     cursor: pointer; user-select: none;
     border-radius: 3px;
   }
@@ -134,12 +140,12 @@
   .burger-menu {
     position: fixed; top: 0; right: 0; bottom: 0;
     width: $burgerSize; height: 100vh; z-index: 2015;
-    background-color: $themeColor; color: white;
+    background-color: $darkColor; color: white;
     transform: translate($burgerSize, 0);
 
     .menu-heading {
       line-height: $navigationHeight;
-      background-color: darken($themeColor, 10);
+      background-color: darken($darkColor, 10);
       min-height: $navigationHeight;
     }
 
@@ -147,7 +153,7 @@
       cursor: pointer; position: relative;
       font-size: 13px; text-transform: uppercase;
       line-height: 50px;
-      border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+      border-bottom: dashed 1px rgba(255, 255, 255, 0.2);
 
       .menu-item {
         padding: 0 20px;
@@ -156,7 +162,6 @@
       .sub-menus {
         .sub-menu {
           padding: 0 20px; line-height: 40px;
-          border-top: dashed 1px rgba(255, 255, 255, 0.2);
 
           &:hover {
             background-color: rgba(255, 255, 255, 0.1);

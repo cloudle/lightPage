@@ -1,10 +1,11 @@
-import {preloadResolves} from './helper';
+import {preloadResolves} from './utils/helper';
 
 let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider',
 	function($stateProvider, $urlRouterProvider, $compileProvider) {
 		$stateProvider
 			.state('splash', splashRoute)
-			.state('home', mainRoute);
+			.state('home', mainRoute)
+			.state('page', pageRoute);
 
 		$urlRouterProvider.otherwise('/splash');
 	}
@@ -28,6 +29,17 @@ var mainRoute = {
 		'content@home': {
 			templateUrl: 'template/home/main.html',
 			controller: 'mainCtrl as mainCtrl'
+		}
+	}
+};
+
+var pageRoute = {
+	url: '/page/:id',
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@page': {
+			templateUrl: 'template/home/page.html',
+			controller: 'pageCtrl as pageCtrl'
 		}
 	}
 };

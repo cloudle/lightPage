@@ -1,17 +1,18 @@
-let mainFont = "14px 'Open Sans'", childFont = "13px 'Open Sans'", padding = 100;
+let mainFont = "14px 'Open Sans'", childFont = "13px 'Open Sans'", padding = 80;
 
-export default ['$http', '$rootScope', function ($http, $rootScope) {
+export default ['$http', '$rootScope', '$state', function ($http, $rootScope, $state) {
 	return {
 		restrict: 'E',
 		replace: true,
 		scope: {
 			instance: '='
 		},
-		template: `<div class="navigation-link" ng-style="{width: maxWidth+'px'}" ng-class="{active: instance.active}">
+		template: `<div class="navigation-link" ng-style="{width: maxWidth+'px'}" ng-class="{active: linkActiveClass(instance)}"
+				ng-click="parentLinkNavigate(instance)">
 			<span ng-bind="instance.name"></span>
 			<div class="sub-navigations icon-navigation-arrow-drop-up" ng-if="instance.children">
 				<div class="sub-link icon-av-play-arrow" ng-bind="link.name" ng-repeat="link in instance.children"
-					ng-click="getPageContent(link)"></div>
+					ui-sref="page({id: link.page_id})"></div>
 			</div>
 		</div>`,
 		link: (scope, element, attrs) => {
@@ -30,12 +31,24 @@ export default ['$http', '$rootScope', function ($http, $rootScope) {
 				}
 			});
 
-			scope.getPageContent = function (link) {
-				if (!link.page_id) return;
+			scope.linkActiveClass = function (instance) {
+				if ($rootScope.activePage) {
+					if (instance.children) {
+						return _.findWhere(instance.children, {page_id: $rootScope.activePage.id}) != undefined;
+					} else {
+						return $rootScope.activePage.id === instance.page_id;
+					}
+				}
+				return $rootScope.activePage && $rootScope.activePage.id === pageId ? 'active' : '';
+			};
 
-				$http.get('http://128.199.227.132/page/get/json', { params: { page_id: link.page_id } }).success(data => {
-					$rootScope.pageContent = data.results[0].Page.content;
-				})
+			scope.parentLinkNavigate = function (instance) {
+				if (instance.page_id) {
+					$state.go('page', {id: instance.page_id});
+				}
+				else if (instance.children[0] && instance.children[0].page_id) {
+					$state.go('page', {id: instance.children[0].page_id});
+				}
 			}
 		}
 	}

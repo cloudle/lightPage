@@ -8,7 +8,7 @@ export default [function () {
 		},
 		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive}">
 			<div class="content-wrapper">
-				<div class="site-logo"></div>
+				<div class="site-logo" ui-sref="home"></div>
 				
 				<div class="burger-menu-activator icon-action-subject" ng-click="toggleBurger()"></div>
 				<div class="subscription-activator" ng-click="togglePopup()">ĐĂNG KÝ</div>
@@ -27,7 +27,8 @@ export default [function () {
 					<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">
 						<div class="menu-item" ng-bind="item.name"></div>
 						<div class="sub-menus" ng-if="item.children">
-							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"></div>
+							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
+								ui-sref="page({id: child.page_id})" ng-click="toggleBurger()"></div>
 						</div>
 					</div>
 				</div>

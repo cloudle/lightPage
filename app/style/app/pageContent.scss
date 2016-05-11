@@ -1,0 +1,26 @@
+.page-content-section {
+  background-color: #FBFBFB;
+  border-top: solid 1px #ebebeb;
+}
+
+.page-content {
+  display: flex; padding: 15px;
+  font-size: 14px;
+
+  .contents {
+    flex: 1;
+    padding: 0 50px 0 0;
+  }
+
+  .sidebar {
+    width: 260px;
+
+    .small-banner {
+      margin-top: 28px;
+      width: 100%; height: 432px;
+      background-image: url('images/side-banner.png');
+      background-size: contain; background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+}

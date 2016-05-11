@@ -3,11 +3,12 @@
 
 .slider {
   height: $sliderHeight;
-  background-image: url('images/appartment.jpg');
-  background-size: cover; background-position: center;
-  background-repeat: no-repeat;
   position: relative;
-  padding-top: 20px;
+
+  .parallax-area {
+    background-size: cover; background-position: center bottom !important;
+    background-repeat: no-repeat;
+  }
 
   .sticky-note {
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -18,12 +19,15 @@
   }
 }
 
-.back-line {
+.section-heading {
   padding: 35px 25px;
-  font-size: 24px; text-align: center;
-  background-color: darken($themeColor, 10);
-  text-transform: uppercase;
-  color: white;
+  font-size: 30px; text-align: center;
+  font-weight: bold; text-transform: uppercase;
+  color: $darkColor;
+
+  .highlight {
+    color: $orangeColor;
+  }
 }
 
 .bullets {
@@ -37,7 +41,7 @@
     .bullet-avatar {
       border-radius: 50%; position: relative;
       width: 180px; height: 180px; margin: 0 auto;
-      background-image: url('images/appartment.jpg');
+      background-image: url('images/apartment.jpg');
       background-size: cover; background-position: center center;
       transition: transform 0.5s $cubicAnimation;
 
@@ -50,8 +54,8 @@
       }
 
       &:hover {
-        transform: rotate(45deg);
-        &:before { border-color: rgba($themeColor, 0.3); }
+        transform: scale(1.1);
+        &:before { border-color: #A9BCEF; }
       }
     }
 
@@ -59,13 +63,13 @@
       font-weight: bolder; font-size: 16px;
       text-transform: uppercase; text-align: center;
       margin-top: 25px; padding-bottom: 15px;
-      position: relative;
+      position: relative; min-height: 50px;
 
       &:after {
         content: ' '; display: block; width: 50%;
         position: absolute; left: 50%; bottom: 0;
         margin: 0 auto;
-        border-bottom: solid 3px $themeColor;
+        border-bottom: solid 3px $orangeColor;
         transform: translate(-50%, 0);
       }
     }
@@ -78,11 +82,7 @@
 }
 
 .footer {
-  background-color: $themeColor;
-  background-image: url('images/footerbg.png');
-  background-position: bottom center;
-  background-repeat: repeat-x;
-  padding-bottom: 100px;
+  background-color: #2b2b2b;
 
   .columns {
     display: flex; flex-flow: row; flex-wrap: wrap;
@@ -106,13 +106,5 @@
       float: left; line-height: 50px;
       padding: 0 15px;
     }
-  }
-}
-
-.page-content {
-  display: flex;
-
-  .contents {
-    //flex: flex
   }
 }
