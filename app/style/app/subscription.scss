@@ -42,8 +42,9 @@
     background-color: $orangeColor; cursor: pointer;
     transition: background-color 0.5s $cubicAnimation;
     padding: 14px 22px; display: inline-block;
-    margin-top: 10px; font-size: 15px;
+    margin-top: 30px; font-size: 15px;
     border: none; outline: none;
+    float: right;
 
     &:hover {
       background-color: $themeColor;

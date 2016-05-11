@@ -1,13 +1,18 @@
 import {preloadResolves} from './utils/helper';
 
-let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider',
-	function($stateProvider, $urlRouterProvider, $compileProvider) {
+let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider',
+	function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
 		$stateProvider
 			.state('splash', splashRoute)
 			.state('home', mainRoute)
 			.state('page', pageRoute);
 
 		$urlRouterProvider.otherwise('/splash');
+
+		$httpProvider.defaults.headers.common = {};
+		$httpProvider.defaults.headers.post = {};
+		$httpProvider.defaults.headers.put = {};
+		$httpProvider.defaults.headers.patch = {};
 	}
 ];
 

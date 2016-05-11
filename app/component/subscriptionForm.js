@@ -1,4 +1,4 @@
-export default [function () {
+export default ['$http', function ($http) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -13,26 +13,41 @@ export default [function () {
 			<input type="text" placeholder="Họ và tên*" ng-model="userName"/>
 			<input type="text" placeholder="Điện thoại*" ng-model="userPhone"/>
 			<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>
-			<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>
+			<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->
 			
 			<button type="submit" class="submit">ĐĂNG KÝ NGAY</button>
 		</form>`,
 		link: function (scope, element, attrs) {
+			scope.resetForm = () => {
+				scope.userName = "";
+				scope.userPhone = "";
+				scope.userEmail = "";
+			};
+
 			scope.submit = (event) => {
 				event.preventDefault();
+
+				var formData = {
+					// site: location.host,
+					fullName: scope.userName,
+					name: scope.userName,
+					phone: scope.userPhone,
+					email: scope.userEmail
+				};
 
 				//Fire Ants trackingGoal hook!
 				adx_analytic.trackingGoal('578664668', 1, 'event');
 				//Send form information to Ants!
-				var formData = {
-					name: scope.userName,
-					phone: scope.userPhone,
-					email: scope.userEmail,
-					description: scope.userNote
-				};
-
 				ants_userInfoListener(formData, false, true);
-			}
+				//Send form to Twin's server!
+				$http.get('http://128.199.227.132/customer/insert/json', {
+					params: formData
+				}).success(data => {
+					console.log(data);
+					scope.$parent.appCtrl.subscriptionPopup = false;
+					scope.resetForm();
+				});
+			};
 		}
 	}
 }]
