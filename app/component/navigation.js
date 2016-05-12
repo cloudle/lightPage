@@ -3,10 +3,11 @@ export default [function () {
 		restrict: 'E',
 		replace: true,
 		scope: {
+			ready: '=',
 			burgerActive: '=',
 			links: '='
 		},
-		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive}">
+		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">
 			<div class="content-wrapper">
 				<div class="site-logo" ui-sref="home"></div>
 				

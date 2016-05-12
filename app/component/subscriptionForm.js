@@ -28,7 +28,7 @@ export default ['$http', function ($http) {
 				event.preventDefault();
 
 				var formData = {
-					// site: location.host,
+					site: location.host,
 					fullName: scope.userName,
 					name: scope.userName,
 					phone: scope.userPhone,
