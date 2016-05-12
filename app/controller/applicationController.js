@@ -25,6 +25,7 @@ export class applicationController {
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http) {
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
 			this.activePage = toState.name;	this.ready = false;
+			$window.scrollTo(0, 0);
 			$timeout(() => this.ready = true, 250);
 		});
 

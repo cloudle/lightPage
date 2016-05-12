@@ -8,7 +8,7 @@
 
 .view-injection {
   padding-top: $navigationHeight;
-  opacity: 0; transform: translate(0, $navigationHeight);
+  opacity: 0; transform: translate(0, 200px);
   transition: opacity 1s $cubicAnimation, transform 0.2s $cubicAnimation;
 
   &.burgering {
