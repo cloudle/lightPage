@@ -12,8 +12,9 @@ export default [function () {
 					<div class="col">
 						<div class="heading">LIÊN HỆ</div>
 						<div>Liên hệ tham quan dự án và chọn những vị trí đẹp nhất ngay từ bây giờ, Chúng tôi sẽ hỗ trợ nhiệt tình cho Quý Khách 24/7.</div>
-						</div>
-				</div>
+						
+						<div class="fb-like" data-href="https://www.facebook.com/rivercity99/" data-width="100" data-layout="standard" data-action="like" data-show-faces="true" data-share="true" data-colorscheme="dark"></div>
+					</div>
 		
 				<!--<div class="footer-links">-->
 					<!--<div class="link-item">HOME</div>-->
