@@ -11,7 +11,7 @@ export default [function () {
 			<div class="content-wrapper">
 				<div class="site-logo" ui-sref="home"></div>
 				
-				<div class="burger-menu-activator icon-action-subject" ng-click="toggleBurger()"></div>
+				<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>
 				<div class="subscription-activator" ng-click="togglePopup()">ĐĂNG KÝ</div>
 				
 				<div class="navigation-menu">
