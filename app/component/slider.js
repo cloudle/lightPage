@@ -12,6 +12,7 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 			<ng-transclude></ng-transclude>
 		</div>`,
 		link: (scope, element, attrs) => {
+			console.log(element.find('.active-slide'));
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
 

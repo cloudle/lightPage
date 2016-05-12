@@ -7,7 +7,7 @@ $navigationBackground: $themeColor;
   z-index: 1000;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
-  background-color: white;
+  background-color: $themeColor;
   //transform: translate(0, -200%);
   transition: transform 0.2s $cubicAnimation;
   //border-bottom: solid 3px $navigationBackground;
@@ -31,15 +31,14 @@ $navigationBackground: $themeColor;
   }
 
   .site-logo {
-    float: left; height: 100px; width: 150px;
-    margin-left: 20px; cursor: pointer;
-    background-color: white;
-    background-image: url('images/logo.jpg');
+    float: left; height: 48px; width: 48px;
+    margin-top: 10px; margin-left: 20px; cursor: pointer;
+    background-image: url('images/logo_invert.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    //border-bottom-left-radius: 4px;
+    //border-bottom-right-radius: 4px;
+    //box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
   .navigation-menu {
@@ -53,7 +52,7 @@ $navigationBackground: $themeColor;
       line-height: $navigationHeight;
       padding: 0 28px; box-sizing: border-box;
       text-transform: uppercase; user-select: none;
-      color: $navigationBackground; font-size: 14px;
+      color: white; font-size: 14px;
       position: relative;
 
       .sub-navigations {
@@ -64,7 +63,7 @@ $navigationBackground: $themeColor;
         width: 100%; visibility: hidden;
         transform: translate(0, 5px);
         transition: transform 0.5s $cubicAnimation;
-        border-top: solid 5px lighten($navigationBackground, 5);
+        border-top: solid 5px lighten(#273B69, 5);
 
         .sub-link {
           cursor: pointer;
@@ -96,11 +95,11 @@ $navigationBackground: $themeColor;
       }
 
       &.active {
-        background-color: $navigationBackground; color: white;
+        background-color: #273B69; color: white;
       }
 
       &:hover {
-        background-color: lighten($navigationBackground, 5); color: white;
+        background-color: lighten(#273B69, 5); color: white;
 
         .sub-navigations {
           visibility: visible;
@@ -122,10 +121,11 @@ $navigationBackground: $themeColor;
   }
 
   .subscription-activator {
-    float: right; padding: 14px 24px; margin: 10px 15px 0 15px;
+    float: right; height: $navigationHeight;
+    line-height: $navigationHeight;
     color: white; font-weight: 700; background-color: $orangeColor;
     cursor: pointer; user-select: none;
-    border-radius: 3px;
+    margin: 0 15px; padding: 0 30px;
   }
 }
 
