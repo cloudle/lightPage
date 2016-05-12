@@ -6,8 +6,12 @@ export default [function () {
 			<div class="content-wrapper">
 				<div class="columns">
 					<div class="col">
-						<div class="heading">RIVER CITY</div>
-						<div>River City mang ý nghĩa “Thành phố ven sông”, với tham vọng sẽ tạo dựng lên một thành phố thu nhỏ với nhiều tiện ích bên cạnh Sông Sài Gòn. River City là dự án khu căn hộ có quy mô lớn nhất Nam Sài Gòn, được phát triển bởi An Gia - Creed Group (Nhật Bản) - Phát Đạt với tổng vốn đầu tư lên đến 500 triệu USD.</div>
+						<div class="heading">CHỦ ĐẦU TƯ</div>
+						<ul>
+							<li>An Gia Investment</li>
+							<li>Creed Group Nhật Bản</li>
+							<li>CTCP PT BĐS Phát Đạt</li>
+						</ul>
 					</div>
 					<div class="col">
 						<div class="heading">LIÊN HỆ</div>
