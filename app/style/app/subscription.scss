@@ -1,10 +1,12 @@
 @import "../variables";
+@import "../mixins";
 
 .subscription-form {
   width: $subscriptionFormWidth;
   min-height: 300px; border-radius: 4px;
   background-color: white;
   padding: 25px 20px;
+  @extend .clearfix;
 
   &.floating {
     float: right;
@@ -35,6 +37,10 @@
     margin-top: 15px; font-size: 14px;
     box-sizing: border-box;
     resize: none;
+  }
+
+  .error-row {
+    padding: 0 15px; font-size: 13px; color: red;
   }
 
   .commands {

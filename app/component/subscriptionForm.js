@@ -1,3 +1,5 @@
+import { isEmailValid } from '../utils/helper';
+
 export default ['$http', function ($http) {
 	return {
 		restrict: 'E',
@@ -11,8 +13,12 @@ export default ['$http', function ($http) {
 			</div>
 			
 			<input type="text" placeholder="Họ và tên*" ng-model="userName"/>
+			<div class="error-row" ng-bind="userNameError" ng-if="userNameError"></div>
 			<input type="text" placeholder="Điện thoại*" ng-model="userPhone"/>
+			<div class="error-row" ng-bind="userPhoneError" ng-if="userPhoneError"></div>
 			<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>
+			<div class="error-row" ng-bind="userEmailError" ng-if="userEmailError"></div>
+		
 			<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->
 			
 			<div class="commands">
@@ -23,14 +29,21 @@ export default ['$http', function ($http) {
 
 		</form>`,
 		link: function (scope, element, attrs) {
+			fields.forEach(field => { scope[field+'Error'] = ''; scope[field] = '';	});
+
 			scope.resetForm = () => {
-				scope.userName = "";
-				scope.userPhone = "";
-				scope.userEmail = "";
+				fields.forEach(field => scope[field] = '');
 			};
 
 			scope.submit = (event) => {
 				event.preventDefault();
+				fields.forEach(field => scope[field+'Error'] = '');
+
+				if (scope.userName.length < 1) scope.userNameError = 'Bạn cần nhập họ Tên để tiếp tục';
+				if (scope.userPhone.length < 8) scope.userPhoneError = 'Số điện thoại chưa hợp lệ';
+				if (!isEmailValid(scope.userEmail))	scope.userEmailError = 'Email chưa hợp lệ';
+
+				if (scope.userNameError || scope.userPhoneError || scope.userEmailError) return;
 
 				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 					formData = {
@@ -81,3 +94,5 @@ export default ['$http', function ($http) {
 		}
 	}
 }]
+
+var fields = ['userName', 'userPhone','userEmail'];
