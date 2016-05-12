@@ -24,7 +24,7 @@ export class applicationController {
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http,  ngProgressFactory) {
 		this.progress = ngProgressFactory.createInstance();
-		this.progress.setColor('#1E2D5E');
+		this.progress.setColor('#FA8322');
 
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
