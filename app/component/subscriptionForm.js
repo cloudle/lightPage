@@ -22,9 +22,9 @@ export default ['$http', function ($http) {
 			<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->
 			
 			<div class="commands">
-				<button type="submit" class="submit">ĐĂNG KÝ NGAY</button>
 				<div class="social-button facebook" ng-click="facebookLogin()"></div>
 				<div class="social-button google" ng-click="googleLogin()"></div>
+				<button type="submit" class="submit">ĐĂNG KÝ NGAY</button>
 			</div>
 
 		</form>`,
@@ -39,11 +39,10 @@ export default ['$http', function ($http) {
 				event.preventDefault();
 				fields.forEach(field => scope[field+'Error'] = '');
 
-				if (scope.userName.length < 1) scope.userNameError = 'Bạn cần nhập họ Tên để tiếp tục';
-				if (scope.userPhone.length < 8) scope.userPhoneError = 'Số điện thoại chưa hợp lệ';
-				if (!isEmailValid(scope.userEmail))	scope.userEmailError = 'Email chưa hợp lệ';
+				if (scope.userName.length < 1) scope.userNameError = 'Nhập tên';
+				if (scope.userPhone.length < 8) scope.userPhoneError = 'Số điện thoại chưa đúng';
 
-				if (scope.userNameError || scope.userPhoneError || scope.userEmailError) return;
+				if (scope.userNameError || scope.userPhoneError) return;
 
 				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 					formData = {

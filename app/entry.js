@@ -11,6 +11,7 @@ import footer from "./component/footer";
 import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
+import slider from "./component/slider";
 
 let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'hmTouchEvents', 'ngParallax'])
 	.config(routerConfig)
@@ -22,6 +23,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('lightNavigation', navigation)
 	.directive('lightSidebar', sidebar)
 	.directive('lightFooter', footer)
+	.directive('lightSlider', slider)
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 

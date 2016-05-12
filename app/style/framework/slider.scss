@@ -1,0 +1,27 @@
+.light-slider {
+  position: relative;
+
+  .slide-positions {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    text-align: center;
+    z-index: 1002;
+    padding-bottom: 20px;
+
+    .position-item {
+      display: inline-block;
+      border-radius: 50%;
+      width: 10px; height: 10px;
+      background-color: white;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  }
+
+  .active-slide {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+  }
+}

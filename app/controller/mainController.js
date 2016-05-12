@@ -12,5 +12,13 @@ export class mainController {
 		}).success(data => {
 			this.features = data.results;
 		});
+
+		this.sliders = [{
+			image: 'images/riverside-inside.jpg'
+		},{
+			image: 'images/riverside-inside2.jpg'
+		},{
+			image: 'images/riverside-inside3.jpg'
+		}];
 	}
 }
