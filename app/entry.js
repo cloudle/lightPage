@@ -12,7 +12,7 @@ import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
 
-let App = angular.module('application', ['ui.router', 'ngAnimate', 'hmTouchEvents', 'ngParallax'])
+let App = angular.module('application', ['ui.router', 'ngAnimate', 'angular-loading-bar', 'hmTouchEvents', 'ngParallax'])
 	.config(routerConfig)
 	.controller('appCtrl', applicationController)
 	.controller('mainCtrl', mainController)

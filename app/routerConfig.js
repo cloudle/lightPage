@@ -1,7 +1,7 @@
 import {preloadResolves} from './utils/helper';
 
-let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider',
-	function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
+let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', 'cfpLoadingBarProvider',
+	function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, cfpLoadingBarProvider) {
 		$stateProvider
 			.state('splash', splashRoute)
 			.state('home', mainRoute)
@@ -13,6 +13,7 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 		$httpProvider.defaults.headers.post = {};
 		$httpProvider.defaults.headers.put = {};
 		$httpProvider.defaults.headers.patch = {};
+		cfpLoadingBarProvider.includeSpinner = false;
 	}
 ];
 
