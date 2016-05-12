@@ -8,8 +8,8 @@
 
 .view-injection {
   padding-top: $navigationHeight;
-  opacity: 0; transform: translate(0, 200px);
-  transition: opacity 1s $cubicAnimation, transform 0.2s $cubicAnimation;
+  opacity: 0; transform: translate(0, 300px);
+  transition: opacity 1s $cubicAnimation, transform 0.5s cubic-bezier(0,.67,.19,1.01);
 
   &.burgering {
     transform: translate(-$burgerSize, 0) !important;
@@ -23,4 +23,9 @@
 
 input, textarea {
   outline: none; color: #404040;
+}
+
+#ngProgress-container {
+  top: 70px;
+  z-index: 999;
 }

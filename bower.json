@@ -29,6 +29,7 @@
     "underscore": "^1.8.3",
     "moment": "^2.12.0",
     "ng-simple-parallax": "*",
-    "angular-loading-bar": "^0.9.0"
+    "nprogress": "^0.2.0",
+    "ngprogress": "^1.1.3"
   }
 }

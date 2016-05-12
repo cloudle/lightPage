@@ -8,7 +8,7 @@ $navigationBackground: $themeColor;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
   background-color: white;
-  transform: translate(0, -200%);
+  //transform: translate(0, -200%);
   transition: transform 0.2s $cubicAnimation;
   //border-bottom: solid 3px $navigationBackground;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);

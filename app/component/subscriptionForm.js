@@ -15,7 +15,12 @@ export default ['$http', function ($http) {
 			<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>
 			<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->
 			
-			<button type="submit" class="submit">ĐĂNG KÝ NGAY</button>
+			<div class="commands">
+				<button type="submit" class="submit">ĐĂNG KÝ NGAY</button>
+				<div class="social-button facebook" ng-click="facebookLogin()"></div>
+				<div class="social-button google" ng-click="googleLogin()"></div>
+			</div>
+
 		</form>`,
 		link: function (scope, element, attrs) {
 			scope.resetForm = () => {
@@ -27,7 +32,9 @@ export default ['$http', function ($http) {
 			scope.submit = (event) => {
 				event.preventDefault();
 
-				var formData = {
+				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+					formData = {
+					...localUserInfo,
 					site: location.host,
 					fullName: scope.userName,
 					name: scope.userName,
@@ -46,6 +53,29 @@ export default ['$http', function ($http) {
 					console.log(data);
 					scope.$parent.appCtrl.subscriptionPopup = false;
 					scope.resetForm();
+				});
+			};
+
+			scope.googleLogin = function () {
+				ants_googleAuthClick();
+			};
+
+			scope.facebookLogin = function () {
+				ants_fbAuthClick('login');
+			};
+
+			global.get_info = function(_userInfo){
+				scope.$apply(() => {
+					// user info get here
+					console.log(_userInfo, "called!!");
+
+					// fill userInfo to FORM đăng ký
+					scope.userName = _userInfo.name;
+					scope.userPhone = _userInfo.phone;
+					scope.userEmail = _userInfo.email || '';
+
+					//Store Social profile
+					if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
 				});
 			};
 		}

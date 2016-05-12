@@ -37,17 +37,39 @@
     resize: none;
   }
 
-  .submit {
-    border-radius: 3px; color: white; user-select: none;
-    background-color: $orangeColor; cursor: pointer;
-    transition: background-color 0.5s $cubicAnimation;
-    padding: 14px 22px; display: inline-block;
-    margin-top: 30px; font-size: 15px;
-    border: none; outline: none;
-    float: right;
+  .commands {
+    margin-top: 30px;
 
-    &:hover {
-      background-color: $themeColor;
+    .submit {
+      border-radius: 3px; color: white; user-select: none;
+      background-color: $orangeColor; cursor: pointer;
+      transition: background-color 0.5s $cubicAnimation;
+      padding: 14px 22px; display: inline-block;
+      font-size: 15px;
+      border: none; outline: none;
+      float: left;
+
+      &:hover {
+        background-color: $themeColor;
+      }
+    }
+
+    .social-button {
+      display: inline-block; cursor: pointer;
+      background-size: contain;
+      background-position: center center;
+      width: 46px; height: 46px; float: right;
+      margin-left: 20px;
+      background-color: gray;
+      border-radius: 3px;
+
+      &.facebook {
+        background-image: url('images/fb.png');
+      }
+
+      &.google {
+        background-image: url('images/gg.png');
+      }
     }
   }
 }

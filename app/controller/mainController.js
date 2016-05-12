@@ -7,7 +7,9 @@ export class mainController {
 			$rootScope.activePage = data.results[0].Page;
 		});
 
-		$http.get('http://128.199.227.132/banner/get/json').success(data => {
+		$http.get('http://128.199.227.132/banner/get/json', {
+			params: { type: 'banner' }
+		}).success(data => {
 			this.features = data.results;
 		});
 	}
