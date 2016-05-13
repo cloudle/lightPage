@@ -1,3 +1,5 @@
+@import "../mixins";
+
 .page-content-section {
   background-color: #FBFBFB;
   border-top: solid 1px #ebebeb;
@@ -5,13 +7,15 @@
 
 .page-content {
   font-size: 14px;
-  flex: 1; padding: 15px 50px 0 0;
-  margin-right: $sidebarSize;
+  flex: 1; padding: 15px 50px 20px 20px;
+  margin-right: $sidebarSize + 20px;
+  min-height: 1000px;
+  @extend .clearfix;
 }
 
 .sidebar-wrapper {
   width: $sidebarSize;
-  position: absolute; top: 50px; right: 0;
+  position: absolute; top: 50px; right: 20px;
   transition: transform 0.2s $cubicAnimation;
 
   .small-banner {
@@ -20,5 +24,6 @@
     background-image: url('images/side-banner.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
+    border-radius: 4px;
   }
 }

@@ -26,7 +26,7 @@ export class mainController {
 		this.sliderHeight = $(window).height() - 70;
 		$rootScope.$on('sizeChange', (event, size) => {
 			$scope.$apply(() => {
-				this.sliderHeight = size.height - 70;
+				this.sliderHeight = size.height > 570 ? size.height - 70 : 500;
 			});
 		})
 	}

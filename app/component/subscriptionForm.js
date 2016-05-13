@@ -7,9 +7,12 @@ export default ['$http', function ($http) {
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `<form ng-class="wrapperClass" ng-submit="submit($event)">
 			<div class="heading">
-				<span>Gọi ngay</span> <span class="ultra strong">0932 047 313</span>
-				<span>(24/7) hoặc</span> <span class="strong">ĐĂNG KÝ</span> <span>để nhận</span> <span class="strong">BÁO GIÁ</span>
-				<span>từ</span> <span class="strong">CHỦ ĐẦU TƯ</span>
+				<span>Gọi </span> 
+				<span class="ultra strong">0932 047 313</span>
+				<span> hoặc gửi thông tin để nhận</span> 
+				<span class="strong">BÁO GIÁ</span>
+				<span>từ</span> 
+				<span class="strong">CHỦ ĐẦU TƯ</span>
 			</div>
 			
 			<input type="text" placeholder="Họ và tên*" ng-model="userName"/>
@@ -24,7 +27,7 @@ export default ['$http', function ($http) {
 			<div class="commands">
 				<div class="social-button facebook" ng-click="facebookLogin()"></div>
 				<div class="social-button google" ng-click="googleLogin()"></div>
-				<button type="submit" class="submit" ng-bind="submitText || 'ĐĂNG KÝ NGAY'"></button>
+				<button type="submit" class="submit" ng-bind="submitText || 'GỬI'"></button>
 			</div>
 
 		</form>`,

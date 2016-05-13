@@ -22,8 +22,9 @@
 .section-heading {
   padding: 35px 25px;
   font-size: 30px; text-align: center;
-  text-transform: uppercase;
+  //text-transform: uppercase;
   color: $darkColor;
+  font-weight: 300;
 
   .highlight {
     color: $orangeColor;
@@ -35,7 +36,7 @@
   margin-bottom: 30px;
 
   .bullet-item {
-    flex: 1; margin: 30px 15px 0 15px;
+    flex: 1; margin: 30px 25px 0 25px;
     min-width: 220px;
 
     .bullet-avatar {
@@ -60,7 +61,7 @@
     }
 
     .bullet-heading {
-      font-weight: bolder; font-size: 16px;
+      font-size: 20px;
       text-transform: uppercase; text-align: center;
       margin-top: 25px; padding-bottom: 15px;
       position: relative; min-height: 50px;
@@ -76,7 +77,8 @@
 
     .bullet-description {
       margin-top: 15px;
-      font-size: 14px; text-align: justify;
+      font-size: 15px; font-weight: 300;
+      text-align: center;
     }
   }
 }
