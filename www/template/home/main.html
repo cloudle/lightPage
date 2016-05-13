@@ -1,9 +1,9 @@
-<light-slider items="mainCtrl.sliders" class="slider">
+<light-slider items="mainCtrl.sliders" class="slider" ng-style="{height: mainCtrl.sliderHeight+'px'}">
 	<div class="content-wrapper">
 		<subscription-form wrapper-class="subscription-form floating" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
 	</div>
 </light-slider>
-
+<h1 ng-bind="mainCtrl.sliderHeight"></h1>
 <!--<div class="slider">-->
 	<!--<div class="parallax-area" ng-parallax pattern="'images/river-view.jpg'">-->
 		<!--<div class="content-wrapper">-->

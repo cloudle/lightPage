@@ -1,6 +1,8 @@
 export class mainController {
 	static $inject = ['$rootScope', '$scope', '$interval', '$timeout', '$state', '$window', '$http'];
+
 	features = [];
+	sliders = [];
 
 	constructor ($rootScope, $scope, $interval, $timeout, $state, $window, $http) {
 		$http.get('http://128.199.227.132/page/get/json', { params: { page_id: "1" } }).success(data => {
@@ -17,21 +19,15 @@ export class mainController {
 			params: { type: 'HomeSlider' }
 		}).success(data => {
 			this.sliders = data.results.map(item => {
-				console.log(item);
 				return item.Post;
 			});
 		});
 
-		this.sliders = [];
-		// 	image: 'images/riverside-inside.jpg'
-		// },{
-		// 	image: 'images/riverside-inside2.jpg'
-		// },{
-		// 	image: 'images/riverside-inside3.jpg'
-		// }];
-
-		$rootScope.$on('sizeChange', () => {
-
+		this.sliderHeight = $(window).height() - 70;
+		$rootScope.$on('sizeChange', (event, size) => {
+			$scope.$apply(() => {
+				this.sliderHeight = size.height - 70;
+			});
 		})
 	}
 }
