@@ -12,19 +12,26 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 			<ng-transclude></ng-transclude>
 		</div>`,
 		link: (scope, element, attrs) => {
-			console.log(element.find('.active-slide'));
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
 
+			scope.$watch('items', () => {
+				scope.activeIndex = 0;
+				nextSlide();
+			});
+
 			if (global.sliderInterval) $interval.cancel(global.sliderInterval);
-			global.sliderInterval = $interval(() => {
+
+			let nextSlide = function () {
 				scope.activeIndex++;
-				if (scope.activeIndex > scope.items.length) {
+				if (scope.activeIndex >= scope.items.length) {
 					scope.activeIndex = 0;
 				}
 
 				scope.activeSlide = scope.items[scope.activeIndex];
-			}, 10000);
+			};
+
+			global.sliderInterval = $interval(() => nextSlide(), 10000);
 		}
 	}
 }]

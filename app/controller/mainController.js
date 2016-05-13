@@ -13,12 +13,25 @@ export class mainController {
 			this.features = data.results;
 		});
 
-		this.sliders = [{
-			image: 'images/riverside-inside.jpg'
-		},{
-			image: 'images/riverside-inside2.jpg'
-		},{
-			image: 'images/riverside-inside3.jpg'
-		}];
+		$http.get('http://128.199.227.132/banner/get/json', {
+			params: { type: 'HomeSlider' }
+		}).success(data => {
+			this.sliders = data.results.map(item => {
+				console.log(item);
+				return item.Post;
+			});
+		});
+
+		this.sliders = [];
+		// 	image: 'images/riverside-inside.jpg'
+		// },{
+		// 	image: 'images/riverside-inside2.jpg'
+		// },{
+		// 	image: 'images/riverside-inside3.jpg'
+		// }];
+
+		$rootScope.$on('sizeChange', () => {
+
+		})
 	}
 }

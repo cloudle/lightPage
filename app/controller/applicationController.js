@@ -54,5 +54,12 @@ export class applicationController {
 			let topScroll = $(window).scrollTop();
 			$rootScope.$broadcast('scrollChange', {top: topScroll});
 		});
+
+		$(window).resize(() => {
+			$rootScope.$broadcast('sizeChange', {
+				height: $(window).height(),
+				width: $(window).width()
+			});
+		});
 	}
 }
