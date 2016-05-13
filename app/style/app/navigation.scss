@@ -31,9 +31,10 @@ $navigationBackground: $themeColor;
   }
 
   .site-logo {
-    float: left; height: 48px; width: 48px;
-    margin-top: 10px; margin-left: 20px; cursor: pointer;
-    background-image: url('images/logo_invert.png');
+    cursor: pointer;
+    float: left; height: 48px; width: 180px;
+    margin-top: 10px; //margin-left: 20px;
+    background-image: url('images/logo-invert.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
     //border-bottom-left-radius: 4px;
@@ -49,10 +50,10 @@ $navigationBackground: $themeColor;
 
     .navigation-link {
       display: block; float: left; cursor: pointer;
-      line-height: $navigationHeight;
+      line-height: $navigationHeight; text-align: center;
       padding: 0 28px; box-sizing: border-box;
       text-transform: uppercase; user-select: none;
-      color: white; font-size: 14px;
+      color: #9AABC8; font-size: 14px;
       position: relative;
 
       .sub-navigations {
@@ -68,7 +69,7 @@ $navigationBackground: $themeColor;
         .sub-link {
           cursor: pointer;
           line-height: 40px; padding: 0 25px;
-          font-size: 13px;
+          font-size: 13px; text-align: left;
           border-top: dashed 1px rgba(255, 255, 255, 0.2);
 
           &:before {
@@ -112,7 +113,7 @@ $navigationBackground: $themeColor;
   .burger-menu-activator {
     display: none; float: right;
     line-height: $navigationHeight;
-    color: $darkColor; font-size: 30px;
+    color: white; font-size: 30px;
     cursor: pointer;
 
     @media screen and (max-width: $burgerResolution){
@@ -125,7 +126,7 @@ $navigationBackground: $themeColor;
     line-height: $navigationHeight;
     color: white; font-weight: 700; background-color: $orangeColor;
     cursor: pointer; user-select: none;
-    margin: 0 15px; padding: 0 30px;
+    margin: 0 12px; padding: 0 24px;
   }
 }
 

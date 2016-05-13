@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .content-wrapper {
-  @extend .clearfix;
+  @extend .clearfix; position: relative;
   max-width: $maxWidth; margin: 0 auto;
 }
 

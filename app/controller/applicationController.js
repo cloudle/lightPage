@@ -49,5 +49,10 @@ export class applicationController {
 		}).success(data => {
 			this.footers = data.results;
 		});
+
+		$(window).scroll(() => {
+			let topScroll = $(window).scrollTop();
+			$rootScope.$broadcast('scrollChange', {top: topScroll});
+		});
 	}
 }

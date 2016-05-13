@@ -4,23 +4,10 @@
 .subscription-form {
   width: $subscriptionFormWidth;
   min-height: 300px; border-radius: 4px;
-  background-color: white;
-  padding: 25px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px 30px 20px; box-sizing: border-box;
+  box-shadow: -1px 2px 26px -4px rgba(0,0,0,0.81);
   @extend .clearfix;
-
-  &.floating {
-    position: relative;
-    float: right; z-index: 1001;
-    margin-right: 15px;
-    margin-top: 20px;
-
-    @media screen and (max-width: 600px) {
-      float: none; margin: 0 auto;
-      padding-top: 40px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
 
   .heading {
     font-size: 14px; color: $darkColor;
@@ -41,6 +28,7 @@
     margin-top: 15px; font-size: 14px;
     box-sizing: border-box;
     resize: none;
+    background-color: transparent;
   }
 
   .error-row {
@@ -82,4 +70,22 @@
       }
     }
   }
+}
+
+.subscription-form.floating {
+  position: relative;
+  float: right; z-index: 1001;
+  margin-right: 40px;
+  margin-top: 125px;
+
+  @media screen and (max-width: 600px) {
+    float: none; margin: 0 auto;
+    padding-top: 40px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.subscription-form.sidebar {
+  box-shadow: none; width: auto;
 }
