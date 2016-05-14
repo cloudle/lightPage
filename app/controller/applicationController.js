@@ -26,6 +26,12 @@ export class applicationController {
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');
 
+		global.togglePopup = () => {
+			$scope.$apply(() => {
+				this.subscriptionPopup = !this.subscriptionPopup;
+			});
+		};
+
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
 		});

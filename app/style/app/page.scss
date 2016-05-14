@@ -85,23 +85,19 @@
 
 .footer {
   background-color: $themeColor; //#2b2b2b;
-  padding-bottom: 25px;
+  padding-top: 20px; padding-bottom: 25px;
 
   .columns {
     display: flex; flex-flow: row; flex-wrap: wrap;
     font-size: 13px; color: white;
 
     .col {
-      flex: 2; min-width: 220px;
+      flex: 1; min-width: 220px;
       padding: 20px 15px;
 
       .heading {
         font-size: 20px; padding-bottom: 10px;
       }
-    }
-
-    .likes {
-      width: 200px;
     }
   }
 
