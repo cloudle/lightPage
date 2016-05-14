@@ -23,12 +23,16 @@
   padding: 35px 25px;
   font-size: 30px; text-align: center;
   //text-transform: uppercase;
-  color: $darkColor;
+  color: $darkColor; background-color: white;
   font-weight: 300;
 
   .highlight {
     color: $orangeColor;
   }
+}
+
+.section-canvas {
+  background-color: white;
 }
 
 .bullets {
