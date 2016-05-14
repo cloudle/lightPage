@@ -27,6 +27,15 @@
   }
 }
 
+.image-hover-effect-zoom-light {
+  transition: transform 0.5s $cubicAnimation;
+  transform: scale(1); transform-origin: center center;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
 .image-hover-effect-zoom {
   transition: transform 0.5s $cubicAnimation;
   transform: scale(1); transform-origin: center center;
