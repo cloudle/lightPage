@@ -44,3 +44,12 @@
     transform: scale(1.5);
   }
 }
+
+.text-hover-effect-blur {
+  transition: color 1s $cubicAnimation;
+  color: lightgray;
+
+  &:hover {
+    color: #404040;
+  }
+}
