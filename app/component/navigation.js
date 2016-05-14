@@ -1,4 +1,4 @@
-export default [function () {
+export default ['$state', function ($state) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -26,7 +26,7 @@ export default [function () {
 				<div class="burger-menu">
 					<div class="menu-heading" ng-click="toggleBurger()"></div>
 					<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">
-						<div class="menu-item" ng-bind="item.name"></div>
+						<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>
 						<div class="sub-menus" ng-if="item.children">
 							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
 								ui-sref="page({id: child.page_id})" ng-click="toggleBurger()"></div>
@@ -43,6 +43,17 @@ export default [function () {
 			scope.togglePopup = function () {
 				scope.$parent.appCtrl.subscriptionPopup = !scope.$parent.appCtrl.subscriptionPopup;
 			};
+
+			scope.parentLinkNavigate = function (instance) {
+				if (instance.page_id) {
+					$state.go('page', {id: instance.page_id});
+				}
+				else if (instance.children[0] && instance.children[0].page_id) {
+					$state.go('page', {id: instance.children[0].page_id});
+				}
+
+				scope.toggleBurger();
+			}
 		}
 	}
 }];
