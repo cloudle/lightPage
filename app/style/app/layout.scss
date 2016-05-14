@@ -12,6 +12,19 @@
   &.quatro .column {
     min-width: 220px; margin: 20px;
   }
+
+  .thumb-image-wrapper {
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+
+    .image {
+      position: absolute; top: 0; left: 0; right: 0; bottom:0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 .image-hover-effect-zoom {
@@ -19,6 +32,6 @@
   transform: scale(1); transform-origin: center center;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 }
