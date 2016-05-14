@@ -12,7 +12,7 @@ body {
 
 .view-injection {
   padding-top: $navigationHeight;
-  opacity: 0; transform: translate(0, -300px);
+  opacity: 0; //transform: translate(0, -300px);
   transition: opacity 2.5s $cubicAnimation, transform 0.5s cubic-bezier(0,.67,.19,1.01);
 
   &.burgering {
@@ -20,7 +20,8 @@ body {
   }
 
   &.ready {
-    transform: translate(0, 0);
+    animation: page-transition 0.5s $cubicAnimation;
+    //transform: translate(0, 0);
     opacity: 1;
   }
 }

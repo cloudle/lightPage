@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins";
 
 $burgerResolution: 1120px;
 $navigationBackground: $themeColor;
@@ -8,8 +9,8 @@ $navigationBackground: $themeColor;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
   background-color: $themeColor;
-  //transform: translate(0, -200%);
-  transition: transform 0.2s $cubicAnimation;
+  //transform: translate(0, -100%);
+  transition: transform 0.2s $bounceAnimation;
   //border-bottom: solid 3px $navigationBackground;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
@@ -22,7 +23,8 @@ $navigationBackground: $themeColor;
   }
 
   &.ready {
-    transform: translate(0, 0);
+    //transform: translate(0, 0);
+    animation: page-transition 0.5s $cubicAnimation;
   }
 
   .content-wrapper {
