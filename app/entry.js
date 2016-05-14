@@ -27,9 +27,9 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 
-App.run(() => {
-	FastClick.attach(document.body);
-});
+//App.run(() => {
+	//FastClick.attach(document.body);
+//});
 
 App.filter('unsafe', [
 	'$sce', function ($sce) {
