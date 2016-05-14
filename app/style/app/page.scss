@@ -40,8 +40,12 @@
   margin-bottom: 30px;
 
   .bullet-item {
-    flex: 1 1 auto; margin: 30px 25px 0 25px;
+    flex: 1; margin: 30px 25px 0 25px;
     min-width: 220px;
+
+    @media screen and (max-width: 500px) {
+      flex: 1 1 auto;
+    }
 
     .bullet-avatar {
       border-radius: 50%; position: relative;
@@ -96,8 +100,12 @@
     font-size: 13px; color: white;
 
     .col {
-      flex: 1 1 auto; min-width: 220px;
+      flex: 1; min-width: 220px;
       padding: 20px 15px;
+
+      @media screen and (max-width: 500px) {
+        flex: 1 1 auto;
+      }
 
       .heading {
         font-size: 20px; padding-bottom: 10px;
