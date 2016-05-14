@@ -1,0 +1,10 @@
+@import "../variables";
+@import "../mixins";
+
+.light-row {
+  display: flex;
+
+  .column {
+    flex: 1;
+  }
+}
