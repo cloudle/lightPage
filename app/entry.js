@@ -13,7 +13,7 @@ import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
 import slider from "./component/slider";
 
-let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'hmTouchEvents', 'ngParallax'])
+let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax'])
 	.config(routerConfig)
 	.controller('appCtrl', applicationController)
 	.controller('mainCtrl', mainController)
