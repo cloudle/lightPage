@@ -13,3 +13,12 @@
     min-width: 220px; margin: 20px;
   }
 }
+
+.image-hover-effect-zoom {
+  transition: transform 0.5s $cubicAnimation;
+  transform: scale(1); transform-origin: center center;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
