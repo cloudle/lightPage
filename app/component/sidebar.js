@@ -1,5 +1,5 @@
 const sidebarTopMargin = 200,
-	sidebarBottomMargin = 70;
+	sidebarBottomMargin = 670;
 
 export default ['$rootScope', function ($rootScope) {
 	return {
@@ -20,7 +20,7 @@ export default ['$rootScope', function ($rootScope) {
 					let sidebarTouchBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - sidebarBottomMargin);
 					// if($(window).scrollTop() + $(window).height() > $(document).height() - sidebarBottomMargin) {
 					// 	console.log("near bottom!");
-					// }6
+					// }
 
 					if (sidebarTouchBottom) {
 						scope.topPosition = $(document).height() - (sidebarBottomMargin + bannerHeight);
