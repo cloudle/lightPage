@@ -7,7 +7,7 @@ export class applicationController {
 	activePage = 'splash';
 	burgerActive = false;
 	subscriptionPopup = false;
-	subscriptionSuccess = false;
+	subscriptionSuccess = true;
 
 	links = [{
 		name: 'trang chủ',
@@ -36,9 +36,9 @@ export class applicationController {
 		};
 
 		this.toggleSuccess = () => {
-			this.successGifImage = `url(images/onoff.gif?${generateNumberUUID(10)})`;
+			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
 			this.subscriptionSuccess = true;
-			$timeout(() => this.subscriptionSuccess = false, 1000);
+			$timeout(() => this.subscriptionSuccess = false, 3000);
 		};
 
 		$rootScope.$on('$stateChangeStart', () => {

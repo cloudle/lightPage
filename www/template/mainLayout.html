@@ -6,7 +6,9 @@
 	</popup>
 
 	<popup enable="appCtrl.subscriptionSuccess">
-		<div class="subscription-success" ng-style="{'background-image': appCtrl.successGifImage}"></div>
+		<div class="subscription-success" ng-style="{'background-image': appCtrl.successGifImage}">
+			<div class="message">Cảm ơn bạn đã gửi thông tin, chúng tôi sẽ liên hệ lại sớm nhất trong 24 giờ.</div>
+		</div>
 	</popup>
 
 	<div ui-view="content" class="view-injection horizontal flex" ng-class="{burgering: appCtrl.burgerActive, ready: appCtrl.ready}"></div>
