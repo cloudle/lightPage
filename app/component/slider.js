@@ -4,8 +4,8 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 		replace: true,
 		scope: { items: '=' },
 		transclude: true,
-		template: `<div class="light-slider {{wrapperClass}}"
-			hm-swipeLeft="swipeLeft($event)" hm-swipeRight="swipeRight($event)">
+		template: `<div class="light-slider {{wrapperClass}}">
+			<!--hm-swipeLeft="swipeLeft($event)" hm-swipeRight="swipeRight($event)">-->
 			<div id="currentSlide" class="active-slide" ng-style="{'background-image': 'url('+activeSlide.image+')'}"></div>
 			<div id="previousSlide" class="active-slide previous" ng-style="{'background-image': 'url('+previousSlide.image+')'}"></div>
 
