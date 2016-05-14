@@ -1,3 +1,5 @@
+import { generateNumberUUID } from '../utils/helper';
+
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory'];
 	developmentMode = false;
@@ -5,6 +7,7 @@ export class applicationController {
 	activePage = 'splash';
 	burgerActive = false;
 	subscriptionPopup = false;
+	subscriptionSuccess = false;
 
 	links = [{
 		name: 'trang chủ',
@@ -30,6 +33,12 @@ export class applicationController {
 			$scope.$apply(() => {
 				this.subscriptionPopup = !this.subscriptionPopup;
 			});
+		};
+
+		this.toggleSuccess = () => {
+			this.successGifImage = `url(images/onoff.gif?${generateNumberUUID(10)})`;
+			this.subscriptionSuccess = true;
+			$timeout(() => this.subscriptionSuccess = false, 1000);
 		};
 
 		$rootScope.$on('$stateChangeStart', () => {

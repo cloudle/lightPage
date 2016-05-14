@@ -87,3 +87,13 @@
 .subscription-form.sidebar {
   box-shadow: none; width: auto;
 }
+
+.subscription-success {
+  width: 300px; height: 200px;
+  background-image: url('images/onoff.gif');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  margin: 0 auto;
+}

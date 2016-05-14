@@ -5,5 +5,9 @@
 		<subscription-form wrapper-class="subscription-form"></subscription-form>
 	</popup>
 
+	<popup enable="appCtrl.subscriptionSuccess">
+		<div class="subscription-success" ng-style="{'background-image': appCtrl.successGifImage}"></div>
+	</popup>
+
 	<div ui-view="content" class="view-injection horizontal flex" ng-class="{burgering: appCtrl.burgerActive, ready: appCtrl.ready}"></div>
 </div>

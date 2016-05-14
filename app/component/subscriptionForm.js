@@ -65,9 +65,9 @@ export default ['$http', function ($http) {
 				$http.get('http://128.199.227.132/customer/insert/json', {
 					params: formData
 				}).success(data => {
-					console.log(data);
 					scope.$parent.appCtrl.subscriptionPopup = false;
 					scope.resetForm();
+					scope.$parent.appCtrl.toggleSuccess();
 				});
 			};
 
