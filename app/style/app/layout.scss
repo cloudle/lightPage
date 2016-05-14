@@ -28,7 +28,7 @@
 }
 
 .image-hover-effect-zoom-120 {
-  transition: transform 0.5s $cubicAnimation;
+  transition: transform 1s $cubicAnimation;
   transform: scale(1); transform-origin: center center;
 
   &:hover {
@@ -37,7 +37,7 @@
 }
 
 .image-hover-effect-zoom {
-  transition: transform 0.5s $cubicAnimation;
+  transition: transform 1s $cubicAnimation;
   transform: scale(1); transform-origin: center center;
 
   &:hover {

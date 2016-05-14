@@ -5,7 +5,7 @@ $burgerResolution: 1120px;
 $navigationBackground: $themeColor;
 
 .navigation-wrapper {
-  z-index: 1000;
+  z-index: 5000;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
   background-color: $themeColor;
