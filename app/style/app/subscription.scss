@@ -6,9 +6,20 @@
   min-height: 300px; border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 40px 20px 30px 20px; box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0 auto; position: relative;
   box-shadow: -1px 2px 26px -4px rgba(0,0,0,0.81);
   @extend .clearfix;
+
+  .close-command {
+    width: 50px; height: 30px; cursor: pointer;
+    text-align: center; line-height: 30px;
+    color: white;
+    font-size: 20px;
+    position: absolute; top: 0; right: 0;
+    background-color: $orangeColor;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 3px;
+  }
 
   .heading {
     font-size: 14px; color: $darkColor;
@@ -78,6 +89,10 @@
   transform: translate(0, -50%);
   z-index: 1001;
 
+  .close-command {
+    display: none;
+  }
+
   @media screen and (max-width: 600px) {
     margin: 0 auto; right: auto;
     left: 50%; transform: translate(-50%, -50%);
@@ -86,6 +101,10 @@
 
 .subscription-form.sidebar {
   box-shadow: none; width: auto;
+
+  .close-command {
+    display: none;
+  }
 }
 
 .subscription-success {

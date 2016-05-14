@@ -7,7 +7,7 @@ export class applicationController {
 	activePage = 'splash';
 	burgerActive = false;
 	subscriptionPopup = false;
-	subscriptionSuccess = true;
+	subscriptionSuccess = false;
 
 	links = [{
 		name: 'trang chủ',
