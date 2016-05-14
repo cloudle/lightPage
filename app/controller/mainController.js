@@ -12,6 +12,7 @@ export class mainController {
 		$http.get('http://128.199.227.132/banner/get/json', {
 			params: { type: 'banner' }
 		}).success(data => {
+			console.log(data.results);
 			this.features = data.results;
 		});
 
