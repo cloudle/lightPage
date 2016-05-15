@@ -65,9 +65,11 @@ export class applicationController {
 			this.footers = data.results;
 		});
 
-		$(window).scroll(() => {
+		this.lastScrollPosition = 0;
+		$(window).scroll((event) => {
 			let topScroll = $(window).scrollTop();
-			$rootScope.$broadcast('scrollChange', {top: topScroll});
+			$rootScope.$broadcast('scrollChange', {top: topScroll, scrollingDown: topScroll > this.lastScrollPosition});
+			this.lastScrollPosition = topScroll;
 		});
 
 		$(window).resize(() => {

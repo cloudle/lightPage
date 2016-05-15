@@ -21,7 +21,6 @@ export default ['$http', '$rootScope', '$state', function ($http, $rootScope, $s
 
 			scope.$watch('instance', instance => {
 				if (instance.children && instance.children.length) {
-
 					instance.children.forEach(child => {
 						let currentWidth = child.name.width(childFont) + padding;
 						if (currentWidth > scope.maxWidth) {

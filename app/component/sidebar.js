@@ -1,7 +1,6 @@
-const sidebarTopMargin = 200,
-	sidebarBottomMargin = 670;
+const initialTopOffset = 121;
 
-export default ['$rootScope', function ($rootScope) {
+export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -12,24 +11,38 @@ export default ['$rootScope', function ($rootScope) {
 			<div class="small-banner"></div>
 		</div>`,
 		link: function (scope, element, attrs) {
-			scope.topPosition = 0;
-			let bannerHeight = element.outerHeight();
+			var sidebarHeight, footerHeight; scope.topPosition = 0;
 
-			$rootScope.$on('scrollChange', (event, position) => {
+			//Safely calculate element's size after stuff have been rendered!
+			$timeout(() => {
+				sidebarHeight = element.outerHeight();
+				footerHeight = angular.element('#footer').outerHeight();
+			}, 500);
+
+			$rootScope.$on('scrollChange', (event, scrollPosition) => {
 				scope.$apply(() => {
-					let sidebarTouchBottom = ($(window).scrollTop() + $(window).height() > $(document).height() - sidebarBottomMargin);
-					// if($(window).scrollTop() + $(window).height() > $(document).height() - sidebarBottomMargin) {
-					// 	console.log("near bottom!");
-					// }
+					let documentHeight = $(document).height(), windowHeight = $(window).height(),
+						offset = element.offset();
 
-					if (sidebarTouchBottom) {
-						scope.topPosition = $(document).height() - (sidebarBottomMargin + bannerHeight);
-						console.log("near bottom!", scope.topPosition);
-					} else if (position.top > 100) {
-						scope.topPosition = position.top - 30;
-					}  else {
-						scope.topPosition = 0;
+					if (scrollPosition.scrollingDown) {
+						let scrollDownTouchBottom = scrollPosition.top + windowHeight > offset.top + sidebarHeight,
+							scrollDownOverFooter = scrollPosition.top + windowHeight > documentHeight - footerHeight;
+
+						if (scrollDownTouchBottom && !scrollDownOverFooter) {
+							scope.topPosition = scrollPosition.top + windowHeight - sidebarHeight - initialTopOffset;
+						}
+					} else if (scrollPosition.top < offset.top - initialTopOffset) {
+						console.log(scrollPosition.top, offset.top);
+						scope.topPosition = scrollPosition.top;
 					}
+
+					// if (sidebarTouchBottom) {
+					// 	scope.topPosition = $(document).height() - (sidebarBottomMargin + bannerHeight);
+					// } else if (position.top > 100) {
+					// 	scope.topPosition = position.top - 30;
+					// }  else {
+					// 	scope.topPosition = 0;
+					// }
 				});
 			});
 		}

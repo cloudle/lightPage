@@ -3,7 +3,7 @@ export default ['$http', function ($http) {
 		restrict: 'E',
 		replace: true,
 		scope: { columns: '=' },
-		template: `<div class="footer">
+		template: `<div id="footer" class="footer">
 			<div class="content-wrapper">
 				<div class="columns">
 					<div class="col" ng-repeat="column in columns" ng-bind-html="column.Post.content | unsafe"></div>
