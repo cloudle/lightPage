@@ -6,7 +6,7 @@ export default ['$http', function ($http) {
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `<form ng-class="wrapperClass" ng-submit="submit($event)">
-			<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>
+			<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->
 			<div class="heading">
 				<span>Gọi </span> 
 				<span class="ultra strong">0932 047 313</span>

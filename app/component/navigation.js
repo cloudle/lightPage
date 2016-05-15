@@ -24,7 +24,7 @@ export default ['$state', function ($state) {
 					
 				</div>
 				<div class="burger-menu">
-					<div class="menu-heading" ng-click="toggleBurger()"></div>
+					<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->
 					<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">
 						<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>
 						<div class="sub-menus" ng-if="item.children">

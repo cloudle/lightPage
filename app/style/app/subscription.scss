@@ -97,10 +97,16 @@
     margin: 0 auto; right: auto;
     left: 50%; transform: translate(-50%, -50%);
   }
+
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 }
 
 .subscription-form.sidebar {
   box-shadow: none; width: auto;
+  padding-top: 0; padding-bottom: 0;
+  background-color: transparent;
 
   .close-command {
     display: none;
