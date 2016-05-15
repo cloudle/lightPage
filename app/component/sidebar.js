@@ -32,7 +32,6 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 							scope.topPosition = scrollPosition.top + windowHeight - sidebarHeight - initialTopOffset;
 						}
 					} else if (scrollPosition.top < offset.top - initialTopOffset) {
-						console.log(scrollPosition.top, offset.top);
 						scope.topPosition = scrollPosition.top;
 					}
 
