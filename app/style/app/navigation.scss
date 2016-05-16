@@ -57,10 +57,14 @@ $navigationBackground: $themeColor;
     .navigation-link {
       display: block; float: left; cursor: pointer;
       line-height: $navigationHeight; text-align: center;
-      padding: 0 28px; box-sizing: border-box;
+      box-sizing: border-box;
       text-transform: uppercase; user-select: none;
       color: #9AABC8; font-size: 14px;
       position: relative;
+
+      .parent-link {
+        line-height: $navigationHeight; padding: 0 28px;
+      }
 
       .sub-navigations {
         position: absolute; top: $navigationHeight; left: 0;

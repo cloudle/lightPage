@@ -12,6 +12,7 @@ import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
 import slider from "./component/slider";
+import metaService from "./metaService";
 
 let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax'])
 	.config(routerConfig)
@@ -19,6 +20,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.controller('mainCtrl', mainController)
 	.controller('pageCtrl', pageController)
 	.controller('splashCtrl', splashController)
+	.service('metaService', metaService)
 	.directive('popup', popup)
 	.directive('lightNavigation', navigation)
 	.directive('lightSidebar', sidebar)

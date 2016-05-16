@@ -1,11 +1,10 @@
-export default ['$state', function ($state) {
+export default ['$state', 'metaService', function ($state, metaService) {
 	return {
 		restrict: 'E',
 		replace: true,
 		scope: {
 			ready: '=',
-			burgerActive: '=',
-			links: '='
+			burgerActive: '='
 		},
 		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">
 			<div class="content-wrapper">
@@ -36,6 +35,8 @@ export default ['$state', function ($state) {
 			</div>
 		</div>`,
 		link: (scope, element, attrs) => {
+			scope.links = metaService.links;
+
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
 			};

@@ -66,6 +66,11 @@ export default ['$http', function ($http) {
 				adx_analytic.trackingGoal('578664668', 1, 'event');
 				//Send form information to Ants!
 				ants_userInfoListener(formData, false, true);
+
+				//Facebook tracking Lead/CompleteRegistration event
+				fbq('track', 'Lead');
+				fbq('track', 'CompleteRegistration');
+
 				//Send form to Twin's server!
 				$http.get('http://128.199.227.132/customer/insert/json', {
 					params: formData

@@ -12,8 +12,8 @@ body {
 
 .view-injection {
   padding-top: $navigationHeight;
-  opacity: 0; transform: translate(0, -200px);
-  transition: opacity 2.5s $cubicAnimation, transform 0.5s $frenzyAnimation;
+  opacity: 0.2;// transform: translate(0, -200px);
+  transition: opacity 2.5s $frenzyAnimation, transform 0.5s $frenzyAnimation;
 
   &.burgering {
     transform: translate(-$burgerSize, 0) !important;
@@ -21,7 +21,7 @@ body {
 
   &.ready {
     //animation: page-transition 0.5s $cubicAnimation;
-    transform: translate(0, 0);
+    //transform: translate(0, 0);
     opacity: 1;
   }
 }

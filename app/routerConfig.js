@@ -29,6 +29,11 @@ var splashRoute = {
 
 var mainRoute = {
 	url: '/home',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
 		'content@home': {
@@ -40,6 +45,11 @@ var mainRoute = {
 
 var pageRoute = {
 	url: '/page/:id',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
 		'content@page': {
