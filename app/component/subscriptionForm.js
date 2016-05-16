@@ -83,7 +83,7 @@ export default ['$http', function ($http) {
 				$.post('/email', {
 					...formData,
 					// receiver: 'lehaoson@gmail.com',
-					// relatedGuys: ''
+					// relatedGuys: 'none'
 				});
 			};
 

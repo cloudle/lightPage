@@ -1,14 +1,15 @@
 var mailerAccount = 'realestate.noreply@gmail.com';
 
 var express = require('express'), app = express(), nodemailer = require('nodemailer'),
+	smtpTransport = require('nodemailer-smtp-transport'),
 	bodyParser = require('body-parser'),
-	mailSender = nodemailer.createTransport({
+	mailSender = nodemailer.createTransport(smtpTransport({
 		service: 'Gmail',
 		auth: {
 			user: mailerAccount,
 			pass: 'F0reverDM$'
 		}
-	});
+	}));
 
 app.set('views', './www');
 app.use(express.static('./www'));
