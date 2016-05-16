@@ -79,6 +79,12 @@ export default ['$http', function ($http) {
 					scope.resetForm();
 					scope.$parent.appCtrl.toggleSuccess();
 				});
+
+				$.post('/email', {
+					...formData,
+					// receiver: 'lehaoson@gmail.com',
+					// relatedGuys: ''
+				});
 			};
 
 			scope.googleLogin = function () {

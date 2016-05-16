@@ -13,6 +13,7 @@ export class applicationController {
 		$rootScope.activeContents = [];
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');
+		global.$http = $http;
 
 		global.togglePopup = () => {
 			$scope.$apply(() => {
@@ -40,6 +41,12 @@ export class applicationController {
 			params: { type: 'footer' }
 		}).success(data => {
 			this.footers = data.results;
+		});
+
+		$http.get('http://128.199.227.132/banner/get/json', {
+			params: { type: 'news' }
+		}).success(data => {
+			$rootScope.news = data.results;
 		});
 
 		this.lastScrollPosition = 0;

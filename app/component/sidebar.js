@@ -8,7 +8,12 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		scope: { enable: '=' },
 		template: `<div class="sidebar-wrapper" ng-style="{transform: 'translate(0,'+topPosition+'px)'}">
 			<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>
-			<div class="small-banner"></div>
+			<!--<div class="small-banner"></div>-->
+			<div class="sidebar-news">
+				<div class="news-summary" ng-repeat="newsItem in news">
+					{{newsItem}}
+				</div>
+			</div>
 		</div>`,
 		link: function (scope, element, attrs) {
 			var sidebarHeight, footerHeight; scope.topPosition = 0;
@@ -20,6 +25,8 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 			}, 500);
 
 			$rootScope.$on('scrollChange', (event, scrollPosition) => {
+				scope.news = $rootScope.news;
+
 				scope.$apply(() => {
 					let documentHeight = $(document).height(), windowHeight = $(window).height(),
 						offset = element.offset();
