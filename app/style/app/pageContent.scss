@@ -28,9 +28,35 @@
   }
 
   .sidebar-news {
-    margin-top: 28px; margin-bottom: 35px;
-    width: 100%;
+    margin-top: 50px; margin-bottom: 35px;
+    width: 100%; min-height: 485px;
+    font-size: 14px;
 
+    .heading {
+      font-size: 18px; font-weight: bold; color: $orangeColor;
+      text-align: center; text-transform: uppercase;
+      border-bottom: dashed 1px $orangeColor; padding-bottom: 10px;
+    }
+
+    .news-summary {
+      margin-top: 15px; padding-left: 60px;
+      box-sizing: border-box;
+      position: relative;
+      min-height: 60px;
+
+      .title {
+        cursor: pointer; font-size: 13px; font-weight: lighter;
+      }
+
+      .thumb-image {
+        width: 45px; height: 45px;
+        border-radius: 3px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: absolute; top: 0; left: 0;
+      }
+    }
   }
 }
 
