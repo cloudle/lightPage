@@ -25,6 +25,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/email', function (req, res) {
+	res.json({}); return;
+
 	var receiver = req.body.receiver || 'liemnm@twin.vn',
 		relatedGuys = req.body.relatedGuys || ['haunh@twin.vn', 'haunt@twin.vn', 'tiennd@twin.vn', 'duyntp@twin.vn', 'sonln@twin.vn'].join(', '),
 		site = req.body.site,
