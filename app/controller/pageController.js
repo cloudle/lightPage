@@ -1,3 +1,5 @@
+import { apiHost } from "../utils/helper";
+
 export class pageController {
 	static $inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
@@ -23,7 +25,7 @@ export class pageController {
 			$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
 			parentGroup.children.forEach((child, index) => {
 				$rootScope.activeContents[index] = {};
-				$http.get('http://128.199.227.132/page/get/json', { params: { page_id: child.page_id } }).success(data => {
+				$http.get(`${apiHost}/page/get/json`, { params: { page_id: child.page_id } }).success(data => {
 					let childResult = data.results[0];
 					if (childResult && childResult.Page) {
 						$rootScope.activeContents[index] = childResult.Page;

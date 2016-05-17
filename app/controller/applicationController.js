@@ -1,4 +1,4 @@
-import { generateNumberUUID } from '../utils/helper';
+import { generateNumberUUID, apiHost } from '../utils/helper';
 
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
@@ -29,6 +29,7 @@ export class applicationController {
 
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
+			$rootScope.activeGroup = null;
 		});
 
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
@@ -37,14 +38,14 @@ export class applicationController {
 			$timeout(() => this.ready = true, 250);
 		});
 
-		$http.get('http://128.199.227.132/banner/get/json', {
+		$http.get(`${apiHost}/banner/get/json`, {
 			params: { type: 'footer' }
 		}).success(data => {
 			this.footers = data.results;
 		});
 
-		$http.get('http://128.199.227.132/banner/get/json', {
-			params: { type: 'news' }
+		$http.get(`${apiHost}/banner/get/json`, {
+			params: { type: 'news', limit: 4 }
 		}).success(data => {
 			$rootScope.news = data.results;
 		});

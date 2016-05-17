@@ -3,6 +3,7 @@ import routerConfig from "./routerConfig";
 
 import {mainController} from "./controller/mainController";
 import {pageController} from "./controller/pageController";
+import {newsController} from "./controller/newsController";
 import {splashController} from "./controller/splashController";
 
 import navigation from "./component/navigation";
@@ -13,12 +14,14 @@ import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
 import slider from "./component/slider";
 import metaService from "./metaService";
+import registerFilter from "./utils/filter";
 
 let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax'])
 	.config(routerConfig)
 	.controller('appCtrl', applicationController)
 	.controller('mainCtrl', mainController)
 	.controller('pageCtrl', pageController)
+	.controller('newsCtrl', newsController)
 	.controller('splashCtrl', splashController)
 	.service('metaService', metaService)
 	.directive('popup', popup)
@@ -28,6 +31,8 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('lightSlider', slider)
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
+
+registerFilter(App);
 
 App.run(() => {
 	FastClick.attach(document.body);

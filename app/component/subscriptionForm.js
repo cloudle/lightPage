@@ -1,4 +1,4 @@
-import { isEmailValid } from '../utils/helper';
+import { isEmailValid, apiHost } from '../utils/helper';
 
 export default ['$http', function ($http) {
 	return {
@@ -72,7 +72,7 @@ export default ['$http', function ($http) {
 				fbq('track', 'CompleteRegistration');
 
 				//Send form to Twin's server!
-				$http.get('http://128.199.227.132/customer/insert/json', {
+				$http.get(`${apiHost}/customer/insert/json`, {
 					params: formData
 				}).success(data => {
 					scope.$parent.appCtrl.subscriptionPopup = false;

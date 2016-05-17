@@ -1,3 +1,5 @@
+import { apiHost } from "../utils/helper";
+
 export class mainController {
 	static $inject = ['$rootScope', '$scope', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
@@ -8,17 +10,17 @@ export class mainController {
 		fbq('track', 'ViewContent'); //Facebook tracking code..
 		$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
 
-		$http.get('http://128.199.227.132/page/get/json', { params: { page_id: "1" } }).success(data => {
+		$http.get(`${apiHost}/page/get/json`, { params: { page_id: "1" } }).success(data => {
 			$rootScope.activeContents = [data.results[0].Page];
 		});
 
-		$http.get('http://128.199.227.132/banner/get/json', {
+		$http.get(`${apiHost}/banner/get/json`, {
 			params: { type: 'banner' }
 		}).success(data => {
 			this.features = data.results;
 		});
 
-		$http.get('http://128.199.227.132/banner/get/json', {
+		$http.get(`${apiHost}/banner/get/json`, {
 			params: { type: 'HomeSlider' }
 		}).success(data => {
 			this.sliders = data.results.map(item => {

@@ -15,6 +15,9 @@ export default ['$state', 'metaService', function ($state, metaService) {
 				
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
+					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
+						<div class="parent-link" ui-sref="news({id: 'all'})">Tin tức</div>
+					</div>
 				</div>
 			</div>
 			
@@ -30,6 +33,9 @@ export default ['$state', 'metaService', function ($state, metaService) {
 							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
 								ui-sref="page({id: child.page_id})" ng-click="toggleBurger()"></div>
 						</div>
+					</div>
+					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
+						<div class="menu-item" ui-sref="news({id: 'all'})" ng-click="toggleBurger()">Tin tức</div>
 					</div>
 				</div>
 			</div>
@@ -54,6 +60,10 @@ export default ['$state', 'metaService', function ($state, metaService) {
 				}
 
 				scope.toggleBurger();
+			};
+
+			scope.newsActiveClass = () => {
+				return $state.current.name === 'news';
 			}
 		}
 	}

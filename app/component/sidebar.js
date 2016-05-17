@@ -13,7 +13,7 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 				<div class="heading">Tin mới nhất</div>
 				<div class="news-summary" ng-repeat="newsItem in news">
 					<div class="thumb-image" ng-style="{'background-image': 'url('+newsItem.Post.image+')'}"></div>
-					<div class="title" ui-sref="news(newsItem.Post.page_id)" ng-bind="newsItem.Post.title"></div>
+					<div class="title" ui-sref="news({id: newsItem.Post.id})" ng-bind="newsItem.Post.title"></div>
 				</div>
 			</div>
 		</div>`,

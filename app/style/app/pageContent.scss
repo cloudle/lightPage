@@ -29,7 +29,7 @@
 
   .sidebar-news {
     margin-top: 50px; margin-bottom: 35px;
-    width: 100%; min-height: 485px;
+    width: 100%; min-height: 335px;
     font-size: 14px;
 
     .heading {
@@ -56,6 +56,48 @@
         background-repeat: no-repeat;
         position: absolute; top: 0; left: 0;
       }
+    }
+  }
+}
+
+.page-content.news {
+  padding-top: 40px;
+
+  .title {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $orangeColor;
+  }
+
+  .timestamp {
+    padding: 5px 0 0 5px;
+    font-style: italic;
+  }
+
+  .single-news {
+    .news-details {
+      padding-top: 20px;
+    }
+  }
+
+  .all-news {
+    border-bottom: dashed 1px $orangeColor;
+    cursor: pointer;
+
+    .title {
+      text-align: center;
+    }
+
+    .summary {
+      text-align: center; padding: 20px 0;
+    }
+
+    .thumb-image-wrapper {
+      height: 250px;
+    }
+
+    .timestamp {
+      text-align: center;
     }
   }
 }

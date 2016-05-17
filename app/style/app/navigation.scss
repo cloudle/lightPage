@@ -1,7 +1,7 @@
 @import "../variables";
 @import "../mixins";
 
-$burgerResolution: 1120px;
+$burgerResolution: 1200px;
 $navigationBackground: $themeColor;
 
 .navigation-wrapper {
@@ -63,7 +63,7 @@ $navigationBackground: $themeColor;
       position: relative;
 
       .parent-link {
-        line-height: $navigationHeight; padding: 0 28px;
+        line-height: $navigationHeight; padding: 0 20px;
       }
 
       .sub-navigations {
