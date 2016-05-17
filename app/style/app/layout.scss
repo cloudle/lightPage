@@ -18,6 +18,10 @@
     min-width: 220px; margin: 20px;
   }
 
+  &.dual .column {
+    min-width: 500px;
+  }
+
   .thumb-image-wrapper {
     height: 180px;
     position: relative;
@@ -85,6 +89,10 @@
     font-size: 16px; font-weight: normal;
     padding-bottom: 15px;
     min-height: 45px;
+
+    &:hover {
+      color: $orangeColor;
+    }
   }
 
   .description {

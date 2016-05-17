@@ -9,7 +9,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 					<div class="column light-column click-able" ng-repeat="news in latestNews" ui-sref="news({id: news.Post.id})">
 						<div class="title" ng-bind="news.Post.title"></div>
 						<div class="thumb-image-wrapper">
-							<div class="image" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>
+							<div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>
 						</div>
 						<div class="description" ng-bind="news.Post.description"></div>
 					</div>
