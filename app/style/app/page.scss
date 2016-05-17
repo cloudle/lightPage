@@ -33,6 +33,10 @@
 
 .section-canvas {
   background-color: white;
+
+  &.top-separated {
+    border-top: solid 1px #ebebeb;
+  }
 }
 
 .bullets {

@@ -22,6 +22,7 @@
     height: 180px;
     position: relative;
     overflow: hidden;
+    border-radius: 3px;
 
     .image {
       position: absolute; top: 0; left: 0; right: 0; bottom:0;
@@ -63,4 +64,34 @@
   font-size: 24px;
   color: #292929;
   font-weight: normal;
+
+  &.section {
+    text-align: center;
+    padding: 40px 0 10px 0;
+  }
+
+  .highlight {
+    color: $orangeColor;
+  }
+}
+
+.light-column {
+  text-align: center;
+  font-weight: 300;
+  color: black;
+  font-size: 14px;
+
+  .title {
+    font-size: 16px; font-weight: normal;
+    padding-bottom: 15px;
+    min-height: 45px;
+  }
+
+  .description {
+    padding-top: 15px;
+  }
+}
+
+.click-able {
+  cursor: pointer;
 }

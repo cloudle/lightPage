@@ -4,6 +4,8 @@ export class newsController {
 	static $inject = ['$rootScope', '$window', '$http',  '$state'];
 
 	constructor ($rootScope, $window, $http, $state) {
+		fbq('track', 'ViewContent'); //Facebook tracking code..
+
 		this.postId = $state.params.id; $window.scrollTo(0, 0);
 		this.singleMode = !isNaN(this.postId);
 

@@ -13,6 +13,7 @@ import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
 import popup from "./component/popup";
 import slider from "./component/slider";
+import newsArea from "./component/newsArea";
 import metaService from "./metaService";
 import registerFilter from "./utils/filter";
 
@@ -29,6 +30,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('lightSidebar', sidebar)
 	.directive('lightFooter', footer)
 	.directive('lightSlider', slider)
+	.directive('newsArea', newsArea)
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 
