@@ -29,10 +29,10 @@ export class applicationController {
 
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
-			$rootScope.activeGroup = null;
 		});
 
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
+			console.log('ready!');
 			this.activePage = toState.name;	this.ready = false;
 			this.progress.complete();
 			$timeout(() => this.ready = true, 250);

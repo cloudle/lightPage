@@ -13,9 +13,10 @@ export class mainController {
 
 		$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
 
-		$http.get(`${apiHost}/page/get/json`, { params: { page_id: "1" } }).success(data => {
+		$http.get(`${apiHost}/page/get/json`, { params: { alias: "trang-chu" } }).success(data => {
 			fbq('track', 'ViewContent');
 			$rootScope.activeContents = [data.results[0].Page];
+			console.log($rootScope.activeContents);
 		});
 
 		$http.get(`${apiHost}/banner/get/json`, {

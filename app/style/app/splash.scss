@@ -1,0 +1,12 @@
+.splash-wrapper {
+  position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+  //background-color: #d35400;
+
+  .loading-animation {
+    width: 100px; height: 50px;
+    background-image: url('images/loading-animation.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}

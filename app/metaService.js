@@ -5,6 +5,6 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 		params: { site: location.host }
 	}).success((data) => {
 		this.links = data.results;
-		console.info("metaService ready!");
+		console.info("metaService ready!", this.links);
 	});
 }];

@@ -4,8 +4,6 @@ export class splashController {
 	constructor ($rootScope, $scope, $state, $interval, $timeout) {
 		this.$state = $state;
 		$timeout(() => this.skipIntro(), 0);
-
-		if (global.resetContDownInterval) $interval.cancel(global.resetContDownInterval);
 	}
 
 	skipIntro () {

@@ -7,15 +7,15 @@ export class newsController {
 		//Tracking code..
 		ga('send', 'pageview');
 		fbq('track', "PageView");
+		$rootScope.activeGroup = null;
 
-		this.postId = $state.params.id; $window.scrollTo(0, 0);
-		this.singleMode = !isNaN(this.postId);
+		this.pageAlias = $state.params.alias; $window.scrollTo(0, 0);
+		this.singleMode = this.pageAlias !== '';
 
 		if (this.singleMode) {
-			$http.get(`${apiHost}/post/get/json`, { params: { id: this.postId } }).success(data => {
+			$http.get(`${apiHost}/post/get/json`, { params: { alias: this.pageAlias } }).success(data => {
 				fbq('track', 'ViewContent');
 				this.activeNews = data.results[0].Post;
-				console.log(this.activeNews);
 			})
 		} else {
 			$http.get(`${apiHost}/banner/get/json`, {	params: { type: 'news' } }).success(data => {

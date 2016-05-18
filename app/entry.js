@@ -17,7 +17,7 @@ import newsArea from "./component/newsArea";
 import metaService from "./metaService";
 import registerFilter from "./utils/filter";
 
-let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax'])
+let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit'])
 	.config(routerConfig)
 	.controller('appCtrl', applicationController)
 	.controller('mainCtrl', mainController)

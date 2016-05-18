@@ -1,4 +1,4 @@
-export const apiHost = 'http://128.199.227.132';
+export const apiHost = 'http://103.56.157.66/realestate';
 
 export function find(sources, predicate) {
 	var searchKey, searchValue;

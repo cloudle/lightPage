@@ -16,7 +16,7 @@ export default ['$state', 'metaService', function ($state, metaService) {
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
-						<div class="parent-link" ui-sref="news({id: 'all'})">Tin tức</div>
+						<div class="parent-link" ui-sref="news">Tin tức</div>
 					</div>
 				</div>
 			</div>
@@ -52,11 +52,11 @@ export default ['$state', 'metaService', function ($state, metaService) {
 			};
 
 			scope.parentLinkNavigate = function (instance) {
-				if (instance.page_id) {
-					$state.go('page', {id: instance.page_id});
+				if (instance.alias) {
+					$state.go('page', {id: instance.alias});
 				}
-				else if (instance.children[0] && instance.children[0].page_id) {
-					$state.go('page', {id: instance.children[0].page_id});
+				else if (instance.children[0] && instance.children[0].alias) {
+					$state.go('page', {id: instance.children[0].alias});
 				}
 
 				scope.toggleBurger();

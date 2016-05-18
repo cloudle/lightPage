@@ -11,7 +11,7 @@
 			</div>
 
 			<div class="all-news light-row" ng-if="!singleMode">
-				<div class="column" ui-sref="news({id: news.Post.id})" ng-repeat="news in newsCtrl.allNews">
+				<div class="column" ui-sref="news({alias: news.Post.alias})" ng-repeat="news in newsCtrl.allNews">
 					<div class="title" ng-bind="news.Post.title"></div>
 					<div class="timestamp">
 						<span>Cập nhật gần nhất: </span>

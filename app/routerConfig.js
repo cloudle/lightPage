@@ -29,7 +29,7 @@ var splashRoute = {
 };
 
 var mainRoute = {
-	url: '/home',
+	url: '/',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -45,7 +45,7 @@ var mainRoute = {
 };
 
 var pageRoute = {
-	url: '/page/:id',
+	url: '/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -61,7 +61,7 @@ var pageRoute = {
 };
 
 var newsRoute = {
-	url: '/news/:id',
+	url: '/tin-tuc/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
