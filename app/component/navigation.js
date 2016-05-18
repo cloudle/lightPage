@@ -31,11 +31,11 @@ export default ['$state', 'metaService', function ($state, metaService) {
 						<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>
 						<div class="sub-menus" ng-if="item.children">
 							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
-								ui-sref="page({id: child.page_id})" ng-click="toggleBurger()"></div>
+								ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>
 						</div>
 					</div>
 					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
-						<div class="menu-item" ui-sref="news({id: 'all'})" ng-click="toggleBurger()">Tin tức</div>
+						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()">Tin tức</div>
 					</div>
 				</div>
 			</div>
@@ -53,10 +53,10 @@ export default ['$state', 'metaService', function ($state, metaService) {
 
 			scope.parentLinkNavigate = function (instance) {
 				if (instance.alias) {
-					$state.go('page', {id: instance.alias});
+					$state.go('page', {alias: instance.alias});
 				}
 				else if (instance.children[0] && instance.children[0].alias) {
-					$state.go('page', {id: instance.children[0].alias});
+					$state.go('page', {alias: instance.children[0].alias});
 				}
 
 				scope.toggleBurger();
