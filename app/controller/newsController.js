@@ -21,7 +21,6 @@ export class newsController {
 			$http.get(`${apiHost}/banner/get/json`, {	params: { type: 'news' } }).success(data => {
 				fbq('track', 'ViewContent');
 				this.allNews = data.results;
-				console.log(this.allNews);
 			});
 		}
 	}

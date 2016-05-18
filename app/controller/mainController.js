@@ -16,7 +16,6 @@ export class mainController {
 		$http.get(`${apiHost}/page/get/json`, { params: { alias: "trang-chu" } }).success(data => {
 			fbq('track', 'ViewContent');
 			$rootScope.activeContents = [data.results[0].Page];
-			console.log($rootScope.activeContents);
 		});
 
 		$http.get(`${apiHost}/banner/get/json`, {

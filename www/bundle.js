@@ -155,7 +155,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		replace: true,
 		transclude: true,
 		scope: { enable: '=' },
-		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<div class="sidebar-news">\n\t\t\t\t<div class="heading">Tin tức</div>\n\t\t\t\t<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({id: newsItem.Post.id})">\n\t\t\t\t\t<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<div class="sidebar-news">\n\t\t\t\t<div class="heading">Tin tức</div>\n\t\t\t\t<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">\n\t\t\t\t\t<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			var sidebarHeight, footerHeight;scope.topPosition = 0;
 
@@ -512,7 +512,6 @@ var mainController = exports.mainController = function mainController($rootScope
 	$http.get(_helper.apiHost + '/page/get/json', { params: { alias: "trang-chu" } }).success(function (data) {
 		fbq('track', 'ViewContent');
 		$rootScope.activeContents = [data.results[0].Page];
-		console.log($rootScope.activeContents);
 	});
 
 	$http.get(_helper.apiHost + '/banner/get/json', {
@@ -573,7 +572,6 @@ var newsController = exports.newsController = function newsController($rootScope
 		$http.get(_helper.apiHost + '/banner/get/json', { params: { type: 'news' } }).success(function (data) {
 			fbq('track', 'ViewContent');
 			_this.allNews = data.results;
-			console.log(_this.allNews);
 		});
 	}
 };
@@ -941,7 +939,6 @@ function niceDate() {
 	return function (date) {
 		var format = arguments.length <= 1 || arguments[1] === undefined ? 'DD-MM-YYYY' : arguments[1];
 
-		console.log(date);
 		return moment(date).format(format);
 	};
 }
