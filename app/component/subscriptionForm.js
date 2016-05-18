@@ -87,7 +87,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 					params: formData
 				}).success(data => {
 					$rootScope.$broadcast('subscriptionSuccess');
-					$http.get(`${apiHost}/mail/sent`, {params: formData}).success(data => {
+					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
 						console.log('email...', data);
 					});
 				});
