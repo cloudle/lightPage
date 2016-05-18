@@ -7,10 +7,14 @@ export class mainController {
 	sliders = [];
 
 	constructor ($rootScope, $scope, $interval, $timeout, $state, $window, $http, metaService) {
-		fbq('track', 'ViewContent'); //Facebook tracking code..
+		//Tracking code..
+		ga('send', 'pageview');
+		fbq('track', "PageView");
+
 		$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
 
 		$http.get(`${apiHost}/page/get/json`, { params: { page_id: "1" } }).success(data => {
+			fbq('track', 'ViewContent');
 			$rootScope.activeContents = [data.results[0].Page];
 		});
 

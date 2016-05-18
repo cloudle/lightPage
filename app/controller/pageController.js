@@ -4,7 +4,10 @@ export class pageController {
 	static $inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
 	constructor ($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
-		fbq('track', 'ViewContent'); //Facebook tracking code..
+		//Tracking code..
+		ga('send', 'pageview');
+		fbq('track', "PageView");
+		fbq('track', 'ViewContent');
 
 		let pageId = $state.params.id, parentGroup = this.findParentGroup(pageId, metaService.links),
 			previousGroup = $rootScope.activeGroup;

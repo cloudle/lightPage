@@ -71,6 +71,13 @@ export default ['$http', function ($http) {
 				fbq('track', 'Lead');
 				fbq('track', 'CompleteRegistration');
 
+				//Tracking Google Analytic goal!
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'Subscription',
+					eventAction: 'Submit'
+				});
+
 				//Send form to Twin's server!
 				$http.get(`${apiHost}/customer/insert/json`, {
 					params: formData
