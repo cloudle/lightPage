@@ -18,7 +18,7 @@ var gulp = require('gulp'),
 	browserify = require('browserify'),
 	browserifyInc = require('browserify-incremental');
 
-var isDevelopmentMode = true;
+var isDevelopmentMode = false;
 
 function mapError(err) {
 	if (err.fileName) {
