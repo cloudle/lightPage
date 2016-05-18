@@ -18,6 +18,8 @@ var gulp = require('gulp'),
 	browserify = require('browserify'),
 	browserifyInc = require('browserify-incremental');
 
+var isDevelopmentMode = true;
+
 function mapError(err) {
 	if (err.fileName) {
 		gutil.log(chalk.red(err.name)
@@ -41,38 +43,38 @@ function mapError(err) {
 }
 
 gulp.task('babelify', function(){
-	watchifyBuilder(babelify, './app/entry.js', 'bundle.js', {presets: ["es2015", "stage-0"]}, true);
+	watchifyBuilder(babelify, './app/entry.js', 'bundle.js', {presets: ["es2015", "stage-0"]}, isDevelopmentMode);
 });
 
 function mapLog(msg) { gutil.log('Script updated: '+chalk.blue.bold(msg)); }
 
-function watchifyBuilder(compressor, entryPoint, filename, options, uglifyDisable) {
-	var args = merge(watchify.args, { debug: true, cacheFile: './build/browserify-cache.json' });
+function watchifyBuilder(compressor, entryPoint, filename, options, developmentMode) {
+	var args = merge(watchify.args, { debug: developmentMode, cacheFile: './build/browserify-cache.json' });
 	var bundler = watchify(browserifyInc(entryPoint, args)).transform(compressor, options);
-	bundleScript(bundler, filename, uglifyDisable);
-	bundler.on('update', function(){
-		bundleScript(bundler, filename, uglifyDisable);
+	bundleScript(bundler, filename, developmentMode);
+	bundler.on('update', function() {
+		bundleScript(bundler, filename, developmentMode);
 	}).on('log', mapLog)
 }
 
-function bundleScript(bundler, filename, uglifyDisable) {
+function bundleScript(bundler, filename, developmentMode) {
 	return bundler.bundle()
 		.on('error', mapError)
 		.pipe(source(filename))
 		.pipe(buffer())
-		.pipe(sourcemaps.init({ loadMaps: true }))
-		.pipe(gulpIf(!uglifyDisable, uglify()))
-		.pipe(sourcemaps.write())
+		// .pipe(gulpIf(!developmentMode, uglify()))
 		.pipe(gulp.dest('www'))
 		.pipe(browserSync.stream())
 }
 
 gulp.task('sass-bundle', function() {
+	var sassConfigs = isDevelopmentMode ? {} : {outputStyle: 'compressed'};
+
 	gulp.src('./app/entry.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass()).on('error', mapError)
+		.pipe(gulpIf(isDevelopmentMode, sourcemaps.init()))
+		.pipe(sass(sassConfigs)).on('error', mapError)
 		.pipe(prefixer())
-		.pipe(sourcemaps.write())
+		.pipe(gulpIf(isDevelopmentMode, sourcemaps.write()))
 		.pipe(rename('bundle.css'))
 		.pipe(gulp.dest('./www'))
 		.pipe(browserSync.stream());

@@ -15,9 +15,9 @@ export class applicationController {
 		this.progress.setColor('#FA8322');
 		global.$http = $http;
 
-		global.togglePopup = () => {
+		global.togglePopup = (newVal) => {
 			$scope.$apply(() => {
-				this.subscriptionPopup = !this.subscriptionPopup;
+				this.subscriptionPopup = newVal ? newVal : !this.subscriptionPopup;
 			});
 		};
 
@@ -27,12 +27,21 @@ export class applicationController {
 			$timeout(() => this.subscriptionSuccess = false, 3000);
 		};
 
+		$rootScope.$on('subscriptionSent', () => {
+			this.subscriptionPopup = false;
+		});
+
+		$rootScope.$on('subscriptionSuccess', () => {
+			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
+			this.subscriptionSuccess = true;
+			$timeout(() => this.subscriptionSuccess = false, 3000);
+		});
+
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
 		});
 
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
-			console.log('ready!');
 			this.activePage = toState.name;	this.ready = false;
 			this.progress.complete();
 			$timeout(() => this.ready = true, 250);

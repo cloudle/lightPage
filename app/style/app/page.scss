@@ -24,7 +24,6 @@
   font-size: 30px; text-align: center;
   //text-transform: uppercase;
   color: $darkColor; background-color: white;
-  font-weight: 300;
 
   .highlight {
     color: $orangeColor;
@@ -89,7 +88,7 @@
 
     .bullet-description {
       margin-top: 15px;
-      font-size: 15px; font-weight: 300;
+      font-size: 15px;
       text-align: center;
     }
   }
@@ -97,7 +96,7 @@
 
 .footer {
   background-color: $themeColor; //#2b2b2b;
-  padding-top: 20px; padding-bottom: 25px;
+  padding-top: 20px;
 
   .columns {
     display: flex; flex-flow: row; flex-wrap: wrap;
@@ -138,5 +137,10 @@
       float: left; line-height: 50px;
       padding: 0 15px;
     }
+  }
+
+  .copyright {
+    font-size: 12px; text-align: center; padding: 10px 0 15px 0;
+    background-color: darken($themeColor, 10);
   }
 }

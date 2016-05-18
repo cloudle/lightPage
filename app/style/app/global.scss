@@ -34,8 +34,9 @@ input, textarea {
   right: 20px !important;
 }
 
-.three-bounce-spinner>div {
-  background-color: white;
+.three-bounce-spinner {
+  margin-top: 10px;
+  &>div { background-color: white; }
 }
 //#ngProgress-container {
 //  top: 70px;

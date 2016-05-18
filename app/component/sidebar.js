@@ -43,14 +43,6 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 					} else if (scrollPosition.top < offset.top - initialTopOffset) {
 						scope.topPosition = scrollPosition.top;
 					}
-
-					// if (sidebarTouchBottom) {
-					// 	scope.topPosition = $(document).height() - (sidebarBottomMargin + bannerHeight);
-					// } else if (position.top > 100) {
-					// 	scope.topPosition = position.top - 30;
-					// }  else {
-					// 	scope.topPosition = 0;
-					// }
 				});
 			});
 		}

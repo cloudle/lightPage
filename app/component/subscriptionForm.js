@@ -1,6 +1,6 @@
 import { isEmailValid, apiHost } from '../utils/helper';
 
-export default ['$http', function ($http) {
+export default ['$rootScope', '$http', function ($rootScope, $http) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -78,13 +78,18 @@ export default ['$http', function ($http) {
 					eventAction: 'Submit'
 				});
 
+				//Instantly reset the form!
+				scope.resetForm();
+				$rootScope.$broadcast('subscriptionSent');
+
 				//Send form to Twin's server!
 				$http.get(`${apiHost}/customer/insert/json`, {
 					params: formData
 				}).success(data => {
-					scope.$parent.appCtrl.subscriptionPopup = false;
-					scope.resetForm();
-					scope.$parent.appCtrl.toggleSuccess();
+					$rootScope.$broadcast('subscriptionSuccess');
+					$http.get(`${apiHost}/mail/sent`, {params: formData}).success(data => {
+						console.log('email...', data);
+					});
 				});
 
 				$.post('/email', {
