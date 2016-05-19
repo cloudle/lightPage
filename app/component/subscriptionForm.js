@@ -64,7 +64,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				};
 
 				//Fire Ants trackingGoal hook!
-				adx_analytic.trackingGoal('578664668', 1, 'event');
+				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 				//Send form information to Ants!
 				ants_userInfoListener(formData, false, true);
 

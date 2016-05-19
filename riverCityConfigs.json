@@ -1,0 +1,15 @@
+{
+	"site": "goldencity",
+	"serverPort": 7021,
+	"production": false,
+	"scriptPatch": "./app/patches/goldenRiver.js",
+	"cssPatch": "./app/style/patches/goldenRiver.scss",
+	"googleAnalyticId": "UA-77901914-1",
+	"facebookAppId": "108597779162841",
+	"facebookPixelId": "578115232338331",
+	"antsSiteId": "578664336",
+	"antsRegisterGoalId": "578664668",
+	"translation": {
+		"hotline": "0932 047 313"
+	}
+}
