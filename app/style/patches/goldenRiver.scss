@@ -1,5 +1,22 @@
 .navigation-wrapper {
+  background-image: url('images/golden-river-nav-bg.gif');
+
   .site-logo {
     background-image: url('images/golden-river-logo.png');
+    width: 220px; height: 60px; margin-top: 5px;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      .sub-navigations {
+        background-color: #4db2ec;
+
+        .sub-link {
+          &:hover {
+            background-color: darken(#4db2ec, 6);
+          }
+        }
+      }
+    }
   }
 }
