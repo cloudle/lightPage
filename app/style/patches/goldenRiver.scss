@@ -12,8 +12,13 @@ body {
 
   .navigation-menu {
     .navigation-link {
+      &:hover, &.active {
+        background-color: lighten(#191919, 5);
+      }
+
       .sub-navigations {
         background-color: #4db2ec;
+        border-top-color: lighten(#191919, 5);
 
         .sub-link {
           &:hover {
@@ -22,5 +27,13 @@ body {
         }
       }
     }
+  }
+}
+
+.footer {
+  background-color: #191919;
+
+  .copyright {
+    background-color: darken(#191919, 10);
   }
 }
