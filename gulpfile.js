@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	watch = require('gulp-watch'),
 	gutil = require('gulp-util'),
 	chalk = require('chalk'),
+	concat = require('gulp-concat'),
 	rename = require('gulp-rename'),
 	sass = require('gulp-sass'),
 	gulpIf = require('gulp-if'),
@@ -18,7 +19,8 @@ var gulp = require('gulp'),
 	browserify = require('browserify'),
 	browserifyInc = require('browserify-incremental');
 
-var isDevelopmentMode = false;
+var configs = require('./config.json'),
+	isDevelopmentMode = !configs.production;
 
 function mapError(err) {
 	if (err.fileName) {
@@ -68,14 +70,17 @@ function bundleScript(bundler, filename, developmentMode) {
 }
 
 gulp.task('sass-bundle', function() {
-	var sassConfigs = isDevelopmentMode ? {} : {outputStyle: 'compressed'};
-
-	gulp.src('./app/entry.scss')
+	var sassConfigs = isDevelopmentMode ? {} : {outputStyle: 'compressed'},
+		essentialStyleSrc = './app/entry.scss',
+		styleSrc = configs.cssPatch ? [essentialStyleSrc, configs.cssPatch] : [essentialStyleSrc];
+	console.log(styleSrc);
+	gulp.src(styleSrc)
 		.pipe(gulpIf(isDevelopmentMode, sourcemaps.init()))
 		.pipe(sass(sassConfigs)).on('error', mapError)
 		.pipe(prefixer())
 		.pipe(gulpIf(isDevelopmentMode, sourcemaps.write()))
-		.pipe(rename('bundle.css'))
+		.pipe(concat('bundle.css'))
+		// .pipe(rename('bundle.css'))
 		.pipe(gulp.dest('./www'))
 		.pipe(browserSync.stream());
 });

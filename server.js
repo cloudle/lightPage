@@ -1,7 +1,7 @@
 var mailerAccount = 'realestate.noreply@gmail.com';
 
 var express = require('express'), app = express(), nodemailer = require('nodemailer'),
-	bodyParser = require('body-parser'),
+	bodyParser = require('body-parser'), configs = require('./config.json'),
 	mailSender = nodemailer.createTransport({
 		host: '128.199.227.132',
 		service: 'Gmail',
@@ -11,10 +11,6 @@ var express = require('express'), app = express(), nodemailer = require('nodemai
 		}
 	});
 
-// generator.on('token', function(token){
-// 	console.log('New token for %s: %s', token.user, token.accessToken);
-// });
-
 app.set('views', './www');
 app.use(express.static('./www'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +18,10 @@ app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
 	res.render('index', {});
+});
+
+app.get('/configs', function (req, res) {
+	res.json(configs);
 });
 
 app.post('/email', function (req, res) {

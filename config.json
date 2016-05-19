@@ -1,5 +1,6 @@
 {
 	"site": "rivercity99.vn",
 	"serverPort": 7020,
-	"production": true
+	"production": false,
+	"cssPatch": "./app/style/patches/goldenRiver.scss"
 }
