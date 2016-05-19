@@ -10,6 +10,8 @@ export class applicationController {
 	subscriptionSuccess = false;
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http,  ngProgressFactory, metaService) {
+		$rootScope.configs = metaService.configs;
+		console.log(metaService.configs);
 		$rootScope.activeContents = [];
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');

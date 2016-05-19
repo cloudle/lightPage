@@ -1,6 +1,6 @@
 import { isEmailValid, apiHost } from '../utils/helper';
 
-export default ['$rootScope', '$http', function ($rootScope, $http) {
+export default ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -9,7 +9,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 			<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->
 			<div class="heading">
 				<span>Gọi </span> 
-				<span class="ultra strong">0932 047 313</span>
+				<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
 				<span> hoặc gửi thông tin để nhận</span> 
 				<span class="strong">BÁO GIÁ</span>
 				<span>từ</span> 
@@ -33,6 +33,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 
 		</form>`,
 		link: function (scope, element, attrs) {
+			scope.configs = metaService.configs;
 			fields.forEach(field => { scope[field+'Error'] = ''; scope[field] = '';	});
 
 			scope.resetForm = () => {
@@ -90,12 +91,6 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
 						console.log('email...', data);
 					});
-				});
-
-				$.post('/email', {
-					...formData,
-					receiver: 'lehaoson@gmail.com',
-					relatedGuys: 'none'
 				});
 			};
 

@@ -1,6 +1,7 @@
 var mailerAccount = 'realestate.noreply@gmail.com';
 
 var express = require('express'), app = express(), nodemailer = require('nodemailer'),
+	exphbs = require('express-handlebars'),
 	bodyParser = require('body-parser'), configs = require('./config.json'),
 	mailSender = nodemailer.createTransport({
 		host: '128.199.227.132',
@@ -11,13 +12,16 @@ var express = require('express'), app = express(), nodemailer = require('nodemai
 		}
 	});
 
+app.engine('hbs', exphbs({extname: '.hbs'}));
+app.set('view engine', 'hbs');
+
 app.set('views', './www');
 app.use(express.static('./www'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-	res.render('index', {});
+	res.render('index', configs);
 });
 
 app.get('/configs', function (req, res) {
@@ -60,6 +64,5 @@ app.post('/email', function (req, res) {
 	});
 });
 
-const port = 7020;
-console.log(`Server is running user port ${port}`);
-app.listen(port);
+console.log(`Server is running user port ${configs.serverPort}`);
+app.listen(configs.serverPort);

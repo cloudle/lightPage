@@ -44,8 +44,11 @@ function mapError(err) {
 	this.emit('end');
 }
 
+var essentialScriptSrc = './app/entry.js',
+	scriptSrc = configs.scriptPatch ? [essentialScriptSrc, configs.scriptPatch] : [essentialScriptSrc];
+
 gulp.task('babelify', function(){
-	watchifyBuilder(babelify, './app/entry.js', 'bundle.js', {presets: ["es2015", "stage-0"]}, isDevelopmentMode);
+	watchifyBuilder(babelify, [scriptSrc], 'bundle.js', {presets: ["es2015", "stage-0"]}, isDevelopmentMode);
 });
 
 function mapLog(msg) { gutil.log('Script updated: '+chalk.blue.bold(msg)); }
@@ -73,6 +76,7 @@ gulp.task('sass-bundle', function() {
 	var sassConfigs = isDevelopmentMode ? {} : {outputStyle: 'compressed'},
 		essentialStyleSrc = './app/entry.scss',
 		styleSrc = configs.cssPatch ? [essentialStyleSrc, configs.cssPatch] : [essentialStyleSrc];
+
 	console.log(styleSrc);
 	gulp.src(styleSrc)
 		.pipe(gulpIf(isDevelopmentMode, sourcemaps.init()))
@@ -80,7 +84,6 @@ gulp.task('sass-bundle', function() {
 		.pipe(prefixer())
 		.pipe(gulpIf(isDevelopmentMode, sourcemaps.write()))
 		.pipe(concat('bundle.css'))
-		// .pipe(rename('bundle.css'))
 		.pipe(gulp.dest('./www'))
 		.pipe(browserSync.stream());
 });
@@ -88,7 +91,7 @@ gulp.task('sass-bundle', function() {
 gulp.task('browser-sync', ['nodemon'], function() {
 	browserSync.init(null, {
 		port: 2015,
-		proxy: "http://localhost:7020",
+		proxy: "http://localhost:"+configs.serverPort,
 		files: ['./www/*.js', './www/**/*.html'],
 		open: false
 	});

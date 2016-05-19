@@ -39,7 +39,7 @@
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-77901914-1', 'auto');
+    ga('create', '{{googleAnalyticId}}', 'auto');
     ga('send', 'pageview');
   </script>
 
@@ -50,7 +50,7 @@
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=108597779162841";
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId={{facebookAppId}}";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
@@ -61,12 +61,12 @@
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
         document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '578115232338331');
+    fbq('init', '{{facebookPixelId}}');
     fbq('track', "PageView");
   </script>
 
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=578115232338331&ev=PageView&noscript=1"></noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{facebookPixelId}}&ev=PageView&noscript=1"></noscript>
 
   <!--Start of Zopim Live Chat Script-->
   <script type="text/javascript">
@@ -81,7 +81,7 @@
   <!--Ants scripts-->
   <script type="text/javascript" src="http://st-a.anthill.vn/fb_app.js"></script>
   <script type="text/javascript">
-    var _siteId="578664336";
+    var _siteId="{{antsSiteId}}";
     (function(){
       var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//st-a.anthill.vn/adx.js";
       var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
