@@ -1,5 +1,5 @@
 module.exports = {
-	"domain": "goldenriver",//"rivercity99.vn",
+	"domain": "goldenrivervietnam.vn",//"rivercity99.vn",
 	"serverPort": 7021,
 	"production": false,
 	"apiHost": "http://128.199.227.132",
