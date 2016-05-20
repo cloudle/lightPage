@@ -1,9 +1,9 @@
-import { apiHost } from "../utils/helper";
-
 export class pageController {
 	static $inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
 	constructor ($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
+		let { apiHost, domain } = metaService.configs;
+
 		//Tracking code..
 		ga('send', 'pageview');
 		fbq('track', "PageView");
@@ -28,7 +28,7 @@ export class pageController {
 			$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
 			parentGroup.children.forEach((child, index) => {
 				$rootScope.activeContents[index] = {};
-				$http.get(`${apiHost}/page/get/json`, { params: { alias: child.alias } }).success(data => {
+				$http.get(`${apiHost}/page/get/json`, { params: { domain, alias: child.alias } }).success(data => {
 					let childResult = data.results[0];
 					if (childResult && childResult.Page) {
 						$rootScope.activeContents[index] = childResult.Page;

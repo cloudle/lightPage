@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 	browserify = require('browserify'),
 	browserifyInc = require('browserify-incremental');
 
-var configs = require('./config.json'),
+var configs = require('./configs'),
 	isDevelopmentMode = !configs.production;
 
 function mapError(err) {

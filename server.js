@@ -2,7 +2,7 @@ var mailerAccount = 'realestate.noreply@gmail.com';
 
 var express = require('express'), app = express(), nodemailer = require('nodemailer'),
 	exphbs = require('express-handlebars'),
-	bodyParser = require('body-parser'), configs = require('./config.json'),
+	bodyParser = require('body-parser'), configs = require('./configs'),
 	mailSender = nodemailer.createTransport({
 		host: '128.199.227.132',
 		service: 'Gmail',
@@ -19,10 +19,6 @@ app.set('views', './www');
 app.use(express.static('./www'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-app.get('/', function(req, res) {
-	res.render('index', configs);
-});
 
 app.get('/configs', function (req, res) {
 	res.json(configs);
@@ -62,6 +58,10 @@ app.post('/email', function (req, res) {
 
 		res.json({error: err, info: info});
 	});
+});
+
+app.get('*', function(req, res) {
+	res.render('index', configs);
 });
 
 console.log(`Server is running user port ${configs.serverPort}`);

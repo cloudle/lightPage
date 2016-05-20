@@ -1,22 +1,25 @@
-import { apiHost } from "./utils/helper";
+export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout) {
+	this.ready = false;
 
-export default ['$rootScope', '$http', function ($rootScope, $http) {
-	let configsPromise = new Promise((resolve, reject) => {
-		$http.get(`${apiHost}/menu/get/json`, { params: { site: location.host } }).success((data) => {
-			this.links = data.results; resolve(this.links);
-		});
-	});
+	this.promise = new Promise((configResolve, reject) => {
+		$http.get('/configs').success((data) => {
+			data.domain = data.domain || location.host;
+			console.log(data.domain);
+			let configs = data, { apiHost, domain } = configs;
 
-	let navigationPromise = new Promise((resolve, reject) => {
-		$http.get('/configs').success((data) =>{
-			this.configs = data; resolve(this.configs);
-		});
-	});
-
-	this.promise = new Promise((resolve, reject) => {
-		Promise.all([navigationPromise, configsPromise]).then(values => {
-			console.info("metaService ready!", this.links, this.configs);
-			resolve({links: this.links, configs: this.configs});
+			new Promise((navigationResolve, reject) => {
+				$http.get(`${apiHost}/menu/get/json`, {
+					params: { domain }
+				}).success((data) => {
+					this.links = data.results; this.configs = configs;
+					navigationResolve(this.links);
+					configResolve(this.configs);
+					$timeout(() => {
+						$rootScope.$broadcast('metaServiceReady');
+						this.ready = true;
+					},0);
+				});
+			});
 		});
 	});
 }];

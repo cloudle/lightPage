@@ -1,4 +1,4 @@
-import { generateNumberUUID, apiHost } from '../utils/helper';
+import { generateNumberUUID } from '../utils/helper';
 
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
@@ -10,8 +10,8 @@ export class applicationController {
 	subscriptionSuccess = false;
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http,  ngProgressFactory, metaService) {
-		$rootScope.configs = metaService.configs;
-		console.log(metaService.configs);
+		$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
+
 		$rootScope.activeContents = [];
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');
@@ -49,17 +49,24 @@ export class applicationController {
 			$timeout(() => this.ready = true, 250);
 		});
 
-		$http.get(`${apiHost}/banner/get/json`, {
-			params: { type: 'footer' }
-		}).success(data => {
-			this.footers = data.results;
-		});
+		let fetchEssentialData = (source) => {
+			let { apiHost, domain } = metaService.configs;
 
-		$http.get(`${apiHost}/banner/get/json`, {
-			params: { type: 'news', limit: 4 }
-		}).success(data => {
-			$rootScope.news = data.results;
-		});
+			$http.get(`${apiHost}/banner/get/json`, {
+				params: { domain, type: 'footer' }
+			}).success(data => {
+				this.footers = data.results;
+			});
+
+			$http.get(`${apiHost}/banner/get/json`, {
+				params: { domain, type: 'news', limit: 4 }
+			}).success(data => {
+				$rootScope.news = data.results;
+			});
+		};
+
+		if (metaService.ready) fetchEssentialData();
+		$rootScope.$on('metaServiceReady', fetchEssentialData);
 
 		this.lastScrollPosition = 0;
 		$(window).scroll((event) => {

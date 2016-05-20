@@ -1,7 +1,8 @@
-{
-	"site": "goldencity",
+module.exports = {
+	"domain": "goldenriver",//"rivercity99.vn",
 	"serverPort": 7021,
 	"production": false,
+	"apiHost": "http://128.199.227.132",
 	"scriptPatch": "./app/patches/goldenRiver.js",
 	"cssPatch": "./app/style/patches/goldenRiver.scss",
 	"googleAnalyticId": "UA-77901914-2",
@@ -12,4 +13,4 @@
 	"translation": {
 		"hotline": "0932 047 383"
 	}
-}
+};

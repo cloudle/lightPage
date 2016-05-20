@@ -1,7 +1,7 @@
 import {preloadResolves} from './utils/helper';
 
-let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider',
-	function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider) {
+let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', '$locationProvider',
+	function($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $locationProvider) {
 		$stateProvider
 			.state('splash', splashRoute)
 			.state('home', mainRoute)
@@ -14,6 +14,7 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 		$httpProvider.defaults.headers.post = {};
 		$httpProvider.defaults.headers.put = {};
 		$httpProvider.defaults.headers.patch = {};
+		$locationProvider.html5Mode(true);
 	}
 ];
 
