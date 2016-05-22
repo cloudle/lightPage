@@ -1,7 +1,7 @@
 module.exports = {
 	"domain": "goldenrivervietnam.vn",
 	"serverPort": 7021,
-	"production": false,
+	"production": true,
 	"apiHost": "http://128.199.227.132",
 	"scriptPatch": "./app/patches/goldenRiver.js",
 	"cssPatch": "./app/style/patches/goldenRiver.scss",
