@@ -105,11 +105,11 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			global.get_info = function(_userInfo){
 				scope.$apply(() => {
 					// user info get here
-					console.log(_userInfo, "called!!");
+					console.log("ant's get_info function:", _userInfo);
 
 					// fill userInfo to FORM đăng ký
-					scope.userName = _userInfo.name;
-					scope.userPhone = _userInfo.phone;
+					scope.userName = _userInfo.name || '';
+					scope.userPhone = _userInfo.phone || '';
 					scope.userEmail = _userInfo.email || '';
 
 					//Store Social profile
