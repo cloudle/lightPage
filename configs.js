@@ -1,16 +1,14 @@
 module.exports = {
-	"domain": "goldenrivervietnam.vn",//"rivercity99.vn",
-	"serverPort": 7021,
-	"production": false,
-	"apiHost": "http://128.199.227.132",
-	"scriptPatch": "./app/patches/goldenRiver.js",
-	"cssPatch": "./app/style/patches/goldenRiver.scss",
-	"googleAnalyticId": "UA-77901914-2",
-	"facebookAppId": "100493957008881",
-	"facebookPixelId": "483381658466682",
-	"antsSiteId": "574501431",
-	"antsRegisterGoalId": "574522411",
+	"domain": "rivercity99.vn",
+	"serverPort": 7020,
+	"production": true,
+	"apiHost": "http://103.56.157.66/realestate",
+	"googleAnalyticId": "UA-77901914-1",
+	"facebookAppId": "108597779162841",
+	"facebookPixelId": "578115232338331",
+	"antsSiteId": "578664336",
+	"antsRegisterGoalId": "578664668",
 	"translation": {
-		"hotline": "0932 047 383"
+		"hotline": "0932 047 313"
 	}
 };
