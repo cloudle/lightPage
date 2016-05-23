@@ -874,7 +874,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 				$http.get(apiHost + '/menu/get/json', {
 					params: { domain: domain }
 				}).success(function (data) {
-					_this.links = data.results;_this.configs = configs;console.log(_this.links);
+					_this.links = data.results;_this.configs = configs;
 					navigationResolve(_this.links);
 					configResolve(_this.configs);
 					$timeout(function () {

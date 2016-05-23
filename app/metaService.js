@@ -10,7 +10,7 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 				$http.get(`${apiHost}/menu/get/json`, {
 					params: { domain }
 				}).success((data) => {
-					this.links = data.results; this.configs = configs; console.log(this.links);
+					this.links = data.results; this.configs = configs;
 					navigationResolve(this.links);
 					configResolve(this.configs);
 					$timeout(() => {
