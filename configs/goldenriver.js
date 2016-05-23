@@ -11,6 +11,6 @@ module.exports = {
 	"antsSiteId": "574501431",
 	"antsRegisterGoalId": "574522411",
 	"translation": {
-		"hotline": "0932 047 383"
+		"hotline": "0902 623 673"
 	}
 };
