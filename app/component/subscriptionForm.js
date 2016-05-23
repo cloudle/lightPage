@@ -30,7 +30,6 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<div class="social-button google" ng-click="googleLogin()"></div>
 				<button type="submit" class="submit" ng-bind="submitText || 'GỬI'"></button>
 			</div>
-
 		</form>`,
 		link: function (scope, element, attrs) {
 			let {apiHost, domain} = metaService.configs;
@@ -103,7 +102,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				ants_fbAuthClick('login');
 			};
 
-			global.get_info = function(_userInfo){
+			global.get_info = function(_userInfo) {
 				scope.$apply(() => {
 					// user info get here
 					console.log("ant's get_info function:", _userInfo);
