@@ -485,16 +485,14 @@ var applicationController = exports.applicationController = function application
 	};
 
 	global.get_info = function (_userInfo) {
-		var _this2 = this;
-
 		$scope.$apply(function () {
 			// user info get here
 			console.log("ant's get_info function:", _userInfo);
 
 			// fill userInfo to FORM đăng ký
-			_this2.userName = _userInfo.name || '';
-			_this2.userPhone = _userInfo.phone || '';
-			_this2.userEmail = _userInfo.email || '';
+			_this.userName = _userInfo.name || '';
+			_this.userPhone = _userInfo.phone || '';
+			_this.userEmail = _userInfo.email || '';
 
 			//Store Social profile
 			if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));

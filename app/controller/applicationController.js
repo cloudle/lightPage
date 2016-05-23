@@ -145,7 +145,7 @@ export class applicationController {
 			});
 		};
 
-		global.get_info = function(_userInfo) {
+		global.get_info = (_userInfo) => {
 			$scope.$apply(() => {
 				// user info get here
 				console.log("ant's get_info function:", _userInfo);
