@@ -354,14 +354,6 @@ var applicationController = exports.applicationController = function application
 		}, 3000);
 	};
 
-	$rootScope.$on('subscriptionSuccess', function () {
-		_this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
-		_this.subscriptionSuccess = true;
-		$timeout(function () {
-			return _this.subscriptionSuccess = false;
-		}, 3000);
-	});
-
 	$rootScope.$on('$stateChangeStart', function () {
 		_this.progress.start();
 	});

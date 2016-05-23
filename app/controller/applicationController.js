@@ -30,12 +30,6 @@ export class applicationController {
 			$timeout(() => this.subscriptionSuccess = false, 3000);
 		};
 
-		$rootScope.$on('subscriptionSuccess', () => {
-			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
-			this.subscriptionSuccess = true;
-			$timeout(() => this.subscriptionSuccess = false, 3000);
-		});
-
 		$rootScope.$on('$stateChangeStart', () => {
 			this.progress.start();
 		});
