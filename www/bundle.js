@@ -113,10 +113,8 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div class="section-canvas top-separated news-area">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="light-heading section"><span class="highlight">TIN TỨC</span></div>\n\t\t\t\t<div class="light-row quatro">\n\t\t\t\t\t<div class="column light-column click-able" ng-repeat="news in latestNews" ui-sref="news({alias: news.Post.alias})">\n\t\t\t\t\t\t<div class="title" ng-bind="news.Post.title"></div>\n\t\t\t\t\t\t<div class="thumb-image-wrapper">\n\t\t\t\t\t\t\t<div class="image image-hover-effect-zoom-120" ng-style="{\'background-image\': \'url(\'+news.Post.image+\')\'}"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="description" ng-bind="news.Post.description"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
-		link: function link(scope, element, attrs) {
-			scope.latestNews = $rootScope.news;
-		}
+		template: '<div class="section-canvas top-separated news-area">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="light-heading section"><span class="highlight">TIN TỨC</span></div>\n\t\t\t\t<div class="light-row quatro">\n\t\t\t\t\t<div class="column light-column click-able" ng-repeat="newsItem in news" ui-sref="newsItem({alias: newsItem.Post.alias})">\n\t\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t\t\t<div class="thumb-image-wrapper">\n\t\t\t\t\t\t\t<div class="image image-hover-effect-zoom-120" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="description" ng-bind="newsItem.Post.description"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		link: function link(scope, element, attrs) {}
 	};
 }];
 
@@ -320,6 +318,8 @@ var _helper = require('../utils/helper');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var productionEnvironment = true;
+
 var applicationController = exports.applicationController = function applicationController($rootScope, $scope, $state, $timeout, $interval, $window, $http, ngProgressFactory, metaService) {
 	var _this = this;
 
@@ -380,6 +380,7 @@ var applicationController = exports.applicationController = function application
 		$http.get(apiHost + '/banner/get/json', {
 			params: { domain: domain, type: 'news', limit: 4 }
 		}).success(function (data) {
+			console.log(data.results, "news");
 			$rootScope.news = data.results;
 		});
 	};
@@ -448,33 +449,43 @@ var applicationController = exports.applicationController = function application
 		});
 
 		//Fire Ants trackingGoal hook!
-		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+		if (productionEnvironment) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 		//Send form information to Ants!
-		ants_userInfoListener(formData, false, true);
+		if (productionEnvironment) {
+			ants_userInfoListener(formData, false, true);
+		} else {
+			console.log(ants_userInfoListener);
+		}
 
 		//Facebook tracking Lead/CompleteRegistration event
-		fbq('track', 'Lead');
-		fbq('track', 'CompleteRegistration');
+		if (productionEnvironment) fbq('track', 'Lead');
+		if (productionEnvironment) fbq('track', 'CompleteRegistration');
 
 		//Tracking Google Analytic goal!
-		ga('send', {
-			hitType: 'event',
-			eventCategory: 'Subscription',
-			eventAction: 'Submit'
-		});
+		if (productionEnvironment) {
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Subscription',
+				eventAction: 'Submit'
+			});
+		}
 
 		_this.resetRegisterForm();
 		_this.subscriptionPopup = false;
 
 		//Send form to Twin's server!
-		$http.get(apiHost + '/customer/insert/json', {
-			params: formData
-		}).success(function (data) {
-			_this.subscriptionSuccessHandler();
-			$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-				console.log('email...', data);
+		if (productionEnvironment) {
+			$http.get(apiHost + '/customer/insert/json', {
+				params: formData
+			}).success(function (data) {
+				_this.subscriptionSuccessHandler();
+				$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+					console.log('email...', data);
+				});
 			});
-		});
+		} else {
+			_this.subscriptionSuccessHandler(); //Auto success on test environment!
+		}
 	};
 
 	global.get_info = function (_userInfo) {

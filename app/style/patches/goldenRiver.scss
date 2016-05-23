@@ -14,19 +14,27 @@ body {
     }
   }
 
+  .subscription-activator {
+    background-color: #A5531A;
+  }
+
   .navigation-menu {
     .navigation-link {
-      &:hover, &.active {
-        background-color: lighten(#191919, 5);
+      &:hover{
+        background-color: #A47B32;
+      }
+
+      &.active {
+        background-color: #a2741c;
       }
 
       .sub-navigations {
-        background-color: #4db2ec;
-        border-top-color: lighten(#191919, 5);
+        background-color: #A47B32;
+        border-top-color: #a2741c;
 
         .sub-link {
           &:hover {
-            background-color: darken(#4db2ec, 6);
+            background-color: #a2741c;
           }
         }
       }

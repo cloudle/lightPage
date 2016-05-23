@@ -1,4 +1,5 @@
 import { generateNumberUUID, registerFields } from '../utils/helper';
+let productionEnvironment = true;
 
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
@@ -51,6 +52,7 @@ export class applicationController {
 			$http.get(`${apiHost}/banner/get/json`, {
 				params: { domain, type: 'news', limit: 4 }
 			}).success(data => {
+				console.log(data.results, "news");
 				$rootScope.news = data.results;
 			});
 		};
@@ -113,33 +115,43 @@ export class applicationController {
 				};
 
 			//Fire Ants trackingGoal hook!
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+			if (productionEnvironment) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 			//Send form information to Ants!
-			ants_userInfoListener(formData, false, true);
+			if (productionEnvironment) {
+				ants_userInfoListener(formData, false, true);
+			} else {
+				console.log(ants_userInfoListener)
+			}
 
 			//Facebook tracking Lead/CompleteRegistration event
-			fbq('track', 'Lead');
-			fbq('track', 'CompleteRegistration');
+			if (productionEnvironment) fbq('track', 'Lead');
+			if (productionEnvironment) fbq('track', 'CompleteRegistration');
 
 			//Tracking Google Analytic goal!
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'Subscription',
-				eventAction: 'Submit'
-			});
+			if (productionEnvironment) {
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'Subscription',
+					eventAction: 'Submit'
+				});
+			}
 
 			this.resetRegisterForm();
 			this.subscriptionPopup = false;
 
 			//Send form to Twin's server!
-			$http.get(`${apiHost}/customer/insert/json`, {
-				params: formData
-			}).success(data => {
-				this.subscriptionSuccessHandler();
-				$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
-					console.log('email...', data);
+			if (productionEnvironment) {
+				$http.get(`${apiHost}/customer/insert/json`, {
+					params: formData
+				}).success(data => {
+					this.subscriptionSuccessHandler();
+					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
+						console.log('email...', data);
+					});
 				});
-			});
+			} else {
+				this.subscriptionSuccessHandler(); //Auto success on test environment!
+			}
 		};
 
 		global.get_info = (_userInfo) => {
