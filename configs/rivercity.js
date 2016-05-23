@@ -1,5 +1,7 @@
 module.exports = {
 	"domain": "rivercity99.vn",
+	"siteName": "River City",
+	"siteFav": "images/favicon.ico",
 	"serverPort": 7020,
 	"production": true,
 	"apiHost": "http://103.56.157.66/realestate",

@@ -1,4 +1,6 @@
 module.exports = {
+	"siteName": "Golden River",
+	"siteFav": "image/golden-fav.ico",
 	"domain": "goldenrivervietnam.vn",
 	"serverPort": 7021,
 	"production": true,
