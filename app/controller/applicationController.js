@@ -52,7 +52,6 @@ export class applicationController {
 			$http.get(`${apiHost}/banner/get/json`, {
 				params: { domain, type: 'news', limit: 4 }
 			}).success(data => {
-				console.log(data.results, "news");
 				$rootScope.news = data.results;
 			});
 		};
