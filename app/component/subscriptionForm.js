@@ -16,12 +16,12 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<span class="strong">CHỦ ĐẦU TƯ</span>
 			</div>
 			
-			<input type="text" placeholder="Họ và tên*" ng-model="userName"/>
-			<div class="error-row" ng-bind="userNameError" ng-if="userNameError"></div>
-			<input type="text" placeholder="Điện thoại*" ng-model="userPhone"/>
-			<div class="error-row" ng-bind="userPhoneError" ng-if="userPhoneError"></div>
-			<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>
-			<div class="error-row" ng-bind="userEmailError" ng-if="userEmailError"></div>
+			<input type="text" placeholder="Họ và tên*" ng-model="appCtrl.userName"/>
+			<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>
+			<input type="text" placeholder="Điện thoại*" ng-model="appCtrl.userPhone"/>
+			<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>
+			<input type="text" placeholder="Email (không bắt buộc)" ng-model="appCtrl.userEmail"/>
+			<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>
 		
 			<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->
 			
@@ -34,65 +34,9 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		link: function (scope, element, attrs) {
 			let {apiHost, domain} = metaService.configs;
 			scope.configs = metaService.configs;
-			fields.forEach(field => { scope[field+'Error'] = ''; scope[field] = '';	});
+			scope.appCtrl = $rootScope.appCtrl;
 
-			scope.resetForm = () => {
-				fields.forEach(field => scope[field] = '');
-			};
-
-			scope.closeForm = () => {
-				scope.$parent.appCtrl.subscriptionPopup = false;
-			};
-
-			scope.submit = (event) => {
-				event.preventDefault();
-				fields.forEach(field => scope[field+'Error'] = '');
-
-				if (scope.userName.length < 1) scope.userNameError = 'Nhập tên';
-				if (scope.userPhone.length < 8) scope.userPhoneError = 'Số điện thoại chưa đúng';
-
-				if (scope.userNameError || scope.userPhoneError) return;
-
-				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-					formData = {
-					...localUserInfo,
-					domain,
-					fullName: scope.userName,
-					name: scope.userName,
-					phone: scope.userPhone,
-					email: scope.userEmail
-				};
-
-				//Fire Ants trackingGoal hook!
-				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
-				//Send form information to Ants!
-				ants_userInfoListener(formData, false, true);
-
-				//Facebook tracking Lead/CompleteRegistration event
-				fbq('track', 'Lead');
-				fbq('track', 'CompleteRegistration');
-
-				//Tracking Google Analytic goal!
-				ga('send', {
-					hitType: 'event',
-					eventCategory: 'Subscription',
-					eventAction: 'Submit'
-				});
-
-				//Instantly reset the form!
-				scope.resetForm();
-				$rootScope.$broadcast('subscriptionSent');
-
-				//Send form to Twin's server!
-				$http.get(`${apiHost}/customer/insert/json`, {
-					params: formData
-				}).success(data => {
-					$rootScope.$broadcast('subscriptionSuccess');
-					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
-						console.log('email...', data);
-					});
-				});
-			};
+			scope.submit = $rootScope.submitRegister;
 
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
@@ -100,21 +44,6 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 
 			scope.facebookLogin = function () {
 				ants_fbAuthClick('login');
-			};
-
-			global.get_info = function(_userInfo) {
-				scope.$apply(() => {
-					// user info get here
-					console.log("ant's get_info function:", _userInfo);
-
-					// fill userInfo to FORM đăng ký
-					scope.userName = _userInfo.name || '';
-					scope.userPhone = _userInfo.phone || '';
-					scope.userEmail = _userInfo.email || '';
-
-					//Store Social profile
-					if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
-				});
 			};
 		}
 	}

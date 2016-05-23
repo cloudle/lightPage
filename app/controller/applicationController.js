@@ -1,4 +1,4 @@
-import { generateNumberUUID } from '../utils/helper';
+import { generateNumberUUID, registerFields } from '../utils/helper';
 
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
@@ -11,6 +11,7 @@ export class applicationController {
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http,  ngProgressFactory, metaService) {
 		$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
+		$rootScope.appCtrl = this;
 
 		$rootScope.activeContents = [];
 		this.progress = ngProgressFactory.createInstance();
@@ -28,10 +29,6 @@ export class applicationController {
 			this.subscriptionSuccess = true;
 			$timeout(() => this.subscriptionSuccess = false, 3000);
 		};
-
-		$rootScope.$on('subscriptionSent', () => {
-			this.subscriptionPopup = false;
-		});
 
 		$rootScope.$on('subscriptionSuccess', () => {
 			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
@@ -51,7 +48,6 @@ export class applicationController {
 
 		let fetchEssentialData = (source) => {
 			let { apiHost, domain } = metaService.configs;
-
 			$http.get(`${apiHost}/banner/get/json`, {
 				params: { domain, type: 'footer' }
 			}).success(data => {
@@ -81,5 +77,87 @@ export class applicationController {
 				width: $(window).width()
 			});
 		});
+
+		//Register form!
+		registerFields.forEach(field => {
+			this[field] = ''; this[field+'Error'] = '';
+		});
+
+		this.resetRegisterForm = () => {
+			registerFields.forEach(field => this[field] = '');
+		};
+
+		this.resetRegisterError = () => {
+			registerFields.forEach(field => this[field+'Error'] = '');
+		};
+
+		this.subscriptionSuccessHandler = () => {
+			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
+			this.subscriptionSuccess = true;
+			$timeout(() => this.subscriptionSuccess = false, 3000);
+		};
+
+		this.submitRegister = $rootScope.submitRegister = (event) => {
+			let { apiHost, domain } = metaService.configs;
+			event.preventDefault(); this.resetRegisterError();
+
+			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
+			if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
+			if (this['userNameError'] || this['userPhoneError']) return;
+
+			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+				formData = {
+					...localUserInfo,
+					domain,
+					fullName: this['userName'],
+					name: this['userName'],
+					phone: this['userPhone'],
+					email: this['userEmail']
+				};
+
+			//Fire Ants trackingGoal hook!
+			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+			//Send form information to Ants!
+			ants_userInfoListener(formData, false, true);
+
+			//Facebook tracking Lead/CompleteRegistration event
+			fbq('track', 'Lead');
+			fbq('track', 'CompleteRegistration');
+
+			//Tracking Google Analytic goal!
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Subscription',
+				eventAction: 'Submit'
+			});
+
+			this.resetRegisterForm();
+			this.subscriptionPopup = false;
+
+			//Send form to Twin's server!
+			$http.get(`${apiHost}/customer/insert/json`, {
+				params: formData
+			}).success(data => {
+				this.subscriptionSuccessHandler();
+				$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
+					console.log('email...', data);
+				});
+			});
+		};
+
+		global.get_info = function(_userInfo) {
+			$scope.$apply(() => {
+				// user info get here
+				console.log("ant's get_info function:", _userInfo);
+
+				// fill userInfo to FORM đăng ký
+				this.userName = _userInfo.name || '';
+				this.userPhone = _userInfo.phone || '';
+				this.userEmail = _userInfo.email || '';
+
+				//Store Social profile
+				if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
+			});
+		};
 	}
 }

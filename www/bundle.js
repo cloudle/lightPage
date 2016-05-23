@@ -113,7 +113,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div class="section-canvas top-separated news-area">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="light-heading section"><span class="highlight">TIN TỨC</span></div>\n\t\t\t\t<div class="light-row quatro">\n\t\t\t\t\t<div class="column light-column click-able" ng-repeat="news in latestNews" ui-sref="news({id: news.Post.id})">\n\t\t\t\t\t\t<div class="title" ng-bind="news.Post.title"></div>\n\t\t\t\t\t\t<div class="thumb-image-wrapper">\n\t\t\t\t\t\t\t<div class="image image-hover-effect-zoom-120" ng-style="{\'background-image\': \'url(\'+news.Post.image+\')\'}"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="description" ng-bind="news.Post.description"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="section-canvas top-separated news-area">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="light-heading section"><span class="highlight">TIN TỨC</span></div>\n\t\t\t\t<div class="light-row quatro">\n\t\t\t\t\t<div class="column light-column click-able" ng-repeat="news in latestNews" ui-sref="news({alias: news.Post.alias})">\n\t\t\t\t\t\t<div class="title" ng-bind="news.Post.title"></div>\n\t\t\t\t\t\t<div class="thumb-image-wrapper">\n\t\t\t\t\t\t\t<div class="image image-hover-effect-zoom-120" ng-style="{\'background-image\': \'url(\'+news.Post.image+\')\'}"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="description" ng-bind="news.Post.description"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			scope.latestNews = $rootScope.news;
 		}
@@ -267,14 +267,11 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],8:[function(require,module,exports){
-(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _helper = require('../utils/helper');
 
@@ -283,77 +280,16 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->\n\t\t\t<div class="heading">\n\t\t\t\t<span>Gọi </span> \n\t\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span> hoặc gửi thông tin để nhận</span> \n\t\t\t\t<span class="strong">BÁO GIÁ</span>\n\t\t\t\t<span>từ</span> \n\t\t\t\t<span class="strong">CHỦ ĐẦU TƯ</span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="Họ và tên*" ng-model="userName"/>\n\t\t\t<div class="error-row" ng-bind="userNameError" ng-if="userNameError"></div>\n\t\t\t<input type="text" placeholder="Điện thoại*" ng-model="userPhone"/>\n\t\t\t<div class="error-row" ng-bind="userPhoneError" ng-if="userPhoneError"></div>\n\t\t\t<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>\n\t\t\t<div class="error-row" ng-bind="userEmailError" ng-if="userEmailError"></div>\n\t\t\n\t\t\t<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || \'GỬI\'"></button>\n\t\t\t</div>\n\t\t</form>',
+		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->\n\t\t\t<div class="heading">\n\t\t\t\t<span>Gọi </span> \n\t\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span> hoặc gửi thông tin để nhận</span> \n\t\t\t\t<span class="strong">BÁO GIÁ</span>\n\t\t\t\t<span>từ</span> \n\t\t\t\t<span class="strong">CHỦ ĐẦU TƯ</span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="Họ và tên*" ng-model="appCtrl.userName"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>\n\t\t\t<input type="text" placeholder="Điện thoại*" ng-model="appCtrl.userPhone"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>\n\t\t\t<input type="text" placeholder="Email (không bắt buộc)" ng-model="appCtrl.userEmail"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>\n\t\t\n\t\t\t<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || \'GỬI\'"></button>\n\t\t\t</div>\n\t\t</form>',
 		link: function link(scope, element, attrs) {
 			var _metaService$configs = metaService.configs;
 			var apiHost = _metaService$configs.apiHost;
 			var domain = _metaService$configs.domain;
 
 			scope.configs = metaService.configs;
-			fields.forEach(function (field) {
-				scope[field + 'Error'] = '';scope[field] = '';
-			});
+			scope.appCtrl = $rootScope.appCtrl;
 
-			scope.resetForm = function () {
-				fields.forEach(function (field) {
-					return scope[field] = '';
-				});
-			};
-
-			scope.closeForm = function () {
-				scope.$parent.appCtrl.subscriptionPopup = false;
-			};
-
-			scope.submit = function (event) {
-				event.preventDefault();
-				fields.forEach(function (field) {
-					return scope[field + 'Error'] = '';
-				});
-
-				if (scope.userName.length < 1) scope.userNameError = 'Nhập tên';
-				if (scope.userPhone.length < 8) scope.userPhoneError = 'Số điện thoại chưa đúng';
-
-				if (scope.userNameError || scope.userPhoneError) return;
-
-				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-				    formData = _extends({}, localUserInfo, {
-					domain: domain,
-					fullName: scope.userName,
-					name: scope.userName,
-					phone: scope.userPhone,
-					email: scope.userEmail
-				});
-
-				//Fire Ants trackingGoal hook!
-				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
-				//Send form information to Ants!
-				ants_userInfoListener(formData, false, true);
-
-				//Facebook tracking Lead/CompleteRegistration event
-				fbq('track', 'Lead');
-				fbq('track', 'CompleteRegistration');
-
-				//Tracking Google Analytic goal!
-				ga('send', {
-					hitType: 'event',
-					eventCategory: 'Subscription',
-					eventAction: 'Submit'
-				});
-
-				//Instantly reset the form!
-				scope.resetForm();
-				$rootScope.$broadcast('subscriptionSent');
-
-				//Send form to Twin's server!
-				$http.get(apiHost + '/customer/insert/json', {
-					params: formData
-				}).success(function (data) {
-					$rootScope.$broadcast('subscriptionSuccess');
-					$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-						console.log('email...', data);
-					});
-				});
-			};
+			scope.submit = $rootScope.submitRegister;
 
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
@@ -362,21 +298,6 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 			scope.facebookLogin = function () {
 				ants_fbAuthClick('login');
 			};
-
-			global.get_info = function (_userInfo) {
-				scope.$apply(function () {
-					// user info get here
-					console.log("ant's get_info function:", _userInfo);
-
-					// fill userInfo to FORM đăng ký
-					scope.userName = _userInfo.name || '';
-					scope.userPhone = _userInfo.phone || '';
-					scope.userEmail = _userInfo.email || '';
-
-					//Store Social profile
-					if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
-				});
-			};
 		}
 	};
 }];
@@ -384,7 +305,6 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail'];
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../utils/helper":18}],9:[function(require,module,exports){
 (function (global){
 'use strict';
@@ -393,6 +313,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.applicationController = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _helper = require('../utils/helper');
 
@@ -411,6 +333,7 @@ var applicationController = exports.applicationController = function application
 	this.subscriptionSuccess = false;
 
 	$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
+	$rootScope.appCtrl = this;
 
 	$rootScope.activeContents = [];
 	this.progress = ngProgressFactory.createInstance();
@@ -430,10 +353,6 @@ var applicationController = exports.applicationController = function application
 			return _this.subscriptionSuccess = false;
 		}, 3000);
 	};
-
-	$rootScope.$on('subscriptionSent', function () {
-		_this.subscriptionPopup = false;
-	});
 
 	$rootScope.$on('subscriptionSuccess', function () {
 		_this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
@@ -459,7 +378,6 @@ var applicationController = exports.applicationController = function application
 		var _metaService$configs = metaService.configs;
 		var apiHost = _metaService$configs.apiHost;
 		var domain = _metaService$configs.domain;
-
 
 		$http.get(apiHost + '/banner/get/json', {
 			params: { domain: domain, type: 'footer' }
@@ -490,6 +408,98 @@ var applicationController = exports.applicationController = function application
 			width: $(window).width()
 		});
 	});
+
+	//Register form!
+	_helper.registerFields.forEach(function (field) {
+		_this[field] = '';_this[field + 'Error'] = '';
+	});
+
+	this.resetRegisterForm = function () {
+		_helper.registerFields.forEach(function (field) {
+			return _this[field] = '';
+		});
+	};
+
+	this.resetRegisterError = function () {
+		_helper.registerFields.forEach(function (field) {
+			return _this[field + 'Error'] = '';
+		});
+	};
+
+	this.subscriptionSuccessHandler = function () {
+		_this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
+		_this.subscriptionSuccess = true;
+		$timeout(function () {
+			return _this.subscriptionSuccess = false;
+		}, 3000);
+	};
+
+	this.submitRegister = $rootScope.submitRegister = function (event) {
+		var _metaService$configs2 = metaService.configs;
+		var apiHost = _metaService$configs2.apiHost;
+		var domain = _metaService$configs2.domain;
+
+		event.preventDefault();_this.resetRegisterError();
+
+		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
+		if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
+		if (_this['userNameError'] || _this['userPhoneError']) return;
+
+		var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+		    formData = _extends({}, localUserInfo, {
+			domain: domain,
+			fullName: _this['userName'],
+			name: _this['userName'],
+			phone: _this['userPhone'],
+			email: _this['userEmail']
+		});
+
+		//Fire Ants trackingGoal hook!
+		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+		//Send form information to Ants!
+		ants_userInfoListener(formData, false, true);
+
+		//Facebook tracking Lead/CompleteRegistration event
+		fbq('track', 'Lead');
+		fbq('track', 'CompleteRegistration');
+
+		//Tracking Google Analytic goal!
+		ga('send', {
+			hitType: 'event',
+			eventCategory: 'Subscription',
+			eventAction: 'Submit'
+		});
+
+		_this.resetRegisterForm();
+		_this.subscriptionPopup = false;
+
+		//Send form to Twin's server!
+		$http.get(apiHost + '/customer/insert/json', {
+			params: formData
+		}).success(function (data) {
+			_this.subscriptionSuccessHandler();
+			$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+				console.log('email...', data);
+			});
+		});
+	};
+
+	global.get_info = function (_userInfo) {
+		var _this2 = this;
+
+		$scope.$apply(function () {
+			// user info get here
+			console.log("ant's get_info function:", _userInfo);
+
+			// fill userInfo to FORM đăng ký
+			_this2.userName = _userInfo.name || '';
+			_this2.userPhone = _userInfo.phone || '';
+			_this2.userEmail = _userInfo.email || '';
+
+			//Store Social profile
+			if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
+		});
+	};
 };
 
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
