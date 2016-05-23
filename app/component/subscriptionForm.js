@@ -1,4 +1,4 @@
-import { isEmailValid, apiHost } from '../utils/helper';
+import { isEmailValid } from '../utils/helper';
 
 export default ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
 	return {
@@ -33,6 +33,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 
 		</form>`,
 		link: function (scope, element, attrs) {
+			let {apiHost, domain} = metaService.configs;
 			scope.configs = metaService.configs;
 			fields.forEach(field => { scope[field+'Error'] = ''; scope[field] = '';	});
 
@@ -56,7 +57,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 					formData = {
 					...localUserInfo,
-					site: location.host,
+					domain,
 					fullName: scope.userName,
 					name: scope.userName,
 					phone: scope.userPhone,

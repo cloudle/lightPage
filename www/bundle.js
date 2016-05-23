@@ -285,6 +285,10 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->\n\t\t\t<div class="heading">\n\t\t\t\t<span>Gọi </span> \n\t\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span> hoặc gửi thông tin để nhận</span> \n\t\t\t\t<span class="strong">BÁO GIÁ</span>\n\t\t\t\t<span>từ</span> \n\t\t\t\t<span class="strong">CHỦ ĐẦU TƯ</span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="Họ và tên*" ng-model="userName"/>\n\t\t\t<div class="error-row" ng-bind="userNameError" ng-if="userNameError"></div>\n\t\t\t<input type="text" placeholder="Điện thoại*" ng-model="userPhone"/>\n\t\t\t<div class="error-row" ng-bind="userPhoneError" ng-if="userPhoneError"></div>\n\t\t\t<input type="text" placeholder="Email (không bắt buộc)" ng-model="userEmail"/>\n\t\t\t<div class="error-row" ng-bind="userEmailError" ng-if="userEmailError"></div>\n\t\t\n\t\t\t<!--<textarea rows="4" placeholder="Nội dung chi tiết" ng-model="userNote"></textarea>-->\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || \'GỬI\'"></button>\n\t\t\t</div>\n\n\t\t</form>',
 		link: function link(scope, element, attrs) {
+			var _metaService$configs = metaService.configs;
+			var apiHost = _metaService$configs.apiHost;
+			var domain = _metaService$configs.domain;
+
 			scope.configs = metaService.configs;
 			fields.forEach(function (field) {
 				scope[field + 'Error'] = '';scope[field] = '';
@@ -313,7 +317,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 				var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 				    formData = _extends({}, localUserInfo, {
-					site: location.host,
+					domain: domain,
 					fullName: scope.userName,
 					name: scope.userName,
 					phone: scope.userPhone,
@@ -341,11 +345,11 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 				$rootScope.$broadcast('subscriptionSent');
 
 				//Send form to Twin's server!
-				$http.get(_helper.apiHost + '/customer/insert/json', {
+				$http.get(apiHost + '/customer/insert/json', {
 					params: formData
 				}).success(function (data) {
 					$rootScope.$broadcast('subscriptionSuccess');
-					$http.get(_helper.apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+					$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
 						console.log('email...', data);
 					});
 				});
@@ -381,7 +385,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 var fields = ['userName', 'userPhone', 'userEmail'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":19}],9:[function(require,module,exports){
+},{"../utils/helper":18}],9:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -491,7 +495,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":19}],10:[function(require,module,exports){
+},{"../utils/helper":18}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -838,7 +842,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 
 angular.bootstrap(document, ['application']);
 
-},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":17,"./utils/filter":18}],15:[function(require,module,exports){
+},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":16,"./utils/filter":17}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -874,44 +878,6 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 }];
 
 },{}],16:[function(require,module,exports){
-'use strict';
-
-console.log("This is golden river!!!");
-
-//Analytics code...
-//Google =>
-(function (i, s, o, g, r, a, m) {
-	i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
-		(i[r].q = i[r].q || []).push(arguments);
-	}, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
-})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-ga('create', 'UA-77901914-1', 'auto');
-ga('send', 'pageview');
-
-//Facebook essential =>
-(function (d, s, id) {
-	var js,
-	    fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s);js.id = id;
-	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=108597779162841";
-	fjs.parentNode.insertBefore(js, fjs);
-})(document, 'script', 'facebook-jssdk');
-
-//Facebook pixel =>
-!function (f, b, e, v, n, t, s) {
-	if (f.fbq) return;n = f.fbq = function () {
-		n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-	};if (!f._fbq) f._fbq = n;
-	n.push = n;n.loaded = !0;n.version = '2.0';n.queue = [];t = b.createElement(e);t.async = !0;
-	t.src = v;s = b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t, s);
-}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-
-fbq('init', '578115232338331');
-fbq('track', "PageView");
-
-},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -993,7 +959,7 @@ var newsRoute = {
 
 exports.default = routerConfig;
 
-},{"./utils/helper":19}],18:[function(require,module,exports){
+},{"./utils/helper":18}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1013,7 +979,7 @@ function niceDate() {
 	};
 }
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1025,6 +991,7 @@ exports.isEmailValid = isEmailValid;
 exports.generateNumberUUID = generateNumberUUID;
 exports.safeRange = safeRange;
 var apiHost = exports.apiHost = 'http://128.199.227.132'; //'rivercity99.vn';//http://103.56.157.66/realestate';
+var registerFields = exports.registerFields = ['userName', 'userPhone', 'userEmail'];
 
 function find(sources, predicate) {
 	var searchKey, searchValue;
@@ -1119,4 +1086,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[14,16]);
+},{}]},{},[14]);

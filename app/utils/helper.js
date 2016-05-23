@@ -1,4 +1,5 @@
 export const apiHost = 'http://128.199.227.132';//'rivercity99.vn';//http://103.56.157.66/realestate';
+export const registerFields = ['userName', 'userPhone','userEmail'];
 
 export function find(sources, predicate) {
 	var searchKey, searchValue;
