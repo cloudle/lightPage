@@ -88,7 +88,10 @@ export class applicationController {
 		this.subscriptionSuccessHandler = () => {
 			this.successGifImage = `url(images/onoffonce.gif?${generateNumberUUID(10)})`;
 			this.subscriptionSuccess = true;
-			$timeout(() => this.subscriptionSuccess = false, 3000);
+			$timeout(() => {
+				this.subscriptionSuccess = false;
+				location.reload();
+			}, 3000);
 		};
 
 		this.submitRegister = $rootScope.submitRegister = (event) => {
