@@ -2,7 +2,7 @@ module.exports = {
 	"domain": "rivercity99.vn",//"goldenrivervietnam.vn",
 	"serverPort": 7021,
 	"production": false,
-	"apiHost": "http://128.199.227.132",
+	"apiHost": "http://103.56.157.66/realestate/",
 	"scriptPatch": "./app/patches/goldenRiver.js",
 	"cssPatch": "./app/style/patches/goldenRiver.scss",
 	"googleAnalyticId": "UA-77901914-2",

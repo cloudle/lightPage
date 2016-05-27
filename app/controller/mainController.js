@@ -21,13 +21,13 @@ export class mainController {
 		});
 
 		$http.get(`${apiHost}/banner/get/json`, {
-			params: { domain, type: 'banner' }
+			params: { domain, type: 'banner', lang: $rootScope.activeLanguage.id }
 		}).success(data => {
 			this.features = data.results;
 		});
 
 		$http.get(`${apiHost}/banner/get/json`, {
-			params: { domain, type: 'HomeSlider' }
+			params: { domain, type: 'HomeSlider', lang: $rootScope.activeLanguage.id }
 		}).success(data => {
 			this.sliders = data.results.map(item => {
 				return item.Post;

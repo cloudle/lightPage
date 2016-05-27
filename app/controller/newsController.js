@@ -14,12 +14,16 @@ export class newsController {
 		this.singleMode = this.pageAlias !== '';
 
 		if (this.singleMode) {
-			$http.get(`${apiHost}/post/get/json`, { params: { domain, alias: this.pageAlias } }).success(data => {
+			$http.get(`${apiHost}/post/get/json`, {
+				params: { domain, alias: this.pageAlias }
+			}).success(data => {
 				fbq('track', 'ViewContent');
 				this.activeNews = data.results[0].Post;
 			})
 		} else {
-			$http.get(`${apiHost}/banner/get/json`, {	params: { domain, type: 'news' } }).success(data => {
+			$http.get(`${apiHost}/banner/get/json`, {
+				params: { domain, type: 'news', lang: $rootScope.activeLanguage.id }
+			}).success(data => {
 				fbq('track', 'ViewContent');
 				this.allNews = data.results;
 			});

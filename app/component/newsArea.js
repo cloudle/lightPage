@@ -4,7 +4,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 		replace: true,
 		template: `<div class="section-canvas top-separated news-area">
 			<div class="content-wrapper">
-				<div class="light-heading section"><span class="highlight">TIN TỨC</span></div>
+				<div class="light-heading section"><span class="highlight" ng-bind="$root.localization.news"></span></div>
 				<div class="light-row quatro">
 					<div class="column light-column click-able" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">
 						<div class="title" ng-bind="newsItem.Post.title"></div>

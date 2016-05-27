@@ -1,6 +1,6 @@
 module.exports = {
 	siteName: "Golden River",
-	siteFav: "images/logo-goldenriver.jpg",
+	g: "images/logo-goldenriver.jpg",
 	domain: "goldenrivervietnam.vn",
 	serverPort: 7021,
 	production: true,

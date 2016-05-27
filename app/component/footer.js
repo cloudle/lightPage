@@ -1,4 +1,4 @@
-export default ['$http', function ($http) {
+export default ['$rootScope', '$http', function ($rootScope, $http) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -11,12 +11,24 @@ export default ['$http', function ($http) {
 			</div>
 			
 			<div class="copyright">
-				<span>Designed by</span>
-			  <a href="http://twin.vn" style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>
+				<div class="light-row">
+					<div class="column">
+						<div class="language-choice" ng-repeat="language in $root.languages" 
+								 ng-class="{active: languageActive(language)}" 
+								 ng-click="$root.changeLanguage(language)"
+								 ng-bind="language.display"></div>
+					</div>
+					<div class="column">
+						<span ng-bind="$root.localization.designedBy"></span>
+				    <a href="http://twin.vn" style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>	
+					</div>
+				</div>
 			</div>
 		</div>`,
 		link: function (scope, element, attrs) {
-
+			scope.languageActive = (instance) => {
+				return instance.id == $rootScope.activeLanguage.id;
+			};
 		}
 	}
 }]

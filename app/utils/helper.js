@@ -1,5 +1,46 @@
 export const apiHost = 'http://128.199.227.132';//'rivercity99.vn';//http://103.56.157.66/realestate';
-export const registerFields = ['userName', 'userPhone','userEmail'];
+export const registerFields = ['userName', 'userPhone','userEmail', 'userNote'];
+export const languages = [
+	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
+	{lang: "english", id: 2, display: "English"}
+];
+
+export let localization = {
+	vietnamese: {
+		register: "ĐĂNG KÝ",
+		news: "TIN TỨC",
+		registerTitleHead: `<span>Gọi </span>`,
+		registerTitleTail: ` 
+			<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
+			<span> hoặc gửi thông tin để nhận</span> 
+			<span class="strong">BÁO GIÁ</span>
+			<span>từ</span> 
+			<span class="strong">CHỦ ĐẦU TƯ</span>`,
+		fullNamePlaceholder: "Họ và tên*",
+		phonePlaceholder: "Điện thoại*",
+		emailPlaceholder: "Email (không bắt buộc)",
+		notePlaceholder: "Ghi chú",
+		send: "Gửi",
+		designedBy: "Thiết kể bởi"
+	},
+	english: {
+		register: "SUBSCRIBE",
+		news: "NEWS",
+		registerTitleHead: `<span>Call </span>`,
+		registerTitleTail: ` 
+			<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
+			<span> or subscribe to receive </span> 
+			<span class="strong">QUOTATION</span>
+			<span>from</span> 
+			<span class="strong">INVESTOR</span>`,
+		fullNamePlaceholder: "Full name*",
+		phonePlaceholder: "Phone*",
+		emailPlaceholder: "Email (optional)",
+		notePlaceholder: "Note..",
+		send: "Send",
+		designedBy: "Designed by"
+	}
+};
 
 export function find(sources, predicate) {
 	var searchKey, searchValue;
@@ -10,6 +51,17 @@ export function find(sources, predicate) {
 
 	for (let instance of sources) {
 		if (instance[searchKey] === searchValue) return instance;
+	}
+}
+
+export function findParentMenuByAlias (alias, links) {
+	for (let group of links) {
+		if (group.alias === alias) return group;
+		if (group.children) {
+			for (let child of group.children) {
+				if (child.alias === alias) return group;
+			}
+		}
 	}
 }
 

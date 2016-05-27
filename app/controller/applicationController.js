@@ -1,4 +1,4 @@
-import { generateNumberUUID, registerFields } from '../utils/helper';
+import { generateNumberUUID, registerFields, findParentMenuByAlias } from '../utils/helper';
 let productionEnvironment = true;
 
 export class applicationController {
@@ -38,19 +38,33 @@ export class applicationController {
 		$rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
 			this.activePage = toState.name;	this.ready = false;
 			this.progress.complete();
-			$timeout(() => this.ready = true, 250);
+
+			//Set meta's content for AUDIENCE SEGMENT!
+			let currentSegment = 'home';
+			if ($state.is('page')) {
+				let pageAlias = $state.params.alias, parentMenu = findParentMenuByAlias(pageAlias, metaService.links);
+				currentSegment = parentMenu.name;
+			} else if ($state.is('news')) {
+				currentSegment = 'news'
+			}
+
+			$($("meta[name='adx:sections']")[0]).attr('content', currentSegment);
+			$timeout(() => {
+				this.ready = true;
+				$(document).trigger('ready'); //Manually trigger ready event, which hope also trigger Ants' script!
+			}, 250);
 		});
 
 		let fetchEssentialData = (source) => {
 			let { apiHost, domain } = metaService.configs;
 			$http.get(`${apiHost}/banner/get/json`, {
-				params: { domain, type: 'footer' }
+				params: { domain, type: 'footer', lang: $rootScope.activeLanguage.id }
 			}).success(data => {
 				this.footers = data.results;
 			});
 
 			$http.get(`${apiHost}/banner/get/json`, {
-				params: { domain, type: 'news', limit: 4 }
+				params: { domain, type: 'news', lang: $rootScope.activeLanguage.id, limit: 4 }
 			}).success(data => {
 				$rootScope.news = data.results;
 			});
@@ -110,7 +124,8 @@ export class applicationController {
 					fullName: this['userName'],
 					name: this['userName'],
 					phone: this['userPhone'],
-					email: this['userEmail']
+					email: this['userEmail'],
+					note: this['userNote']
 				};
 
 			//Fire Ants trackingGoal hook!

@@ -1,4 +1,4 @@
-export default ['$state', 'metaService', function ($state, metaService) {
+export default ['$rootScope', '$state', 'metaService', function ($rootScope, $state, metaService) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -11,12 +11,12 @@ export default ['$state', 'metaService', function ($state, metaService) {
 				<div class="site-logo" ui-sref="home"></div>
 				
 				<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>
-				<div class="subscription-activator" ng-click="togglePopup()">ĐĂNG KÝ</div>
+				<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>
 				
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
-						<div class="parent-link" ui-sref="news">Tin tức</div>
+						<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@ export default ['$state', 'metaService', function ($state, metaService) {
 						</div>
 					</div>
 					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
-						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()">Tin tức</div>
+						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>
 					</div>
 				</div>
 			</div>
