@@ -1043,8 +1043,9 @@ exports.generateNumberUUID = generateNumberUUID;
 exports.safeRange = safeRange;
 var apiHost = exports.apiHost = 'http://128.199.227.132'; //'rivercity99.vn';//http://103.56.157.66/realestate';
 var registerFields = exports.registerFields = ['userName', 'userPhone', 'userEmail', 'userNote'];
-var languages = exports.languages = [{ lang: "vietnamese", id: 1, display: "Tiếng Việt" }, { lang: "english", id: 2, display: "English" }];
+var languages = exports.languages = [{ lang: "vietnamese", id: 1, display: "Tiếng Việt" }];
 
+// {lang: "english", id: 2, display: "English"}
 var localization = exports.localization = {
 	vietnamese: {
 		register: "ĐĂNG KÝ",

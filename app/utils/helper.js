@@ -2,7 +2,7 @@ export const apiHost = 'http://128.199.227.132';//'rivercity99.vn';//http://103.
 export const registerFields = ['userName', 'userPhone','userEmail', 'userNote'];
 export const languages = [
 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
-	{lang: "english", id: 2, display: "English"}
+	// {lang: "english", id: 2, display: "English"}
 ];
 
 export let localization = {
