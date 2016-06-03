@@ -1,7 +1,7 @@
 module.exports = {
 	domain: "urv.vn",
 	siteName: "URV",
-	siteFav: "images/logo-urv.png",
+	siteFav: "images/urv-favicon.png",
 	serverPort: 7022,
 	production: true,
 	apiHost: "http://103.56.157.66/realestate",
