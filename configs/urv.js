@@ -1,21 +1,30 @@
 module.exports = {
 	domain: "urv.vn",
 	siteName: "URV",
-	siteFav: "images/favicon.ico",
+	siteFav: "images/logo-urv.png",
 	serverPort: 7022,
 	production: true,
 	apiHost: "http://103.56.157.66/realestate",
-	googleAnalyticId: "UA-77901914-1",
-	facebookAppId: "108597779162841",
-	facebookPixelId: "578115232338331",
-	antsSiteId: "578664336",
-	antsRegisterGoalId: "578664668",
-	ogTitle: "RIVER CITY - TUYỆT TÁC BÊN SÔNG SÀI GÒN.",
-	ogImage: "http://farm8.staticflickr.com/7369/27023964906_63062c471b_b.jpg",
-	ogDescription: `River City là dự án khu căn hộ có quy mô lớn nhất Nam Sài Gòn với 3 mặt tiếp giáp sông, được phát triển bởi An Gia - Creed Group (Nhật Bản) - Phát Đạt với tổng vốn đầu tư lên đến 500 triệu USD. 
-		Với 4 tiện ích ưu việt: QUẢNG TRƯỜNG NƯỚC VÀ ÁNH SÁNG - BIỂN ĐẢO NHÂN TẠO DUBAI - HỒ BƠI THÁC NƯỚC 2 TẦNG - ĐƯỜNG HOA ĐI BỘ TRÊN KHÔNG
-    Gọi 0932 047 313 (24/7) để nhận  THÔNG TIN CHÍNH THỨC từ CHỦ ĐẦU TƯ`,
+	cssPatch: "./app/style/patches/urv.scss",
+	googleAnalyticId: "UA-77901914-3",
+	facebookAppId: "",
+	facebookPixelId: "",
+	antsSiteId: "",
+	antsRegisterGoalId: "",
+	ogTitle: "United Realtors Vietnam - HỆ THỐNG PHÂN PHỐI BẤT ĐỘNG SẢN SỬ DỤNG CÔNG NGHỆ VƯỢT TRỘI",
+	ogImage: "https://c4.staticflickr.com/8/7425/27299346851_b454219c5a_o.jpg",
+	ogDescription: `Công ty UNITED REALTORS Việt Nam tự hào ứng dụng công nghệ siêu việt, đọc hiểu nhu cầu mua nhà của khách hàng quan tâm các dự án căn hộ Hot nhất khu Nam Sài Gòn.
+		Mỗi ngày hệ thống tiếp nhận hàng trăm lượt đăng ký quan tâm mua căn hộ.
+		Anh chị em tư vấn viên có nhiều năm kinh nghiệm và am hiểu thị trường Quận 7 hãy liên hệ ngay với chúng tôi để được cài đặt ứng dụng & nhận khách để bán hàng.`,
 	translation: {
-		hotline: "0932 047 313"
+		hotline: "0932 047 383",
+		vietnamese: {
+			registerTitleTail: `
+			<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
+			<span> hoặc gửi thông tin để</span> 
+			<span class="strong">THAM GIA</span>
+			<span>làm</span> 
+			<span class="strong">CỘNG TÁC VIÊN</span>`
+		}
 	}
 };

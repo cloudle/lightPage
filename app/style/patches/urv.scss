@@ -1,0 +1,60 @@
+body {
+  background-color: #191919;
+}
+
+.navigation-wrapper {
+  background-color: #01010d;
+
+  .site-logo {
+    background-image: url('images/logo-urv.png');
+    width: 80px; height: 60px; margin-top: 5px;
+
+    @media screen and (max-width: 600px) {
+      width: 110px;
+    }
+  }
+
+  .subscription-activator {
+    background-color: #007a4b;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      &:hover{
+        background-color: lighten(#007a4b, 5);
+      }
+
+      &.active {
+        background-color: #007a4b;
+        color: #e9eb04;
+      }
+
+      .sub-navigations {
+        background-color: lighten(#007a4b, 5);
+        border-top-color: #007a4b;
+
+        .sub-link {
+          &:hover {
+            background-color: #007a4b;
+          }
+        }
+      }
+    }
+  }
+}
+
+.subscription-form .commands .submit {
+  background-color: #007a4b;
+
+  &:hover {
+    background-color: darken(#007a4b, 10);
+  }
+}
+
+.footer {
+  background-color: #01010d;
+
+  .copyright {
+    background-color: #0b0d1c;
+  }
+}

@@ -20,6 +20,14 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 		$http.get('/configs').success((data) => {
 			data.domain = data.domain || location.host;
 			let configs = data, { apiHost, domain } = configs;
+			//Override translation (if possible)..
+			languages.forEach(({lang}) => {
+				if (configs.translation[lang]) {
+					for (let key of Object.keys(configs.translation[lang])) {
+						localization[lang][key] = configs.translation[lang][key];
+					}
+				}
+			});
 
 			new Promise((navigationResolve, reject) => {
 				$http.get(`${apiHost}/menu/get/json`, {
