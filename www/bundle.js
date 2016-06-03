@@ -367,7 +367,6 @@ var applicationController = exports.applicationController = function application
 		_this.progress.complete();
 
 		//Set meta's content for AUDIENCE SEGMENT!
-		console.log("checking segment");
 		var currentSegment = 'home';
 		if ($state.is('page')) {
 			var pageAlias = $state.params.alias,
