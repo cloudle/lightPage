@@ -14,40 +14,28 @@ body {
     }
   }
 
-  .subscription-activator {
-    background-color: #007a4b;
-  }
-
   .navigation-menu {
     .navigation-link {
       &:hover{
-        background-color: lighten(#007a4b, 5);
+        background-color: lighten(#162E65, 5);
       }
 
       &.active {
-        background-color: #007a4b;
+        background-color: #162E65;
         color: #e9eb04;
       }
 
       .sub-navigations {
-        background-color: lighten(#007a4b, 5);
-        border-top-color: #007a4b;
+        background-color: lighten(#162E65, 5);
+        border-top-color: #162E65;
 
         .sub-link {
           &:hover {
-            background-color: #007a4b;
+            background-color: #162E65;
           }
         }
       }
     }
-  }
-}
-
-.subscription-form .commands .submit {
-  background-color: #007a4b;
-
-  &:hover {
-    background-color: darken(#007a4b, 10);
   }
 }
 
