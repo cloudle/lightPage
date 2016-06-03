@@ -40,7 +40,6 @@ export class applicationController {
 			this.progress.complete();
 
 			//Set meta's content for AUDIENCE SEGMENT!
-			console.log("checking segment");
 			let currentSegment = 'home';
 			if ($state.is('page')) {
 				let pageAlias = $state.params.alias, parentMenu = findParentMenuByAlias(pageAlias, metaService.links);
