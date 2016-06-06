@@ -1,5 +1,5 @@
 module.exports = {
-  domain: "toyota-phumyhung.com.vn",
+  domain: "toyota-phumyhung.vn",
   siteName: "toyotaPmh",
   siteFav: "images/logo-urv.png",
   serverPort: 7023,
