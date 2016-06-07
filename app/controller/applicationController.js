@@ -1,5 +1,8 @@
-import { generateNumberUUID, registerFields, findParentMenuByAlias } from '../utils/helper';
-let productionEnvironment = true;
+import {
+	generateNumberUUID,
+	registerFields,
+	findParentMenuByAlias
+} from '../utils/helper';
 
 export class applicationController {
 	static $inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
@@ -114,7 +117,8 @@ export class applicationController {
 		};
 
 		this.submitRegister = $rootScope.submitRegister = (event) => {
-			let { apiHost, domain } = metaService.configs;
+			let { apiHost, domain, production } = metaService.configs;
+			console.log("production mode:", production);
 			event.preventDefault(); this.resetRegisterError();
 
 			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
@@ -133,20 +137,20 @@ export class applicationController {
 				};
 
 			//Fire Ants trackingGoal hook!
-			if (productionEnvironment) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 			//Send form information to Ants!
-			if (productionEnvironment) {
+			if (production) {
 				ants_userInfoListener(formData, false, true);
 			} else {
 				console.log(ants_userInfoListener)
 			}
 
 			//Facebook tracking Lead/CompleteRegistration event
-			if (productionEnvironment) fbq('track', 'Lead');
-			if (productionEnvironment) fbq('track', 'CompleteRegistration');
+			if (production) fbq('track', 'Lead');
+			if (production) fbq('track', 'CompleteRegistration');
 
 			//Tracking Google Analytic goal!
-			if (productionEnvironment) {
+			if (production) {
 				ga('send', {
 					hitType: 'event',
 					eventCategory: 'Subscription',
@@ -154,11 +158,25 @@ export class applicationController {
 				});
 			}
 
+			if (production) {
+				ants_analytic.push({
+					conversionId : metaService.configs.antsConversionId,
+					customParams : [
+						{
+							'is_ecomm': 0,
+							'ecomm_pagetype': 'purchase',
+							'ecomm_quantity': 1,
+							'ecomm_totalvalue': 1
+						}
+					]
+				});
+			}
+
 			this.resetRegisterForm();
 			this.subscriptionPopup = false;
 
 			//Send form to Twin's server!
-			if (productionEnvironment) {
+			if (production) {
 				$http.get(`${apiHost}/customer/insert/json`, {
 					params: formData
 				}).success(data => {

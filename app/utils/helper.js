@@ -42,6 +42,15 @@ export let localization = {
 	}
 };
 
+const emptyFunction = function () {};
+
+export function fixAnalyticMissing () {
+	if (!global.ga) global.ga = emptyFunction;
+	if (!global.fbq) global.fbq = emptyFunction;
+	if (!global.ants_userInfoListener) global.ants_userInfoListener = emptyFunction;
+	if (!global.ants_analytic) global.ants_analytic = [];
+}
+
 export function find(sources, predicate) {
 	var searchKey, searchValue;
 	for (let key of Object.keys(predicate)) {

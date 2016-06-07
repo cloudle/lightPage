@@ -1,3 +1,4 @@
+import { fixAnalyticMissing } from "./utils/helper";
 import {applicationController} from "./controller/applicationController";
 import routerConfig from "./routerConfig";
 
@@ -17,6 +18,7 @@ import newsArea from "./component/newsArea";
 import metaService from "./metaService";
 import registerFilter from "./utils/filter";
 
+global.fixAnalyticMissing = fixAnalyticMissing;
 let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit'])
 	.config(routerConfig)
 	.controller('appCtrl', applicationController)
