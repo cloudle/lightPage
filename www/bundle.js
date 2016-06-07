@@ -982,7 +982,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 },{"./utils/helper":19}],16:[function(require,module,exports){
 "use strict";
 
-console.log("This is anphaland!!!");
+console.log("This is golden river!!!");
 //
 // //Analytics code...
 // //Google =>
