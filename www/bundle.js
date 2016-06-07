@@ -282,7 +282,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->\n\t\t\t<div class="heading">\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>\n\t\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleTail | unsafe"></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="{{$root.localization.fullNamePlaceholder}}" ng-model="appCtrl.userName"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>\n\n\t\t\t<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>\n\t\t\t</div>\n\t\t</form>',
+		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>\n\t\t\t<div class="heading">\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>\n\t\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleTail | unsafe"></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="{{$root.localization.fullNamePlaceholder}}" ng-model="appCtrl.userName"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>\n\n\t\t\t<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>\n\t\t\t</div>\n\t\t</form>',
 		link: function link(scope, element, attrs) {
 			var _metaService$configs = metaService.configs;
 			var apiHost = _metaService$configs.apiHost;
@@ -321,8 +321,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _helper = require('../utils/helper');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var productionEnvironment = true;
 
 var applicationController = exports.applicationController = function applicationController($rootScope, $scope, $state, $timeout, $interval, $window, $http, ngProgressFactory, metaService) {
 	var _this = this;
@@ -423,6 +421,10 @@ var applicationController = exports.applicationController = function application
 		_this[field] = '';_this[field + 'Error'] = '';
 	});
 
+	this.closeRegisterForm = function () {
+		_this.subscriptionPopup = false;
+	};
+
 	this.resetRegisterForm = function () {
 		_helper.registerFields.forEach(function (field) {
 			return _this[field] = '';
@@ -448,7 +450,9 @@ var applicationController = exports.applicationController = function application
 		var _metaService$configs2 = metaService.configs;
 		var apiHost = _metaService$configs2.apiHost;
 		var domain = _metaService$configs2.domain;
+		var production = _metaService$configs2.production;
 
+		console.log("production mode:", production);
 		event.preventDefault();_this.resetRegisterError();
 
 		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
@@ -466,20 +470,20 @@ var applicationController = exports.applicationController = function application
 		});
 
 		//Fire Ants trackingGoal hook!
-		if (productionEnvironment) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 		//Send form information to Ants!
-		if (productionEnvironment) {
+		if (production) {
 			ants_userInfoListener(formData, false, true);
 		} else {
 			console.log(ants_userInfoListener);
 		}
 
 		//Facebook tracking Lead/CompleteRegistration event
-		if (productionEnvironment) fbq('track', 'Lead');
-		if (productionEnvironment) fbq('track', 'CompleteRegistration');
+		if (production) fbq('track', 'Lead');
+		if (production) fbq('track', 'CompleteRegistration');
 
 		//Tracking Google Analytic goal!
-		if (productionEnvironment) {
+		if (production) {
 			ga('send', {
 				hitType: 'event',
 				eventCategory: 'Subscription',
@@ -487,11 +491,23 @@ var applicationController = exports.applicationController = function application
 			});
 		}
 
+		if (production) {
+			ants_analytic.push({
+				conversionId: metaService.configs.antsConversionId,
+				customParams: [{
+					'is_ecomm': 0,
+					'ecomm_pagetype': 'purchase',
+					'ecomm_quantity': 1,
+					'ecomm_totalvalue': 1
+				}]
+			});
+		}
+
 		_this.resetRegisterForm();
 		_this.subscriptionPopup = false;
 
 		//Send form to Twin's server!
-		if (productionEnvironment) {
+		if (production) {
 			$http.get(apiHost + '/customer/insert/json', {
 				params: formData
 			}).success(function (data) {
@@ -801,7 +817,10 @@ var splashController = exports.splashController = function () {
 splashController.$inject = ['$rootScope', '$scope', '$state', '$interval', '$timeout'];
 
 },{}],14:[function(require,module,exports){
+(function (global){
 "use strict";
+
+var _helper = require("./utils/helper");
 
 var _applicationController = require("./controller/applicationController");
 
@@ -859,6 +878,7 @@ var _filter2 = _interopRequireDefault(_filter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+global.fixAnalyticMissing = _helper.fixAnalyticMissing;
 var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('splashCtrl', _splashController.splashController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
 
 (0, _filter2.default)(App);
@@ -875,7 +895,8 @@ App.filter('unsafe', ['$sce', function ($sce) {
 
 angular.bootstrap(document, ['application']);
 
-},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":16,"./utils/filter":17}],15:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":16,"./utils/filter":17,"./utils/helper":18}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1067,6 +1088,7 @@ function niceDate() {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.fixAnalyticMissing = fixAnalyticMissing;
 exports.find = find;
 exports.findParentMenuByAlias = findParentMenuByAlias;
 exports.isEmailValid = isEmailValid;
@@ -1103,6 +1125,15 @@ var localization = exports.localization = {
 		designedBy: "Designed by"
 	}
 };
+
+var emptyFunction = function emptyFunction() {};
+
+function fixAnalyticMissing() {
+	if (!global.ga) global.ga = emptyFunction;
+	if (!global.fbq) global.fbq = emptyFunction;
+	if (!global.ants_userInfoListener) global.ants_userInfoListener = emptyFunction;
+	if (!global.ants_analytic) global.ants_analytic = [];
+}
 
 function find(sources, predicate) {
 	var searchKey, searchValue;
