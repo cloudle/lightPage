@@ -92,6 +92,10 @@ export class applicationController {
 			this[field] = ''; this[field+'Error'] = '';
 		});
 
+		this.closeRegisterForm = () => {
+			this.subscriptionPopup = false;
+		};
+
 		this.resetRegisterForm = () => {
 			registerFields.forEach(field => this[field] = '');
 		};

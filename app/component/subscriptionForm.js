@@ -6,7 +6,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `<form ng-class="wrapperClass" ng-submit="submit($event)">
-			<!--<div class="close-command icon-navigation-close" ng-click="closeForm()"></div>-->
+			<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>
 			<div class="heading">
 				<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>
 				<span class="ultra strong" ng-bind="configs.translation.hotline"></span>

@@ -23,7 +23,6 @@
     "fastclick": "~1.0.6",
     "accounting": "^0.3.2",
     "hammerjs": "hammer.js#^2.0.6",
-    "AngularHammer": "ryanmullins-angular-hammer#^2.1.10",
     "angular-animate": "^1.5.3",
     "gsap": "^1.18.2",
     "underscore": "^1.8.3",

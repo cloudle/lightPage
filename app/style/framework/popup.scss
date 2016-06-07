@@ -13,7 +13,7 @@
 
   .popup-content {
     position: fixed; top: 0; left: 50%; bottom: 0; right: 0;
-    width: 390px; z-index: 3200;
+    width: 390px; z-index: 6200;
     transform: translate(-50%, 10%) scale(0.8);
     transform-origin: center center;
     transition: transform 0.3s $bounceAnimation;
@@ -28,6 +28,11 @@
     .popup-content {
       transform: translate(-50%, 15%) scale(1);
       visibility: visible;
+
+      @media screen and (max-width: 600px) {
+        transform: translate(-50%, 0) scale(1);
+        width: 100%;
+      }
     }
   }
 }
