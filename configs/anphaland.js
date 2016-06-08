@@ -1,5 +1,5 @@
 module.exports = {
-	domain: "anphaland.vn",
+	domain: "anphaland.com.vn",
 	siteName: "Anphaland",
 	siteFav: "images/logo-goldenriver.jpg",
 	serverPort: 7024,

@@ -6,6 +6,7 @@ module.exports = {
 	production: true,
 	apiHost: "http://103.56.157.66/realestate",
 	googleAnalyticId: "UA-77901914-1",
+	googleConversionId: 921153228,
 	facebookAppId: "108597779162841",
 	facebookPixelId: "578115232338331",
 	antsSiteId: "578664336",
