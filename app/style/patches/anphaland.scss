@@ -6,7 +6,7 @@ body {
   background-image: url('images/golden-river-nav-bg.gif');
 
   .site-logo {
-    background-image: url('images/golden-river-logo.png');
+    background-image: url('images/anphaland_logo.png');
     width: 220px; height: 60px; margin-top: 5px;
 
     @media screen and (max-width: 600px) {
@@ -15,32 +15,59 @@ body {
   }
 
   .subscription-activator {
-    background-color: #A5531A;
+    background-color: #1b2859;
   }
 
   .navigation-menu {
     .navigation-link {
       &:hover{
-        background-color: #A47B32;
+        background-color: #eebd0b;
       }
 
       &.active {
-        background-color: #a2741c;
+        background-color: #ddaf0a;
       }
 
       .sub-navigations {
-        background-color: #A47B32;
-        border-top-color: #a2741c;
+        background-color: #eebd0b;
+        border-top-color: #ddaf0a;
 
         .sub-link {
           &:hover {
-            background-color: #a2741c;
+            background-color: #ddaf0a;
           }
         }
       }
     }
   }
 }
+
+.navigation-wrapper {
+  background-image: url("images/bg_header.png");
+}
+
+.light-heading .highlight {
+    color: #1b2859;
+}
+
+.subscription-form {
+  .heading {
+    text-align: left;
+    padding: 0px 16px;
+    font-size: 16px;
+  }
+
+  .strong {
+    color: #eebd0b;
+  }
+  .commands .submit {
+    background-color: #eebd0b;
+    &:hover {
+      background-color: #ddaf0a;
+    }
+  }
+}
+
 
 .footer {
   background-color: #191919;
