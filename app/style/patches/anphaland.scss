@@ -44,6 +44,9 @@ body {
 
 .navigation-wrapper {
   background-image: url("images/bg_header.png");
+  .navigation-menu .navigation-link {
+    color: #1b2859;
+  }
 }
 
 .light-heading .highlight {
@@ -70,9 +73,9 @@ body {
 
 
 .footer {
-  background-color: #191919;
+  background-color: #1b2859;
 
   .copyright {
-    background-color: darken(#191919, 10);
+    background-color: darken(#1b2859, 10);
   }
 }
