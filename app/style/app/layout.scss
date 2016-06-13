@@ -8,8 +8,14 @@
     flex: 1; min-width: 300px;
     margin: 25px;
 
+    @for $i from 1 through 12 {
+      &.size-#{$i} {
+        flex: #{$i}
+      }
+    }
+
     @media screen and (max-width: 500px) {
-      flex: 1 1 auto;
+      flex: 1 1 auto !important;
       margin: 20px 5px;
     }
   }

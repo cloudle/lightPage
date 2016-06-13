@@ -17,7 +17,7 @@ module.exports = {
 		hotline: "098 113 8333",
 		vietnamese: {
 			register: "LIÊN HỆ",
-			news: 'TIN TỨC BẤT ĐỘNG SẢN',
+			news: 'TIN TỨC',
 			registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>
 				<br>
