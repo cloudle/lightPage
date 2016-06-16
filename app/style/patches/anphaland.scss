@@ -3,7 +3,7 @@ body {
 }
 
 .navigation-wrapper {
-  background-image: url('images/golden-river-nav-bg.gif');
+  background-image: url("images/bg_header.png");
 
   .site-logo {
     background-image: url('images/anphaland_logo.png');
@@ -14,12 +14,19 @@ body {
     }
   }
 
+  .burger-menu-activator {
+    color: #1b2859;
+  }
+
   .subscription-activator {
     background-color: #1b2859;
   }
 
   .navigation-menu {
     .navigation-link {
+      color: #1b2859;
+      font-weight: 600;
+
       &:hover{
         background-color: #eebd0b;
       }
@@ -39,17 +46,6 @@ body {
         }
       }
     }
-  }
-}
-
-.navigation-wrapper {
-  background-image: url("images/bg_header.png");
-  .burger-menu-activator {
-    color: #1b2859;
-  }
-  .navigation-menu .navigation-link {
-    color: #1b2859;
-    font-weight: 600;
   }
 }
 
