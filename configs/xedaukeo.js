@@ -14,15 +14,17 @@ module.exports = {
 	antsRegisterGoalId: "",
 	antsConversionId: "",
 	translation: {
-		hotline: "",
+		hotline: "0932 662 068",
 		vietnamese: {
 			news: 'TIN TỨC',
 			product: 'SẢN PHẨM',
 			registerTitleHead: `
-				<span>Liên hệ chúng tôi</span>`,
+				<span>Liên hệ chúng tôi</span>
+				<br>
+				<span>Gọi: </span>`,
 			registerTitleTail: `
 				<br>
-				<span>để được hổ trợ</span>`
+				<span>Hoặc để lại thông tin</span>`
 		}
 	}
 };

@@ -1,5 +1,9 @@
+$themeColor: #191919;
+$activeColor: #ef231a;
+$hoverColor: #f24841;
+
 body {
-  background-color: #191919;
+  background-color: $themeColor;
 }
 
 .navigation-wrapper {
@@ -17,11 +21,11 @@ body {
   }
 
   .burger-menu-activator {
-    color: #ef231a;
+    color: $activeColor;
   }
 
   .subscription-activator {
-    background-color: #ef231a;
+    background-color: $activeColor;
   }
 
   .navigation-menu {
@@ -30,20 +34,20 @@ body {
       font-weight: 600;
 
       &:hover {
-        background-color: #f24841;
+        background-color: $hoverColor;
       }
 
       &.active {
-        background-color: #ef231a;
+        background-color: $activeColor;
       }
 
       .sub-navigations {
-        background-color: #f24841;
-        border-top-color: #ef231a;
+        background-color: $hoverColor;
+        border-top-color: $activeColor;
 
         .sub-link {
           &:hover {
-            background-color: #ef231a;
+            background-color: $activeColor;
           }
         }
       }
@@ -55,30 +59,42 @@ body {
   .heading {
     text-align: left;
     padding: 0px 16px;
-    font-size: 23px;
+  }
+
+  .head {
+    font-size: 20px;
   }
 
   .strong {
-    color: #f24841;
+    color: $activeColor;
   }
   .commands .submit {
-    background-color: #f24841;
+    background-color: $hoverColor;
     &:hover {
-      background-color: #ef231a;
+      background-color: $activeColor;
     }
   }
 }
 
+.sidebar-wrapper .sidebar-news .heading {
+  color: $activeColor;
+  border-bottom: dashed 1px $activeColor;
+}
+
+.page-content.news .title {
+  color: $activeColor;
+}
+
 .bullets .bullet-item .bullet-heading:after {
-  border-bottom: solid 3px #ef231a;
+  border-bottom: solid 3px $activeColor;
 }
 
 .light-heading .highlight {
-  color: #ef231a;
+  color: $activeColor;
 }
 
 .footer {
-  background-color: #f24841;
+  background-color: $hoverColor;
 
   .copyright {
     background-color: darken(#1b2859, 10);
