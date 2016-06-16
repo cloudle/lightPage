@@ -1,12 +1,12 @@
 module.exports = {
 	domain: "xedaukeonhapkhau.vn",
 	siteName: "Xedaukeo",
-	siteFav: "images/logo-goldenriver.jpg",
+	siteFav: "images/xedaukeo_favicon.png",
 	serverPort: 7025,
 	production: true,
 	apiHost: "http://103.56.157.66/realestate",
 	// scriptPatch: "./app/patches/anphaland.js",
-	// cssPatch: "./app/style/patches/anphaland.scss",
+	cssPatch: "./app/style/patches/xedaukeo.scss",
 	googleAnalyticId: "",
 	facebookAppId: "",
 	facebookPixelId: "",
@@ -14,6 +14,13 @@ module.exports = {
 	antsRegisterGoalId: "",
 	antsConversionId: "",
 	translation: {
-		hotline: ""
+		hotline: "",
+		vietnamese: {
+			registerTitleHead: `
+				<span>Liên hệ chúng tôi</span>`,
+			registerTitleTail: `
+				<br>
+				<span> để được hổ trợ</span>`
+		}
 	}
 };

@@ -1,0 +1,95 @@
+body {
+  background-color: #191919;
+}
+
+.navigation-wrapper {
+  background-color: #fff;
+
+  .site-logo {
+    background-image: url('images/xedaukeo_logo.png');
+    width: 220px;
+    height: 60px;
+    margin-top: 5px;
+    margin-left: 100px;
+
+    @media screen and (max-width: 600px) {
+      width: 110px;
+    }
+  }
+
+  .burger-menu-activator {
+    color: #ef231a;
+  }
+
+  .subscription-activator {
+    background-color: #ef231a;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      color: #1b2859;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #f24841;
+      }
+
+      &.active {
+        background-color: #ef231a;
+      }
+
+      .sub-navigations {
+        background-color: #f24841;
+        border-top-color: #ef231a;
+
+        .sub-link {
+          &:hover {
+            background-color: #ef231a;
+          }
+        }
+      }
+    }
+  }
+}
+
+.subscription-form {
+  .heading {
+    text-align: left;
+    padding: 0px 16px;
+    font-size: 24px;
+  }
+
+  .strong {
+    color: #f24841;
+  }
+  .commands .submit {
+    background-color: #f24841;
+    &:hover {
+      background-color: #ef231a;
+    }
+  }
+}
+
+.bullets .bullet-item .bullet-heading:after {
+  border-bottom: solid 3px #ef231a;
+}
+
+.light-heading .highlight {
+  color: #ef231a;
+}
+
+.footer {
+  background-color: #f24841;
+
+  .copyright {
+    background-color: darken(#1b2859, 10);
+    padding: 10px 0;
+
+    .light-row .column {
+      margin: 0px;
+      &:first-child {
+        display: none;
+      }
+    }
+  }
+}
