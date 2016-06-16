@@ -16,10 +16,11 @@ module.exports = {
 	translation: {
 		hotline: "0932 662 068",
 		vietnamese: {
+			register: 'LIÊN HỆ',
 			news: 'TIN TỨC',
 			product: 'SẢN PHẨM',
 			registerTitleHead: `
-				<span>Liên hệ chúng tôi</span>
+				<span class="head">Liên hệ chúng tôi</span>
 				<br>
 				<span>Gọi: </span>`,
 			registerTitleTail: `
