@@ -22,7 +22,7 @@ module.exports = {
 				<span>Liên hệ chúng tôi</span>`,
 			registerTitleTail: `
 				<br>
-				<span> để được hổ trợ</span>`
+				<span>để được hổ trợ</span>`
 		}
 	}
 };
