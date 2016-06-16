@@ -6,7 +6,8 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 			.state('splash', splashRoute)
 			.state('home', mainRoute)
 			.state('page', pageRoute)
-			.state('news', newsRoute);
+			.state('news', newsRoute)
+			.state('product', productRoute);
 
 		$urlRouterProvider.otherwise('/splash');
 
@@ -73,6 +74,21 @@ var newsRoute = {
 		'content@news': {
 			templateUrl: 'template/home/news.html',
 			controller: 'newsCtrl as newsCtrl'
+		}
+	}
+};
+var productRoute = {
+	url: '/san-pham/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@product': {
+			templateUrl: 'template/home/product.html',
+			controller: 'productCtrl as productCtrl'
 		}
 	}
 };

@@ -15,6 +15,9 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
+					<div class="navigation-link" ng-class="{active: productActiveClass()}">
+						<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>
+					</div>
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
 						<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>
 					</div>
@@ -33,6 +36,9 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
 								ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>
 						</div>
+					</div>
+					<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">
+						<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>
 					</div>
 					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
 						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>
@@ -64,6 +70,9 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 
 			scope.newsActiveClass = () => {
 				return $state.current.name === 'news';
+			}
+			scope.productActiveClass = () => {
+				return $state.current.name === 'product';
 			}
 		}
 	}

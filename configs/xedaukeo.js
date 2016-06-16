@@ -16,6 +16,8 @@ module.exports = {
 	translation: {
 		hotline: "",
 		vietnamese: {
+			news: 'TIN TỨC',
+			product: 'SẢN PHẨM',
 			registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
 			registerTitleTail: `

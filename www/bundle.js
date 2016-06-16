@@ -32,7 +32,7 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			ready: '=',
 			burgerActive: '='
 		},
-		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>\n\t\t\t\t\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>\n\t\t\t\t\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			scope.links = metaService.links;
 
@@ -56,6 +56,9 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 
 			scope.newsActiveClass = function () {
 				return $state.current.name === 'news';
+			};
+			scope.productActiveClass = function () {
+				return $state.current.name === 'product';
 			};
 		}
 	};
@@ -307,7 +310,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail'];
 
-}, {"../utils/helper": 18}], 9: [function (require, module, exports) {
+},{"../utils/helper":19}],9:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -540,7 +543,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {"../utils/helper": 18}], 10: [function (require, module, exports) {
+},{"../utils/helper":19}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -788,6 +791,54 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var productController = exports.productController = function productController($rootScope, $window, $http, $state, metaService) {
+	var _this = this;
+
+	_classCallCheck(this, productController);
+
+	var _metaService$configs = metaService.configs;
+	var apiHost = _metaService$configs.apiHost;
+	var domain = _metaService$configs.domain;
+
+	//Tracking code..
+
+	ga('send', 'pageview');
+	fbq('track', "PageView");
+
+	$rootScope.activeGroup = null;
+
+	this.pageAlias = $state.params.alias;
+	$window.scrollTo(0, 0);
+	this.singleMode = this.pageAlias !== '';
+
+	if (this.singleMode) {
+		$http.get(apiHost + '/post/get/json', {
+			params: { domain: domain, alias: this.pageAlias }
+		}).success(function (data) {
+			fbq('track', 'ViewContent');
+			_this.activeNews = data.results[0].Post;
+		});
+	} else {
+		$http.get(apiHost + '/banner/get/json', {
+			params: { domain: domain, type: 'product', lang: $rootScope.activeLanguage.id }
+		}).success(function (data) {
+			fbq('track', 'ViewContent');
+			_this.allProduct = data.results;
+		});
+	}
+};
+
+productController.$inject = ['$rootScope', '$window', '$http', '$state', 'metaService'];
+
+},{}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -816,7 +867,7 @@ var splashController = exports.splashController = function () {
 
 splashController.$inject = ['$rootScope', '$scope', '$state', '$interval', '$timeout'];
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -833,6 +884,8 @@ var _mainController = require("./controller/mainController");
 var _pageController = require("./controller/pageController");
 
 var _newsController = require("./controller/newsController");
+
+var _productController = require("./controller/productController");
 
 var _splashController = require("./controller/splashController");
 
@@ -879,7 +932,7 @@ var _filter2 = _interopRequireDefault(_filter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.fixAnalyticMissing = _helper.fixAnalyticMissing;
-var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('splashCtrl', _splashController.splashController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
+var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('productCtrl', _productController.productController).controller('splashCtrl', _splashController.splashController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
 
 (0, _filter2.default)(App);
 
@@ -896,25 +949,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {
-	"./component/footer": 1,
-	"./component/navigation": 2,
-	"./component/navigationLink": 3,
-	"./component/newsArea": 4,
-	"./component/popup": 5,
-	"./component/sidebar": 6,
-	"./component/slider": 7,
-	"./component/subscriptionForm": 8,
-	"./controller/applicationController": 9,
-	"./controller/mainController": 10,
-	"./controller/newsController": 11,
-	"./controller/pageController": 12,
-	"./controller/splashController": 13,
-	"./metaService": 15,
-	"./routerConfig": 16,
-	"./utils/filter": 17,
-	"./utils/helper": 18
-}], 15: [function (require, module, exports) {
+},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/productController":13,"./controller/splashController":14,"./metaService":16,"./routerConfig":17,"./utils/filter":18,"./utils/helper":19}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -997,7 +1032,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-}, {"./utils/helper": 18}], 16: [function (require, module, exports) {
+},{"./utils/helper":19}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1007,7 +1042,7 @@ Object.defineProperty(exports, "__esModule", {
 var _helper = require('./utils/helper');
 
 var routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $locationProvider) {
-	$stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute);
+	$stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute).state('product', productRoute);
 
 	$urlRouterProvider.otherwise('/splash');
 
@@ -1076,10 +1111,25 @@ var newsRoute = {
 		}
 	}
 };
+var productRoute = {
+	url: '/san-pham/:alias',
+	resolve: {
+		meta: function meta(metaService) {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': { templateUrl: 'template/mainLayout.html' },
+		'content@product': {
+			templateUrl: 'template/home/product.html',
+			controller: 'productCtrl as productCtrl'
+		}
+	}
+};
 
 exports.default = routerConfig;
 
-}, {"./utils/helper": 18}], 17: [function (require, module, exports) {
+},{"./utils/helper":19}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1099,7 +1149,7 @@ function niceDate() {
 	};
 }
 
-}, {}], 18: [function (require, module, exports) {
+},{}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1299,5 +1349,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {}]
-}, {}, [14]);
+},{}]},{},[15]);

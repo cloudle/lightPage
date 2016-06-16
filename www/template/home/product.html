@@ -1,0 +1,34 @@
+<div class="page-content-section">
+	<div class="content-wrapper">
+		<div class="page-content news">
+			<div class="single-news" ng-if="productCtrl.singleMode">
+				<div class="title" ng-bind="productCtrl.activeNews.title"></div>
+				<div class="timestamp">
+					<span>Cập nhật gần nhất: </span>
+					<span ng-bind="productCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
+				</div>
+				<div class="news-details" ng-bind-html="productCtrl.activeNews.content | unsafe"></div>
+			</div>
+
+			<div class="all-news light-row" ng-if="!singleMode">
+				<div class="column" ui-sref="product({alias: product.Post.alias})"
+						 ng-repeat="product in productCtrl.allProduct">
+					<div class="title" ng-bind="product.Post.title"></div>
+					<div class="timestamp">
+						<span>Cập nhật gần nhất: </span>
+						<span ng-bind="productCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
+					</div>
+					<div class="summary" ng-bind-html="product.Post.description | unsafe"></div>
+					<div class="thumb-image-wrapper">
+						<div class="image image-hover-effect-zoom-120"
+								 ng-style="{'background-image': 'url('+product.Post.image+')'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<light-sidebar></light-sidebar>
+	</div>
+</div>
+
+<light-footer columns="appCtrl.footers"></light-footer>

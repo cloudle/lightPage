@@ -5,6 +5,7 @@ import routerConfig from "./routerConfig";
 import {mainController} from "./controller/mainController";
 import {pageController} from "./controller/pageController";
 import {newsController} from "./controller/newsController";
+import {productController} from "./controller/productController";
 import {splashController} from "./controller/splashController";
 
 import navigation from "./component/navigation";
@@ -25,6 +26,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.controller('mainCtrl', mainController)
 	.controller('pageCtrl', pageController)
 	.controller('newsCtrl', newsController)
+	.controller('productCtrl', productController)
 	.controller('splashCtrl', splashController)
 	.service('metaService', metaService)
 	.directive('popup', popup)
