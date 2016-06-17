@@ -7,7 +7,7 @@ module.exports = {
 	apiHost: "http://103.56.157.66/realestate",
 	// scriptPatch: "./app/patches/anphaland.js",
 	cssPatch: "./app/style/patches/xedaukeo.scss",
-	googleAnalyticId: "",
+	googleAnalyticId: "UA-77901914-5",
 	facebookAppId: "",
 	facebookPixelId: "",
 	antsSiteId: "",
