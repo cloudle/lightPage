@@ -307,7 +307,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail'];
 
-}, {"../utils/helper": 18}], 9: [function (require, module, exports) {
+},{"../utils/helper":19}],9:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -540,7 +540,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {"../utils/helper": 18}], 10: [function (require, module, exports) {
+},{"../utils/helper":19}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -896,25 +896,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {
-	"./component/footer": 1,
-	"./component/navigation": 2,
-	"./component/navigationLink": 3,
-	"./component/newsArea": 4,
-	"./component/popup": 5,
-	"./component/sidebar": 6,
-	"./component/slider": 7,
-	"./component/subscriptionForm": 8,
-	"./controller/applicationController": 9,
-	"./controller/mainController": 10,
-	"./controller/newsController": 11,
-	"./controller/pageController": 12,
-	"./controller/splashController": 13,
-	"./metaService": 15,
-	"./routerConfig": 16,
-	"./utils/filter": 17,
-	"./utils/helper": 18
-}], 15: [function (require, module, exports) {
+},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":17,"./utils/filter":18,"./utils/helper":19}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -997,7 +979,12 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-}, {"./utils/helper": 18}], 16: [function (require, module, exports) {
+},{"./utils/helper":19}],16:[function(require,module,exports){
+"use strict";
+
+console.log("This is anphaland!!!");
+
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1079,7 +1066,7 @@ var newsRoute = {
 
 exports.default = routerConfig;
 
-}, {"./utils/helper": 18}], 17: [function (require, module, exports) {
+},{"./utils/helper":19}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1099,7 +1086,7 @@ function niceDate() {
 	};
 }
 
-}, {}], 18: [function (require, module, exports) {
+},{}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1299,5 +1286,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {}]
-}, {}, [14]);
+},{}]},{},[14,16]);
