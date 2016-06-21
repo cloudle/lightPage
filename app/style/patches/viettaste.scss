@@ -1,0 +1,119 @@
+$themeColor: #4d311a;
+$activeColor: #fbab1b;
+$hoverColor: #ffb736;
+
+body {
+  background-color: $themeColor;
+}
+
+.navigation-wrapper {
+  background-color: #fff;
+
+  .site-logo {
+    background-image: url('images/viettaste_logo.png');
+    width: 220px;
+    height: 60px;
+    margin-top: 5px;
+
+    @media screen and (max-width: 600px) {
+      width: 80px;
+      background-image: url('images/viettaste_favicon.png')
+    }
+  }
+
+  .burger-menu-activator {
+    color: $activeColor;
+  }
+
+  .subscription-activator {
+    background-color: $themeColor;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      color: $themeColor;
+      font-weight: 600;
+
+      &:hover {
+        background-color: $hoverColor;
+      }
+
+      &.active {
+        background-color: $activeColor;
+      }
+
+      .sub-navigations {
+        background-color: $hoverColor;
+        border-top-color: $activeColor;
+
+        .sub-link {
+          &:hover {
+            background-color: $activeColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+.subscription-form {
+  &.floating {
+    display: none;
+  }
+
+  .heading {
+    text-align: left;
+    padding: 0px 16px;
+  }
+
+  .head {
+    font-size: 20px;
+  }
+
+  .strong {
+    color: $activeColor;
+  }
+  .commands .submit {
+    background-color: $hoverColor;
+    &:hover {
+      background-color: $activeColor;
+    }
+  }
+}
+
+.sidebar-wrapper .sidebar-news .heading {
+  color: $activeColor;
+  border-bottom: dashed 1px $activeColor;
+}
+
+.page-content.news .title {
+  color: $activeColor;
+}
+
+.bullet-item .bullet-heading {
+  color: $themeColor;
+}
+
+.bullets .bullet-item .bullet-heading:after {
+  border-bottom: solid 3px $activeColor;
+}
+
+.light-heading .highlight {
+  color: $themeColor;
+}
+
+.footer {
+  background-color: $themeColor;
+
+  .copyright {
+    background-color: darken(#1b2859, 10);
+    padding: 10px 0;
+
+    .light-row .column {
+      margin: 0px;
+      &:first-child {
+        display: none;
+      }
+    }
+  }
+}
