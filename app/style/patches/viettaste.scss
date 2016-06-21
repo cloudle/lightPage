@@ -56,6 +56,13 @@ body {
   }
 }
 
+.subscription-form.sidebar {
+  display: none;
+}
+
+.sidebar-wrapper.sidebar-news {
+  margin-top: 0px
+}
 .subscription-form {
   &.floating {
     display: none;
@@ -86,27 +93,54 @@ body {
   border-bottom: dashed 1px $activeColor;
 }
 
+.sidebar-wrapper .sidebar-news {
+  margin-top: 0px;
+}
 .page-content.news .title {
   color: $activeColor;
+}
+
+.page-content.news .all-news .timestamp {
+  font-size: 11px;
+  color: #aaaaaa;
+}
+
+.page-content.news .all-news {
+  border-bottom: none;
 }
 
 .bullet-item .bullet-heading {
   color: $themeColor;
 }
 
+.bullets .bullet-item .bullet-description {
+  font-size: 13px;
+}
+
 .bullets .bullet-item .bullet-heading:after {
   border-bottom: solid 3px $activeColor;
 }
 
+
 .light-heading .highlight {
   color: $themeColor;
+}
+
+.light-column .title {
+  font-size: 18px;
+  color: #d29527;
+}
+
+.light-row.quatro .description {
+  font-size: 13px;
 }
 
 .footer {
   background-color: $themeColor;
 
   .copyright {
-    background-color: darken(#1b2859, 10);
+    //background-color: darken(#1b2859, 10);
+    background-color: transparent;
     padding: 10px 0;
 
     .light-row .column {

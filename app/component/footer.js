@@ -1,4 +1,6 @@
 export default ['$rootScope', '$http', function ($rootScope, $http) {
+
+
 	return {
 		restrict: 'E',
 		replace: true,
@@ -20,7 +22,7 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 					</div>
 					<div class="column">
 						<span ng-bind="$root.localization.designedBy"></span>
-				    <a href="http://twin.vn" style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>	
+						<a ng-bind-html="$root.localization.designCompany | unsafe"></a>	
 					</div>
 				</div>
 			</div>

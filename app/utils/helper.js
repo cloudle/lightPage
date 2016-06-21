@@ -21,7 +21,8 @@ export let localization = {
 		emailPlaceholder: "Email (không bắt buộc)",
 		notePlaceholder: "Ghi chú",
 		send: "Gửi",
-		designedBy: "Thiết kể bởi"
+		designedBy: "Thiết kể bởi",
+		designCompany: `<a href="http://twin.vn" style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>`
 	},
 	english: {
 		register: "SUBSCRIBE",
@@ -38,7 +39,8 @@ export let localization = {
 		emailPlaceholder: "Email (optional)",
 		notePlaceholder: "Note..",
 		send: "Send",
-		designedBy: "Designed by"
+		designedBy: "Designed by",
+		designCompany: `<a href="http://twin.vn" style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>`
 	}
 };
 

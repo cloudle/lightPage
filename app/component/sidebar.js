@@ -22,12 +22,13 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 
 			//Safely calculate element's size after stuff have been rendered!
 			$timeout(() => {
+				scope.news = $rootScope.news;
 				sidebarHeight = element.outerHeight();
 				footerHeight = angular.element('#footer').outerHeight();
 			}, 500);
 
 			$rootScope.$on('scrollChange', (event, scrollPosition) => {
-				scope.news = $rootScope.news;
+				// scope.news = $rootScope.news;
 
 				scope.$apply(() => {
 					let documentHeight = $(document).height(), windowHeight = $(window).height(),
