@@ -5,7 +5,8 @@
   display: flex; flex-flow: row; flex-wrap: wrap;
 
   .column {
-    flex: 1; min-width: 100px;
+    flex: 1;
+    min-width: 280px;
     margin: 25px;
 
     @for $i from 1 through 12 {

@@ -15,7 +15,7 @@ module.exports = {
 	antsRegisterGoalId: "",
 	antsConversionId: "",
 	translation: {
-		hotline: "098 113 8333",
+		hotline: "0932 662 068",
 		vietnamese: {
 			register: "LIÊN HỆ",
 			news: 'TIN TỨC',
@@ -25,7 +25,11 @@ module.exports = {
 				<span>Gọi: </span>`,
 			registerTitleTail: `
 				<br>
-				<span> hoặc để lại thông tin</span>`
+				<span> hoặc để lại thông tin</span>`,
+			designedBy: '',
+			designCompany: `
+				<a style="text-decoration:none;color:#ffb736;" target="_blank">
+				© Copyright VIETTASTE. All rights reserved</a>`
 		}
 	}
 };

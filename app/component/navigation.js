@@ -16,7 +16,7 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
-						<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>
+						<div class="parent-link" ui-sref="news({alias: ''})" ng-bind="$root.localization.news"></div>
 					</div>
 				</div>
 			</div>
