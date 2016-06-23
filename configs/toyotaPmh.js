@@ -14,8 +14,11 @@ module.exports = {
   antsRegisterGoalId: "",
   antsConversionId: "",
   translation: {
+
     hotline: "0907 331 339 - 0938 579 186",
     vietnamese: {
+      register: "LIÊN HỆ",
+      news: "TIN TỨC & SỰ KIỆN",
       registerTitleHead: `
 				<span>Gọi </span>`,
       registerTitleTail: `
