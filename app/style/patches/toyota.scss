@@ -79,3 +79,28 @@ body {
     background-color: darken(#1b2859, 10);
   }
 }
+
+.bullet-heading {
+  &:after{
+    border-bottom: solid 3px #0d3349;
+  }
+}
+
+.section-heading {
+  color: #ef231a; background-color: white;
+}
+
+.bullets .bullet-item .bullet-avatar {
+  &:hover {
+    transform: scale(1.1);
+    &:before { border-color: #f24841; }
+  }
+}
+
+.bullets .bullet-item .bullet-heading {
+  &:after{
+    border-bottom: solid 3px #ef231a;
+  }
+}
+
+
