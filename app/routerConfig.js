@@ -93,4 +93,5 @@ var productRoute = {
 	}
 };
 
+
 export default routerConfig;

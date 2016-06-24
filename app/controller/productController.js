@@ -26,6 +26,7 @@ export class productController {
 				params: {domain, type: 'product', lang: $rootScope.activeLanguage.id}
 			}).success(data => {
 				fbq('track', 'ViewContent');
+				
 				this.allProduct = data.results;
 			});
 		}

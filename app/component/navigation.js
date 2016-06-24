@@ -42,6 +42,7 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 					</div>
 					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
 						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>
+						
 					</div>
 				</div>
 			</div>

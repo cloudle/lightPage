@@ -38,6 +38,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 
+
 registerFilter(App);
 
 App.run(() => {
