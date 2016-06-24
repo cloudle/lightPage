@@ -9,9 +9,9 @@ module.exports = {
 	cssPatch: "./app/style/patches/xedaukeo.scss",
 	googleAnalyticId: "UA-77901914-5",
 	facebookAppId: "",
-	facebookPixelId: "",
-	antsSiteId: "",
-	antsRegisterGoalId: "",
+	facebookPixelId: "578115232338331",
+	antsSiteId: "579563692",
+	antsRegisterGoalId: "579563717",
 	antsConversionId: "",
 	translation: {
 		hotline: "0938 711 781",
