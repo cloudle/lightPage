@@ -14,7 +14,7 @@ module.exports = {
 	antsRegisterGoalId: "",
 	antsConversionId: "",
 	translation: {
-		hotline: "",
+		hotline: "0938 711 781",
 		vietnamese: {
 			registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
