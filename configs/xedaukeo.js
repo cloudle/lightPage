@@ -7,25 +7,20 @@ module.exports = {
 	apiHost: "http://103.56.157.66/realestate",
 	// scriptPatch: "./app/patches/anphaland.js",
 	cssPatch: "./app/style/patches/xedaukeo.scss",
-	googleAnalyticId: "",
+	googleAnalyticId: "UA-77901914-5",
 	facebookAppId: "",
-	facebookPixelId: "",
-	antsSiteId: "",
-	antsRegisterGoalId: "",
+	facebookPixelId: "578115232338331",
+	antsSiteId: "579563692",
+	antsRegisterGoalId: "579563717",
 	antsConversionId: "",
 	translation: {
-		hotline: "0932 662 068",
+		hotline: "0938 711 781",
 		vietnamese: {
-			register: 'LIÊN HỆ',
-			news: 'TIN TỨC',
-			product: 'SẢN PHẨM',
 			registerTitleHead: `
-				<span class="head">Liên hệ chúng tôi</span>
-				<br>
-				<span>Gọi: </span>`,
+				<span>Liên hệ chúng tôi</span>`,
 			registerTitleTail: `
 				<br>
-				<span>Hoặc để lại thông tin</span>`
+				<span> để được hổ trợ</span>`
 		}
 	}
 };
