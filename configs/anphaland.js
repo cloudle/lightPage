@@ -1,7 +1,7 @@
 module.exports = {
 	domain: "anphaland.com.vn",
 	siteName: "Anphaland",
-	siteFav: "images/anphaland_logo.png",
+	siteFav: "images/logo_anphaland_new.png",
 	serverPort: 7024,
 	production: true,
 	apiHost: "http://103.56.157.66/realestate",
