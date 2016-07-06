@@ -24,6 +24,6 @@ module.exports = {
 		Với 4 tiện ích ưu việt: QUẢNG TRƯỜNG NƯỚC VÀ ÁNH SÁNG - BIỂN ĐẢO NHÂN TẠO DUBAI - HỒ BƠI THÁC NƯỚC 2 TẦNG - ĐƯỜNG HOA ĐI BỘ TRÊN KHÔNG
     Gọi 0932 047 313 (24/7) để nhận  THÔNG TIN CHÍNH THỨC từ CHỦ ĐẦU TƯ`,
 	translation: {
-		hotline: "0932 047 313"
+		hotline: "0909 729 178"
 	}
 };
