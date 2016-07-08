@@ -69,6 +69,11 @@ body {
       background-color: #ddaf0a;
     }
   }
+  @media screen and (max-width: 600px) {
+    .close-command { display: block; }
+    width: 100%; height: 600px;
+    background-color: white;
+  }
 }
 
 
