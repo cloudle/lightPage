@@ -10,8 +10,8 @@ module.exports = {
 	googleAnalyticId: "UA-77901914-4",
 	facebookAppId: "",
 	facebookPixelId: "",
-	antsSiteId: "",
-	antsRegisterGoalId: "",
+	antsSiteId: "579648082",
+	antsRegisterGoalId: "579648085",
 	antsConversionId: "",
 	translation: {
 		hotline: "098 113 8333",
