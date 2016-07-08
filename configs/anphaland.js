@@ -3,7 +3,7 @@ module.exports = {
 	siteName: "Anphaland",
 	siteFav: "images/logo_anphaland_new.png",
 	serverPort: 7024,
-	production: true,
+	production: false,
 	apiHost: "http://103.56.157.66/realestate",
 	scriptPatch: "./app/patches/anphaland.js",
 	cssPatch: "./app/style/patches/anphaland.scss",
