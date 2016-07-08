@@ -8,7 +8,7 @@ module.exports = {
 	scriptPatch: "./app/patches/goldenRiver.js",
 	cssPatch: "./app/style/patches/goldenRiver.scss",
 	googleAnalyticId: "UA-77901914-2",
-	googleConversionId: 921153228,
+	googleConversionId: "921153228",
 	googleConversionLabel: "ftGACLCSqmcQzN2etwM",
 	facebookAppId: "100493957008881",
 	facebookPixelId: "483381658466682",
