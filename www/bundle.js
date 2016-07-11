@@ -36,6 +36,11 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 		link: function link(scope, element, attrs) {
 			scope.links = metaService.links;
 
+			$rootScope.$on('metaServiceReady', function () {
+				console.log("Ready event fired!!!");
+				scope.links = metaService.links;
+			});
+
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
 			};
@@ -385,6 +390,7 @@ var applicationController = exports.applicationController = function application
 	});
 
 	var fetchEssentialData = function fetchEssentialData(source) {
+		console.info("Loading..", source);
 		var _metaService$configs = metaService.configs;
 		var apiHost = _metaService$configs.apiHost;
 		var domain = _metaService$configs.domain;
@@ -402,8 +408,10 @@ var applicationController = exports.applicationController = function application
 		});
 	};
 
-	if (metaService.ready) fetchEssentialData();
-	$rootScope.$on('metaServiceReady', fetchEssentialData);
+	if (metaService.ready) fetchEssentialData("because the data already fetched!");
+	$rootScope.$on('metaServiceReady', function () {
+		return fetchEssentialData("because meta service ready fired!");
+	});
 
 	this.lastScrollPosition = 0;
 	$(window).scroll(function (event) {
@@ -475,6 +483,8 @@ var applicationController = exports.applicationController = function application
 		//Fire Ants trackingGoal hook!
 		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 		//Send form information to Ants!
+
+		console.log(formData.note);
 		if (production) {
 			ants_userInfoListener(formData, false, true);
 		} else {
@@ -533,6 +543,7 @@ var applicationController = exports.applicationController = function application
 			_this.userName = _userInfo.name || '';
 			_this.userPhone = _userInfo.phone || '';
 			_this.userEmail = _userInfo.email || '';
+			_this.userNote = _userInfo.note || '';
 
 			//Store Social profile
 			if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
@@ -562,40 +573,46 @@ var mainController = exports.mainController = function mainController($rootScope
 	var _metaService$configs = metaService.configs;
 	var apiHost = _metaService$configs.apiHost;
 	var domain = _metaService$configs.domain;
-
 	//Tracking code..
 
 	ga('send', 'pageview');
 	fbq('track', "PageView");
 
-	$rootScope.activeGroup = metaService.links[0];$window.scrollTo(0, 0);
+	this.loadData = function () {
+		$rootScope.activeGroup = metaService.links[0];$window.scrollTo(0, 0);
 
-	$http.get(apiHost + '/page/get/json', {
-		params: { domain: domain, alias: "trang-chu" }
-	}).success(function (data) {
-		fbq('track', 'ViewContent');
-		$rootScope.activeContents = [data.results[0].Page];
-	});
-
-	$http.get(apiHost + '/banner/get/json', {
-		params: { domain: domain, type: 'banner', lang: $rootScope.activeLanguage.id }
-	}).success(function (data) {
-		_this.features = data.results;
-	});
-
-	$http.get(apiHost + '/banner/get/json', {
-		params: { domain: domain, type: 'HomeSlider', lang: $rootScope.activeLanguage.id }
-	}).success(function (data) {
-		_this.sliders = data.results.map(function (item) {
-			return item.Post;
+		$http.get(apiHost + '/page/get/json', {
+			params: { domain: domain, alias: "trang-chu" }
+		}).success(function (data) {
+			fbq('track', 'ViewContent');
+			$rootScope.activeContents = [data.results[0].Page];
 		});
-	});
 
-	this.sliderHeight = $(window).height() - 70;
-	$rootScope.$on('sizeChange', function (event, size) {
-		$scope.$apply(function () {
-			_this.sliderHeight = size.height > 570 ? size.height - 70 : 500;
+		$http.get(apiHost + '/banner/get/json', {
+			params: { domain: domain, type: 'banner', lang: $rootScope.activeLanguage.id }
+		}).success(function (data) {
+			_this.features = data.results;
 		});
+
+		$http.get(apiHost + '/banner/get/json', {
+			params: { domain: domain, type: 'HomeSlider', lang: $rootScope.activeLanguage.id }
+		}).success(function (data) {
+			_this.sliders = data.results.map(function (item) {
+				return item.Post;
+			});
+		});
+
+		_this.sliderHeight = $(window).height() - 70;
+		$rootScope.$on('sizeChange', function (event, size) {
+			$scope.$apply(function () {
+				_this.sliderHeight = size.height > 570 ? size.height - 70 : 500;
+			});
+		});
+	};
+
+	this.loadData();
+	$scope.$watch('activeLanguage', function () {
+		_this.loadData();
 	});
 };
 
@@ -610,7 +627,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var newsController = exports.newsController = function newsController($rootScope, $window, $http, $state, metaService) {
+var newsController = exports.newsController = function newsController($rootScope, $scope, $window, $http, $state, metaService) {
 	var _this = this;
 
 	_classCallCheck(this, newsController);
@@ -624,29 +641,38 @@ var newsController = exports.newsController = function newsController($rootScope
 	ga('send', 'pageview');
 	fbq('track', "PageView");
 
-	$rootScope.activeGroup = null;
+	this.loadData = function () {
+		$rootScope.activeGroup = null;
 
-	this.pageAlias = $state.params.alias;$window.scrollTo(0, 0);
-	this.singleMode = this.pageAlias !== '';
+		_this.pageAlias = $state.params.alias;$window.scrollTo(0, 0);
+		_this.singleMode = _this.pageAlias !== '';
 
-	if (this.singleMode) {
-		$http.get(apiHost + '/post/get/json', {
-			params: { domain: domain, alias: this.pageAlias }
-		}).success(function (data) {
-			fbq('track', 'ViewContent');
-			_this.activeNews = data.results[0].Post;
-		});
-	} else {
-		$http.get(apiHost + '/banner/get/json', {
-			params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id }
-		}).success(function (data) {
-			fbq('track', 'ViewContent');
-			_this.allNews = data.results;
-		});
-	}
+		if (_this.singleMode) {
+			$http.get(apiHost + '/post/get/json', {
+				params: { domain: domain, alias: _this.pageAlias, lang: $rootScope.activeLanguage.id }
+			}).success(function (data) {
+				fbq('track', 'ViewContent');
+				if (data.results[0]) {
+					_this.activeNews = data.results[0].Post;
+				}
+			});
+		} else {
+			$http.get(apiHost + '/banner/get/json', {
+				params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id }
+			}).success(function (data) {
+				fbq('track', 'ViewContent');
+				_this.allNews = data.results;
+			});
+		}
+	};
+	this.loadData();
+	$scope.$watch('activeLanguage', function () {
+
+		_this.loadData();
+	});
 };
 
-newsController.$inject = ['$rootScope', '$window', '$http', '$state', 'metaService'];
+newsController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
 
 },{}],12:[function(require,module,exports){
 'use strict';
@@ -661,6 +687,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var pageController = exports.pageController = function () {
 	function pageController($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
+		var _this = this;
+
 		_classCallCheck(this, pageController);
 
 		var _metaService$configs = metaService.configs;
@@ -672,52 +700,57 @@ var pageController = exports.pageController = function () {
 		ga('send', 'pageview');
 		fbq('track', "PageView");
 		fbq('track', 'ViewContent');
+		this.loadData = function () {
+			var pageAlias = $state.params.alias,
+			    parentGroup = _this.findParentGroup(pageAlias, metaService.links),
+			    previousGroup = $rootScope.activeGroup;$rootScope.activeGroup = parentGroup;
 
-		var pageAlias = $state.params.alias,
-		    parentGroup = this.findParentGroup(pageAlias, metaService.links),
-		    previousGroup = $rootScope.activeGroup;$rootScope.activeGroup = parentGroup;
+			if (pageAlias == 'trang-chu') {
+				$state.go('home');return;
+			}
 
-		if (pageAlias == 'trang-chu') {
-			$state.go('home');return;
-		}
+			//Kick back to the Home page if it's not a link in menu
+			if (!parentGroup || !parentGroup.children) {
+				$state.go('home');
+			} else if (parentGroup === previousGroup) {
+				//If the parent group is already active => scroll to the child section!
+				//Scroll after 1 second to have better performance (after stuffs had been rendered).
+				$timeout(function () {
+					var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
+					TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
+				}, 800);
+			} else {
+				(function () {
+					//Finally, load the page => set page's children content!
+					var loadedCount = 0;$rootScope.activeContents = [];
+					$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
+					parentGroup.children.forEach(function (child, index) {
+						$rootScope.activeContents[index] = {};
+						$http.get(apiHost + '/page/get/json', { params: { domain: domain, alias: child.alias } }).success(function (data) {
+							var childResult = data.results[0];
+							if (childResult && childResult.Page) {
+								$rootScope.activeContents[index] = childResult.Page;
+							}
+						}).finally(function () {
+							loadedCount++;
 
-		//Kick back to the Home page if it's not a link in menu
-		if (!parentGroup || !parentGroup.children) {
-			$state.go('home');
-		} else if (parentGroup === previousGroup) {
-			//If the parent group is already active => scroll to the child section!
-			//Scroll after 1 second to have better performance (after stuffs had been rendered).
-			$timeout(function () {
-				var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
-				TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
-			}, 800);
-		} else {
-			(function () {
-				//Finally, load the page => set page's children content!
-				var loadedCount = 0;$rootScope.activeContents = [];
-				$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
-				parentGroup.children.forEach(function (child, index) {
-					$rootScope.activeContents[index] = {};
-					$http.get(apiHost + '/page/get/json', { params: { domain: domain, alias: child.alias } }).success(function (data) {
-						var childResult = data.results[0];
-						if (childResult && childResult.Page) {
-							$rootScope.activeContents[index] = childResult.Page;
-						}
-					}).finally(function () {
-						loadedCount++;
-
-						if (loadedCount >= parentGroup.children.length) {
-							//Scroll after 1 second (after all content are ready from server!)
-							// to have better performance (after stuffs had been rendered).
-							$timeout(function () {
-								var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
-								TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
-							}, 500);
-						}
+							if (loadedCount >= parentGroup.children.length) {
+								//Scroll after 1 second (after all content are ready from server!)
+								// to have better performance (after stuffs had been rendered).
+								$timeout(function () {
+									var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
+									TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
+								}, 500);
+							}
+						});
 					});
-				});
-			})();
-		}
+				})();
+			}
+		};
+		this.loadData();
+		$rootScope.$watch('activeLanguage', function () {
+			_this.loadData();
+		});
 	}
 
 	_createClass(pageController, [{
@@ -964,6 +997,30 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 
 	this.ready = false;
 
+	this.loadMenu = function (configs, configResolve, navigationResolve) {
+		var _ref = configs || _this.configs;
+
+		var apiHost = _ref.apiHost;
+		var domain = _ref.domain;
+
+
+		$http.get(apiHost + '/menu/get/json', {
+			params: { domain: domain, lang: $rootScope.activeLanguage.id }
+		}).success(function (data) {
+			_this.links = data.results;
+
+			if (navigationResolve) navigationResolve(_this.links);
+			if (configResolve) {
+				configResolve(_this.configs);
+			}
+
+			$timeout(function () {
+				$rootScope.$broadcast('metaServiceReady');
+				_this.ready = true;
+			}, 0);
+		});
+	};
+
 	this.promise = new Promise(function (configResolve, reject) {
 		$rootScope.languages = _helper.languages;
 		$rootScope.activeLanguage = _helper.languages[0];
@@ -971,7 +1028,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 		$rootScope.localization = _helper.localization[$rootScope.activeLanguage.lang];
 		$rootScope.$watch('activeLanguage', function () {
 			$rootScope.localization = _helper.localization[$rootScope.activeLanguage.lang];
-			console.log($rootScope.localization);
+			if ($rootScope.configs) _this.loadMenu($rootScope.configs);
 		});
 
 		$rootScope.changeLanguage = function (language) {
@@ -982,10 +1039,12 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 			data.domain = data.domain || location.host;
 			var configs = data;var apiHost = configs.apiHost;
 			var domain = configs.domain;
-			//Override translation (if possible)..
 
-			_helper.languages.forEach(function (_ref) {
-				var lang = _ref.lang;
+			_this.configs = configs;
+			$rootScope.configs = configs;
+			//Override translation (if possible)..
+			_helper.languages.forEach(function (_ref2) {
+				var lang = _ref2.lang;
 
 				if (configs.translation[lang]) {
 					var _iteratorNormalCompletion = true;
@@ -1015,19 +1074,12 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 				}
 			});
 
+			if (configs.languages) {
+				$rootScope.languages = configs.languages;
+			}
+
 			new Promise(function (navigationResolve, reject) {
-				$http.get(apiHost + '/menu/get/json', {
-					params: { domain: domain, lang: $rootScope.activeLanguage.id }
-				}).success(function (data) {
-					_this.links = data.results;_this.configs = configs;
-					navigationResolve(_this.links);
-					configResolve(_this.configs);
-					console.log(_this.links);
-					$timeout(function () {
-						$rootScope.$broadcast('metaServiceReady');
-						_this.ready = true;
-					}, 0);
-				});
+				_this.loadMenu(configs, configResolve, navigationResolve);
 			});
 		});
 	});
@@ -1167,7 +1219,6 @@ var apiHost = exports.apiHost = 'http://128.199.227.132'; //'rivercity99.vn';//h
 var registerFields = exports.registerFields = ['userName', 'userPhone', 'userEmail', 'userNote'];
 var languages = exports.languages = [{ lang: "vietnamese", id: 1, display: "Tiếng Việt" }];
 
-// {lang: "english", id: 2, display: "English"}
 var localization = exports.localization = {
 	vietnamese: {
 		register: "ĐĂNG KÝ",
@@ -1350,5 +1401,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-}, {}]
-}, {}, [15]);
+},{}]},{},[15]);
