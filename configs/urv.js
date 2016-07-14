@@ -4,6 +4,10 @@ module.exports = {
 	siteFav: "images/urv-favicon.png",
 	serverPort: 7022,
 	production: true,
+	marquee: {
+		text: "Đặc biệt mở bán 1 NGÀY DUY NHẤT 23/7 cho vị trí 1, 2, 23 được TẶNG 2 LƯỢNG VÀNG",
+		img: "images/1-luong-vang.gif"
+	},
 	apiHost: "http://103.56.157.66/realestate",
 	cssPatch: "./app/style/patches/urv.scss",
 	googleAnalyticId: "UA-77901914-3",
