@@ -2,10 +2,20 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
-		scope: { items: '=' },
+		scope: { items: '=', marque: '=' },
 		transclude: true,
 		template: `<div class="light-slider {{wrapperClass}}"
 			ng-swipe-left="swipeLeft($event)" ng-swipe-right="swipeRight($event)">
+			
+			<div class="marquee">
+				<marquee  ng-if="marque" direction="left" scrollamount="20" onmouseout="this.start()" onmouseover="this.stop()" >
+					<span style="font-size: 30px; color: #fff90d;">
+						<span ng-bind="marque.text"></span>
+						<img src="{{marque.img}}" width="30" height="30" border="0" alt="Photobucket">
+					</span>
+				</marquee>
+			</div>
+			
 			<div id="currentSlide" class="active-slide" ng-style="{'background-image': 'url('+activeSlide.image+')'}"></div>
 			<div id="previousSlide" class="active-slide previous" ng-style="{'background-image': 'url('+previousSlide.image+')'}"></div>
 
