@@ -9,7 +9,7 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 			
 			<div class="marquee">
 				<marquee class="marquee-slider" ng-if="marque" direction="left" scrollamount="10" onmouseout="this.start()" onmouseover="this.stop()" >
-					<span style="font-size: 30px; color: #fff90d;">
+					<span style="font-size: 24px; color: #fff90d;">
 						<span ng-bind="marque.text"></span>
 						<img src="{{marque.img}}" width="30" height="30" border="0" alt="Photobucket">
 					</span>
