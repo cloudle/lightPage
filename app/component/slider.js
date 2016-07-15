@@ -8,6 +8,7 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 			ng-swipe-left="swipeLeft($event)" ng-swipe-right="swipeRight($event)">
 			
 			<div class="marquee">
+			
 				<marquee class="marquee-slider" ng-if="marque" direction="left" scrollamount="10" onmouseout="this.start()" onmouseover="this.stop()" >
 					<span style="font-size: 24px; color: #ffffff;">
 						<img src="{{marque.img}}" width="30" height="30" border="0" alt="Photobucket">
