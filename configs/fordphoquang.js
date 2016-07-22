@@ -5,7 +5,6 @@ module.exports = {
     serverPort: 7029,
     production: false,
     apiHost: "http://103.56.157.66/realestate",
-    // scriptPatch: "./app/patches/anphaland.js",
     cssPatch: "./app/style/patches/fordphoquang.scss",
     googleAnalyticId: "UA-77901914-5",
     facebookAppId: "",
