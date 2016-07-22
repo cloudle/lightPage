@@ -1,7 +1,27 @@
 import { languages, localization } from './utils/helper';
 
-export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout) {
+export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout ) {
 	this.ready = false;
+
+	this.loadMenu = (configs, configResolve, navigationResolve) => {
+		let {apiHost, domain} = configs || this.configs;
+
+		$http.get(`${apiHost}/menu/get/json`, {
+			params: { domain, lang: $rootScope.activeLanguage.id }
+		}).success((data) => {
+			this.links = data.results;
+
+			if (navigationResolve) navigationResolve(this.links);
+			if (configResolve) {
+				configResolve(this.configs);
+			}
+
+			$timeout(() => {
+				$rootScope.$broadcast('metaServiceReady');
+				this.ready = true;
+			}, 0);
+		});
+	};
 
 	this.promise = new Promise((configResolve, reject) => {
 		$rootScope.languages = languages;
@@ -10,7 +30,7 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 		$rootScope.localization = localization[$rootScope.activeLanguage.lang];
 		$rootScope.$watch('activeLanguage', () => {
 			$rootScope.localization = localization[$rootScope.activeLanguage.lang];
-			console.log($rootScope.localization);
+			if ($rootScope.configs) this.loadMenu($rootScope.configs);
 		});
 
 		$rootScope.changeLanguage = (language) => {
@@ -20,6 +40,8 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 		$http.get('/configs').success((data) => {
 			data.domain = data.domain || location.host;
 			let configs = data, { apiHost, domain } = configs;
+			this.configs = configs;
+			$rootScope.configs = configs;
 			//Override translation (if possible)..
 			languages.forEach(({lang}) => {
 				if (configs.translation[lang]) {
@@ -29,19 +51,12 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 				}
 			});
 
+			if (configs.languages) { $rootScope.languages = configs.languages; }
+
+
+
 			new Promise((navigationResolve, reject) => {
-				$http.get(`${apiHost}/menu/get/json`, {
-					params: { domain, lang: $rootScope.activeLanguage.id }
-				}).success((data) => {
-					this.links = data.results; this.configs = configs;
-					navigationResolve(this.links);
-					configResolve(this.configs);
-					console.log(this.links);
-					$timeout(() => {
-						$rootScope.$broadcast('metaServiceReady');
-						this.ready = true;
-					},0);
-				});
+				this.loadMenu(configs, configResolve, navigationResolve)
 			});
 		});
 	});

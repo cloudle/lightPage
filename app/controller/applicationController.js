@@ -1,7 +1,8 @@
 import {
 	generateNumberUUID,
 	registerFields,
-	findParentMenuByAlias
+	findParentMenuByAlias,
+	languages
 } from '../utils/helper';
 
 export class applicationController {
@@ -59,6 +60,7 @@ export class applicationController {
 		});
 
 		let fetchEssentialData = (source) => {
+			console.info("Loading..", source);
 			let { apiHost, domain } = metaService.configs;
 			$http.get(`${apiHost}/banner/get/json`, {
 				params: { domain, type: 'footer', lang: $rootScope.activeLanguage.id }
@@ -73,8 +75,8 @@ export class applicationController {
 			});
 		};
 
-		if (metaService.ready) fetchEssentialData();
-		$rootScope.$on('metaServiceReady', fetchEssentialData);
+		if (metaService.ready) fetchEssentialData("because the data already fetched!");
+		$rootScope.$on('metaServiceReady', () => fetchEssentialData("because meta service ready fired!"));
 
 		this.lastScrollPosition = 0;
 		$(window).scroll((event) => {
@@ -139,11 +141,15 @@ export class applicationController {
 			//Fire Ants trackingGoal hook!
 			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 			//Send form information to Ants!
+
+			console.log(formData.note);
 			if (production) {
 				ants_userInfoListener(formData, false, true);
 			} else {
 				console.log(ants_userInfoListener)
 			}
+			
+			
 
 			//Facebook tracking Lead/CompleteRegistration event
 			if (production) fbq('track', 'Lead');
@@ -199,6 +205,7 @@ export class applicationController {
 				this.userName = _userInfo.name || '';
 				this.userPhone = _userInfo.phone || '';
 				this.userEmail = _userInfo.email || '';
+				this.userNote = _userInfo.note || '';
 
 				//Store Social profile
 				if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
