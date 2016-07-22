@@ -9,9 +9,9 @@ module.exports = {
     cssPatch: "./app/style/patches/fordphoquang.scss",
     googleAnalyticId: "UA-77901914-5",
     facebookAppId: "",
-    facebookPixelId: "578115232338331",
-    antsSiteId: "579563692",
-    antsRegisterGoalId: "579563717",
+    facebookPixelId: "",
+    antsSiteId: "",
+    antsRegisterGoalId: "",
     antsConversionId: "",
     translation: {
         hotline: "090 999 999",
