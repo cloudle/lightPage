@@ -2,7 +2,7 @@ module.exports = {
     domain: "fordphoquang.vn",
     siteName: "fordphoquang",
     siteFav: "images/vavicon.png",
-    serverPort: 7028,
+    serverPort: 7029,
     production: false,
     apiHost: "http://103.56.157.66/realestate",
     // scriptPatch: "./app/patches/anphaland.js",
