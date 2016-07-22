@@ -15,7 +15,6 @@ module.exports = {
     antsConversionId: "",
     translation: {
         hotline: "090 999 999",
-
         vietnamese: {
             news: 'TIN TỨC',
             product: 'sản phẩm',
