@@ -125,7 +125,8 @@ export class applicationController {
 
 			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
 			if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
-			if (this['userNameError'] || this['userPhoneError']) return;
+			if (this['userType'].length < 8) this['userTypeError'] = 'Nhập Tyeeeee';
+			if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
 
 			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 				formData = {
@@ -133,7 +134,11 @@ export class applicationController {
 					domain,
 					fullName: this['userName'],
 					name: this['userName'],
+					type: this['userType'],
+					cate: this['userCate'],
 					phone: this['userPhone'],
+					area: this['userArea'],
+					date: this['userDate'],
 					email: this['userEmail'],
 					note: this['userNote']
 				};
@@ -205,6 +210,9 @@ export class applicationController {
 				this.userName = _userInfo.name || '';
 				this.userPhone = _userInfo.phone || '';
 				this.userEmail = _userInfo.email || '';
+				this.userCate = _userInfo.cate || '';
+				this.userType = _userInfo.type || '';
+				this.userArea = _userInfo.area || '';
 				this.userNote = _userInfo.note || '';
 
 				//Store Social profile

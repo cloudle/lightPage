@@ -1,5 +1,5 @@
 export const apiHost = 'http://128.199.227.132';//'rivercity99.vn';//http://103.56.157.66/realestate';
-export const registerFields = ['userName', 'userPhone','userEmail', 'userNote'];
+export const registerFields = ['userName', 'userPhone','userEmail', 'userNote', 'userType', 'userCate'];
 export const languages = [
 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
 	// {lang: "english", id: 2, display: "English"}
@@ -7,7 +7,7 @@ export const languages = [
 
 export let localization = {
 	vietnamese: {
-		register: "ĐĂNG KÝ",
+		register: "LIÊN HỆ",
 		news: "TIN TỨC",
 		registerTitleHead: `<span>Gọi </span>`,
 		registerTitleTail: ` 
@@ -17,6 +17,7 @@ export let localization = {
 			<span>từ</span> 
 			<span class="strong">CHỦ ĐẦU TƯ</span>`,
 		fullNamePlaceholder: "Họ và tên*",
+		typePlaceholder: "nhập type",
 		phonePlaceholder: "Điện thoại*",
 		emailPlaceholder: "Email (không bắt buộc)",
 		notePlaceholder: "Ghi chú",
