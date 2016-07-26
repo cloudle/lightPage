@@ -6,11 +6,18 @@ export class mainController {
 
 	constructor ($rootScope, $scope, $interval, $timeout, $state, $window, $http, metaService) {
 		let { apiHost, domain } = metaService.configs;
+		this.modalOneActive = false;
+		this.modalTwoActive = false;
+		this.modalThreeActive = false;
+		this.nameInput = "";
+		this.submitModalOne = () => {
+			console.log(this.nameInput);
+		};
 
 		//Tracking code..
 		ga('send', 'pageview');
 		fbq('track', "PageView");
-
+		this.hidden = false;
 		$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
 
 		$http.get(`${apiHost}/page/get/json`, {

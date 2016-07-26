@@ -8,7 +8,7 @@ export default [function () {
 			<div class="popup-backdrop" ng-click="toggle()"></div>
 			<div class="popup-content">
 				<ng-transclude></ng-transclude>
-			</div>
+		</div>
 		</div>`,
 		link: function (scope, element, attrs) {
 			scope.toggle = function () {

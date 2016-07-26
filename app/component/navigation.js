@@ -11,8 +11,8 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				<div class="site-logo" ui-sref="home"></div>
 				
 				<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>
-				<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>
-				
+				<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->
+				<div class="subscription-activator" ng-click="toggleModalPopup()" ng-bind="$root.localization.register"></div>
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
 					<div class="navigation-link" ng-class="{active: productActiveClass()}">
@@ -56,6 +56,10 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 
 			scope.togglePopup = function () {
 				scope.$parent.appCtrl.subscriptionPopup = !scope.$parent.appCtrl.subscriptionPopup;
+			};
+
+			scope.toggleModalPopup = function () {
+				scope.$parent.appCtrl.modalPopup = !scope.$parent.appCtrl.modalPopup;
 			};
 
 			scope.parentLinkNavigate = function (instance) {

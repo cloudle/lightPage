@@ -1,0 +1,28 @@
+@import "../variables";
+
+.modalOne-backdrop {
+  z-index: 3000;
+  position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  visibility: hidden; opacity: 0;
+  transition: opacity 0.5s $cubicAnimation;
+  width: 100%;
+
+  .modalOne-wrapper {
+    margin: 0 auto;
+    width: 480px;
+    margin-top: 5%;
+    transform: scale(0.8);
+    transition: transform 0.2s $bounceAnimation;
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  &.active {
+    opacity: 1; visibility: visible;
+    .modalOne-wrapper {
+      transform: scale(1);
+    }
+  }
+}
+

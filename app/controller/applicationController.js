@@ -13,6 +13,7 @@ export class applicationController {
 	burgerActive = false;
 	subscriptionPopup = false;
 	subscriptionSuccess = false;
+	modalPopup = false;
 
 	constructor ($rootScope, $scope, $state, $timeout, $interval, $window, $http,  ngProgressFactory, metaService) {
 		$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
@@ -22,6 +23,12 @@ export class applicationController {
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');
 		global.$http = $http;
+
+		global.toggleModal = (newVall) => {
+			$scope.$apply(() => {
+				this.modalPopup = newVall ? newVall : !this.modalPopup;
+			});
+		};
 
 		global.togglePopup = (newVal) => {
 			$scope.$apply(() => {
@@ -185,6 +192,7 @@ export class applicationController {
 
 			this.resetRegisterForm();
 			this.subscriptionPopup = false;
+			this.modalPopup = false;
 
 			//Send form to Twin's server!
 			if (production) {

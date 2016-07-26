@@ -1,11 +1,11 @@
 import { isEmailValid } from '../utils/helper';
 
 export default ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
-	return {
-		restrict: 'E',
-		replace: true,
-		scope: { modal: '@', submitText: '@' },
-		template: `<form ng-class="modal" ng-submit="submit($event)">
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: { modal: '@', submitText: '@' },
+        template: `<form ng-class="modal" ng-submit="submit($event)">
 				
 			<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>
 			<div class="heading">
@@ -25,15 +25,8 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<option>Fore Everest</option>
 				<option>Fore Transit</option>
 				<option>Fore New Focus</option>
-				<option>Fore EcoSport</option>		
+				<option>Fore EcoSport</option>				
 			</select>
-			
-			 
-     
-          <label>Hình thức thanh toán:</label>
-          <input required="required" type="radio" id="under_13" value="Trả Góp" ng-model="appCtrl.userCate" name="user_age"><label style="padding-right: 20px" for="under_13" class="light">Trả Góp</label>
-          <input type="radio" id="over_13" value="Trả Hết" ng-model="appCtrl.userCate" name="user_age"><label  for="over_13" class="light">Trả hết</label>
-       
 			
 			<!--<input required="required" checked name="pay" type="radio" value="Trả Góp" ng-model="appCtrl.userCate"/>-->
 			<!--<label>Trả Góp</label>-->
@@ -42,11 +35,11 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			
 			
 			<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>
-			<input style="margin-top: 10px;" type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>
+			<input type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>
 			
 			<label for="area">Chọn khu vực:   </label>
 			<select required="required" id="area" name="user_area" ng-model="appCtrl.userArea">
-				<option>TP Hồ Chí Minh</option>
+				<option value="TP Hồ Chí Minh">TP Hồ Chí Minh</option>
 				<option>Bình Dương</option>
 				<option>Đồng Nai</option>
 				<option>Bà Rịa - Vũng Tàu</option>		
@@ -56,36 +49,35 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<option>Khác</option>
 			</select>
 			
-			
+			<label for="date">Ngày lái thử:   </label>
+			<input ng-model="appCtrl.userDate" type="date"/>
 			
 			<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>
 			<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>
-
-			<!--<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>-->
-			 <div class="commands">
+            <div class="commands">
 				<!--<div class="social-button facebook" ng-click="facebookLogin()"></div>-->
 				<!--<div class="social-button google" ng-click="googleLogin()"></div>-->
 				<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>
 			</div>
+			<!--<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>-->
 			 </fieldset>
 			
 		</form>`,
-		link: function (scope, element, attrs) {
-			let {apiHost, domain} = metaService.configs;
-			scope.configs = metaService.configs;
-			scope.appCtrl = $rootScope.appCtrl;
+        link: function (scope, element, attrs) {
+            let {apiHost, domain} = metaService.configs;
+            scope.configs = metaService.configs;
+            scope.appCtrl = $rootScope.appCtrl;
+            scope.submit = $rootScope.submitRegister;
 
-			scope.submit = $rootScope.submitRegister;
-
-		// 	scope.googleLogin = function () {
-		// 			ants_googleAuthClick();
-		// 		};
-        //
-		// 		scope.facebookLogin = function () {
-		// 			ants_fbAuthClick('login');
-		// };
-		}
-	}
+            // scope.googleLogin = function () {
+            //     ants_googleAuthClick();
+            // };
+            //
+            // scope.facebookLogin = function () {
+            //     ants_fbAuthClick('login');
+            // };
+        }
+    }
 }]
 
 var fields = ['userName', 'userPhone','userEmail', 'userType', 'userCate', 'userArea','userDate'];

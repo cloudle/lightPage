@@ -44,7 +44,7 @@ body {
       }
 
       &.active {
-        background-color: $activeColor;
+        background-color: #0f6293;
       }
 
       .sub-navigations {
@@ -100,7 +100,7 @@ body {
 }
 
 .footer {
-  background-color: $hoverColor;
+  background-color: #0d417b;
 
   .copyright {
     background-color: darken(#1b2859, 10);

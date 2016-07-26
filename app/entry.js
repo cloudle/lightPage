@@ -13,6 +13,8 @@ import navigationLink from "./component/navigationLink";
 import footer from "./component/footer";
 import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
+import modal from "./component/modal";
+import modalOne from "./component/modalOne";
 import popup from "./component/popup";
 import slider from "./component/slider";
 import newsArea from "./component/newsArea";
@@ -35,6 +37,8 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('lightFooter', footer)
 	.directive('lightSlider', slider)
 	.directive('newsArea', newsArea)
+	.directive('modal', modal)
+	.directive('modalOne', modalOne)
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 

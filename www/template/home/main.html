@@ -1,8 +1,53 @@
 <light-slider items="mainCtrl.sliders" class="slider" ng-style="{height: mainCtrl.sliderHeight+'px'}">
 	<div class="content-wrapper" ng-style="{height: mainCtrl.sliderHeight+'px'}">
-		<subscription-form wrapper-class="subscription-form floating" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+		<!--<subscription-form wrapper-class="subscription-form floating" ng-if="!appCtrl.subscriptionPopup"></subscription-form>-->
 	</div>
 </light-slider>
+
+
+<modal-one enable="mainCtrl.modalOneActive">
+	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+</modal-one>
+
+<modal-one enable="mainCtrl.modalTwoActive">
+	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+</modal-one>
+
+<modal-one enable="mainCtrl.modalThreeActive">
+	<modal modal="modal"></modal>
+</modal-one>
+
+
+<div class="light-row" style="padding: 35px 10%;background: white;color: black; font-size:14px">
+
+	<div class="column">
+		<div class="thumb-image-wrapper" style="height: 109px; margin-bottom: 20px">
+			<div><a style="cursor: pointer" ng-click="mainCtrl.modalOneActive = true"><img style="width: 100%;" src="https://c1.staticflickr.com/9/8356/27846509194_a0274125da_o.png"></img></a>
+			</div>
+		</div>
+		<span style="font-size: 18px; font-weight: normal; text-transform:uppercase">BÁO GIÁ TỐT NHẤT</span><a href="/san-pham/ud-quester-cwe64r-08ms"  style="text-decoration: none; color: #fcb400; font-size: 16px;"></a>
+
+		<p>Chính sách giá và khuyến mãi sẽ thay đổi theo từng thời điểm, hãy đăng kí ngay để nhận báo giá tốt nhất</p>
+	</div>
+
+	<div class="column">
+		<div class="thumb-image-wrapper" style="height: 109px; margin-bottom: 20px">
+			<a style="cursor: pointer" ng-click="mainCtrl.modalTwoActive = true"><img style="width: 100%;" src="https://c1.staticflickr.com/9/8337/27846509204_834ddbe4bd_o.png"></img></a>
+		</div>
+		<span style="font-size: 18px; font-weight: normal; text-transform:uppercase;">TƯ VẤN MUA XE TRẢ GÓP</span><a href="/san-pham/dau-keo-man-tgs-33-360-2-cau-6x4" style="text-decoration: none; color: #f24841;font-size: 16px;"></a>
+
+		<p>Hãy đăng kí ngay để được tư vấn gói trả góp có lợi nhất với mức lãi suất thấp nhất</p>
+	</div>
+
+	<div class="column">
+		<div class="thumb-image-wrapper" style="height: 109px; margin-bottom: 20px">
+			<a style="cursor: pointer" ng-click="mainCtrl.modalThreeActive = true"><img style="width: 100%;" src="https://c1.staticflickr.com/9/8636/28430804606_208cf14e77_o.png"></img></a>
+		</div>
+		<span style="font-size: 18px; font-weight: normal; text-transform:uppercase;">LÁI XE THỬ MIỄN PHÍ</span><a href="/san-pham/xe-dau-keo-trung-quoc-jac-hfc4253k5r1" style="text-decoration: none; color: #f24841;font-size: 16px;"></a>
+
+		<p>Lái thử xe là một bước rất quan trọng, hãy đăng kí để trải nghiệm ngay!</p>
+	</div>
+</div>
 
 <!--<div class="slider">-->
 	<!--<div class="parallax-area" ng-parallax pattern="'images/river-view.jpg'">-->
@@ -13,7 +58,6 @@
 <!--</div>-->
 
 <div class="section-heading" ng-bind-html="mainCtrl.features[0].Categorie.description | unsafe"></div>
-
 <div class="section-canvas">
 	<div class="content-wrapper">
 		<div class="bullets">
