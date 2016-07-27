@@ -47,7 +47,9 @@
 			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 			ga('create', '{{googleAnalyticId}}', 'auto');
+            ga('require', 'linkid');
 			ga('send', 'pageview');
+            ga('require', 'displayfeatures');
 			console.log("google load..");
 		</script>
 	{{/if}}

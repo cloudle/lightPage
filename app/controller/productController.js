@@ -4,6 +4,9 @@ export class productController {
 	constructor($rootScope, $window, $http, $state, metaService) {
 		let {apiHost, domain} = metaService.configs;
 
+		this.modalOneActive = false;
+		this.modalTwoActive = false;
+		this.modalThreeActive = false;
 		//Tracking code..
 		ga('send', 'pageview');
 		fbq('track', "PageView");

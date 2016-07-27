@@ -15,6 +15,9 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				<div class="subscription-activator" ng-click="toggleModalPopup()" ng-bind="$root.localization.register"></div>
 				<div class="navigation-menu">
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
+					<!--<div class="navigation-link" ng-class="{active: childproductActiveClass()}">-->
+						<!--<div class="parent-link" ui-sref="childProduct" ng-bind="$root.localization.childproduct"></div>-->
+					<!--</div>-->
 					<div class="navigation-link" ng-class="{active: productActiveClass()}">
 						<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>
 					</div>
@@ -78,6 +81,9 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 			}
 			scope.productActiveClass = () => {
 				return $state.current.name === 'product';
+			}
+			scope.childproductActiveClass = () => {
+				return $state.current.name === 'ford';
 			}
 		}
 	}

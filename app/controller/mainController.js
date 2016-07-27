@@ -9,10 +9,16 @@ export class mainController {
 		this.modalOneActive = false;
 		this.modalTwoActive = false;
 		this.modalThreeActive = false;
-		this.nameInput = "";
-		this.submitModalOne = () => {
-			console.log(this.nameInput);
-		};
+
+
+		// this.submitModalOne = () => {
+		// 	console.log(this.nameInput);
+		// };
+
+		// this.showModalOne  = () => {
+		// 	console.log("??");
+		// 	this.modalOneActive = true;
+		// };
 
 		//Tracking code..
 		ga('send', 'pageview');

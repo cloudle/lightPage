@@ -1,0 +1,8 @@
+<div class="product-cate-menu" ng-controller="productCateMenuCtrl as productCateMenuCtrl">
+    <div class="menu-item"
+         ng-repeat="menu in productCateMenuCtrl.subMenus"
+         ng-click="productCateMenuCtrl.scrollTo(menu.contentId)">
+
+        <span ng-bind="menu.title"></span>
+    </div>
+</div>

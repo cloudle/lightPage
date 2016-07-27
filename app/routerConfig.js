@@ -7,6 +7,7 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 			.state('home', mainRoute)
 			.state('page', pageRoute)
 			.state('news', newsRoute)
+			.state('childProduct', childproductRoute)
 			.state('product', productRoute);
 
 		$urlRouterProvider.otherwise('/splash');
@@ -93,5 +94,20 @@ var productRoute = {
 	}
 };
 
+var childproductRoute = {
+	url: '/ford/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@childProduct': {
+			templateUrl: 'template/home/childProduct.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
 
 export default routerConfig;

@@ -19,6 +19,7 @@ export class applicationController {
 		$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
 		$rootScope.appCtrl = this;
 
+		this.name = "Cloud!";
 		$rootScope.activeContents = [];
 		this.progress = ngProgressFactory.createInstance();
 		this.progress.setColor('#FA8322');

@@ -1,0 +1,17 @@
+.product-cate-menu {
+  position: fixed; top: $navigationHeight; left: 0; right: 360px;
+  z-index: 2000; background-color: white;
+
+  .menu-item {
+    display: inline-block; cursor: pointer; user-select: none;
+    margin: 10px 5px; padding: 5px 10px;
+    border: solid 1px #ededed;
+    border-radius: 3px;
+    font-size: 14px;
+
+    &.active, &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+}
