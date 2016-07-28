@@ -12,10 +12,10 @@ body {
 
 
 .navigation-wrapper {
-  background-color: #0d417b;
+  background-color: white;
 
   .site-logo {
-    background-image: url('images/logo2.png');
+    background-image: url('images/logosaigonford.png');
     width: 290px;
     height: 60px;
     margin-top: 2px;
@@ -35,12 +35,12 @@ body {
 
   .navigation-menu {
     .navigation-link {
-      color: #FFFFFF;
+      color: #273B69;
       font-weight: 600;
 
       &:hover {
-        background-color: #002142;
-        color: #dcba2c;
+        background-color: #074989;
+        color: yellow;
       }
 
       &.active {

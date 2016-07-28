@@ -8,6 +8,12 @@
     flex: 1; min-width: 300px;
     margin: 25px;
 
+    .fix {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
     @for $i from 1 through 12 {
       &.size-#{$i} {
         flex: #{$i}

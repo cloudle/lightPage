@@ -1,5 +1,5 @@
 export const apiHost = 'http://128.199.227.132';//'rivercity99.vn';//http://103.56.157.66/realestate';
-export const registerFields = ['userName', 'userPhone','userEmail', 'userNote', 'userType', 'userCate'];
+export const registerFields = ['userName', 'userPhone','userEmail', 'userNote', 'userType', 'userCate', 'userDate'];
 export const languages = [
 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
 	// {lang: "english", id: 2, display: "English"}

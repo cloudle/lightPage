@@ -25,11 +25,11 @@ export class childproductController {
             })
         } else {
             $http.get(`${apiHost}/banner/get/json`, {
-                params: {domain, type: 'ford', lang: $rootScope.activeLanguage.id}
+                params: {domain, type: 'fordfiesta', lang: $rootScope.activeLanguage.id}
             }).success(data => {
                 fbq('track', 'ViewContent');
 
-                this.allchildProduct = data.results;
+                $rootScope.allchildProduct = data.results;
             });
         }
     }

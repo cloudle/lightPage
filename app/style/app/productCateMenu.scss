@@ -1,5 +1,5 @@
 .product-cate-menu {
-  position: fixed; top: $navigationHeight; left: 0; right: 360px;
+  top: $navigationHeight; left: 0; right: 0px;
   z-index: 2000; background-color: white;
 
   .menu-item {
@@ -10,7 +10,7 @@
     font-size: 14px;
 
     &.active, &:hover {
-      background-color: red;
+      background-color: #074989;;
       color: white;
     }
   }

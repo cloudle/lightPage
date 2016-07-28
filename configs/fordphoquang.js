@@ -15,6 +15,7 @@ module.exports = {
     translation: {
         hotline: "093 898 0139",
         vietnamese: {
+            productnews: `SẢN PHẨM KHÁC`,
             childproduct: 'forddd',
             news: 'TIN TỨC',
             product: 'sản phẩm',

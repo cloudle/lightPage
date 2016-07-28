@@ -8,6 +8,11 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 			.state('page', pageRoute)
 			.state('news', newsRoute)
 			.state('childProduct', childproductRoute)
+			.state('fordEcosport', fordecosportRoute)
+			.state('fordEverest', fordeverestRoute)
+			.state('fordFocus', fordfocusRoute)
+			.state('fordRanger', fordrangerRoute)
+			.state('fordTransit', fordtransitRoute)
 			.state('product', productRoute);
 
 		$urlRouterProvider.otherwise('/splash');
@@ -95,7 +100,7 @@ var productRoute = {
 };
 
 var childproductRoute = {
-	url: '/ford/:alias',
+	url: '/ford-fiesta/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -104,10 +109,89 @@ var childproductRoute = {
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
 		'content@childProduct': {
-			templateUrl: 'template/home/childProduct.html',
+			templateUrl: 'template/fordProduct/childProduct.html',
 			controller: 'childproductCtrl as childproductCtrl'
 		}
 	}
 };
 
+var fordecosportRoute = {
+	url: '/ford-ecosport/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordEcosport': {
+			templateUrl: 'template/fordProduct/fordEcosport.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordeverestRoute = {
+	url: '/ford-everest/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordEverest': {
+			templateUrl: 'template/fordProduct/fordEverest.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordfocusRoute = {
+	url: '/ford-focus/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordFocus': {
+			templateUrl: 'template/fordProduct/fordFocus.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordrangerRoute = {
+	url: '/ford-ranger/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordRanger': {
+			templateUrl: 'template/fordProduct/fordRanger.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordtransitRoute = {
+	url: '/ford-transit/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordTransit': {
+			templateUrl: 'template/fordProduct/fordTransit.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
 export default routerConfig;

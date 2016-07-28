@@ -1,0 +1,41 @@
+.under-slider{
+//  height: $sliderHeight;
+  position: absolute;
+  background-color: white;
+  background-size: cover;
+ // top: 700px;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3000;
+  border: solid 1px #ededed;
+  border-radius: 3px;
+  margin: 0 auto;
+
+  .under-logo {
+    float: left; height: 40px; width: 180px;
+    //margin-top: 40px;
+    margin: 0 auto;
+    background-image: url('images/underlogo2.png');
+    background-size: contain; background-position: center center;
+    background-repeat: no-repeat;
+
+
+  }
+  .contactunder-logo {
+    float: right; height: 50px; width: 180px;
+    //margin-top: 40px;
+   // margin: 0 auto;
+    background-image: url('images/underlogophone.png');
+    background-size: contain; background-position: center center;
+    background-repeat: no-repeat;
+
+
+  }
+
+  .active-slide {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 3000;
+  }
+}

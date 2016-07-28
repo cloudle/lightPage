@@ -1,4 +1,3 @@
-
 <div class="page-content-section">
 	<div class="content-wrapper">
 		<div class="page-content news">
@@ -14,16 +13,21 @@
 			<div class="all-news light-row" ng-if="!singleMode">
 				<div class="column" ui-sref="product({alias: product.Post.alias})"
 						 ng-repeat="product in productCtrl.allProduct">
-					<div class="title" ng-bind="product.Post.title"></div>
-					<div class="timestamp">
-						<span>Cập nhật gần nhất: </span>
-						<span ng-bind="productCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-					</div>
-					<div class="summary" ng-bind-html="product.Post.description | unsafe"></div>
+					<!--<div class="title" ng-bind="product.Post.title"></div>-->
+					<!--<div class="timestamp">-->
+						<!--&lt;!&ndash;<span>Cập nhật gần nhất: </span>&ndash;&gt;-->
+						<!--&lt;!&ndash;<span ng-bind="productCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>&ndash;&gt;-->
+						<!--</div>-->
+						<!--<div class="summary" ng-bind-html="product.Post.description | unsafe"></div>-->
+						<!--<div class="thumb-image-wrapper">-->
+							<!--<div class="image image-hover-effect-zoom-120"-->
+								 <!--ng-style="{'background-image': 'url('+product.Post.image+')'}"></div>-->
+					<!--</div>-->
 					<div class="thumb-image-wrapper">
-						<div class="image image-hover-effect-zoom-120"
-								 ng-style="{'background-image': 'url('+product.Post.image+')'}"></div>
-					</div>
+						<div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div></div>
+					<div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;">FORD FIESTA</span></p></div>
+					<div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div>
+
 				</div>
 			</div>
 		</div>
