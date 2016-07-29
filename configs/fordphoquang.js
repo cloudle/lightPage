@@ -3,7 +3,7 @@ module.exports = {
     siteName: "fordphoquang",
     siteFav: "images/vavicon.png",
     serverPort: 7029,
-    production: false,
+    production: true,
     apiHost: "http://103.56.157.66/realestate",
     cssPatch: "./app/style/patches/fordphoquang.scss",
     googleAnalyticId: "UA-81118142-1",
