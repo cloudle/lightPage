@@ -6,10 +6,10 @@
                 <div ng-include="'template/home/productCateMenu.html'"></div>
 
                 <div style="margin-top: 20px" class="title" ng-bind="childproductCtrl.activeNews.title"></div>
-                <div class="timestamp">
-                    <span>Cập nhật gần nhất: </span>
-                    <span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-                </div>
+                <!--<div class="timestamp">-->
+                    <!--<span>Cập nhật gần nhất: </span>-->
+                    <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+                <!--</div>-->
                 <div class="news-details" ng-bind-html="childproductCtrl.activeNews.content | unsafe"></div>
             </div>
 

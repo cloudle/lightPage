@@ -2,8 +2,8 @@
 	<div class="content-wrapper" ng-style="{height: mainCtrl.sliderHeight+'px'}">
 
 		<!--<subscription-form wrapper-class="subscription-form floating" ng-if="!appCtrl.subscriptionPopup"></subscription-form>-->
-	</div>
-	<div ng-style="{height: mainCtrl.sliderHeight+'px'}" ng-include="'template/home/underSlider.html'"></div>
+	</div><div ng-include="'template/home/underSlider.html'"></div>
+
 </light-slider>
 
 
@@ -24,7 +24,9 @@
 	<div class="column">
 		<p><span style="font-size: 18px; font-weight: normal; text-transform:uppercase">BÁO GIÁ TỐT NHẤT</span></p>
 		<p>Chính sách giá và khuyến mãi sẽ thay đổi theo từng thời điểm, hãy đăng kí ngay để nhận báo giá tốt nhất</p>
-		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer;display:block;" ng-click="mainCtrl.modalOneActive = true"><img src="https://c8.staticflickr.com/9/8607/28501299991_64ddae98da_o.jpg"></a></div>
+		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer;display:block;"
+				ng-click="mainCtrl.modalOneActive = true">
+			<img src="https://c8.staticflickr.com/9/8607/28501299991_64ddae98da_o.jpg"></a></div>
 	</div>
 	<div class="column">
 		<p><span style="font-size: 18px; font-weight: normal; text-transform:uppercase">TƯ VẤN MUA XE TRẢ GÓP</span></p>
@@ -37,7 +39,6 @@
 		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });" style="cursor: pointer;display:block;" ng-click="mainCtrl.modalThreeActive = true"><img src="https://c2.staticflickr.com/9/8545/27964156393_d99bbf5023_o.jpg"></a></div>
 	</div>
 </div>
-
 
 <!--<div class="slider">-->
 	<!--<div class="parallax-area" ng-parallax pattern="'images/river-view.jpg'">-->
@@ -83,5 +84,5 @@
 	</div>
 
 </news-area>
-
+<button>heyyy</button>
 <light-footer columns="appCtrl.footers"></light-footer>

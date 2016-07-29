@@ -3,23 +3,22 @@
         <div class="page-content news">
             <div class="single-news" ng-if="childproductCtrl.singleMode">
                 <div ng-include="'template/home/productCateMenu.html'"></div>
-
-                <div style="margin-top: 20px" class="title" ng-bind="childproductCtrl.activeNews.title"></div>
-                <div class="timestamp">
-                    <span>Cập nhật gần nhất: </span>
-                    <span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-                </div>
+                <!--<div style="margin-top: 20px" class="title" ng-bind="childproductCtrl.activeNews.title"></div>-->
+                <!--<div class="timestamp">-->
+                    <!--<span>Cập nhật gần nhất: </span>-->
+                    <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+                <!--</div>-->
                 <div class="news-details" ng-bind-html="childproductCtrl.activeNews.content | unsafe"></div>
             </div>
 
             <div class="all-news light-row" ng-if="!singleMode">
                 <div class="column" ui-sref="fordEcosport({alias: fordEcosport.Post.alias})"
                      ng-repeat="childproduct in fordEcosport">
-                    <div class="title" ng-bind="childproduct.Post.title"></div>
-                    <div class="timestamp">
-                        <span>Cập nhật gần nhất: </span>
-                        <span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-                    </div>
+                    <!--<div class="title" ng-bind="childproduct.Post.title"></div>-->
+                    <!--<div class="timestamp">-->
+                        <!--<span>Cập nhật gần nhất: </span>-->
+                        <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+                    <!--</div>-->
                     <div class="summary" ng-bind-html="childproduct.Post.description | unsafe"></div>
                     <div class="thumb-image-wrapper">
                         <div class="image image-hover-effect-zoom-120"
@@ -35,7 +34,7 @@
                     <div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>
                     <div class="light-row quatro">
                         <div class="column light-column click-able" ng-repeat="fordeco in fordEcosport" ui-sref="fordEcosport({alias: fordeco.Post.alias})">
-                            <div class="title" ng-bind="fordeco.Post.title"></div>
+                            <!--<div class="title" ng-bind="fordeco.Post.title"></div>-->
                             <div class="thumb-image-wrapper">
                                 <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+fordeco.Post.image+')'}"></div>
                             </div>

@@ -11,9 +11,9 @@ export class mainController {
 		this.modalThreeActive = false;
 
 
-		// this.submitModalOne = () => {
-		// 	console.log(this.nameInput);
-		// };
+		this.submitModalOne = () => {
+			console.log('heheheh');
+		};
 
 		// this.showModalOne  = () => {
 		// 	console.log("??");
