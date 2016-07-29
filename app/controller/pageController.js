@@ -4,6 +4,10 @@ export class pageController {
 	constructor ($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
 		let { apiHost, domain } = metaService.configs;
 
+		this.modalOneActive = false;
+		this.modalTwoActive = false;
+		this.modalThreeActive = false;
+
 		//Tracking code..
 		ga('send', 'pageview');
 		fbq('track', "PageView");

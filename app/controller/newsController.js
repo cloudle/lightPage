@@ -3,7 +3,9 @@ export class newsController {
 
 	constructor ($rootScope, $scope, $window, $http, $state, metaService) {
 		let { apiHost, domain } = metaService.configs;
-		
+		this.modalOneActive = false;
+		this.modalTwoActive = false;
+		this.modalThreeActive = false;
 
 		//Tracking code..
 		ga('send', 'pageview');

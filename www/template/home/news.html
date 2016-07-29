@@ -28,20 +28,20 @@
 
 		<light-sidebar>
 			<card></card>
-			<div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center" ng-click="productCtrl.modalOneActive = true">
+			<div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center" ng-click="newsCtrl.modalOneActive = true">
 				<img src="https://c4.staticflickr.com/8/7596/28502136811_a6c99539f6_m.jpg"/>
 			</div>
 
 			<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });"
 					style="cursor: pointer;text-align: center;display:block;"
-					ng-click="productCtrl.modalTwoActive = true">
+					ng-click="newsCtrl.modalTwoActive = true">
 				<img src="https://c6.staticflickr.com/9/8721/28502136821_67f209743d_m.jpg">
 			</a>
 			</div>
 			<div>
 				<a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });"
 				   style="cursor: pointer;text-align: center;display:block;"
-				   ng-click="productCtrl.modalThreeActive = true">
+				   ng-click="newsCtrl.modalThreeActive = true">
 					<img src="https://c6.staticflickr.com/9/8116/27965018013_8380d8e875_m.jpg">
 				</a>
 			</div>
@@ -49,4 +49,15 @@
 	</div>
 </div>
 
+<modal-one enable="newsCtrl.modalOneActive">
+	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+</modal-one>
+
+<modal-one enable="newsCtrl.modalTwoActive">
+	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+</modal-one>
+
+<modal-one enable="newsCtrl.modalThreeActive">
+	<modal modal="modal"></modal>
+</modal-one>
 <light-footer columns="appCtrl.footers"></light-footer>
