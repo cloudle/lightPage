@@ -10,9 +10,9 @@
                         <div class="column light-column click-able" ng-repeat="tra in childproductCtrl.allfordTra" ui-sref="fordTransit({alias: tra.Post.alias})">
                             <!--<div class="title" ng-bind="fordeco.Post.title"></div>-->
                             <div class="thumb-image-wrapper">
-                                <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+tra.Post.image+')'}"></div>
+                                <div class="image" ng-style="{'background-image': 'url('+tra.Post.image+')'}" style="height:180px;"></div>
                             </div>
-                            <div class="description" ng-bind="tra.Post.description"></div>
+                            <div class="summary ng-binding" ng-bind-html="tra.Post.description | unsafe"></div>
                         </div>
                     </div>
                 </news-area>
@@ -20,15 +20,17 @@
 
             <div class="all-news light-row" ng-if="!singleMode">
                 <div class="column" ui-sref="fordTransit({alias: transit.Post.alias})" ng-repeat="transit in childproductCtrl.allfordTransit">
-                    <div class="title" ng-bind="transit.Post.title"></div>
-                    <div class="timestamp">
-                        <span>Cập nhật gần nhất: </span>
-                        <span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-                    </div>
-                    <div class="summary" ng-bind-html="transit.Post.description | unsafe"></div>
+                    <!--<div class="title" ng-bind="transit.Post.title"></div>-->
+                    <!--<div class="timestamp">-->
+                        <!--<span>Cập nhật gần nhất: </span>-->
+                        <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+                    <!--</div>-->
+                    <!--<div class="summary" ng-bind-html="transit.Post.description | unsafe"></div>-->
                     <div class="thumb-image-wrapper">
-                        <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+transit.Post.image+')'}"></div>
+                        <div class="image" ng-style="{'background-image': 'url('+transit.Post.image+')'}" style="height:265px;"></div>
                     </div>
+                    <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="transit.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                    <div class="summary ng-binding" ng-bind-html="transit.Post.description | unsafe"></div>
                 </div>
             </div>
             <!--<news-area>-->
