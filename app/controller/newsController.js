@@ -30,9 +30,8 @@ export class newsController {
 				}).success(data => {
 					fbq('track', 'ViewContent');
 					this.allNews = data.results;
-					
-
 				});
+
 			}
 		}
 		this.loadData();

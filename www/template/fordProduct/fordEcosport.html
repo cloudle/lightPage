@@ -3,86 +3,71 @@
         <div class="page-content news">
             <div class="single-news" ng-if="childproductCtrl.singleMode">
                 <div ng-include="'template/home/productCateMenu.html'"></div>
-                <!--<div style="margin-top: 20px" class="title" ng-bind="childproductCtrl.activeNews.title"></div>-->
-                <!--<div class="timestamp">-->
-                    <!--<span>Cập nhật gần nhất: </span>-->
-                    <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
-                <!--</div>-->
                 <div class="news-details" ng-bind-html="childproductCtrl.activeNews.content | unsafe"></div>
+                <news-area>
+                    <div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>
+                        <div class="light-row quatro">
+                            <div class="column light-column click-able" ng-repeat="news in childproductCtrl.allfordEco" ui-sref="fordEcosport({alias: news.Post.alias})">
+                                <!--<div class="title" ng-bind="fordeco.Post.title"></div>-->
+                                <div class="thumb-image-wrapper">
+                                    <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>
+                                </div>
+                                <div class="description" ng-bind="news.Post.description"></div>
+                            </div>
+                        </div>
+                </news-area>
             </div>
 
             <div class="all-news light-row" ng-if="!singleMode">
-                <div class="column" ui-sref="fordEcosport({alias: fordEcosport.Post.alias})"
-                     ng-repeat="childproduct in fordEcosport">
-                    <!--<div class="title" ng-bind="childproduct.Post.title"></div>-->
-                    <!--<div class="timestamp">-->
-                        <!--<span>Cập nhật gần nhất: </span>-->
-                        <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
-                    <!--</div>-->
-                    <div class="summary" ng-bind-html="childproduct.Post.description | unsafe"></div>
+                <div class="column" ui-sref="fordEcosport({alias: news.Post.alias})" ng-repeat="news in childproductCtrl.allfordEcosport">
+                        <div class="title" ng-bind="news.Post.title"></div>
+                        <div class="timestamp">
+                        <span>Cập nhật gần nhất: </span>
+                        <span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
+                    </div>
+                    <div class="summary" ng-bind-html="news.Post.description | unsafe"></div>
                     <div class="thumb-image-wrapper">
-                        <div class="image image-hover-effect-zoom-120"
-                             ng-style="{'background-image': 'url('+childproduct.Post.image+')'}"></div>
+                        <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>
                     </div>
                 </div>
-
             </div>
-
-            <news-area>
-
-                <div class="content-wrapper">
-                    <div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>
-                    <div class="light-row quatro">
-                        <div class="column light-column click-able" ng-repeat="fordeco in fordEcosport" ui-sref="fordEcosport({alias: fordeco.Post.alias})">
-                            <!--<div class="title" ng-bind="fordeco.Post.title"></div>-->
-                            <div class="thumb-image-wrapper">
-                                <div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+fordeco.Post.image+')'}"></div>
-                            </div>
-                            <div class="description" ng-bind="fordeco.Post.description"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </news-area>
-
+            <!--<news-area>-->
+                <!--<div class="content-wrapper">-->
+                <!--<div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>-->
+                <!--<div class="light-row quatro">-->
+                    <!--<div class="column light-column click-able" ng-repeat="news in childproductCtrl.allfordEcosport" ui-sref="fordEcosport({alias: news.Post.alias})">-->
+                        <!--&lt;!&ndash;<div class="title" ng-bind="fordeco.Post.title"></div>&ndash;&gt;-->
+                        <!--<div class="thumb-image-wrapper">-->
+                            <!--<div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>-->
+                        <!--</div>-->
+                        <!--<div class="description" ng-bind="news.Post.description"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+            <!--</news-area>-->
         </div>
-
-        <modal-one enable="childproductCtrl.modalOneActive">
-            <subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
-        </modal-one>
-
-        <modal-one enable="childproductCtrl.modalTwoActive">
-            <subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
-        </modal-one>
-
-        <modal-one enable="childproductCtrl.modalThreeActive">
-            <modal modal="modal"></modal>
-        </modal-one>
-
 
         <light-sidebar>
             <card></card>
-            <div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center"
-                 ng-click="childproductCtrl.modalOneActive = true">
+            <div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center" ng-click="productCtrl.modalOneActive = true">
                 <img src="https://c4.staticflickr.com/8/7596/28502136811_a6c99539f6_m.jpg"/>
             </div>
 
             <div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });"
                     style="cursor: pointer;text-align: center;display:block;"
-                    ng-click="childproductCtrl.modalTwoActive = true">
+                    ng-click="productCtrl.modalTwoActive = true">
                 <img src="https://c6.staticflickr.com/9/8721/28502136821_67f209743d_m.jpg">
             </a>
             </div>
             <div>
                 <a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });"
                    style="cursor: pointer;text-align: center;display:block;"
-                   ng-click="childproductCtrl.modalThreeActive = true">
+                   ng-click="productCtrl.modalThreeActive = true">
                     <img src="https://c6.staticflickr.com/9/8116/27965018013_8380d8e875_m.jpg">
                 </a>
             </div>
         </light-sidebar>
     </div>
 </div>
-
 
 <light-footer columns="appCtrl.footers"></light-footer>

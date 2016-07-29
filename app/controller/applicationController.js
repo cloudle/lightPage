@@ -67,6 +67,7 @@ export class applicationController {
 			}, 250);
 		});
 
+
 		let fetchEssentialData = (source) => {
 			console.info("Loading..", source);
 			let { apiHost, domain } = metaService.configs;
@@ -82,45 +83,6 @@ export class applicationController {
 				$rootScope.news = data.results;
 			});
 
-			$http.get(`${apiHost}/banner/get/json`, {
-				params: {domain, type: 'fordranger', lang: $rootScope.activeLanguage.id}
-			}).success(data => {
-				fbq('track', 'ViewContent');
-
-				$rootScope.fordRanger = data.results;
-			});
-
-			$http.get(`${apiHost}/banner/get/json`, {
-				params: {domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id}
-			}).success(data => {
-				fbq('track', 'ViewContent');
-
-				$rootScope.fordEcosport = data.results;
-			});
-
-			$http.get(`${apiHost}/banner/get/json`, {
-				params: {domain, type: 'fordeverest', lang: $rootScope.activeLanguage.id}
-			}).success(data => {
-				fbq('track', 'ViewContent');
-
-				$rootScope.fordEverest = data.results;
-			});
-
-			$http.get(`${apiHost}/banner/get/json`, {
-				params: {domain, type: 'fordfocus', lang: $rootScope.activeLanguage.id}
-			}).success(data => {
-				fbq('track', 'ViewContent');
-
-				$rootScope.fordFocus = data.results;
-			});
-
-			$http.get(`${apiHost}/banner/get/json`, {
-				params: {domain, type: 'fordtransit', lang: $rootScope.activeLanguage.id}
-			}).success(data => {
-				fbq('track', 'ViewContent');
-
-				$rootScope.fordTransit = data.results;
-			});
 		};
 
 		if (metaService.ready) fetchEssentialData("because the data already fetched!");
