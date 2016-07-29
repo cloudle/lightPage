@@ -77,6 +77,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 
 			scope.submit = $rootScope.submitRegister;
 
+
 		// 	scope.googleLogin = function () {
 		// 			ants_googleAuthClick();
 		// 		};
