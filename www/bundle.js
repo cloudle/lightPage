@@ -589,7 +589,9 @@ var applicationController = exports.applicationController = function application
 		});
 
 		//Fire Ants trackingGoal hook!
-		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
+		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
+		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
 		//Send form information to Ants!
 
 		console.log(formData.note);
