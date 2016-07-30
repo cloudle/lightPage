@@ -57,26 +57,72 @@
 
 	{{/if}}
 
+
+  {{#if googleConversionId}}
+      <!-- Google Code for Chuyen Doi Cuoc Goi Conversion Page -->
+      <script type="text/javascript">
+          /* <![CDATA[ */
+          var google_conversion_id = {{googleConversionId}};
+          var google_conversion_language = "en";
+          var google_conversion_format = "3";
+          var google_conversion_color = "ffffff";
+          var google_conversion_label = "bGLtCNOXz2gQt_OuogM";
+          var google_remarketing_only = false;
+          /* ]]> */
+      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+      </script>
+      <noscript>
+          <div style="display:inline;">
+              <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=bGLtCNOXz2gQt_OuogM&amp;guid=ON&amp;script=0"/>
+          </div>
+      </noscript>
+
+
+  {{/if}}
+
+
 	{{#if googleConversionId}}
-		<!-- Google Code Conversion Page -->
-		<script type="text/javascript">
-			/* <![CDATA[ */
-			var google_conversion_id = {{googleConversionId}};
-			var google_conversion_language = "en";
-			var google_conversion_format = "3";
-			var google_conversion_color = "ffffff";
-			var google_conversion_label = "ftGACLCSqmcQzN2etwM";
-			var google_remarketing_only = false;
-			/* ]]> */
-		</script>
-		<script type="text/javascript"  src="//www.googleadservices.com/pagead/conversion.js">
-		</script>
-		<noscript>
-			<div style="display:inline;">
-				<img height="1" width="1" style="border-style:none;" alt=""  src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=ftGACLCSqmcQzN2etwM&guid=ON&script=0"/>
-			</div>
-		</noscript>
-	{{/if}}
+        <!-- Google Code for Form Dang Ky Lai Thu Conversion Page -->
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = {{googleConversionId}};
+            var google_conversion_language = "en";
+            var google_conversion_format = "3";
+            var google_conversion_color = "ffffff";
+            var google_conversion_label = "JiQZCOTH1GgQt_OuogM";
+            var google_remarketing_only = false;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
+            </div>
+        </noscript>
+
+    {{/if}}
+
+  <!-- Google Code dành cho Thẻ tiếp thị lại -->
+  <!--------------------------------------------------
+  Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
+  --------------------------------------------------->
+  <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 877377975;
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+      <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/877377975/?value=0&amp;guid=ON&amp;script=0"/>
+      </div>
+  </noscript>
+
 
 
   <!--Facebook scripts-->

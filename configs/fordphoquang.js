@@ -8,6 +8,7 @@ module.exports = {
     cssPatch: "./app/style/patches/fordphoquang.scss",
     googleAnalyticId: "UA-81118142-4",
     facebookAppId: "",
+    googleConversionId:"877377975",
     facebookPixelId: "",
     antsSiteId: "579727739",
     antsRegisterGoalId: "579563717",
