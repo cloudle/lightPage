@@ -77,6 +77,12 @@
     margin-left: 91px;
   }
 
+  @media screen and (max-width: 900px){
+    margin-left: 0px;
+  }
+
+
+
   .title {
     font-size: 18px;
     text-transform: uppercase;
