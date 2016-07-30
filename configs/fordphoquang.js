@@ -6,7 +6,7 @@ module.exports = {
     production: true,
     apiHost: "http://103.56.157.66/realestate",
     cssPatch: "./app/style/patches/fordphoquang.scss",
-    googleAnalyticId: "UA-81118142-1",
+    googleAnalyticId: "UA-81118142-4",
     facebookAppId: "",
     facebookPixelId: "",
     antsSiteId: "579727739",
