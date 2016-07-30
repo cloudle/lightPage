@@ -11,14 +11,14 @@ export class productCateMenuController {
     scrollTo (elementId) {
         this.$timeout(() => {
             let scrollOffset = angular.element(`#${elementId}`).offset().top - 50;
-            TweenLite.to(window, 1, {scrollTo:{y: scrollOffset}, ease:Power2.easeOut});
+            TweenLite.to(window, 0.5, {scrollTo:{y: scrollOffset}, ease:Power2.easeOut});
         }, 800);
     }
 }
 
 const subMenus = [
     { title: 'Giới thiệu chung', contentId: "gioithieuchung" },
-    { title: 'Công nghệ', contentId: "congnghe" },
+    { title: 'Phiên bản', contentId: "phienban" },
     { title: 'Màu sắc', contentId: "mausac"  },
     { title: 'Thông số kỹ thuật', contentId: "thongsokythuat"  },
 ]

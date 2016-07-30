@@ -7,10 +7,10 @@ export default ['$http', '$rootScope', '$state', 'metaService', function ($http,
 		scope: {
 			instance: '='
 		},
-		template: `<div class="navigation-link" ng-style="{width: maxWidth+'px'}" ng-class="{active: linkActiveClass(instance)}">
+		template: `<div class="navigation-link"  ng-class="{active: linkActiveClass(instance)}">
 			<div class="parent-link" ng-bind="instance.name" ng-click="parentLinkNavigate(instance)"></div>
-			<div class="sub-navigations icon-navigation-arrow-drop-up" ng-if="instance.children">
-				<div class="sub-link icon-av-play-arrow" ng-bind="link.name" ng-repeat="link in instance.children"
+			<div class="sub-navigations" ng-style="{width: maxWidth+'px'}" ng-if="instance.children">
+				<div class="sub-link icon-av-play-arrow" ng-style="{width: maxWidth+'px'}" ng-bind="link.name" ng-repeat="link in instance.children"
 					ui-sref="page({alias: link.alias})"></div>
 			</div>
 		</div>`,

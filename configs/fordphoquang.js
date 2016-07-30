@@ -11,12 +11,12 @@ module.exports = {
     googleConversionId:"877377975",
     facebookPixelId: "",
     antsSiteId: "579727739",
-    antsRegisterGoalId: "579563717",
+    antsRegisterGoalId: "",
     antsConversionId: "",
     translation: {
         hotline: "093 898 0139",
         vietnamese: {
-            productnews: `SẢN PHẨM KHÁC`,
+            productnews: `PHIÊN BẢN KHÁC`,
             childproduct: 'forddd',
             news: 'TIN TỨC',
             product: 'sản phẩm',
@@ -26,8 +26,8 @@ module.exports = {
                  <span style="font-size: 14px;">Hotline: </span>
                                `,
             cardTitleTail: `
-               <br><div style="font-size: 14px;margin: 10px 0;">Email: </div><div style="font-size: 14px;font-weight: 700;"></div>
-               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: </div><div style="font-size: 14px;font-weight: 700;"></div>
+               <br><div style="font-size: 14px;margin: 10px 0;">Email: saigonford@saigonford.com.vn</div><div style="font-size: 14px;font-weight: 700;"></div>
+               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: 104 Phổ Quang, Phường 2, Quận Tân Bình, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
