@@ -2,11 +2,11 @@
 	<div class="content-wrapper">
 		<div class="page-content news">
 			<div class="single-news" ng-if="newsCtrl.singleMode">
-				<div class="title" ng-bind="newsCtrl.activeNews.title"></div>
-				<div class="timestamp">
-					<span>Cập nhật gần nhất: </span>
-					<span ng-bind="newsCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>
-				</div>
+				<!--<div class="title" ng-bind="newsCtrl.activeNews.title"></div>-->
+				<!--<div class="timestamp">-->
+					<!--<span>Cập nhật gần nhất: </span>-->
+					<!--<span ng-bind="newsCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+				<!--</div>-->
 				<div class="news-details" ng-bind-html="newsCtrl.activeNews.content | unsafe"></div>
 			</div>
 
