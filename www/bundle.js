@@ -536,7 +536,9 @@ var applicationController = exports.applicationController = function application
 	});
 
 	this.closeRegisterForm = function () {
-		_this.subscriptionPopup = false;
+		_this.modalOneActive = false;
+		_this.modalTwoActive = false;
+		_this.modalThreeActive = false;
 	};
 
 	this.resetRegisterForm = function () {

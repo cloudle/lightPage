@@ -7,15 +7,15 @@
 </light-slider>
 
 
-<modal-one enable="mainCtrl.modalOneActive">
+<modal-one enable="appCtrl.modalOneActive">
 	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
 </modal-one>
 
-<modal-one enable="mainCtrl.modalTwoActive">
+<modal-one enable="appCtrl.modalTwoActive">
 	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
 </modal-one>
 
-<modal-one enable="mainCtrl.modalThreeActive">
+<modal-one enable="appCtrl.modalThreeActive">
 	<modal modal="modal"></modal>
 </modal-one>
 
@@ -25,18 +25,18 @@
 		<p><span style="font-size: 18px; font-weight: normal; text-transform:uppercase">BÁO GIÁ TỐT NHẤT</span></p>
 		<p>Click đăng ký ngay để nhận báo giá khuyến mãi mới nhất</p>
 		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer;display:block;"
-				ng-click="mainCtrl.modalOneActive = true">
+				ng-click="appCtrl.modalOneActive = true">
 			<img src="https://c8.staticflickr.com/9/8607/28501299991_64ddae98da_o.jpg"></a></div>
 	</div>
 	<div class="column">
 		<p><span style="font-size: 18px; font-weight: normal; text-transform:uppercase">TƯ VẤN MUA XE TRẢ GÓP</span></p>
 		<p>Hỗ trợ trả góp tất cả các dòng xe với lãi suất ưu đãi nhất</p>
-		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer;display:block;" ng-click="mainCtrl.modalTwoActive = true"><img src="https://c1.staticflickr.com/8/7666/28295380200_b0d4a3d67c_o.jpg"></a></div>
+		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer;display:block;" ng-click="appCtrl.modalTwoActive = true"><img src="https://c1.staticflickr.com/8/7666/28295380200_b0d4a3d67c_o.jpg"></a></div>
 	</div>
 	<div class="column">
 		<p><span style="font-size: 18px; font-weight: normal; text-transform:uppercase">LÁI XE THỬ MIỄN PHÍ</span></p>
 		<p>Hãy lái thử để tận hưởng trải nghiệm tuyệt vời từ xe Ford</p>
-		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });" style="cursor: pointer;display:block;" ng-click="mainCtrl.modalThreeActive = true"><img src="https://c2.staticflickr.com/9/8545/27964156393_d99bbf5023_o.jpg"></a></div>
+		<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });" style="cursor: pointer;display:block;" ng-click="appCtrl.modalThreeActive = true"><img src="https://c2.staticflickr.com/9/8545/27964156393_d99bbf5023_o.jpg"></a></div>
 	</div>
 </div>
 

@@ -112,7 +112,9 @@ export class applicationController {
 		});
 
 		this.closeRegisterForm = () => {
-			this.subscriptionPopup = false;
+			this.modalOneActive = false;
+			this.modalTwoActive = false;
+			this.modalThreeActive = false;
 		};
 
 		this.resetRegisterForm = () => {

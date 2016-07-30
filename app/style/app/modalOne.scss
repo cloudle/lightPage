@@ -1,7 +1,7 @@
 @import "../variables";
 
 .modalOne-backdrop {
-  z-index: 3000;
+  z-index: 9999;
   position: fixed; top: 0; left: 0; bottom: 0; right: 0;
   background-color: rgba(0, 0, 0, 0.7);
   visibility: hidden; opacity: 0;
@@ -10,7 +10,7 @@
 
   .modalOne-wrapper {
     margin: 0 auto;
-    width: 480px;
+    width: auto;
     margin-top: 5%;
     transform: scale(0.8);
     transition: transform 0.2s $bounceAnimation;

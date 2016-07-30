@@ -73,6 +73,10 @@
 .page-content.news {
   //padding-top: 40px;
 
+  @media screen and (max-width: 1366px){
+    margin-left: 91px;
+  }
+
   .title {
     font-size: 18px;
     text-transform: uppercase;
@@ -101,7 +105,7 @@
 
     .summary {
       text-align: center; padding: 20px 0;
-      min-height: 80px;
+      min-height: 104px;
     }
 
     .thumb-image-wrapper {
