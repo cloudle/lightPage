@@ -48,12 +48,12 @@ body {
       }
 
       .sub-navigations {
-        background-color: #0a00a6;
-        border-top-color: $activeColor;
+        background-color: #0f6293;
+        border-top-color:  #074989;
 
         .sub-link {
           &:hover {
-            background-color: $activeColor;
+            background-color: #074989;
           }
         }
       }
@@ -92,7 +92,7 @@ body {
 }
 
 .bullets .bullet-item .bullet-heading:after {
-  border-bottom: solid 3px $activeColor;
+  border-bottom: solid 3px  #074989;
 }
 
 .light-heading .highlight {
