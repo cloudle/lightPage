@@ -441,21 +441,26 @@ var applicationController = exports.applicationController = function application
 	this.modalTwoActive = false;
 	this.modalThreeActive = false;
 
+	//Fire Ants trackingGoal hook!
+
 	this.convertcall = function () {
 		ga('send', { 'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
 	};
 
 	this.testdriver = function () {
+		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
 		ga('send', { 'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
 		_this.modalThreeActive = true;
 	};
 
 	this.price = function () {
+		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
 		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 		_this.modalOneActive = true;
 	};
 
 	this.price2 = function () {
+		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
 		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 		_this.modalTwoActive = true;
 	};
@@ -609,10 +614,6 @@ var applicationController = exports.applicationController = function application
 			note: _this['userNote']
 		});
 
-		//Fire Ants trackingGoal hook!
-		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
-		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
-		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
 		//Send form information to Ants!
 
 		console.log(formData.note);
