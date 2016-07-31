@@ -23,13 +23,13 @@ module.exports = {
             news: 'TIN TỨC',
             product: 'sản phẩm',
             cardTitleHead: `<div style="font-size: 15px;">
-    ĐẠI LÝ SÀI GÒN FORD PHỔ QUANG 
+    ĐẠI LÝ SÀI GÒN FORD TRẦN HƯNG ĐẠO
                             </div><br>
                  <span style="font-size: 14px;">Hotline: </span>
                                `,
             cardTitleTail: `
                <br><div style="font-size: 14px;margin: 10px 0;">Email: saigonford@saigonford.com.vn</div><div style="font-size: 14px;font-weight: 700;"></div>
-               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: 104 Phổ Quang, Phường 2, Quận Tân Bình, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
+               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ:  6 Trần Hưng Đạo, Quận 1, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
