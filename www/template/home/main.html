@@ -51,15 +51,15 @@
 <div class="section-heading" ng-bind-html="mainCtrl.features[0].Categorie.description | unsafe"></div>
 <div class="section-canvas">
 	<div class="content-wrapper">
-		<!--<div class="bullets">-->
-			<!--<div class="bullet-item" ng-repeat="feature in mainCtrl.features">-->
-				<!--<div class="bullet-avatar" ng-style="{'background-image': 'url('+feature.Post.image+')'}"></div>-->
-				<!--<div class="bullet-heading" ng-bind="feature.Post.title"></div>-->
-				<!--<div class="bullet-description">-->
-					<!--<span ng-bind="feature.Post.description"></span>-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</div>-->
+		<div class="bullets">
+			<div class="bullet-item" ng-repeat="feature in mainCtrl.features">
+				<div class="bullet-avatar" ng-style="{'background-image': 'url('+feature.Post.image+')'}"></div>
+				<div class="bullet-heading" ng-bind="feature.Post.title"></div>
+				<div class="bullet-description">
+					<span ng-bind="feature.Post.description"></span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
