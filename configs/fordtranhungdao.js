@@ -1,6 +1,6 @@
 module.exports = {
     domain: "tranhungdaoford.com.vn",
-    siteName: "fordtranhungdao",
+    siteName: "Ford Trần Hưng Đạo",
     siteFav: "images/vavicon.png",
     serverPort: 7030,
     production: true,
