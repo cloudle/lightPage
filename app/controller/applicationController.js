@@ -23,21 +23,29 @@ export class applicationController {
 		this.modalTwoActive = false;
 		this.modalThreeActive = false;
 
+		//Fire Ants trackingGoal hook!
+
+
+
+
 		this.convertcall = () => {
 			ga('send', {'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
 		}
 
 		this.testdriver = () => {
+			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
 			this.modalThreeActive = true;
 		}
 
 		this.price = () => {
+			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 			this.modalOneActive = true;
 		}
 
 		this.price2 = () => {
+			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 			this.modalTwoActive = true;
 		}
@@ -178,10 +186,7 @@ export class applicationController {
 					note: this['userNote']
 				};
 
-			//Fire Ants trackingGoal hook!
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
+
 			//Send form information to Ants!
 
 			console.log(formData.note);
