@@ -19,7 +19,7 @@ module.exports = {
         hotline: "093 811 0139",
         vietnamese: {
             productnews: `PHIÊN BẢN KHÁC`,
-            childproduct: 'forddd',
+            childproduct: 'Trang Chủ',
             news: 'TIN TỨC',
             product: 'sản phẩm',
             cardTitleHead: `<div style="font-size: 15px;">
