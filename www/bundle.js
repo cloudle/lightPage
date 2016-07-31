@@ -832,7 +832,7 @@ var childproductController = exports.childproductController = function childprod
             }).success(function (data) {
                 fbq('track', 'ViewContent');
 
-                _this.allfordFoccus = data.results;
+                _this.allfordFocus = data.results;
             });
         }
     };

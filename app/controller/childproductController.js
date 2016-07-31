@@ -131,7 +131,7 @@ export class childproductController {
                 }).success(data => {
                     fbq('track', 'ViewContent');
 
-                    this.allfordFoccus = data.results;
+                    this.allfordFocus = data.results;
                 });
             }
         }
