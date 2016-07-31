@@ -441,6 +441,25 @@ var applicationController = exports.applicationController = function application
 	this.modalTwoActive = false;
 	this.modalThreeActive = false;
 
+	this.convertcall = function () {
+		ga('send', { 'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
+	};
+
+	this.testdriver = function () {
+		ga('send', { 'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
+		_this.modalThreeActive = true;
+	};
+
+	this.price = function () {
+		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
+		_this.modalOneActive = true;
+	};
+
+	this.price2 = function () {
+		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
+		_this.modalTwoActive = true;
+	};
+
 	this.name = "Cloud!";
 	$rootScope.activeContents = [];
 	this.progress = ngProgressFactory.createInstance();
