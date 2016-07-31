@@ -11,9 +11,9 @@ module.exports = {
     googleConversionId:"877377975",
     facebookPixelId: "",
     antsSiteId: "579727747",
-    antsRegisterGoalId1: "579750460",
-    antsRegisterGoalId2: "579750461",
-    antsRegisterGoalId3: "579750462",
+    antsRegisterGoalId1: "579751747",
+    antsRegisterGoalId2: "579751748",
+    antsRegisterGoalId3: "579751749",
     antsConversionId: "",
     translation: {
         hotline: "093 811 0139",
