@@ -186,14 +186,51 @@ export class applicationController {
 
 			//Send form information to Ants!
 
-			console.log(formData.note);
+			//console.log(formData.note);
+			var vehicleType = this['userType'];
+			var userRegion = this['userArea'];
+			var userCate = this['userCate'];
+
+			//Send form information to Ants!
+
+			//console.log(formData.date);
 			if (production) {
-				ants_userInfoListener(formData, false, true);
+
+				/* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
+
+				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
+
+				/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+				var infoCustomTargetKey = [
+
+					{ field: 'vehicle_type', value: vehicleType },
+
+					{ field: 'more_require', value: userCate },
+
+					{ field: 'region', value: userRegion }
+
+				];
+
+				var userInfo = {
+
+					name:this['userName'],
+
+					phone: this['userPhone'],
+
+					email: this['userEmail'],
+
+					description: this['userNote'], // Ghi chú khác nếu có
+
+					others: JSON2.stringify(infoCustomTargetKey)
+
+				};
+
+				adx_analytic.trackingEvent('tup', userInfo, true);
+				//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
 			} else {
 				console.log(ants_userInfoListener)
 			}
-
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
 
 			//Facebook tracking Lead/CompleteRegistration event
 			if (production) fbq('track', 'Lead');
@@ -495,13 +532,50 @@ export class applicationController {
 			//Send form information to Ants!
 
 
+			var vehicleType = this['userType'];
+			var userRegion = this['userArea'];
+			var userCate = this['userCate'];
+
+			//Send form information to Ants!
+
+			//console.log(formData.date);
 			if (production) {
-				ants_userInfoListener(formData, false, true);
+
+				/* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
+
+				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
+
+				/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+				// var infoCustomTargetKey = [
+                //
+				// 	{ field: 'vehicle_type', value: vehicleType },
+                //
+				// 	{ field: 'more_require', value: userCate },
+                //
+				// 	{ field: 'region', value: userRegion }
+                //
+				// ];
+
+				var userInfo = {
+
+					name:this['userName'],
+
+					phone: this['userPhone'],
+
+					email: this['userEmail'],
+
+					description: this['userCate'], // Ghi chú khác nếu có
+
+					// others: JSON2.stringify(infoCustomTargetKey)
+
+				};
+
+				adx_analytic.trackingEvent('tup', userInfo, true);
+				//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
 			} else {
 				console.log(ants_userInfoListener)
 			}
-
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
 
 			//Facebook tracking Lead/CompleteRegistration event
 			if (production) fbq('track', 'Lead');
