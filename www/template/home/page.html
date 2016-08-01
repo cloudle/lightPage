@@ -23,15 +23,15 @@
 		</light-sidebar>
 	</div>
 </div>
-<modal-one enable="pageCtrl.modalOneActive">
+<modal-one enable="appCtrl.modalOneActive">
 	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
 </modal-one>
 
-<modal-one enable="pageCtrl.modalTwoActive">
-	<subscription-form modal="modal" ng-if="!appCtrl.subscriptionPopup"></subscription-form>
+<modal-one enable="appCtrl.modalTwoActive">
+	<modal2 modal="modal"></modal2>
 </modal-one>
 
-<modal-one enable="pageCtrl.modalThreeActive">
+<modal-one enable="appCtrl.modalThreeActive">
 	<modal modal="modal"></modal>
 </modal-one>
 <light-footer columns="appCtrl.footers"></light-footer>
