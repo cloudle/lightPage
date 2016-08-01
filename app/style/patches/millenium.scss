@@ -3,10 +3,10 @@ body {
 }
 
 .navigation-wrapper {
-  background-image: url('images/golden-river-nav-bg.gif');
+  background-image: url('images/bg_Millennium.jpg');
 
   .site-logo {
-    background-image: url('images/golden-river-logo.png');
+    background-image: url('images/logo-millennium.png');
     width: 220px; height: 60px; margin-top: 5px;
 
     @media screen and (max-width: 600px) {
@@ -15,17 +15,19 @@ body {
   }
 
   .subscription-activator {
-    background-color: #A5531A;
+    background-color: #da2900;
   }
 
   .navigation-menu {
     .navigation-link {
+      color: white;
       &:hover{
-        background-color: #A47B32;
+        background-color: #af6701;
       }
 
       &.active {
-        background-color: #a2741c;
+        background-color: #c57400;
+        color: white;
       }
 
       .sub-navigations {
@@ -34,7 +36,7 @@ body {
 
         .sub-link {
           &:hover {
-            background-color: #a2741c;
+            background-color: #af6701;
           }
         }
       }
@@ -43,7 +45,7 @@ body {
 }
 
 .footer {
-  background-color: #191919;
+  background-color:  #c57400;
 
   .copyright {
     background-color: darken(#191919, 10);

@@ -1,11 +1,11 @@
 module.exports = {
     domain: "canhomillenium.org",
     siteName: "Căn hộ Millenium",
-    siteFav: "images/logo-goldenriver.jpg",
+    //siteFav: "images/logo-millennium.jpg",
     serverPort: 7032,
     production: false,
     apiHost: "http://103.56.157.66/realestate",
-  //  scriptPatch: "./app/patches/goldenRiver.js",
+    //  scriptPatch: "./app/patches/goldenRiver.js",
     cssPatch: "./app/style/patches/millenium.scss",
     googleAnalyticId: "",
     googleConversionId: "",
