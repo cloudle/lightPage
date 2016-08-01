@@ -28,20 +28,18 @@
 
 		<light-sidebar>
 			<card></card>
-			<div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center" ng-click="newsCtrl.modalOneActive = true">
+			<div style="cursor: pointer; text-align: center" ng-click="appCtrl.price();">
 				<img style="width: 100%" src="https://c1.staticflickr.com/9/8832/28566943501_2bc3b4acd0_o.png"/>
 			</div>
 
-			<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });"
-					style="cursor: pointer;text-align: center;display:block;"
-					ng-click="newsCtrl.modalTwoActive = true">
+			<div><a style="cursor: pointer;text-align: center;display:block;"
+					ng-click="appCtrl.price2();">
 				<img style="width: 100%" src="https://c1.staticflickr.com/9/8894/28029234773_3804dd917b_o.png"/>
 			</a>
 			</div>
 			<div>
-				<a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });"
-				   style="cursor: pointer;text-align: center;display:block;"
-				   ng-click="newsCtrl.modalThreeActive = true">
+				<a style="cursor: pointer;text-align: center;display:block;"
+				   ng-click="appCtrl.testdriver();">
 					<img style="width: 100%" src="https://c1.staticflickr.com/9/8235/28361218900_f114fe58c8_o.png"/>
 				</a>
 			</div>
