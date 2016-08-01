@@ -3,21 +3,19 @@
 		<div id="{{'section'+page.alias}}" class="page-content" ng-bind-html="page.content | unsafe" ng-repeat="page in activeContents"></div>
 		<light-sidebar>
 			<card></card>
-			<div onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });" style="cursor: pointer; text-align: center" ng-click="pageCtrl.modalOneActive = true">
-				<img src="https://c4.staticflickr.com/8/7596/28502136811_a6c99539f6_m.jpg"/>
+			<div style="cursor: pointer; text-align: center" ng-click="appCtrl.price();">
+				<img style="width: 100%" src="https://c1.staticflickr.com/9/8832/28566943501_2bc3b4acd0_o.png"/>
 			</div>
 
-			<div><a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });"
-					style="cursor: pointer;text-align: center;display:block;"
-					ng-click="pageCtrl.modalTwoActive = true">
-				<img src="https://c6.staticflickr.com/9/8721/28502136821_67f209743d_m.jpg">
+			<div><a style="cursor: pointer;text-align: center;display:block;"
+					ng-click="appCtrl.price2();">
+				<img style="width: 100%" src="https://c1.staticflickr.com/9/8894/28029234773_3804dd917b_o.png"/>
 			</a>
 			</div>
 			<div>
-				<a onclick="ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });"
-				   style="cursor: pointer;text-align: center;display:block;"
-				   ng-click="pageCtrl.modalThreeActive = true">
-					<img src="https://c6.staticflickr.com/9/8116/27965018013_8380d8e875_m.jpg">
+				<a style="cursor: pointer;text-align: center;display:block;"
+				   ng-click="appCtrl.testdriver();">
+					<img style="width: 100%" src="https://c1.staticflickr.com/9/8235/28361218900_f114fe58c8_o.png"/>
 				</a>
 			</div>
 		</light-sidebar>
