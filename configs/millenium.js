@@ -1,5 +1,5 @@
 module.exports = {
-    domain: "millenium.org",
+    domain: "canhomillenium.org",
     siteName: "Căn hộ Millenium",
     siteFav: "images/logo-goldenriver.jpg",
     serverPort: 7032,
