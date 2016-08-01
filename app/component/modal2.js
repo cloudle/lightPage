@@ -28,6 +28,10 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<option>Fore EcoSport</option>				
 			</select>
 			
+			<label>Hình thức thanh toán:</label>
+            <input required="required" type="radio" id="under_13" value="Trả Góp" ng-model="appCtrl.userCate" name="user_age"><label style="padding-right: 20px" for="under_13" class="light">Trả Góp</label>
+            <input type="radio" id="over_13" value="Trả Hết" ng-model="appCtrl.userCate" name="user_age"><label  for="over_13" class="light">Trả hết</label>
+       
 			<!--<input required="required" checked name="pay" type="radio" value="Trả Góp" ng-model="appCtrl.userCate"/>-->
 			<!--<label>Trả Góp</label>-->
 			<!--<input name="pay" type="radio" value="Trả Hết" ng-model="appCtrl.userCate"/>-->
@@ -49,8 +53,6 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 				<option>Khác</option>
 			</select>
 			
-			<label for="date">Ngày lái thử:   </label>
-			<input ng-model="appCtrl.userDate" type="date"/>
 			
 			<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>
 			<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>
@@ -67,7 +69,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
             let {apiHost, domain} = metaService.configs;
             scope.configs = metaService.configs;
             scope.appCtrl = $rootScope.appCtrl;
-            scope.submit = $rootScope.submitModal;
+            scope.submit = $rootScope.submitModal2;
 
 
             // scope.googleLogin = function () {

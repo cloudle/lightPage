@@ -33,19 +33,16 @@ export class applicationController {
 		}
 
 		this.testdriver = () => {
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
 			this.modalThreeActive = true;
 		}
 
 		this.price = () => {
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 			this.modalOneActive = true;
 		}
 
 		this.price2 = () => {
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
 			ga('send', {'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
 			this.modalTwoActive = true;
 		}
@@ -196,7 +193,173 @@ export class applicationController {
 				console.log(ants_userInfoListener)
 			}
 
+			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
 
+			//Facebook tracking Lead/CompleteRegistration event
+			if (production) fbq('track', 'Lead');
+			if (production) fbq('track', 'CompleteRegistration');
+
+			//Tracking Google Analytic goal!
+			if (production) {
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'Subscription',
+					eventAction: 'Submit'
+				});
+			}
+
+			if (production) {
+				ants_analytic.push({
+					conversionId : metaService.configs.antsConversionId,
+					customParams : [
+						{
+							'is_ecomm': 0,
+							'ecomm_pagetype': 'purchase',
+							'ecomm_quantity': 1,
+							'ecomm_totalvalue': 1
+						}
+					]
+				});
+			}
+
+			this.resetRegisterForm();
+			this.subscriptionPopup = false;
+			this.modalPopup = false;
+
+			//Send form to Twin's server!
+			if (production) {
+				$http.get(`${apiHost}/customer/insert/json`, {
+					params: formData
+				}).success(data => {
+					this.subscriptionSuccessHandler();
+					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
+						console.log('email...', data);
+					});
+				});
+			} else {
+				this.subscriptionSuccessHandler(); //Auto success on test environment!
+			}
+		};
+
+		this.submitModal = $rootScope.submitModal = (event) => {
+			let { apiHost, domain, production } = metaService.configs;
+			console.log("production mode:", production);
+			event.preventDefault(); this.resetRegisterError();
+
+			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
+			if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
+			if (this['userType'].length < 8) this['userTypeError'] = 'Nhập Tyeeeee';
+			if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
+
+			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+				formData = {
+					...localUserInfo,
+					domain,
+					fullName: this['userName'],
+					name: this['userName'],
+					type: this['userType'],
+					cate: this['userCate'],
+					phone: this['userPhone'],
+					area: this['userArea'],
+					date: this['userDate'],
+					email: this['userEmail'],
+					note: this['userNote']
+				};
+
+
+			//Send form information to Ants!
+
+			console.log(formData.note);
+			if (production) {
+				ants_userInfoListener(formData, false, true);
+			} else {
+				console.log(ants_userInfoListener)
+			}
+
+			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
+
+			//Facebook tracking Lead/CompleteRegistration event
+			if (production) fbq('track', 'Lead');
+			if (production) fbq('track', 'CompleteRegistration');
+
+			//Tracking Google Analytic goal!
+			if (production) {
+				ga('send', {
+					hitType: 'event',
+					eventCategory: 'Subscription',
+					eventAction: 'Submit'
+				});
+			}
+
+			if (production) {
+				ants_analytic.push({
+					conversionId : metaService.configs.antsConversionId,
+					customParams : [
+						{
+							'is_ecomm': 0,
+							'ecomm_pagetype': 'purchase',
+							'ecomm_quantity': 1,
+							'ecomm_totalvalue': 1
+						}
+					]
+				});
+			}
+
+			this.resetRegisterForm();
+			this.subscriptionPopup = false;
+			this.modalPopup = false;
+
+			//Send form to Twin's server!
+			if (production) {
+				$http.get(`${apiHost}/customer/insert/json`, {
+					params: formData
+				}).success(data => {
+					this.subscriptionSuccessHandler();
+					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
+						console.log('email...', data);
+					});
+				});
+			} else {
+				this.subscriptionSuccessHandler(); //Auto success on test environment!
+			}
+		};
+
+		this.submitModal2 = $rootScope.submitModal2 = (event) => {
+			let { apiHost, domain, production } = metaService.configs;
+			console.log("production mode:", production);
+			event.preventDefault(); this.resetRegisterError();
+
+			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
+			if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
+			if (this['userType'].length < 8) this['userTypeError'] = 'Nhập Tyeeeee';
+			if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
+
+			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+				formData = {
+					...localUserInfo,
+					domain,
+					fullName: this['userName'],
+					name: this['userName'],
+					type: this['userType'],
+					cate: this['userCate'],
+					phone: this['userPhone'],
+					area: this['userArea'],
+					date: this['userDate'],
+					email: this['userEmail'],
+					note: this['userNote']
+				};
+
+
+			//Send form information to Ants!
+
+			console.log(formData.note);
+			if (production) {
+				ants_userInfoListener(formData, false, true);
+			} else {
+				console.log(ants_userInfoListener)
+			}
+
+			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
 
 			//Facebook tracking Lead/CompleteRegistration event
 			if (production) fbq('track', 'Lead');
