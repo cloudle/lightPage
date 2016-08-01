@@ -10,7 +10,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
         replace: true,
         transclude: true,
         scope: { modal: '@', submitText: '@' },
-        template: '<form>\n                    <div class="heading">\n\t\t\t\t<span ng-bind-html="$root.localization.cardTitleHead | unsafe"></span>\n\t\t\t\t<span style="color:#fa8322;" class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t<span ng-bind-html="$root.localization.cardTitleTail | unsafe"></span>\n\t\t\t\t\n\t\t\t</div>  \n                </form>\n        ',
+        template: '<form>\n                    <div class="heading">\n\t\t\t\t<span ng-bind-html="$root.localization.cardTitleHead | unsafe"></span>\n\t\t\t\t\n\t\t\t\t<a style="font-weight: bold;text-decoration: none" href="tel:0938980139" ng-click="appCtrl.convertcall();">\n\t\t\t\t<span style="color:#fa8322;" class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t\t</a>\n\t\t\t\t<span ng-bind-html="$root.localization.cardTitleTail | unsafe"></span>\n\t\t\t\t\n\t\t\t</div>  \n                </form>\n        ',
 
         link: function link(scope, element, attrs) {
             var _metaService$configs = metaService.configs;
