@@ -7,7 +7,9 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
         template: `<form>
                     <div class="heading">
 				<span ng-bind-html="$root.localization.cardTitleHead | unsafe"></span>
+				<a style="font-weight: bold; text-decoration: none;" href="tel:0938110139" ng-click="appCtrl.convertcall();">
 				<span style="color:#fa8322;" class="ultra strong" ng-bind="configs.translation.hotline"></span>
+				</a>
 				<span ng-bind-html="$root.localization.cardTitleTail | unsafe"></span>
 				
 			</div>  
