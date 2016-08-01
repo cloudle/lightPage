@@ -1,7 +1,7 @@
 module.exports = {
     domain: "canhomillenium.org",
     siteName: "Căn hộ Millenium",
-    //siteFav: "images/logo-millennium.jpg",
+    siteFav: "images/logo-millenium.png",
     serverPort: 7032,
     production: false,
     apiHost: "http://103.56.157.66/realestate",
