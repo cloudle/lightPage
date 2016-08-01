@@ -1,0 +1,51 @@
+body {
+  background-color: #191919;
+}
+
+.navigation-wrapper {
+  background-image: url('images/golden-river-nav-bg.gif');
+
+  .site-logo {
+    background-image: url('images/golden-river-logo.png');
+    width: 220px; height: 60px; margin-top: 5px;
+
+    @media screen and (max-width: 600px) {
+      width: 110px;
+    }
+  }
+
+  .subscription-activator {
+    background-color: #A5531A;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      &:hover{
+        background-color: #A47B32;
+      }
+
+      &.active {
+        background-color: #a2741c;
+      }
+
+      .sub-navigations {
+        background-color: #A47B32;
+        border-top-color: #a2741c;
+
+        .sub-link {
+          &:hover {
+            background-color: #a2741c;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #191919;
+
+  .copyright {
+    background-color: darken(#191919, 10);
+  }
+}
