@@ -23,7 +23,7 @@ module.exports = {
             news: 'TIN TỨC',
             product: 'sản phẩm',
             cardTitleHead: `<div style="font-size: 15px;">
-    ĐẠI LÝ SÀI GÒN CAO THẮNG 
+    ĐẠI LÝ SÀI GÒN FORD CAO THẮNG 
                             </div><br>
                  <span style="font-size: 14px;">Hotline: </span>
                                `,
