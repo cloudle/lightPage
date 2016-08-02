@@ -1558,7 +1558,7 @@ var productCateMenuController = exports.productCateMenuController = function () 
 productCateMenuController.$inject = ['$rootScope', '$scope', '$timeout'];
 
 
-var subMenus = [{ title: 'Giới thiệu chung', contentId: "gioithieuchung" }, { title: 'Phiên bản', contentId: "phienban" }, { title: 'Màu sắc', contentId: "mausac" }, { title: 'Thông số kỹ thuật', contentId: "thongsokythuat" }];
+var subMenus = [{ title: 'Giới thiệu chung', contentId: "gioithieuchung" }, { title: 'Màu sắc', contentId: "mausac" }, { title: 'Thông số kỹ thuật', contentId: "thongsokythuat" }, { title: 'Phiên bản', contentId: "phienban" }];
 
 },{}],19:[function(require,module,exports){
 'use strict';
