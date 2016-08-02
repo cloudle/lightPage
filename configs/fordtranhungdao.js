@@ -22,6 +22,7 @@ module.exports = {
             childproduct: 'Trang Chủ',
             news: 'TIN TỨC',
             product: 'sản phẩm',
+            home: 'Trang Chủ',
             cardTitleHead: `<div style="font-size: 15px;">
                         SÀI GÒN FORD TRẦN HƯNG ĐẠO
                             </div><br>
