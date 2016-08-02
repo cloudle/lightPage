@@ -18,7 +18,7 @@ export class productCateMenuController {
 
 const subMenus = [
     { title: 'Giới thiệu chung', contentId: "gioithieuchung" },
-    { title: 'Phiên bản', contentId: "phienban" },
     { title: 'Màu sắc', contentId: "mausac"  },
     { title: 'Thông số kỹ thuật', contentId: "thongsokythuat"  },
+    { title: 'Phiên bản', contentId: "phienban" },
 ]
