@@ -565,8 +565,6 @@ export class applicationController {
 
 					email: this['userEmail'],
 
-					description: this['userCate'], // Ghi chú khác nếu có
-
 					others: JSON2.stringify(infoCustomTargetKey)
 
 				};
