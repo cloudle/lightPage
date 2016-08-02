@@ -547,15 +547,15 @@ export class applicationController {
 
 				/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
 
-				// var infoCustomTargetKey = [
-				//
-				// 	{ field: 'vehicle_type', value: vehicleType },
-				//
-				// 	{ field: 'more_require', value: userCate },
-				//
-				// 	{ field: 'region', value: userRegion }
-				//
-				// ];
+				var infoCustomTargetKey = [
+
+					{ field: 'vehicle_type', value: vehicleType },
+
+					{ field: 'more_require', value: userCate },
+
+					{ field: 'region', value: userRegion }
+
+				];
 
 				var userInfo = {
 
@@ -567,7 +567,7 @@ export class applicationController {
 
 					description: this['userCate'], // Ghi chú khác nếu có
 
-					// others: JSON2.stringify(infoCustomTargetKey)
+					others: JSON2.stringify(infoCustomTargetKey)
 
 				};
 

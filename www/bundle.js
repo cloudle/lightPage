@@ -158,7 +158,7 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			ready: '=',
 			burgerActive: '='
 		},
-		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t<!--<div class="navigation-link" ng-class="{active: childproductActiveClass()}">-->\n\t\t\t\t\t\t<!--<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			scope.links = metaService.links;
 
@@ -190,8 +190,8 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			scope.productActiveClass = function () {
 				return $state.current.name === 'product';
 			};
-			scope.childproductActiveClass = function () {
-				return $state.current.name === 'ford';
+			scope.homeActiveClass = function () {
+				return $state.current.name === 'home';
 			};
 		}
 	};
@@ -995,15 +995,7 @@ var applicationController = exports.applicationController = function application
 
 			/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
 
-			// var infoCustomTargetKey = [
-			//
-			// 	{ field: 'vehicle_type', value: vehicleType },
-			//
-			// 	{ field: 'more_require', value: userCate },
-			//
-			// 	{ field: 'region', value: userRegion }
-			//
-			// ];
+			var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'more_require', value: userCate }, { field: 'region', value: userRegion }];
 
 			var userInfo = {
 
@@ -1013,7 +1005,11 @@ var applicationController = exports.applicationController = function application
 
 				email: _this['userEmail'],
 
-				description: _this['userCate'] };
+				description: _this['userCate'], // Ghi chú khác nếu có
+
+				others: JSON2.stringify(infoCustomTargetKey)
+
+			};
 
 			adx_analytic.trackingEvent('tup', userInfo, true);
 			//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
@@ -1281,7 +1277,7 @@ var mainController = exports.mainController = function mainController($rootScope
 	ga('send', 'pageview');
 	fbq('track', "PageView");
 	this.hidden = false;
-	$rootScope.activeGroup = metaService.links[0];$window.scrollTo(0, 0);
+	$rootScope.activeGroup = metaService.links[-1];$window.scrollTo(0, 0);
 
 	$http.get(apiHost + '/page/get/json', {
 		params: { domain: domain, alias: "trang-chu" }
