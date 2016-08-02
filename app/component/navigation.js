@@ -1,12 +1,12 @@
 export default ['$rootScope', '$state', 'metaService', function ($rootScope, $state, metaService) {
-	return {
-		restrict: 'E',
-		replace: true,
-		scope: {
-			ready: '=',
-			burgerActive: '='
-		},
-		template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: {
+            ready: '=',
+            burgerActive: '='
+        },
+        template: `<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">
 			<div class="content-wrapper">
 				<div class="site-logo" ui-sref="home"></div>
 				
@@ -14,13 +14,22 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->
 				<!--<div class="subscription-activator" ui-sref="news({alias: 'lien-he'})" ng-bind="$root.localization.register"></div>-->
 				<div class="navigation-menu">
-					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
-					<!--<div class="navigation-link" ng-class="{active: childproductActiveClass()}">-->
-						<!--<div class="parent-link" ui-sref="home" ng-bind="$root.localization.childproduct"></div>-->
-					<!--</div>-->
+				
+					<div class="navigation-link" ng-class="{active: homeActiveClass()}">
+						<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>
+					</div>
+				
 					<div class="navigation-link" ng-class="{active: productActiveClass()}">
 						<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>
 					</div>
+					
+					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
+					
+					
+					
+					
+					
+					
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
 						<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>
 					</div>
@@ -50,41 +59,41 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 				</div>
 			</div>
 		</div>`,
-		link: (scope, element, attrs) => {
-			scope.links = metaService.links;
+        link: (scope, element, attrs) => {
+            scope.links = metaService.links;
 
-			scope.toggleBurger = function () {
-				scope.burgerActive = !scope.burgerActive;
-			};
+            scope.toggleBurger = function () {
+                scope.burgerActive = !scope.burgerActive;
+            };
 
-			scope.togglePopup = function () {
-				scope.$parent.appCtrl.subscriptionPopup = !scope.$parent.appCtrl.subscriptionPopup;
-			};
+            scope.togglePopup = function () {
+                scope.$parent.appCtrl.subscriptionPopup = !scope.$parent.appCtrl.subscriptionPopup;
+            };
 
-			scope.toggleModalPopup = function () {
-				scope.$parent.appCtrl.modalPopup = !scope.$parent.appCtrl.modalPopup;
-			};
+            scope.toggleModalPopup = function () {
+                scope.$parent.appCtrl.modalPopup = !scope.$parent.appCtrl.modalPopup;
+            };
 
-			scope.parentLinkNavigate = function (instance) {
-				if (instance.alias) {
-					$state.go('page', {alias: instance.alias});
-				}
-				else if (instance.children[0] && instance.children[0].alias) {
-					$state.go('page', {alias: instance.children[0].alias});
-				}
+            scope.parentLinkNavigate = function (instance) {
+                if (instance.alias) {
+                    $state.go('page', {alias: instance.alias});
+                }
+                else if (instance.children[0] && instance.children[0].alias) {
+                    $state.go('page', {alias: instance.children[0].alias});
+                }
 
-				scope.toggleBurger();
-			};
+                scope.toggleBurger();
+            };
 
-			scope.newsActiveClass = () => {
-				return $state.current.name === 'news';
-			}
-			scope.productActiveClass = () => {
-				return $state.current.name === 'product';
-			}
-			scope.childproductActiveClass = () => {
-				return $state.current.name === 'ford';
-			}
-		}
-	}
+            scope.newsActiveClass = () => {
+                return $state.current.name === 'news';
+            }
+            scope.productActiveClass = () => {
+                return $state.current.name === 'product';
+            }
+            scope.homeActiveClass = () => {
+                return $state.current.name === 'home';
+            }
+        }
+    }
 }];
