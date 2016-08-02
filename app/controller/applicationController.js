@@ -220,7 +220,6 @@ export class applicationController {
 
 					email: this['userEmail'],
 
-					description: this['userNote'], // Ghi chú khác nếu có
 
 					others: JSON2.stringify(infoCustomTargetKey)
 
@@ -341,7 +340,6 @@ export class applicationController {
 
 						email: this['userEmail'],
 
-						description: this['userNote'], // Ghi chú khác nếu có
 
 						others: JSON2.stringify(infoCustomTargetKey)
 

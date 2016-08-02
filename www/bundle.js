@@ -677,8 +677,6 @@ var applicationController = exports.applicationController = function application
 
 				email: _this['userEmail'],
 
-				description: _this['userNote'], // Ghi chú khác nếu có
-
 				others: JSON2.stringify(infoCustomTargetKey)
 
 			};
@@ -789,8 +787,6 @@ var applicationController = exports.applicationController = function application
 				phone: _this['userPhone'],
 
 				email: _this['userEmail'],
-
-				description: _this['userNote'], // Ghi chú khác nếu có
 
 				others: JSON2.stringify(infoCustomTargetKey)
 
@@ -1004,8 +1000,6 @@ var applicationController = exports.applicationController = function application
 				phone: _this['userPhone'],
 
 				email: _this['userEmail'],
-
-				description: _this['userCate'], // Ghi chú khác nếu có
 
 				others: JSON2.stringify(infoCustomTargetKey)
 
