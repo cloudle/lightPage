@@ -24,7 +24,7 @@ export class mainController {
 		ga('send', 'pageview');
 		fbq('track', "PageView");
 		this.hidden = false;
-		$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
+		$rootScope.activeGroup = metaService.links[-1]; $window.scrollTo(0, 0);
 
 		$http.get(`${apiHost}/page/get/json`, {
 			params: { domain, alias: "trang-chu" }
