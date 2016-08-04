@@ -17,7 +17,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
     },
     link: function link(scope, element, attrs) {
       var $titleElement = element.find('.title');
-      console.log($titleElement);
+      //console.log($titleElement);
       scope.collapse = false;
 
       scope.toggle = function (flag) {
@@ -202,10 +202,10 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			ready: '=',
 			burgerActive: '='
 		},
-		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<accordion title="item.name" collapse="false"> \n\t\t\t\t\t  \t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t  \t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</accordion>\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<!--<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">-->\n\t\t\t\t\t\t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t\t<!--<div class="sub-menus" ng-if="item.children">-->\n\t\t\t\t\t\t\t<!--<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"-->\n\t\t\t\t\t\t\t\t<!--ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t</div>',
+		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<!--<div class="navigation-link" ng-class="{active: productActiveClass()}">-->\n\t\t\t\t\t\t<!--<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="home" ng-click="toggleBurger()" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper">\n\t\t\t\t\t\t<div class="menu-item" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t\t<div class="sub-menus">\n\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-click="toggleBurger()"\n\t\t\t\t\t\t ng-repeat="product in $root.allProduct" ng-bind="product.Post.title"\n\t\t\t\t\t\t ui-sref="product({alias: product.Post.alias})"></div></div>\n\t\t\t\t\t</div>\n\t\t\t\t        \n\t\t\t\t    \n\t\t\t\t\n\t\t\t\t\t  \n\t\t\t\t\t\n\t\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in linkburger">\n\t\t\t\t\t      \t<accordion title="item.name" collapse="false"> \n\t\t\t\t\t  \t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t              \t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t                \t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t                      \tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t              \t</div>\n\t\t\t\t        \t</accordion>\n\t\t\t\t\t  </div>\n\t\t\t\t\t\n\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<!--<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">-->\n\t\t\t\t\t\t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t\t<!--<div class="sub-menus" ng-if="item.children">-->\n\t\t\t\t\t\t\t<!--<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"-->\n\t\t\t\t\t\t\t\t<!--ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t</div>',
 		link: function link(scope, element, attrs) {
-
 			scope.links = metaService.links;
+			scope.linkburger = metaService.linkburger;
 
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
@@ -259,7 +259,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 		scope: {
 			instance: '='
 		},
-		template: "<div class=\"navigation-link\"  ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t</div>\n\t\t</div>",
+		template: "\n\t\t\t<div class=\"navigation-link\" ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t",
 		link: function link(scope, element, attrs) {
 			scope.active = false;
 			scope.maxWidth = scope.instance.name.width(mainFont) + padding;
@@ -274,11 +274,15 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 			}
 
 			scope.linkActiveClass = function (instance) {
-				return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
+				if (instance.route) {
+					return $state.current.name == instance.route;
+				} else return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
 			};
 
 			scope.parentLinkNavigate = function (instance) {
-				if (instance.alias) {
+				if (instance.route) {
+					$state.go(instance.route, {/*params*/});
+				} else if (instance.alias) {
 					$state.go('page', { alias: instance.alias });
 				} else if (instance.children[0] && instance.children[0].alias) {
 					$state.go('page', { alias: instance.children[0].alias });
@@ -391,7 +395,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 			var $activeSlide = element.find('#currentSlide'),
 			    $previousSlide = element.find('#previousSlide'),
 			    easeEffect = Sine.easeIn,
-			    transitionTime = 2;
+			    transitionTime = 1;
 
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
@@ -417,10 +421,10 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 				if (scope.activeSlide) scope.activeSlide.isActive = true;
 
 				//Play transition animation!
-				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, x: '0%'}, {ease: easeEffect, x: '100%'});
-				// TweenLite.fromTo($activeSlide, transitionTime, {ease: easeEffect, x: '-100%'}, {ease: easeEffect, x: '0%'});
-				TweenLite.to($activeSlide, 0, { ease: easeEffect, opacity: '1' });
-				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, opacity: '1' }, { ease: easeEffect, opacity: '0' });
+				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, x: '0%' }, { ease: easeEffect, x: '100%' });
+				TweenLite.fromTo($activeSlide, transitionTime, { ease: easeEffect, x: '-100%' }, { ease: easeEffect, x: '0%' });
+				// TweenLite.to($activeSlide, 0, {ease: easeEffect, opacity: '1'});
+				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, opacity: '1'}, {ease: easeEffect, opacity: '0'});
 
 				//Reset interval;
 				if (global.sliderInterval) $interval.cancel(global.sliderInterval);
@@ -612,6 +616,13 @@ var applicationController = exports.applicationController = function application
             params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id, limit: 4 }
         }).success(function (data) {
             $rootScope.news = data.results;
+        });
+
+        $http.get(apiHost + '/banner/get/json', {
+            params: { domain: domain, type: 'product', lang: $rootScope.activeLanguage.id }
+        }).success(function (data) {
+            fbq('track', 'ViewContent');
+            $rootScope.allProduct = data.results;
         });
     };
 
@@ -1797,6 +1808,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _helper = require('./utils/helper');
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout) {
 	var _this = this;
 
@@ -1812,7 +1825,20 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 		$http.get(apiHost + '/menu/get/json', {
 			params: { domain: domain, lang: $rootScope.activeLanguage.id }
 		}).success(function (data) {
-			_this.links = data.results;
+			_this.linkburger = data.results;
+			//console.log(data.results);
+			var links = _.sortBy(data.results, function (item) {
+				return item.title;
+			}),
+			    introIndex = _.findIndex(links, { name: "Giới Thiệu" }),
+			    headLinks = links.slice(0, introIndex + 1),
+			    tailLinks = links.slice(introIndex + 1),
+			    customLinks = [{
+				name: "Sản Phẩm",
+				route: "product"
+			}];
+
+			_this.links = [].concat(_toConsumableArray(headLinks), customLinks, _toConsumableArray(tailLinks));
 
 			if (navigationResolve) navigationResolve(_this.links);
 			if (configResolve) {

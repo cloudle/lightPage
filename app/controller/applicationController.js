@@ -26,8 +26,6 @@ export class applicationController {
         //Fire Ants trackingGoal hook!
 
 
-
-
         this.convertcall = () => {
             ga('send', {'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
         }
@@ -111,7 +109,15 @@ export class applicationController {
                 $rootScope.news = data.results;
             });
 
+            $http.get(`${apiHost}/banner/get/json`, {
+                params: {domain, type: 'product', lang: $rootScope.activeLanguage.id}
+            }).success(data => {
+                fbq('track', 'ViewContent');
+                $rootScope.allProduct = data.results;
+            });
         };
+
+
 
         if (metaService.ready) fetchEssentialData("because the data already fetched!");
         $rootScope.$on('metaServiceReady', () => fetchEssentialData("because meta service ready fired!"));

@@ -11,11 +11,22 @@
     @media screen and (max-width: 600px){
       min-width: 240px;
     }
+    .fixmobile{
+      float: left;
+      @media screen and (max-width: 600px){
+        text-align: center;
+      }
+    }
 
-    .fix {
+    &.fix {
       justify-content: center;
       align-items: center;
-      display: flex;
+      text-align: center;
+      @media screen and (max-width: 600px){
+        text-align: center !important;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     @for $i from 1 through 12 {

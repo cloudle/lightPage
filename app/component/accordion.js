@@ -14,7 +14,7 @@ export default ['$rootScope', '$timeout', ($rootScope, $timeout) => {
     },
     link: (scope, element, attrs) => {
       let $titleElement = element.find('.title');
-      console.log($titleElement);
+      //console.log($titleElement);
       scope.collapse = false;
 
       scope.toggle = (flag) => {

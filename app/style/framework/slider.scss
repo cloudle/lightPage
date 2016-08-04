@@ -1,5 +1,6 @@
 .light-slider {
   position: relative;
+  overflow: hidden;
 
   .slide-positions {
     position: absolute; left: 0; right: 0; bottom: 0;
@@ -17,6 +18,7 @@
       transform-origin: center center;
       transform: scale(1);
       transition: transform 0.5s $bounceAnimation;
+      overflow: hidden;
 
       &.active {
         transform: scale(2);

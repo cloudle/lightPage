@@ -22,13 +22,16 @@
 
   }
   .contactunder-logo {
-    float: right; height: 65px; width: 240px;
+    float: right;
+    //height: 65px; width: 240px;
     margin-top: 12px;
    // margin: 0 auto;
-    background-image: url('https://c1.staticflickr.com/9/8639/28047695643_6ed51293e7_o.png');
+    //background-image: url('https://c1.staticflickr.com/9/8639/28047695643_6ed51293e7_o.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
-
+      @media screen and (max-width: 600px){
+        float: none;
+      }
 
   }
 
