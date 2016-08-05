@@ -7,7 +7,7 @@ module.exports = {
     apiHost: "http://103.56.157.66/realestate",
     //  scriptPatch: "./app/patches/goldenRiver.js",
     cssPatch: "./app/style/patches/millenium.scss",
-    googleAnalyticId: "",
+    googleAnalyticId: "UA-82043323-1",
     googleConversionId: "921153228",
     googleConversionLabel: "Cj8ECM3N-mgQzN2etwM",
     facebookAppId: "",
