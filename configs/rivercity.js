@@ -4,13 +4,13 @@ module.exports = {
 	siteFav: "images/favicon.ico",
 	serverPort: 7020,
 	production: true,
-	marquee: {
-		etext0: "Đặc biệt mở bán ",
-		etext1: "1 NGÀY DUY NHẤT 23/7 ",
-		etext2: "cho vị trí 1, 2, 23 được ",
-		etext3: "TẶNG 2 LƯỢNG VÀNG",
-		img: "images/1-luong-vang.gif"
-	},
+	// marquee: {
+	// 	etext0: "Đặc biệt mở bán ",
+	// 	etext1: "1 NGÀY DUY NHẤT 23/7 ",
+	// 	etext2: "cho vị trí 1, 2, 23 được ",
+	// 	etext3: "TẶNG 2 LƯỢNG VÀNG",
+	// 	img: "images/1-luong-vang.gif"
+	// },
 	apiHost: "http://103.56.157.66/realestate",
 	googleAnalyticId: "UA-77901914-1",
 	googleConversionId: "921153228",
@@ -31,6 +31,6 @@ module.exports = {
 		Với 4 tiện ích ưu việt: QUẢNG TRƯỜNG NƯỚC VÀ ÁNH SÁNG - BIỂN ĐẢO NHÂN TẠO DUBAI - HỒ BƠI THÁC NƯỚC 2 TẦNG - ĐƯỜNG HOA ĐI BỘ TRÊN KHÔNG
     Gọi 0932 047 313 (24/7) để nhận  THÔNG TIN CHÍNH THỨC từ CHỦ ĐẦU TƯ`,
 	translation: {
-		hotline: "0932 047 383 – 0932 047 313"
+		hotline: "0932 047 313"
 	}
 };
