@@ -11,6 +11,9 @@
     @media screen and (max-width: 600px){
       min-width: 280px;
     }
+    @media screen and (max-width: 320px){
+      min-width: 250px;
+    }
 
     .fix {
       justify-content: center;
@@ -43,6 +46,14 @@
     position: relative;
     overflow: hidden;
     border-radius: 3px;
+
+    @media screen and (max-width: 600px) {
+      height: 200px;
+    }
+
+    @media screen and (max-width: 320px) {
+      height: 180px;
+    }
 
     .image {
       position: absolute; top: 0; left: 0; right: 0; bottom:0;
