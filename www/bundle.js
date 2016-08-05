@@ -476,7 +476,7 @@ var applicationController = exports.applicationController = function application
 			/* Ants Insight Goal Tracking */
 			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 
-		var formData = {
+		var userInfo = {
 
 			name: _this['userName'],
 
