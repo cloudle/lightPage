@@ -259,7 +259,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 		scope: {
 			instance: '='
 		},
-		template: "<div class=\"navigation-link\"  ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t</div>\n\t\t</div>",
+		template: "\n\t\t\t<div class=\"navigation-link\" ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t",
 		link: function link(scope, element, attrs) {
 			scope.active = false;
 			scope.maxWidth = scope.instance.name.width(mainFont) + padding;
@@ -274,11 +274,15 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 			}
 
 			scope.linkActiveClass = function (instance) {
-				return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
+				if (instance.route) {
+					return $state.current.name == instance.route;
+				} else return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
 			};
 
 			scope.parentLinkNavigate = function (instance) {
-				if (instance.alias) {
+				if (instance.route) {
+					$state.go(instance.route, {/*params*/});
+				} else if (instance.alias) {
 					$state.go('page', { alias: instance.alias });
 				} else if (instance.children[0] && instance.children[0].alias) {
 					$state.go('page', { alias: instance.children[0].alias });
