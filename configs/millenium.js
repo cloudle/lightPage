@@ -14,7 +14,7 @@ module.exports = {
     facebookPixelId: "578115232338331",
     antsSiteId: "579779079",
     googleConversionIdrmk: "921153228",
-    antsRegisterGoalId: "",
+    antsRegisterGoalId: "579779115",
     antsConversionId: "",
     sendConversionID: "578115232338331",
     ogTitle: "VINHOMES GOLDEN RIVER - ĐỈNH CAO CỦA CUỘC SỐNG THƯỢNG LƯU",
