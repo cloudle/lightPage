@@ -25,7 +25,7 @@ module.exports = {
 		Mỗi ngày hệ thống tiếp nhận hàng trăm lượt đăng ký quan tâm mua căn hộ.
 		Anh chị em tư vấn viên có nhiều năm kinh nghiệm và am hiểu thị trường Quận 7 hãy liên hệ ngay với chúng tôi để được cài đặt ứng dụng & nhận khách để bán hàng.`,
 	translation: {
-		hotline: "0932 047 383 – 0932 047 313",
+		hotline: "0932 047 313",
 		vietnamese: {
 			registerTitleTail: `
 			<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
