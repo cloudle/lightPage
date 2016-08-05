@@ -1,8 +1,8 @@
 import {
-    generateNumberUUID,
-    registerFields,
-    findParentMenuByAlias,
-    languages
+  generateNumberUUID,
+  registerFields,
+  findParentMenuByAlias,
+  languages
 } from '../utils/helper';
 
 export class applicationController {
@@ -24,8 +24,6 @@ export class applicationController {
         this.modalThreeActive = false;
 
         //Fire Ants trackingGoal hook!
-
-
 
 
         this.convertcall = () => {
@@ -111,7 +109,15 @@ export class applicationController {
                 $rootScope.news = data.results;
             });
 
+            $http.get(`${apiHost}/banner/get/json`, {
+                params: {domain, type: 'product', lang: $rootScope.activeLanguage.id}
+            }).success(data => {
+                fbq('track', 'ViewContent');
+                $rootScope.allProduct = data.results;
+            });
         };
+
+
 
         if (metaService.ready) fetchEssentialData("because the data already fetched!");
         $rootScope.$on('metaServiceReady', () => fetchEssentialData("because meta service ready fired!"));
@@ -169,19 +175,19 @@ export class applicationController {
             if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
 
             var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-                formData = {
-                    ...localUserInfo,
-                    domain,
-                    fullName: this['userName'],
-                    name: this['userName'],
-                    type: this['userType'],
-                    cate: this['userCate'],
-                    phone: this['userPhone'],
-                    area: this['userArea'],
-                    date: this['userDate'],
-                    email: this['userEmail'],
-                    note: this['userNote']
-                };
+              formData = {
+                  ...localUserInfo,
+                  domain,
+                  fullName: this['userName'],
+                  name: this['userName'],
+                  type: this['userType'],
+                  cate: this['userCate'],
+                  phone: this['userPhone'],
+                  area: this['userArea'],
+                  date: this['userDate'],
+                  email: this['userEmail'],
+                  note: this['userNote']
+              };
 
 
             //Send form information to Ants!
@@ -288,19 +294,19 @@ export class applicationController {
             if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
 
             var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-                formData = {
-                    ...localUserInfo,
-                    domain,
-                    fullName: this['userName'],
-                    name: this['userName'],
-                    type: this['userType'],
-                    cate: this['userCate'],
-                    phone: this['userPhone'],
-                    area: this['userArea'],
-                    date: this['userDate'],
-                    email: this['userEmail'],
-                    note: this['userNote']
-                };
+              formData = {
+                  ...localUserInfo,
+                  domain,
+                  fullName: this['userName'],
+                  name: this['userName'],
+                  type: this['userType'],
+                  cate: this['userCate'],
+                  phone: this['userPhone'],
+                  area: this['userArea'],
+                  date: this['userDate'],
+                  email: this['userEmail'],
+                  note: this['userNote']
+              };
 
 
             //Send form information to Ants!
@@ -512,19 +518,19 @@ export class applicationController {
             if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
 
             var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-                formData = {
-                    ...localUserInfo,
-                    domain,
-                    fullName: this['userName'],
-                    name: this['userName'],
-                    type: this['userType'],
-                    cate: this['userCate'],
-                    phone: this['userPhone'],
-                    area: this['userArea'],
-                    date: this['userDate'],
-                    email: this['userEmail'],
-                    note: this['userNote']
-                };
+              formData = {
+                  ...localUserInfo,
+                  domain,
+                  fullName: this['userName'],
+                  name: this['userName'],
+                  type: this['userType'],
+                  cate: this['userCate'],
+                  phone: this['userPhone'],
+                  area: this['userArea'],
+                  date: this['userDate'],
+                  email: this['userEmail'],
+                  note: this['userNote']
+              };
 
 
             //Send form information to Ants!

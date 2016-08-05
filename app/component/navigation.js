@@ -19,16 +19,11 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 						<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>
 					</div>
 				
-					<div class="navigation-link" ng-class="{active: productActiveClass()}">
-						<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>
-					</div>
+					<!--<div class="navigation-link" ng-class="{active: productActiveClass()}">-->
+						<!--<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>-->
+					<!--</div>-->
 					
 					<navigation-link instance="link" ng-repeat="link in links"></navigation-link>
-					
-					
-					
-					
-					
 					
 					<div class="navigation-link" ng-class="{active: newsActiveClass()}">
 						<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>
@@ -41,26 +36,56 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 					
 				</div>
 				<div class="burger-menu">
+				
+					<div class="menu-item-wrapper" ng-class="{active: homeActiveClass()}">
+						<div class="menu-item" ui-sref="home" ng-click="toggleBurger()" ng-bind="$root.localization.home"></div>
+					</div>
+					
+					<div class="menu-item-wrapper">
+						<div class="menu-item" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>
+						<div class="sub-menus">
+						<div class="sub-menu sub-link icon-av-play-arrow" ng-click="toggleBurger()"
+						 ng-repeat="product in $root.allProduct" ng-bind="product.Post.title"
+						 ui-sref="product({alias: product.Post.alias})"></div></div>
+					</div>
+				        
+				    
+				
+					  
+					
+						<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in linkburger">
+					      	<accordion title="item.name" collapse="false"> 
+					  	<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->
+					              	<div class="sub-menus" ng-if="item.children">
+						                	<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
+							                      	ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>
+					              	</div>
+				        	</accordion>
+					  </div>
+					
+
 					<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->
-					<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">
-						<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>
-						<div class="sub-menus" ng-if="item.children">
-							<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"
-								ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>
-						</div>
-					</div>
-					<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">
-						<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>
-					</div>
+					<!--<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">-->
+						<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->
+						<!--<div class="sub-menus" ng-if="item.children">-->
+							<!--<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"-->
+								<!--ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>-->
+						<!--</div>-->
+					<!--</div>-->
+					
 					<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">
 						<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>
 						
 					</div>
 				</div>
 			</div>
+			
+			
+			
 		</div>`,
         link: (scope, element, attrs) => {
             scope.links = metaService.links;
+            scope.linkburger = metaService.linkburger;
 
             scope.toggleBurger = function () {
                 scope.burgerActive = !scope.burgerActive;

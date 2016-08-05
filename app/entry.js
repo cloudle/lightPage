@@ -20,6 +20,7 @@ import modal from "./component/modal";
 import modal2 from "./component/modal2";
 import modalOne from "./component/modalOne";
 import card from "./component/card";
+import accordion from "./component/accordion";
 import popup from "./component/popup";
 import slider from "./component/slider";
 import newsArea from "./component/newsArea";
@@ -48,6 +49,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('modal2', modal2)
 	.directive('modalOne', modalOne)
 	.directive('card', card)
+	.directive('accordion',accordion )
 	.directive('subscriptionForm', subscriptionForm)
 	.directive('navigationLink', navigationLink);
 

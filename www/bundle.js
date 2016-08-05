@@ -2,6 +2,50 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+  return {
+    template: '<div class="menu-item" ng-class="wrapperClass" ng-style="{height: elementHeight+\'px\'}">\n        <div class="title" ng-class="headingClass" ng-bind="title" ng-click="toggle()"></div>\n        <ng-transclude></ng-transclude>\n    </div>',
+    replace: true,
+    transclude: true,
+    scope: {
+      wrapperClass: '@',
+      headingClass: '@',
+      collapse: '=',
+      title: '='
+    },
+    link: function link(scope, element, attrs) {
+      var $titleElement = element.find('.title');
+      //console.log($titleElement);
+      scope.collapse = false;
+
+      scope.toggle = function (flag) {
+        if (flag == undefined) {
+          scope.collapse = !scope.collapse;
+        } else scope.collapse = flag;
+
+        updateComponentHeight();
+      };
+
+      function updateComponentHeight() {
+        scope.elementHeight = scope.collapse ? scope.originalHeight : scope.headingHeight;
+      }
+
+      $timeout(function () {
+        scope.elementHeight = element.outerHeight();
+        scope.headingHeight = $titleElement.outerHeight();
+        scope.originalHeight = scope.elementHeight;
+        updateComponentHeight();
+      }, 500);
+    }
+  };
+}];
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
@@ -23,7 +67,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
     };
 }];
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43,7 +87,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -81,7 +125,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],4:[function(require,module,exports){
+},{"../utils/helper":26}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -119,7 +163,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],5:[function(require,module,exports){
+},{"../utils/helper":26}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -144,7 +188,7 @@ exports.default = [function () {
     };
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -158,9 +202,10 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			ready: '=',
 			burgerActive: '='
 		},
-		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<!--<div class="navigation-link" ng-class="{active: productActiveClass()}">-->\n\t\t\t\t\t\t<!--<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="home" ng-click="toggleBurger()" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper">\n\t\t\t\t\t\t<div class="menu-item" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t\t<div class="sub-menus">\n\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-click="toggleBurger()"\n\t\t\t\t\t\t ng-repeat="product in $root.allProduct" ng-bind="product.Post.title"\n\t\t\t\t\t\t ui-sref="product({alias: product.Post.alias})"></div></div>\n\t\t\t\t\t</div>\n\t\t\t\t        \n\t\t\t\t    \n\t\t\t\t\n\t\t\t\t\t  \n\t\t\t\t\t\n\t\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in linkburger">\n\t\t\t\t\t      \t<accordion title="item.name" collapse="false"> \n\t\t\t\t\t  \t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t              \t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t                \t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t                      \tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t              \t</div>\n\t\t\t\t        \t</accordion>\n\t\t\t\t\t  </div>\n\t\t\t\t\t\n\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<!--<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">-->\n\t\t\t\t\t\t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t\t<!--<div class="sub-menus" ng-if="item.children">-->\n\t\t\t\t\t\t\t<!--<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"-->\n\t\t\t\t\t\t\t\t<!--ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			scope.links = metaService.links;
+			scope.linkburger = metaService.linkburger;
 
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
@@ -197,7 +242,7 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 	};
 }];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -214,7 +259,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 		scope: {
 			instance: '='
 		},
-		template: "<div class=\"navigation-link\"  ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t</div>\n\t\t</div>",
+		template: "\n\t\t\t<div class=\"navigation-link\" ng-class=\"{active: linkActiveClass(instance)}\">\n\t\t\t\t<div class=\"parent-link\" ng-bind=\"instance.name\" ng-click=\"parentLinkNavigate(instance)\"></div>\n\t\t\t\t<div class=\"sub-navigations\" ng-style=\"{width: maxWidth+'px'}\" ng-if=\"instance.children\">\n\t\t\t\t\t<div class=\"sub-link icon-av-play-arrow\" ng-style=\"{width: maxWidth+'px'}\" ng-bind=\"link.name\" ng-repeat=\"link in instance.children\"\n\t\t\t\t\t\tui-sref=\"page({alias: link.alias})\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t",
 		link: function link(scope, element, attrs) {
 			scope.active = false;
 			scope.maxWidth = scope.instance.name.width(mainFont) + padding;
@@ -229,11 +274,15 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 			}
 
 			scope.linkActiveClass = function (instance) {
-				return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
+				if (instance.route) {
+					return $state.current.name == instance.route;
+				} else return $rootScope.activeGroup && $rootScope.activeGroup.id === instance.id;
 			};
 
 			scope.parentLinkNavigate = function (instance) {
-				if (instance.alias) {
+				if (instance.route) {
+					$state.go(instance.route, {/*params*/});
+				} else if (instance.alias) {
 					$state.go('page', { alias: instance.alias });
 				} else if (instance.children[0] && instance.children[0].alias) {
 					$state.go('page', { alias: instance.children[0].alias });
@@ -243,7 +292,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 	};
 }];
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -259,7 +308,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -280,7 +329,7 @@ exports.default = [function () {
 	};
 }];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -328,7 +377,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	};
 }];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -346,7 +395,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 			var $activeSlide = element.find('#currentSlide'),
 			    $previousSlide = element.find('#previousSlide'),
 			    easeEffect = Sine.easeIn,
-			    transitionTime = 2;
+			    transitionTime = 1;
 
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
@@ -372,10 +421,10 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 				if (scope.activeSlide) scope.activeSlide.isActive = true;
 
 				//Play transition animation!
-				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, x: '0%'}, {ease: easeEffect, x: '100%'});
-				// TweenLite.fromTo($activeSlide, transitionTime, {ease: easeEffect, x: '-100%'}, {ease: easeEffect, x: '0%'});
-				TweenLite.to($activeSlide, 0, { ease: easeEffect, opacity: '1' });
-				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, opacity: '1' }, { ease: easeEffect, opacity: '0' });
+				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, x: '0%' }, { ease: easeEffect, x: '100%' });
+				TweenLite.fromTo($activeSlide, transitionTime, { ease: easeEffect, x: '-100%' }, { ease: easeEffect, x: '0%' });
+				// TweenLite.to($activeSlide, 0, {ease: easeEffect, opacity: '1'});
+				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, opacity: '1'}, {ease: easeEffect, opacity: '0'});
 
 				//Reset interval;
 				if (global.sliderInterval) $interval.cancel(global.sliderInterval);
@@ -405,7 +454,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 }];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -444,7 +493,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],13:[function(require,module,exports){
+},{"../utils/helper":26}],14:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -567,6 +616,13 @@ var applicationController = exports.applicationController = function application
             params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id, limit: 4 }
         }).success(function (data) {
             $rootScope.news = data.results;
+        });
+
+        $http.get(apiHost + '/banner/get/json', {
+            params: { domain: domain, type: 'product', lang: $rootScope.activeLanguage.id }
+        }).success(function (data) {
+            fbq('track', 'ViewContent');
+            $rootScope.allProduct = data.results;
         });
     };
 
@@ -1078,7 +1134,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":25}],14:[function(require,module,exports){
+},{"../utils/helper":26}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1234,7 +1290,7 @@ var childproductController = exports.childproductController = function childprod
 
 childproductController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1304,7 +1360,7 @@ var mainController = exports.mainController = function mainController($rootScope
 
 mainController.$inject = ['$rootScope', '$scope', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1363,7 +1419,7 @@ var newsController = exports.newsController = function newsController($rootScope
 
 newsController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1510,7 +1566,7 @@ var pageController = exports.pageController = function () {
 
 pageController.$inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1550,7 +1606,7 @@ productCateMenuController.$inject = ['$rootScope', '$scope', '$timeout'];
 
 var subMenus = [{ title: 'Giới thiệu chung', contentId: "gioithieuchung" }, { title: 'Màu sắc', contentId: "mausac" }, { title: 'Thông số kỹ thuật', contentId: "thongsokythuat" }, { title: 'Phiên bản', contentId: "phienban" }];
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1602,7 +1658,7 @@ var productController = exports.productController = function productController($
 
 productController.$inject = ['$rootScope', '$window', '$http', '$state', 'metaService'];
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1637,7 +1693,7 @@ var splashController = exports.splashController = function () {
 
 splashController.$inject = ['$rootScope', '$scope', '$state', '$interval', '$timeout'];
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -1699,6 +1755,10 @@ var _card = require("./component/card");
 
 var _card2 = _interopRequireDefault(_card);
 
+var _accordion = require("./component/accordion");
+
+var _accordion2 = _interopRequireDefault(_accordion);
+
 var _popup = require("./component/popup");
 
 var _popup2 = _interopRequireDefault(_popup);
@@ -1722,7 +1782,7 @@ var _filter2 = _interopRequireDefault(_filter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.fixAnalyticMissing = _helper.fixAnalyticMissing;
-var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('productCtrl', _productController.productController).controller('childproductCtrl', _childproductController.childproductController).controller('splashCtrl', _splashController.splashController).controller('productCateMenuCtrl', _productCateMenuController.productCateMenuController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('modal', _modal2.default).directive('modal2', _modal4.default).directive('modalOne', _modalOne2.default).directive('card', _card2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
+var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('productCtrl', _productController.productController).controller('childproductCtrl', _childproductController.childproductController).controller('splashCtrl', _splashController.splashController).controller('productCateMenuCtrl', _productCateMenuController.productCateMenuController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('modal', _modal2.default).directive('modal2', _modal4.default).directive('modalOne', _modalOne2.default).directive('card', _card2.default).directive('accordion', _accordion2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
 
 (0, _filter2.default)(App);
 
@@ -1739,7 +1799,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/card":1,"./component/footer":2,"./component/modal":3,"./component/modal2":4,"./component/modalOne":5,"./component/navigation":6,"./component/navigationLink":7,"./component/newsArea":8,"./component/popup":9,"./component/sidebar":10,"./component/slider":11,"./component/subscriptionForm":12,"./controller/applicationController":13,"./controller/childproductController":14,"./controller/mainController":15,"./controller/newsController":16,"./controller/pageController":17,"./controller/partial/productCateMenuController":18,"./controller/productController":19,"./controller/splashController":20,"./metaService":22,"./routerConfig":23,"./utils/filter":24,"./utils/helper":25}],22:[function(require,module,exports){
+},{"./component/accordion":1,"./component/card":2,"./component/footer":3,"./component/modal":4,"./component/modal2":5,"./component/modalOne":6,"./component/navigation":7,"./component/navigationLink":8,"./component/newsArea":9,"./component/popup":10,"./component/sidebar":11,"./component/slider":12,"./component/subscriptionForm":13,"./controller/applicationController":14,"./controller/childproductController":15,"./controller/mainController":16,"./controller/newsController":17,"./controller/pageController":18,"./controller/partial/productCateMenuController":19,"./controller/productController":20,"./controller/splashController":21,"./metaService":23,"./routerConfig":24,"./utils/filter":25,"./utils/helper":26}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1747,6 +1807,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _helper = require('./utils/helper');
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout) {
 	var _this = this;
@@ -1763,7 +1825,20 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 		$http.get(apiHost + '/menu/get/json', {
 			params: { domain: domain, lang: $rootScope.activeLanguage.id }
 		}).success(function (data) {
-			_this.links = data.results;
+			_this.linkburger = data.results;
+			//console.log(data.results);
+			var links = _.sortBy(data.results, function (item) {
+				return item.title;
+			}),
+			    introIndex = _.findIndex(links, { name: "Giới thiệu" }),
+			    headLinks = links.slice(0, introIndex + 1),
+			    tailLinks = links.slice(introIndex + 1),
+			    customLinks = [{
+				name: "Sản Phẩm",
+				route: "product"
+			}];
+
+			_this.links = [].concat(_toConsumableArray(headLinks), customLinks, _toConsumableArray(tailLinks));
 
 			if (navigationResolve) navigationResolve(_this.links);
 			if (configResolve) {
@@ -1841,7 +1916,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-},{"./utils/helper":25}],23:[function(require,module,exports){
+},{"./utils/helper":26}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2034,7 +2109,7 @@ var fordtransitRoute = {
 };
 exports.default = routerConfig;
 
-},{"./utils/helper":25}],24:[function(require,module,exports){
+},{"./utils/helper":26}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2054,7 +2129,7 @@ function niceDate() {
 	};
 }
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2254,4 +2329,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[21]);
+},{}]},{},[22]);
