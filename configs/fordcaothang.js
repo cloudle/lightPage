@@ -29,7 +29,7 @@ module.exports = {
                                `,
             cardTitleTail: `
                <br><div style="font-size: 14px;margin: 10px 0;">Email: <a style="text-decoration:none;color:" href="mailto:saigonford@saigonford.com.vn" target="_top">saigonford@saigonford.com.vn</a></div><div style="font-size: 14px;font-weight: 700;"></div>
-               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: 61A Cao Thắng, Q.3, HCM</div><div style="font-size: 14px;font-weight: 700;"></div>
+               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: <a style="text-decoration:none;color:" href="https://goo.gl/LuP50v" target="_top">61A Cao Thắng, Q.3, HCM</a></div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
