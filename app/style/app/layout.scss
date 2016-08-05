@@ -44,6 +44,14 @@
     overflow: hidden;
     border-radius: 3px;
 
+    @media screen and (max-width: 600px) {
+      height: 200px;
+    }
+
+    @media screen and (max-width: 320px) {
+      height: 180px;
+    }
+
     .image {
       position: absolute; top: 0; left: 0; right: 0; bottom:0;
       background-size: cover;
