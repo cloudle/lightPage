@@ -199,6 +199,8 @@ export class applicationController {
 				this.userName = _userInfo.name || '';
 				this.userPhone = _userInfo.phone || '';
 				this.userEmail = _userInfo.email || '';
+				this.userNote = _userInfo.note || '';
+
 
 				//Store Social profile
 				if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));

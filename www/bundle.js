@@ -532,6 +532,7 @@ var applicationController = exports.applicationController = function application
 			_this.userName = _userInfo.name || '';
 			_this.userPhone = _userInfo.phone || '';
 			_this.userEmail = _userInfo.email || '';
+			_this.userNote = _userInfo.note || '';
 
 			//Store Social profile
 			if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
