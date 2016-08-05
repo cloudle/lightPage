@@ -1,6 +1,6 @@
 module.exports = {
     domain: "giadinhford.com.vn",
-    siteName: "Ford Phổ Quang",
+    siteName: "fordphoquang",
     siteFav: "images/vavicon.png",
     serverPort: 7029,
     production: true,
@@ -19,16 +19,16 @@ module.exports = {
         hotline: "093 898 0139",
         vietnamese: {
             productnews: `PHIÊN BẢN KHÁC`,
-            home: 'TRANG CHỦ',
+            home: 'Trang Chủ',
             news: 'TIN TỨC',
             product: 'sản phẩm',
             cardTitleHead: `<div style="font-size: 15px;">
-                    SÀI GÒN FORD PHỔ QUANG 
+    ĐẠI LÝ SÀI GÒN FORD PHỔ QUANG 
                             </div><br>
                  <span style="font-size: 14px;">Hotline: </span>
                                `,
             cardTitleTail: `
-               <br><div style="font-size: 14px;margin: 10px 0;">Email: <a style="text-decoration:none;color:" href="mailto:saigonford@saigonford.com.vn" target="_top">saigonford@saigonford.com.vn</a></div><div style="font-size: 14px;font-weight: 700;"></div>
+               <br><div style="font-size: 14px;margin: 10px 0;">Email: saigonford@saigonford.com.vn</div><div style="font-size: 14px;font-weight: 700;"></div>
                <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: 104 Phổ Quang, Phường 2, Quận Tân Bình, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `

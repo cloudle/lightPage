@@ -21,7 +21,7 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 		</div>`,
 		link: (scope, element, attrs) => {
 			let $activeSlide = element.find('#currentSlide'), $previousSlide = element.find('#previousSlide'),
-				easeEffect = Sine.easeIn, transitionTime = 2;
+				easeEffect = Sine.easeIn, transitionTime = 1;
 
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
@@ -47,10 +47,10 @@ export default ['$interval', '$timeout', function ($interval, $timeout) {
 				if (scope.activeSlide) scope.activeSlide.isActive = true;
 
 				//Play transition animation!
-				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, x: '0%'}, {ease: easeEffect, x: '100%'});
-				// TweenLite.fromTo($activeSlide, transitionTime, {ease: easeEffect, x: '-100%'}, {ease: easeEffect, x: '0%'});
-				TweenLite.to($activeSlide, 0, {ease: easeEffect, opacity: '1'});
-				TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, opacity: '1'}, {ease: easeEffect, opacity: '0'});
+				TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, x: '0%'}, {ease: easeEffect, x: '100%'});
+				TweenLite.fromTo($activeSlide, transitionTime, {ease: easeEffect, x: '-100%'}, {ease: easeEffect, x: '0%'});
+				// TweenLite.to($activeSlide, 0, {ease: easeEffect, opacity: '1'});
+				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, opacity: '1'}, {ease: easeEffect, opacity: '0'});
 
 				//Reset interval;
 				if (global.sliderInterval) $interval.cancel(global.sliderInterval);

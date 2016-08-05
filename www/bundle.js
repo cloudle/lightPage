@@ -2,6 +2,50 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+  return {
+    template: '<div class="menu-item" ng-class="wrapperClass" ng-style="{height: elementHeight+\'px\'}">\n        <div class="title" ng-class="headingClass" ng-bind="title" ng-click="toggle()"></div>\n        <ng-transclude></ng-transclude>\n    </div>',
+    replace: true,
+    transclude: true,
+    scope: {
+      wrapperClass: '@',
+      headingClass: '@',
+      collapse: '=',
+      title: '='
+    },
+    link: function link(scope, element, attrs) {
+      var $titleElement = element.find('.title');
+      //console.log($titleElement);
+      scope.collapse = false;
+
+      scope.toggle = function (flag) {
+        if (flag == undefined) {
+          scope.collapse = !scope.collapse;
+        } else scope.collapse = flag;
+
+        updateComponentHeight();
+      };
+
+      function updateComponentHeight() {
+        scope.elementHeight = scope.collapse ? scope.originalHeight : scope.headingHeight;
+      }
+
+      $timeout(function () {
+        scope.elementHeight = element.outerHeight();
+        scope.headingHeight = $titleElement.outerHeight();
+        scope.originalHeight = scope.elementHeight;
+        updateComponentHeight();
+      }, 500);
+    }
+  };
+}];
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
@@ -23,7 +67,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
     };
 }];
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -43,7 +87,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -81,7 +125,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],4:[function(require,module,exports){
+},{"../utils/helper":26}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -119,7 +163,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],5:[function(require,module,exports){
+},{"../utils/helper":26}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -144,7 +188,7 @@ exports.default = [function () {
     };
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -158,9 +202,10 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 			ready: '=',
 			burgerActive: '='
 		},
-		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">\n\t\t\t\t\t\t<div class="menu-item" ng-bind="item.name" ng-click="parentLinkNavigate(item)"></div>\n\t\t\t\t\t\t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t\tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: productActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="product" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="navigation-wrapper" ng-class="{burgering: burgerActive, ready: ready}">\n\t\t\t<div class="content-wrapper">\n\t\t\t\t<div class="site-logo" ui-sref="home"></div>\n\t\t\t\t\n\t\t\t\t<div class="burger-menu-activator icon-navigation-menu" ng-click="toggleBurger()"></div>\n\t\t\t\t<!--<div class="subscription-activator" ng-click="togglePopup()" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<!--<div class="subscription-activator" ui-sref="news({alias: \'lien-he\'})" ng-bind="$root.localization.register"></div>-->\n\t\t\t\t<div class="navigation-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="home" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\n\t\t\t\t\t<!--<div class="navigation-link" ng-class="{active: productActiveClass()}">-->\n\t\t\t\t\t\t<!--<div class="parent-link" ui-sref="product" ng-bind="$root.localization.product"></div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<navigation-link instance="link" ng-repeat="link in links"></navigation-link>\n\t\t\t\t\t\n\t\t\t\t\t<div class="navigation-link" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="parent-link" ui-sref="news" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class="burger-menu-wrapper" ng-class="{active: burgerActive}">\n\t\t\t\t<div class="backdrop" ng-click="toggleBurger()">\n\t\t\t\t\t\n\t\t\t\t</div>\n\t\t\t\t<div class="burger-menu">\n\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: homeActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="home" ng-click="toggleBurger()" ng-bind="$root.localization.home"></div>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper">\n\t\t\t\t\t\t<div class="menu-item" ng-click="toggleBurger()" ng-bind="$root.localization.product"></div>\n\t\t\t\t\t\t<div class="sub-menus">\n\t\t\t\t\t\t<div class="sub-menu sub-link icon-av-play-arrow" ng-click="toggleBurger()"\n\t\t\t\t\t\t ng-repeat="product in $root.allProduct" ng-bind="product.Post.title"\n\t\t\t\t\t\t ui-sref="product({alias: product.Post.alias})"></div></div>\n\t\t\t\t\t</div>\n\t\t\t\t        \n\t\t\t\t    \n\t\t\t\t\n\t\t\t\t\t  \n\t\t\t\t\t\n\t\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in linkburger">\n\t\t\t\t\t      \t<accordion title="item.name" collapse="false"> \n\t\t\t\t\t  \t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t              \t<div class="sub-menus" ng-if="item.children">\n\t\t\t\t\t\t                \t<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"\n\t\t\t\t\t\t\t                      \tui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>\n\t\t\t\t\t              \t</div>\n\t\t\t\t        \t</accordion>\n\t\t\t\t\t  </div>\n\t\t\t\t\t\n\n\t\t\t\t\t<!--<div class="menu-heading" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t<!--<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in links">-->\n\t\t\t\t\t\t<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->\n\t\t\t\t\t\t<!--<div class="sub-menus" ng-if="item.children">-->\n\t\t\t\t\t\t\t<!--<div class="sub-menu sub-link icon-av-play-arrow" ng-bind="child.name" ng-repeat="child in item.children"-->\n\t\t\t\t\t\t\t\t<!--ui-sref="page({alias: child.alias})" ng-click="toggleBurger()"></div>-->\n\t\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t<!--</div>-->\n\t\t\t\t\t\n\t\t\t\t\t<div class="menu-item-wrapper" ng-class="{active: newsActiveClass()}">\n\t\t\t\t\t\t<div class="menu-item" ui-sref="news" ng-click="toggleBurger()" ng-bind="$root.localization.news"></div>\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t\n\t\t\t\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			scope.links = metaService.links;
+			scope.linkburger = metaService.linkburger;
 
 			scope.toggleBurger = function () {
 				scope.burgerActive = !scope.burgerActive;
@@ -197,7 +242,7 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 	};
 }];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -243,7 +288,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 	};
 }];
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -259,7 +304,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -280,7 +325,7 @@ exports.default = [function () {
 	};
 }];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -328,7 +373,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	};
 }];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -346,7 +391,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 			var $activeSlide = element.find('#currentSlide'),
 			    $previousSlide = element.find('#previousSlide'),
 			    easeEffect = Sine.easeIn,
-			    transitionTime = 2;
+			    transitionTime = 1;
 
 			scope.activeIndex = 0;
 			scope.activeSlide = scope.items[scope.activeIndex];
@@ -372,10 +417,10 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 				if (scope.activeSlide) scope.activeSlide.isActive = true;
 
 				//Play transition animation!
-				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, x: '0%'}, {ease: easeEffect, x: '100%'});
-				// TweenLite.fromTo($activeSlide, transitionTime, {ease: easeEffect, x: '-100%'}, {ease: easeEffect, x: '0%'});
-				TweenLite.to($activeSlide, 0, { ease: easeEffect, opacity: '1' });
-				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, opacity: '1' }, { ease: easeEffect, opacity: '0' });
+				TweenLite.fromTo($previousSlide, transitionTime, { ease: easeEffect, x: '0%' }, { ease: easeEffect, x: '100%' });
+				TweenLite.fromTo($activeSlide, transitionTime, { ease: easeEffect, x: '-100%' }, { ease: easeEffect, x: '0%' });
+				// TweenLite.to($activeSlide, 0, {ease: easeEffect, opacity: '1'});
+				// TweenLite.fromTo($previousSlide, transitionTime, {ease: easeEffect, opacity: '1'}, {ease: easeEffect, opacity: '0'});
 
 				//Reset interval;
 				if (global.sliderInterval) $interval.cancel(global.sliderInterval);
@@ -405,7 +450,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 }];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -444,12 +489,12 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail', 'userType', 'userCate', 'userArea', 'userDate'];
 
-},{"../utils/helper":25}],13:[function(require,module,exports){
+},{"../utils/helper":26}],14:[function(require,module,exports){
 (function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.applicationController = undefined;
 
@@ -460,625 +505,632 @@ var _helper = require('../utils/helper');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var applicationController = exports.applicationController = function applicationController($rootScope, $scope, $state, $timeout, $interval, $window, $http, ngProgressFactory, metaService) {
-	var _this = this;
-
-	_classCallCheck(this, applicationController);
-
-	this.developmentMode = false;
-	this.ready = true;
-	this.activePage = 'splash';
-	this.burgerActive = false;
-	this.subscriptionPopup = false;
-	this.subscriptionSuccess = false;
-	this.modalPopup = false;
-
-	$rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
-	$rootScope.appCtrl = this;
-
-	this.modalOneActive = false;
-	this.modalTwoActive = false;
-	this.modalThreeActive = false;
-
-	//Fire Ants trackingGoal hook!
-
-	this.convertcall = function () {
-		ga('send', { 'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
-	};
-
-	this.testdriver = function () {
-		ga('send', { 'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
-		_this.modalThreeActive = true;
-	};
-
-	this.price = function () {
-		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
-		_this.modalOneActive = true;
-	};
-
-	this.price2 = function () {
-		ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
-		_this.modalTwoActive = true;
-	};
-
-	this.name = "Cloud!";
-	$rootScope.activeContents = [];
-	this.progress = ngProgressFactory.createInstance();
-	this.progress.setColor('#FA8322');
-	global.$http = $http;
-
-	global.toggleModal = function (newVall) {
-		$scope.$apply(function () {
-			_this.modalPopup = newVall ? newVall : !_this.modalPopup;
-		});
-	};
-
-	global.togglePopup = function (newVal) {
-		$scope.$apply(function () {
-			_this.subscriptionPopup = newVal ? newVal : !_this.subscriptionPopup;
-		});
-	};
-
-	this.toggleSuccess = function () {
-		_this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
-		_this.subscriptionSuccess = true;
-		$timeout(function () {
-			return _this.subscriptionSuccess = false;
-		}, 3000);
-	};
-
-	$rootScope.$on('$stateChangeStart', function () {
-		_this.progress.start();
-	});
-
-	$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-		_this.activePage = toState.name;_this.ready = false;
-		_this.progress.complete();
-
-		//Set meta's content for AUDIENCE SEGMENT!
-		var currentSegment = 'home';
-		if ($state.is('page')) {
-			var pageAlias = $state.params.alias,
-			    parentMenu = (0, _helper.findParentMenuByAlias)(pageAlias, metaService.links);
-			currentSegment = parentMenu.name;
-		} else if ($state.is('news')) {
-			currentSegment = 'news';
-		}
-
-		$($("meta[name='adx:sections']")[0]).attr('content', currentSegment);
-		$timeout(function () {
-			_this.ready = true;
-			$(document).trigger('ready'); //Manually trigger ready event, which hope also trigger Ants' script!
-		}, 250);
-	});
-
-	var fetchEssentialData = function fetchEssentialData(source) {
-		console.info("Loading..", source);
-		var _metaService$configs = metaService.configs;
-		var apiHost = _metaService$configs.apiHost;
-		var domain = _metaService$configs.domain;
-
-		$http.get(apiHost + '/banner/get/json', {
-			params: { domain: domain, type: 'footer', lang: $rootScope.activeLanguage.id }
-		}).success(function (data) {
-			_this.footers = data.results;
-		});
-
-		$http.get(apiHost + '/banner/get/json', {
-			params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id, limit: 4 }
-		}).success(function (data) {
-			$rootScope.news = data.results;
-		});
-	};
-
-	if (metaService.ready) fetchEssentialData("because the data already fetched!");
-	$rootScope.$on('metaServiceReady', function () {
-		return fetchEssentialData("because meta service ready fired!");
-	});
-
-	this.lastScrollPosition = 0;
-	$(window).scroll(function (event) {
-		var topScroll = $(window).scrollTop();
-		$rootScope.$broadcast('scrollChange', { top: topScroll, scrollingDown: topScroll > _this.lastScrollPosition });
-		_this.lastScrollPosition = topScroll;
-	});
-
-	$(window).resize(function () {
-		$rootScope.$broadcast('sizeChange', {
-			height: $(window).height(),
-			width: $(window).width()
-		});
-	});
-
-	//Register form!
-	_helper.registerFields.forEach(function (field) {
-		_this[field] = '';_this[field + 'Error'] = '';
-	});
-
-	this.closeRegisterForm = function () {
-		_this.modalOneActive = false;
-		_this.modalTwoActive = false;
-		_this.modalThreeActive = false;
-	};
-
-	this.resetRegisterForm = function () {
-		_helper.registerFields.forEach(function (field) {
-			return _this[field] = '';
-		});
-	};
-
-	this.resetRegisterError = function () {
-		_helper.registerFields.forEach(function (field) {
-			return _this[field + 'Error'] = '';
-		});
-	};
-
-	this.subscriptionSuccessHandler = function () {
-		_this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
-		_this.subscriptionSuccess = true;
-		$timeout(function () {
-			_this.subscriptionSuccess = false;
-			location.reload();
-		}, 3000);
-	};
-
-	this.submitRegister = $rootScope.submitRegister = function (event) {
-		var _metaService$configs2 = metaService.configs;
-		var apiHost = _metaService$configs2.apiHost;
-		var domain = _metaService$configs2.domain;
-		var production = _metaService$configs2.production;
-
-		console.log("production mode:", production);
-		event.preventDefault();_this.resetRegisterError();
-
-		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
-		if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
-		if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
-		if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
-
-		var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-		    formData = _extends({}, localUserInfo, {
-			domain: domain,
-			fullName: _this['userName'],
-			name: _this['userName'],
-			type: _this['userType'],
-			cate: _this['userCate'],
-			phone: _this['userPhone'],
-			area: _this['userArea'],
-			date: _this['userDate'],
-			email: _this['userEmail'],
-			note: _this['userNote']
-		});
-
-		//Send form information to Ants!
-
-		//console.log(formData.note);
-		var vehicleType = _this['userType'];
-		var userRegion = _this['userArea'];
-		var userCate = _this['userCate'];
-
-		//Send form information to Ants!
-
-		//console.log(formData.date);
-		if (production) {
-
-			/* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
-
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
-
-			/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
-
-			var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'more_require', value: userCate }, { field: 'region', value: userRegion }];
-
-			var userInfo = {
-
-				name: _this['userName'],
-
-				phone: _this['userPhone'],
-
-				email: _this['userEmail'],
-
-				others: JSON2.stringify(infoCustomTargetKey)
-
-			};
-
-			adx_analytic.trackingEvent('tup', userInfo, true);
-			//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
-		} else {
-			console.log(ants_userInfoListener);
-		}
-
-		//Facebook tracking Lead/CompleteRegistration event
-		if (production) fbq('track', 'Lead');
-		if (production) fbq('track', 'CompleteRegistration');
-
-		//Tracking Google Analytic goal!
-		if (production) {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'Subscription',
-				eventAction: 'Submit'
-			});
-		}
-
-		if (production) {
-			ants_analytic.push({
-				conversionId: metaService.configs.antsConversionId,
-				customParams: [{
-					'is_ecomm': 0,
-					'ecomm_pagetype': 'purchase',
-					'ecomm_quantity': 1,
-					'ecomm_totalvalue': 1
-				}]
-			});
-		}
-
-		_this.resetRegisterForm();
-		_this.subscriptionPopup = false;
-		_this.modalPopup = false;
-
-		//Send form to Twin's server!
-		if (production) {
-			$http.get(apiHost + '/customer/insert/json', {
-				params: formData
-			}).success(function (data) {
-				_this.subscriptionSuccessHandler();
-				$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-					console.log('email...', data);
-				});
-			});
-		} else {
-			_this.subscriptionSuccessHandler(); //Auto success on test environment!
-		}
-	};
-
-	this.submitModal = $rootScope.submitModal = function (event) {
-		var _metaService$configs3 = metaService.configs;
-		var apiHost = _metaService$configs3.apiHost;
-		var domain = _metaService$configs3.domain;
-		var production = _metaService$configs3.production;
-
-		console.log("production mode:", production);
-		event.preventDefault();_this.resetRegisterError();
-
-		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
-		if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
-		if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
-		if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
-
-		var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-		    formData = _extends({}, localUserInfo, {
-			domain: domain,
-			fullName: _this['userName'],
-			name: _this['userName'],
-			type: _this['userType'],
-			cate: _this['userCate'],
-			phone: _this['userPhone'],
-			area: _this['userArea'],
-			date: _this['userDate'],
-			email: _this['userEmail'],
-			note: _this['userNote']
-		});
-
-		//Send form information to Ants!
-
-		//console.log(formData.date);
-
-		var vehicleType = _this['userType'];
-		var userRegion = _this['userArea'];
-		var userDate = _this['userDate'];
-
-		//Send form information to Ants!
-
-		//console.log(formData.date);
-		if (production) {
-
-			/* Ants Insight Goal Tracking: "Đăng ký lái thử Ford Gia đình" */
-
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
-
-			/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
-
-			var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'day_to_drive', value: userDate }, { field: 'region', value: userRegion }];
-
-			var userInfo = {
-
-				name: _this['userName'],
-
-				phone: _this['userPhone'],
-
-				email: _this['userEmail'],
-
-				others: JSON2.stringify(infoCustomTargetKey)
-
-			};
-
-			adx_analytic.trackingEvent('tup', userInfo, true);
-			//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
-		} else {
-			console.log(ants_userInfoListener);
-		}
-
-		//if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
-
-		//Facebook tracking Lead/CompleteRegistration event
-		if (production) fbq('track', 'Lead');
-		if (production) fbq('track', 'CompleteRegistration');
-
-		//Tracking Google Analytic goal!
-		if (production) {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'Subscription',
-				eventAction: 'Submit'
-			});
-		}
-
-		if (production) {
-			ants_analytic.push({
-				conversionId: metaService.configs.antsConversionId,
-				customParams: [{
-					'is_ecomm': 0,
-					'ecomm_pagetype': 'purchase',
-					'ecomm_quantity': 1,
-					'ecomm_totalvalue': 1
-				}]
-			});
-		}
-
-		_this.resetRegisterForm();
-		_this.subscriptionPopup = false;
-		_this.modalPopup = false;
-
-		//Send form to Twin's server!
-		if (production) {
-			$http.get(apiHost + '/customer/insert/json', {
-				params: formData
-			}).success(function (data) {
-				_this.subscriptionSuccessHandler();
-				$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-					console.log('email...', data);
-				});
-			});
-		} else {
-			_this.subscriptionSuccessHandler(); //Auto success on test environment!
-		}
-	};
-
-	// this.submitModal_old = $rootScope.submitModal = (event) => {
-	// 	let { apiHost, domain, production } = metaService.configs;
-	// 	console.log("production mode:", production);
-	// 	event.preventDefault(); this.resetRegisterError();
-	//
-	// 	if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
-	// 	if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
-	// 	if (this['userType'].length < 8) this['userTypeError'] = 'Nhập Tyeeeee';
-	// 	if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
-	//
-	// 	var vehicleType = this['userType'];
-	// 	var userRegion = this['userArea'];
-	// 	var userDate = this['userDate'];
-	//
-	// 	//Send form information to Ants!
-	//
-	// 	console.log(formData.date);
-	// 	if (production) {
-	//
-	// 		/* Ants Insight Goal Tracking: "Đăng ký lái thử Ford Gia đình" */
-	//
-	// 		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
-	//
-	// 		/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
-	//
-	// 		var infoCustomTargetKey = [
-	//
-	// 			{ field: 'vehicle_type', value: vehicleType },
-	//
-	// 			{ field: 'day_to_drive', value: userDate },
-	//
-	// 			{ field: 'region', value: userRegion }
-	//
-	// 		];
-	//
-	// 		var userInfo = {
-	//
-	// 			name:this['userName'],
-	//
-	// 			phone: this['userPhone'],
-	//
-	// 			email: this['userEmail'],
-	//
-	// 			description: this['userNote'], // Ghi chú khác nếu có
-	//
-	// 			others: JSON2.stringify(infoCustomTargetKey)
-	//
-	// 		};
-	//
-	// 		adx_analytic.trackingEvent('tup', userInfo, true);
-	//
-	// 		// ants_userInfoListener(forData, false, true);-> This is OLD Version
-	// 	} else {
-	// 		console.log(ants_userInfoListener)
-	// 	}
-	//
-	// 	//Facebook tracking Lead/CompleteRegistration event
-	// 	if (production) fbq('track', 'Lead');
-	// 	if (production) fbq('track', 'CompleteRegistration');
-	//
-	// 	//Tracking Google Analytic goal!
-	// 	if (production) {
-	// 		ga('send', {
-	// 			hitType: 'event',
-	// 			eventCategory: 'Subscription',
-	// 			eventAction: 'Submit'
-	// 		});
-	// 	}
-	//
-	// 	if (production) {
-	// 		ants_analytic.push({
-	// 			conversionId : metaService.configs.antsConversionId,
-	// 			customParams : [
-	// 				{
-	// 					'is_ecomm': 0,
-	// 					'ecomm_pagetype': 'purchase',
-	// 					'ecomm_quantity': 1,
-	// 					'ecomm_totalvalue': 1
-	// 				}
-	// 			]
-	// 		});
-	// 	}
-	//
-	// 	this.resetRegisterForm();
-	// 	this.subscriptionPopup = false;
-	// 	this.modalPopup = false;
-	//
-	// 	//Send form to Twin's server!
-	// 	if (production) {
-	// 		$http.get(`${apiHost}/customer/insert/json`, {
-	// 			params: formData
-	// 		}).success(data => {
-	// 			this.subscriptionSuccessHandler();
-	// 			$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
-	// 				console.log('email...', data);
-	// 			});
-	// 		});
-	// 	} else {
-	// 		this.subscriptionSuccessHandler(); //Auto success on test environment!
-	// 	}
-	// };
-
-	this.submitModal2 = $rootScope.submitModal2 = function (event) {
-		var _metaService$configs4 = metaService.configs;
-		var apiHost = _metaService$configs4.apiHost;
-		var domain = _metaService$configs4.domain;
-		var production = _metaService$configs4.production;
-
-		console.log("production mode:", production);
-		event.preventDefault();_this.resetRegisterError();
-
-		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
-		if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
-		if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
-		if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
-
-		var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
-		    formData = _extends({}, localUserInfo, {
-			domain: domain,
-			fullName: _this['userName'],
-			name: _this['userName'],
-			type: _this['userType'],
-			cate: _this['userCate'],
-			phone: _this['userPhone'],
-			area: _this['userArea'],
-			date: _this['userDate'],
-			email: _this['userEmail'],
-			note: _this['userNote']
-		});
-
-		//Send form information to Ants!
-
-		var vehicleType = _this['userType'];
-		var userRegion = _this['userArea'];
-		var userCate = _this['userCate'];
-
-		//Send form information to Ants!
-
-		//console.log(formData.date);
-		if (production) {
-
-			/* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
-
-			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
-
-			/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
-
-			var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'more_require', value: userCate }, { field: 'region', value: userRegion }];
-
-			var userInfo = {
-
-				name: _this['userName'],
-
-				phone: _this['userPhone'],
-
-				email: _this['userEmail'],
-
-				others: JSON2.stringify(infoCustomTargetKey)
-
-			};
-
-			adx_analytic.trackingEvent('tup', userInfo, true);
-			//ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
-		} else {
-			console.log(ants_userInfoListener);
-		}
-
-		//Facebook tracking Lead/CompleteRegistration event
-		if (production) fbq('track', 'Lead');
-		if (production) fbq('track', 'CompleteRegistration');
-
-		//Tracking Google Analytic goal!
-		if (production) {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'Subscription',
-				eventAction: 'Submit'
-			});
-		}
-
-		if (production) {
-			ants_analytic.push({
-				conversionId: metaService.configs.antsConversionId,
-				customParams: [{
-					'is_ecomm': 0,
-					'ecomm_pagetype': 'purchase',
-					'ecomm_quantity': 1,
-					'ecomm_totalvalue': 1
-				}]
-			});
-		}
-
-		_this.resetRegisterForm();
-		_this.subscriptionPopup = false;
-		_this.modalPopup = false;
-
-		//Send form to Twin's server!
-		if (production) {
-			$http.get(apiHost + '/customer/insert/json', {
-				params: formData
-			}).success(function (data) {
-				_this.subscriptionSuccessHandler();
-				$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-					console.log('email...', data);
-				});
-			});
-		} else {
-			_this.subscriptionSuccessHandler(); //Auto success on test environment!
-		}
-	};
-
-	global.get_info = function (_userInfo) {
-		$scope.$apply(function () {
-			// user info get here
-			console.log("ant's get_info function:", _userInfo);
-
-			// fill userInfo to FORM đăng ký
-			_this.userName = _userInfo.name || '';
-			_this.userPhone = _userInfo.phone || '';
-			_this.userEmail = _userInfo.email || '';
-			_this.userCate = _userInfo.cate || '';
-			_this.userType = _userInfo.type || '';
-			_this.userArea = _userInfo.area || '';
-			_this.userNote = _userInfo.note || '';
-
-			//Store Social profile
-			if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
-		});
-	};
+  var _this = this;
+
+  _classCallCheck(this, applicationController);
+
+  this.developmentMode = false;
+  this.ready = true;
+  this.activePage = 'splash';
+  this.burgerActive = false;
+  this.subscriptionPopup = false;
+  this.subscriptionSuccess = false;
+  this.modalPopup = false;
+
+  $rootScope.configs = metaService.configs; //Will be undefined at first => not safe for normal usage, just for translation!
+  $rootScope.appCtrl = this;
+
+  this.modalOneActive = false;
+  this.modalTwoActive = false;
+  this.modalThreeActive = false;
+
+  //Fire Ants trackingGoal hook!
+
+  this.convertcall = function () {
+    ga('send', { 'hitType': 'event', 'eventCategory': 'Cuoc Goi', 'eventAction': 'Call', 'eventLabel': 'Cuoc Goi' });
+  };
+
+  this.testdriver = function () {
+    ga('send', { 'hitType': 'event', 'eventCategory': 'Test Driver', 'eventAction': 'Click', 'eventLabel': 'Test driver' });
+    _this.modalThreeActive = true;
+  };
+
+  this.price = function () {
+    ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
+    _this.modalOneActive = true;
+  };
+
+  this.price2 = function () {
+    ga('send', { 'hitType': 'event', 'eventCategory': 'Bang Gia', 'eventAction': 'Click', 'eventLabel': 'Bang Gia' });
+    _this.modalTwoActive = true;
+  };
+
+  this.name = "Cloud!";
+  $rootScope.activeContents = [];
+  this.progress = ngProgressFactory.createInstance();
+  this.progress.setColor('#FA8322');
+  global.$http = $http;
+
+  global.toggleModal = function (newVall) {
+    $scope.$apply(function () {
+      _this.modalPopup = newVall ? newVall : !_this.modalPopup;
+    });
+  };
+
+  global.togglePopup = function (newVal) {
+    $scope.$apply(function () {
+      _this.subscriptionPopup = newVal ? newVal : !_this.subscriptionPopup;
+    });
+  };
+
+  this.toggleSuccess = function () {
+    _this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
+    _this.subscriptionSuccess = true;
+    $timeout(function () {
+      return _this.subscriptionSuccess = false;
+    }, 3000);
+  };
+
+  $rootScope.$on('$stateChangeStart', function () {
+    _this.progress.start();
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+    _this.activePage = toState.name;_this.ready = false;
+    _this.progress.complete();
+
+    //Set meta's content for AUDIENCE SEGMENT!
+    var currentSegment = 'home';
+    if ($state.is('page')) {
+      var pageAlias = $state.params.alias,
+          parentMenu = (0, _helper.findParentMenuByAlias)(pageAlias, metaService.links);
+      currentSegment = parentMenu.name;
+    } else if ($state.is('news')) {
+      currentSegment = 'news';
+    }
+
+    $($("meta[name='adx:sections']")[0]).attr('content', currentSegment);
+    $timeout(function () {
+      _this.ready = true;
+      $(document).trigger('ready'); //Manually trigger ready event, which hope also trigger Ants' script!
+    }, 250);
+  });
+
+  var fetchEssentialData = function fetchEssentialData(source) {
+    console.info("Loading..", source);
+    var _metaService$configs = metaService.configs;
+    var apiHost = _metaService$configs.apiHost;
+    var domain = _metaService$configs.domain;
+
+    $http.get(apiHost + '/banner/get/json', {
+      params: { domain: domain, type: 'footer', lang: $rootScope.activeLanguage.id }
+    }).success(function (data) {
+      _this.footers = data.results;
+    });
+
+    $http.get(apiHost + '/banner/get/json', {
+      params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id, limit: 4 }
+    }).success(function (data) {
+      $rootScope.news = data.results;
+    });
+
+    $http.get(apiHost + '/banner/get/json', {
+      params: { domain: domain, type: 'product', lang: $rootScope.activeLanguage.id }
+    }).success(function (data) {
+      fbq('track', 'ViewContent');
+      $rootScope.allProduct = data.results;
+    });
+  };
+
+  if (metaService.ready) fetchEssentialData("because the data already fetched!");
+  $rootScope.$on('metaServiceReady', function () {
+    return fetchEssentialData("because meta service ready fired!");
+  });
+
+  this.lastScrollPosition = 0;
+  $(window).scroll(function (event) {
+    var topScroll = $(window).scrollTop();
+    $rootScope.$broadcast('scrollChange', { top: topScroll, scrollingDown: topScroll > _this.lastScrollPosition });
+    _this.lastScrollPosition = topScroll;
+  });
+
+  $(window).resize(function () {
+    $rootScope.$broadcast('sizeChange', {
+      height: $(window).height(),
+      width: $(window).width()
+    });
+  });
+
+  //Register form!
+  _helper.registerFields.forEach(function (field) {
+    _this[field] = '';_this[field + 'Error'] = '';
+  });
+
+  this.closeRegisterForm = function () {
+    _this.modalOneActive = false;
+    _this.modalTwoActive = false;
+    _this.modalThreeActive = false;
+  };
+
+  this.resetRegisterForm = function () {
+    _helper.registerFields.forEach(function (field) {
+      return _this[field] = '';
+    });
+  };
+
+  this.resetRegisterError = function () {
+    _helper.registerFields.forEach(function (field) {
+      return _this[field + 'Error'] = '';
+    });
+  };
+
+  this.subscriptionSuccessHandler = function () {
+    _this.successGifImage = 'url(images/onoffonce.gif?' + (0, _helper.generateNumberUUID)(10) + ')';
+    _this.subscriptionSuccess = true;
+    $timeout(function () {
+      _this.subscriptionSuccess = false;
+      location.reload();
+    }, 3000);
+  };
+
+  this.submitRegister = $rootScope.submitRegister = function (event) {
+    var _metaService$configs2 = metaService.configs;
+    var apiHost = _metaService$configs2.apiHost;
+    var domain = _metaService$configs2.domain;
+    var production = _metaService$configs2.production;
+
+    console.log("production mode:", production);
+    event.preventDefault();_this.resetRegisterError();
+
+    if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
+    if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
+    if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
+    if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
+
+    var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+        formData = _extends({}, localUserInfo, {
+      domain: domain,
+      fullName: _this['userName'],
+      name: _this['userName'],
+      type: _this['userType'],
+      cate: _this['userCate'],
+      phone: _this['userPhone'],
+      area: _this['userArea'],
+      date: _this['userDate'],
+      email: _this['userEmail'],
+      note: _this['userNote']
+    });
+
+    //Send form information to Ants!
+
+    //console.log(formData.note);
+    var vehicleType = _this['userType'];
+    var userRegion = _this['userArea'];
+    var userCate = _this['userCate'];
+
+    //Send form information to Ants!
+
+    //console.log(formData.date);
+    if (production) {
+
+      /* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
+
+      adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId1, 1, 'event');
+
+      /* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+      var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'more_require', value: userCate }, { field: 'region', value: userRegion }];
+
+      var userInfo = {
+
+        name: _this['userName'],
+
+        phone: _this['userPhone'],
+
+        email: _this['userEmail'],
+
+        others: JSON2.stringify(infoCustomTargetKey)
+
+      };
+
+      adx_analytic.trackingEvent('tup', userInfo, true);
+      //ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
+    } else {
+      console.log(ants_userInfoListener);
+    }
+
+    //Facebook tracking Lead/CompleteRegistration event
+    if (production) fbq('track', 'Lead');
+    if (production) fbq('track', 'CompleteRegistration');
+
+    //Tracking Google Analytic goal!
+    if (production) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Subscription',
+        eventAction: 'Submit'
+      });
+    }
+
+    if (production) {
+      ants_analytic.push({
+        conversionId: metaService.configs.antsConversionId,
+        customParams: [{
+          'is_ecomm': 0,
+          'ecomm_pagetype': 'purchase',
+          'ecomm_quantity': 1,
+          'ecomm_totalvalue': 1
+        }]
+      });
+    }
+
+    _this.resetRegisterForm();
+    _this.subscriptionPopup = false;
+    _this.modalPopup = false;
+
+    //Send form to Twin's server!
+    if (production) {
+      $http.get(apiHost + '/customer/insert/json', {
+        params: formData
+      }).success(function (data) {
+        _this.subscriptionSuccessHandler();
+        $http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+          console.log('email...', data);
+        });
+      });
+    } else {
+      _this.subscriptionSuccessHandler(); //Auto success on test environment!
+    }
+  };
+
+  this.submitModal = $rootScope.submitModal = function (event) {
+    var _metaService$configs3 = metaService.configs;
+    var apiHost = _metaService$configs3.apiHost;
+    var domain = _metaService$configs3.domain;
+    var production = _metaService$configs3.production;
+
+    console.log("production mode:", production);
+    event.preventDefault();_this.resetRegisterError();
+
+    if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
+    if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
+    if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
+    if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
+
+    var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+        formData = _extends({}, localUserInfo, {
+      domain: domain,
+      fullName: _this['userName'],
+      name: _this['userName'],
+      type: _this['userType'],
+      cate: _this['userCate'],
+      phone: _this['userPhone'],
+      area: _this['userArea'],
+      date: _this['userDate'],
+      email: _this['userEmail'],
+      note: _this['userNote']
+    });
+
+    //Send form information to Ants!
+
+    //console.log(formData.date);
+
+    var vehicleType = _this['userType'];
+    var userRegion = _this['userArea'];
+    var userDate = _this['userDate'];
+
+    //Send form information to Ants!
+
+    //console.log(formData.date);
+    if (production) {
+
+      /* Ants Insight Goal Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+      adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
+
+      /* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+      var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'day_to_drive', value: userDate }, { field: 'region', value: userRegion }];
+
+      var userInfo = {
+
+        name: _this['userName'],
+
+        phone: _this['userPhone'],
+
+        email: _this['userEmail'],
+
+        others: JSON2.stringify(infoCustomTargetKey)
+
+      };
+
+      adx_analytic.trackingEvent('tup', userInfo, true);
+      //ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
+    } else {
+      console.log(ants_userInfoListener);
+    }
+
+    //if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
+
+    //Facebook tracking Lead/CompleteRegistration event
+    if (production) fbq('track', 'Lead');
+    if (production) fbq('track', 'CompleteRegistration');
+
+    //Tracking Google Analytic goal!
+    if (production) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Subscription',
+        eventAction: 'Submit'
+      });
+    }
+
+    if (production) {
+      ants_analytic.push({
+        conversionId: metaService.configs.antsConversionId,
+        customParams: [{
+          'is_ecomm': 0,
+          'ecomm_pagetype': 'purchase',
+          'ecomm_quantity': 1,
+          'ecomm_totalvalue': 1
+        }]
+      });
+    }
+
+    _this.resetRegisterForm();
+    _this.subscriptionPopup = false;
+    _this.modalPopup = false;
+
+    //Send form to Twin's server!
+    if (production) {
+      $http.get(apiHost + '/customer/insert/json', {
+        params: formData
+      }).success(function (data) {
+        _this.subscriptionSuccessHandler();
+        $http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+          console.log('email...', data);
+        });
+      });
+    } else {
+      _this.subscriptionSuccessHandler(); //Auto success on test environment!
+    }
+  };
+
+  // this.submitModal_old = $rootScope.submitModal = (event) => {
+  // 	let { apiHost, domain, production } = metaService.configs;
+  // 	console.log("production mode:", production);
+  // 	event.preventDefault(); this.resetRegisterError();
+  //
+  // 	if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
+  // 	if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
+  // 	if (this['userType'].length < 8) this['userTypeError'] = 'Nhập Tyeeeee';
+  // 	if (this['userNameError'] || this['userPhoneError'] || this['userTypeError']) return;
+  //
+  // 	var vehicleType = this['userType'];
+  // 	var userRegion = this['userArea'];
+  // 	var userDate = this['userDate'];
+  //
+  // 	//Send form information to Ants!
+  //
+  // 	console.log(formData.date);
+  // 	if (production) {
+  //
+  // 		/* Ants Insight Goal Tracking: "Đăng ký lái thử Ford Gia đình" */
+  //
+  // 		adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId3, 1, 'event');
+  //
+  // 		/* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+  //
+  // 		var infoCustomTargetKey = [
+  //
+  // 			{ field: 'vehicle_type', value: vehicleType },
+  //
+  // 			{ field: 'day_to_drive', value: userDate },
+  //
+  // 			{ field: 'region', value: userRegion }
+  //
+  // 		];
+  //
+  // 		var userInfo = {
+  //
+  // 			name:this['userName'],
+  //
+  // 			phone: this['userPhone'],
+  //
+  // 			email: this['userEmail'],
+  //
+  // 			description: this['userNote'], // Ghi chú khác nếu có
+  //
+  // 			others: JSON2.stringify(infoCustomTargetKey)
+  //
+  // 		};
+  //
+  // 		adx_analytic.trackingEvent('tup', userInfo, true);
+  //
+  // 		// ants_userInfoListener(forData, false, true);-> This is OLD Version
+  // 	} else {
+  // 		console.log(ants_userInfoListener)
+  // 	}
+  //
+  // 	//Facebook tracking Lead/CompleteRegistration event
+  // 	if (production) fbq('track', 'Lead');
+  // 	if (production) fbq('track', 'CompleteRegistration');
+  //
+  // 	//Tracking Google Analytic goal!
+  // 	if (production) {
+  // 		ga('send', {
+  // 			hitType: 'event',
+  // 			eventCategory: 'Subscription',
+  // 			eventAction: 'Submit'
+  // 		});
+  // 	}
+  //
+  // 	if (production) {
+  // 		ants_analytic.push({
+  // 			conversionId : metaService.configs.antsConversionId,
+  // 			customParams : [
+  // 				{
+  // 					'is_ecomm': 0,
+  // 					'ecomm_pagetype': 'purchase',
+  // 					'ecomm_quantity': 1,
+  // 					'ecomm_totalvalue': 1
+  // 				}
+  // 			]
+  // 		});
+  // 	}
+  //
+  // 	this.resetRegisterForm();
+  // 	this.subscriptionPopup = false;
+  // 	this.modalPopup = false;
+  //
+  // 	//Send form to Twin's server!
+  // 	if (production) {
+  // 		$http.get(`${apiHost}/customer/insert/json`, {
+  // 			params: formData
+  // 		}).success(data => {
+  // 			this.subscriptionSuccessHandler();
+  // 			$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
+  // 				console.log('email...', data);
+  // 			});
+  // 		});
+  // 	} else {
+  // 		this.subscriptionSuccessHandler(); //Auto success on test environment!
+  // 	}
+  // };
+
+  this.submitModal2 = $rootScope.submitModal2 = function (event) {
+    var _metaService$configs4 = metaService.configs;
+    var apiHost = _metaService$configs4.apiHost;
+    var domain = _metaService$configs4.domain;
+    var production = _metaService$configs4.production;
+
+    console.log("production mode:", production);
+    event.preventDefault();_this.resetRegisterError();
+
+    if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
+    if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
+    if (_this['userType'].length < 8) _this['userTypeError'] = 'Nhập Tyeeeee';
+    if (_this['userNameError'] || _this['userPhoneError'] || _this['userTypeError']) return;
+
+    var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
+        formData = _extends({}, localUserInfo, {
+      domain: domain,
+      fullName: _this['userName'],
+      name: _this['userName'],
+      type: _this['userType'],
+      cate: _this['userCate'],
+      phone: _this['userPhone'],
+      area: _this['userArea'],
+      date: _this['userDate'],
+      email: _this['userEmail'],
+      note: _this['userNote']
+    });
+
+    //Send form information to Ants!
+
+    var vehicleType = _this['userType'];
+    var userRegion = _this['userArea'];
+    var userCate = _this['userCate'];
+
+    //Send form information to Ants!
+
+    //console.log(formData.date);
+    if (production) {
+
+      /* Ants Insight Goal Tracking: "Đăng ký Báo giá" */
+
+      adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId2, 1, 'event');
+
+      /* Ants Insight Form Tracking: "Đăng ký lái thử Ford Gia đình" */
+
+      var infoCustomTargetKey = [{ field: 'vehicle_type', value: vehicleType }, { field: 'more_require', value: userCate }, { field: 'region', value: userRegion }];
+
+      var userInfo = {
+
+        name: _this['userName'],
+
+        phone: _this['userPhone'],
+
+        email: _this['userEmail'],
+
+        others: JSON2.stringify(infoCustomTargetKey)
+
+      };
+
+      adx_analytic.trackingEvent('tup', userInfo, true);
+      //ants_userInfoListener(formData, false, true);// Được thay bằng dòng trên . Cái này Version củ
+    } else {
+      console.log(ants_userInfoListener);
+    }
+
+    //Facebook tracking Lead/CompleteRegistration event
+    if (production) fbq('track', 'Lead');
+    if (production) fbq('track', 'CompleteRegistration');
+
+    //Tracking Google Analytic goal!
+    if (production) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Subscription',
+        eventAction: 'Submit'
+      });
+    }
+
+    if (production) {
+      ants_analytic.push({
+        conversionId: metaService.configs.antsConversionId,
+        customParams: [{
+          'is_ecomm': 0,
+          'ecomm_pagetype': 'purchase',
+          'ecomm_quantity': 1,
+          'ecomm_totalvalue': 1
+        }]
+      });
+    }
+
+    _this.resetRegisterForm();
+    _this.subscriptionPopup = false;
+    _this.modalPopup = false;
+
+    //Send form to Twin's server!
+    if (production) {
+      $http.get(apiHost + '/customer/insert/json', {
+        params: formData
+      }).success(function (data) {
+        _this.subscriptionSuccessHandler();
+        $http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
+          console.log('email...', data);
+        });
+      });
+    } else {
+      _this.subscriptionSuccessHandler(); //Auto success on test environment!
+    }
+  };
+
+  global.get_info = function (_userInfo) {
+    $scope.$apply(function () {
+      // user info get here
+      console.log("ant's get_info function:", _userInfo);
+
+      // fill userInfo to FORM đăng ký
+      _this.userName = _userInfo.name || '';
+      _this.userPhone = _userInfo.phone || '';
+      _this.userEmail = _userInfo.email || '';
+      _this.userCate = _userInfo.cate || '';
+      _this.userType = _userInfo.type || '';
+      _this.userArea = _userInfo.area || '';
+      _this.userNote = _userInfo.note || '';
+
+      //Store Social profile
+      if (_userInfo) localStorage.setItem("_userInfo", JSON.stringify(_userInfo));
+    });
+  };
 };
 
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":25}],14:[function(require,module,exports){
+},{"../utils/helper":26}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1234,7 +1286,7 @@ var childproductController = exports.childproductController = function childprod
 
 childproductController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1304,7 +1356,7 @@ var mainController = exports.mainController = function mainController($rootScope
 
 mainController.$inject = ['$rootScope', '$scope', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1363,7 +1415,7 @@ var newsController = exports.newsController = function newsController($rootScope
 
 newsController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1510,7 +1562,7 @@ var pageController = exports.pageController = function () {
 
 pageController.$inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1550,7 +1602,7 @@ productCateMenuController.$inject = ['$rootScope', '$scope', '$timeout'];
 
 var subMenus = [{ title: 'Giới thiệu chung', contentId: "gioithieuchung" }, { title: 'Màu sắc', contentId: "mausac" }, { title: 'Thông số kỹ thuật', contentId: "thongsokythuat" }, { title: 'Phiên bản', contentId: "phienban" }];
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1602,7 +1654,7 @@ var productController = exports.productController = function productController($
 
 productController.$inject = ['$rootScope', '$window', '$http', '$state', 'metaService'];
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1637,7 +1689,7 @@ var splashController = exports.splashController = function () {
 
 splashController.$inject = ['$rootScope', '$scope', '$state', '$interval', '$timeout'];
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -1699,6 +1751,10 @@ var _card = require("./component/card");
 
 var _card2 = _interopRequireDefault(_card);
 
+var _accordion = require("./component/accordion");
+
+var _accordion2 = _interopRequireDefault(_accordion);
+
 var _popup = require("./component/popup");
 
 var _popup2 = _interopRequireDefault(_popup);
@@ -1722,7 +1778,7 @@ var _filter2 = _interopRequireDefault(_filter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.fixAnalyticMissing = _helper.fixAnalyticMissing;
-var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('productCtrl', _productController.productController).controller('childproductCtrl', _childproductController.childproductController).controller('splashCtrl', _splashController.splashController).controller('productCateMenuCtrl', _productCateMenuController.productCateMenuController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('modal', _modal2.default).directive('modal2', _modal4.default).directive('modalOne', _modalOne2.default).directive('card', _card2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
+var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('productCtrl', _productController.productController).controller('childproductCtrl', _childproductController.childproductController).controller('splashCtrl', _splashController.splashController).controller('productCateMenuCtrl', _productCateMenuController.productCateMenuController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('modal', _modal2.default).directive('modal2', _modal4.default).directive('modalOne', _modalOne2.default).directive('card', _card2.default).directive('accordion', _accordion2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
 
 (0, _filter2.default)(App);
 
@@ -1739,7 +1795,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/card":1,"./component/footer":2,"./component/modal":3,"./component/modal2":4,"./component/modalOne":5,"./component/navigation":6,"./component/navigationLink":7,"./component/newsArea":8,"./component/popup":9,"./component/sidebar":10,"./component/slider":11,"./component/subscriptionForm":12,"./controller/applicationController":13,"./controller/childproductController":14,"./controller/mainController":15,"./controller/newsController":16,"./controller/pageController":17,"./controller/partial/productCateMenuController":18,"./controller/productController":19,"./controller/splashController":20,"./metaService":22,"./routerConfig":23,"./utils/filter":24,"./utils/helper":25}],22:[function(require,module,exports){
+},{"./component/accordion":1,"./component/card":2,"./component/footer":3,"./component/modal":4,"./component/modal2":5,"./component/modalOne":6,"./component/navigation":7,"./component/navigationLink":8,"./component/newsArea":9,"./component/popup":10,"./component/sidebar":11,"./component/slider":12,"./component/subscriptionForm":13,"./controller/applicationController":14,"./controller/childproductController":15,"./controller/mainController":16,"./controller/newsController":17,"./controller/pageController":18,"./controller/partial/productCateMenuController":19,"./controller/productController":20,"./controller/splashController":21,"./metaService":23,"./routerConfig":24,"./utils/filter":25,"./utils/helper":26}],23:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1747,6 +1803,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _helper = require('./utils/helper');
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $http, $timeout) {
 	var _this = this;
@@ -1763,7 +1821,20 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 		$http.get(apiHost + '/menu/get/json', {
 			params: { domain: domain, lang: $rootScope.activeLanguage.id }
 		}).success(function (data) {
-			_this.links = data.results;
+			_this.linkburger = data.results;
+			//console.log(data.results);
+			var links = _.sortBy(data.results, function (item) {
+				return item.title;
+			}),
+			    introIndex = _.findIndex(links, { name: "Giới thiệu" }),
+			    headLinks = links.slice(0, introIndex + 1),
+			    tailLinks = links.slice(introIndex + 1),
+			    customLinks = [{
+				name: "Sản Phẩm",
+				route: "product"
+			}];
+
+			_this.links = [].concat(_toConsumableArray(headLinks), customLinks, _toConsumableArray(tailLinks));
 
 			if (navigationResolve) navigationResolve(_this.links);
 			if (configResolve) {
@@ -1841,7 +1912,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-},{"./utils/helper":25}],23:[function(require,module,exports){
+},{"./utils/helper":26}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2034,7 +2105,7 @@ var fordtransitRoute = {
 };
 exports.default = routerConfig;
 
-},{"./utils/helper":25}],24:[function(require,module,exports){
+},{"./utils/helper":26}],25:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -2054,7 +2125,7 @@ function niceDate() {
 	};
 }
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2254,4 +2325,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[21]);
+},{}]},{},[22]);

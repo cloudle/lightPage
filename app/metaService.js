@@ -9,7 +9,18 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 		$http.get(`${apiHost}/menu/get/json`, {
 			params: { domain, lang: $rootScope.activeLanguage.id }
 		}).success((data) => {
-			this.links = data.results;
+			this.linkburger = data.results;
+			//console.log(data.results);
+			let links = _.sortBy(data.results, (item) => item.title),
+				introIndex = _.findIndex(links, {name: "Giới thiệu"}),
+				headLinks = links.slice(0, introIndex + 1),
+				tailLinks = links.slice(introIndex + 1),
+				customLinks = [{
+					name: "Sản Phẩm",
+					route: "product",
+				}];
+
+			this.links = [...headLinks, ...customLinks, ...tailLinks];
 
 			if (navigationResolve) navigationResolve(this.links);
 			if (configResolve) {
