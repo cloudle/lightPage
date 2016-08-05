@@ -28,8 +28,8 @@ module.exports = {
                  <span style="font-size: 14px;">Hotline: </span>
                                `,
             cardTitleTail: `
-               <br><div style="font-size: 14px;margin: 10px 0;">Email: saigonford@saigonford.com.vn</div><div style="font-size: 14px;font-weight: 700;"></div>
-               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: 104 Phổ Quang, Phường 2, Quận Tân Bình, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
+               <br><div style="font-size: 14px;margin: 10px 0;">Email: <a style="text-decoration:none;color:" href="mailto:saigonford@saigonford.com.vn" target="_top">saigonford@saigonford.com.vn</a></div><div style="font-size: 14px;font-weight: 700;"></div>
+               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ: <a style="text-decoration:none;color:" href="https://goo.gl/ePP6Hd" target="_blank">104 Phổ Quang, Phường 2, Quận Tân Bình, Hồ Chí Minh</a></div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
