@@ -136,8 +136,30 @@ export class applicationController {
 					note: this['userNote']
 				};
 
+
+
+
+
 			//Fire Ants trackingGoal hook!
-			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+			if (production)
+			/* Ants Insight Goal Tracking */
+				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
+
+			var formData = {
+
+				name: 'YOUR_FULL_NAME',
+
+				phone: 'YOUR_PHONE_NUMBER',
+
+				email: 'YOUR_EMAIL',
+
+				description: 'YOUR_DESCRIPTION' // Ghi chú
+
+			};
+
+
+
+
 			//Send form information to Ants!
 			if (production) {
 				ants_userInfoListener(formData, false, true);

@@ -12,7 +12,7 @@ module.exports = {
     googleConversionLabel: "Cj8ECM3N-mgQzN2etwM",
     facebookAppId: "",
     facebookPixelId: "578115232338331",
-    antsSiteId: "578664336",
+    antsSiteId: "579779079",
     googleConversionIdrmk: "921153228",
     antsRegisterGoalId: "",
     antsConversionId: "",
