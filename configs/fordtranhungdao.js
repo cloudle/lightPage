@@ -30,7 +30,7 @@ module.exports = {
                                `,
             cardTitleTail: `
                <br><div style="font-size: 14px;margin: 10px 0;">Email: <a style="text-decoration:none;color:" href="mailto:saigonford@saigonford.com.vn" target="_top">saigonford@saigonford.com.vn</a></div><div style="font-size: 14px;font-weight: 700;"></div>
-               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ:  6 Trần Hưng Đạo, Quận 1, Hồ Chí Minh</div><div style="font-size: 14px;font-weight: 700;"></div>
+               <div style="font-size: 14px;margin: 10px 0;">Địa chỉ:  <a style="text-decoration:none;color:" href="https://goo.gl/NBx3C9" target="_blank">6 Trần Hưng Đạo, Quận 1, Hồ Chí Minh</a></div><div style="font-size: 14px;font-weight: 700;"></div>
                                 `,
             registerTitleHead: `
 				<span>Liên hệ chúng tôi</span>`,
