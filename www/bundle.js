@@ -310,7 +310,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail'];
 
-},{"../utils/helper":19}],9:[function(require,module,exports){
+},{"../utils/helper":20}],9:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -544,7 +544,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":19}],10:[function(require,module,exports){
+},{"../utils/helper":20}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -951,7 +951,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/productController":13,"./controller/splashController":14,"./metaService":16,"./routerConfig":17,"./utils/filter":18,"./utils/helper":19}],16:[function(require,module,exports){
+},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/productController":13,"./controller/splashController":14,"./metaService":16,"./routerConfig":18,"./utils/filter":19,"./utils/helper":20}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1034,7 +1034,12 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-},{"./utils/helper":19}],17:[function(require,module,exports){
+},{"./utils/helper":20}],17:[function(require,module,exports){
+"use strict";
+
+console.log("This is anphaland!!!");
+
+},{}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1131,7 +1136,7 @@ var productRoute = {
 
 exports.default = routerConfig;
 
-},{"./utils/helper":19}],18:[function(require,module,exports){
+},{"./utils/helper":20}],19:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1151,7 +1156,7 @@ function niceDate() {
 	};
 }
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1350,4 +1355,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[15]);
+},{}]},{},[15,17]);
