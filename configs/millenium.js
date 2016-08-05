@@ -13,7 +13,6 @@ module.exports = {
     facebookAppId: "",
     facebookPixelId: "578115232338331",
     antsSiteId: "579779079",
-    googleConversionIdrmk: "921153228",
     antsRegisterGoalId: "579779115",
     antsConversionId: "",
     sendConversionID: "578115232338331",
