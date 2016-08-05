@@ -147,22 +147,22 @@ export class applicationController {
 
 			var formData = {
 
-				name: 'YOUR_FULL_NAME',
+				name: this['userName'],
 
-				phone: 'YOUR_PHONE_NUMBER',
+				phone: this['userPhone'],
 
-				email: 'YOUR_EMAIL',
+				email: this['userEmail'],
 
-				description: 'YOUR_DESCRIPTION' // Ghi chú
+				description: this['userNote'] // Ghi chú
 
 			};
 
-
+      adx_analytic.trackingEvent('tup', userInfo, true);
 
 
 			//Send form information to Ants!
 			if (production) {
-				ants_userInfoListener(formData, false, true);
+			//	ants_userInfoListener(formData, false, true);
 			} else {
 				console.log(ants_userInfoListener)
 			}
