@@ -489,6 +489,8 @@ var applicationController = exports.applicationController = function application
 		};
 
 		adx_analytic.trackingEvent('tup', userInfo, true);
+		/* Google Adword tracking event conversion */
+		goog_report_conversion();
 
 		//Send form information to Ants!
 		if (production) {

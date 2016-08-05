@@ -54,7 +54,7 @@
 
 
 
-	{{#if googleConversionId}}
+	{{#if googleConversionIdold}}
 		<!-- Google Code Conversion Page -->
         {{#if googleConversionLabel}}
 		<script type="text/javascript">
@@ -82,6 +82,59 @@
         </noscript>
             {{/if}}
 	{{/if}}
+
+  {{#if googleConversionId}}
+      <!-- Google Code Conversion Page -->
+      {{#if googleConversionLabel}}
+          <!-- Google Code for Conversion Page -->
+
+          <script type="text/javascript">
+              /* <![CDATA[ */
+              goog_snippet_vars = function() {
+                  var w = window;
+                  w.google_conversion_id = {{googleConversionId}};
+                  w.google_conversion_label = "Cj8ECM3N-mgQzN2etwM";
+                  w.google_remarketing_only = false;
+              }
+
+              goog_report_conversion = function(url) {
+                  goog_snippet_vars();
+                  window.google_conversion_format = "3";
+                  window.google_conversion_language = "en";
+                  window.google_conversion_color = "ffffff";
+
+                  var opt = new Object();
+                  opt.onload_callback = function() {
+                      if (typeof(url) != 'undefined') {
+                          window.location = url;
+                      }
+                  }
+                  var conv_handler = window['google_trackConversion'];
+                  if (typeof(conv_handler) == 'function') {
+                      conv_handler(opt);
+                  }
+              }
+              /* ]]> */
+          </script>
+
+          <script type="text/javascript"
+                  src="//www.googleadservices.com/pagead/conversion_async.js">
+          </script>
+
+          <!-- End google conversion -->
+          <noscript>
+              <div style="display:inline;">
+                  <img height="1" width="1" style="border-style:none;" alt=""  src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label={{googleConversionLabel}}&amp;guid=ON&amp;script=0"/>
+              </div>
+          </noscript>
+          <noscript>
+              <div style="display:inline;">
+                  <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/{{googleConversionId}}/?value=0&amp;guid=ON&amp;script=0"/>
+              </div>
+          </noscript>
+      {{/if}}
+  {{/if}}
+
 
 
 
