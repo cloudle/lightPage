@@ -585,13 +585,13 @@ var mainController = exports.mainController = function mainController($rootScope
 	ga('send', 'pageview');
 	fbq('track', "PageView");
 
-	this.loadData = function () {
+	this.loadData = function (reloaded) {
 		$rootScope.activeGroup = metaService.links[0];$window.scrollTo(0, 0);
 
 		$http.get(apiHost + '/page/get/json', {
 			params: { domain: domain, alias: "trang-chu" }
 		}).success(function (data) {
-			fbq('track', 'ViewContent');
+			!reloaded && fbq('track', 'ViewContent');
 			$rootScope.activeContents = [data.results[0].Page];
 		});
 
@@ -619,7 +619,7 @@ var mainController = exports.mainController = function mainController($rootScope
 
 	this.loadData();
 	$scope.$watch('activeLanguage', function () {
-		_this.loadData();
+		_this.loadData(true);
 	});
 };
 

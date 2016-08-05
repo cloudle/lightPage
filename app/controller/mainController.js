@@ -11,13 +11,13 @@ export class mainController {
 		ga('send', 'pageview');
 		fbq('track', "PageView");
 
-		this.loadData = () => {
+		this.loadData = (reloaded) => {
 			$rootScope.activeGroup = metaService.links[0]; $window.scrollTo(0, 0);
 
 			$http.get(`${apiHost}/page/get/json`, {
 				params: { domain, alias: "trang-chu" }
 			}).success(data => {
-				fbq('track', 'ViewContent');
+				!reloaded && fbq('track', 'ViewContent');
 				$rootScope.activeContents = [data.results[0].Page];
 			});
 
@@ -45,7 +45,7 @@ export class mainController {
 
 		this.loadData();
 		$scope.$watch('activeLanguage', () => {
-			this.loadData();
+			this.loadData(true);
 		});
 	}
 }
