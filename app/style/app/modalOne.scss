@@ -8,6 +8,10 @@
   transition: opacity 0.5s $cubicAnimation;
   width: 100%;
 
+  @media screen and (max-height: 500px) {
+    overflow: auto !important;
+  }
+
   .modalOne-wrapper {
     margin: 0 auto;
     width: auto;
