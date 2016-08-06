@@ -9,7 +9,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>
 			<div class="heading">
 				<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>
-				<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
+				<a style="text-decoration: none" href="tel:{{configs.translation.hotline}}" class="ultra strong" ng-bind="configs.translation.hotline"></a>
 				<span ng-bind-html="$root.localization.registerTitleTail | unsafe"></span>
 			</div>
 			
