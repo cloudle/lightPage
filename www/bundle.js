@@ -453,8 +453,8 @@ var applicationController = exports.applicationController = function application
 		var apiHost = _metaService$configs2.apiHost;
 		var domain = _metaService$configs2.domain;
 		var production = _metaService$configs2.production;
+		//console.log("production mode:", production);
 
-		console.log("production mode:", production);
 		event.preventDefault();_this.resetRegisterError();
 
 		if (_this['userName'].length < 1) _this['userNameError'] = 'Nhập tên';
@@ -496,11 +496,11 @@ var applicationController = exports.applicationController = function application
 		//Send form information to Ants!
 
 		//	ants_userInfoListener(formData, false, true);
-		else {
-				console.log(ants_userInfoListener);
-			}
+		else {}
+			//console.log(ants_userInfoListener)
 
-		//Facebook tracking Lead/CompleteRegistration event
+
+			//Facebook tracking Lead/CompleteRegistration event
 		if (production) fbq('track', 'Lead');
 		if (production) fbq('track', 'CompleteRegistration');
 
@@ -535,7 +535,7 @@ var applicationController = exports.applicationController = function application
 			}).success(function (data) {
 				_this.subscriptionSuccessHandler();
 				$http.get(apiHost + '/mail/sent/json', { params: formData }).success(function (data) {
-					console.log('email...', data);
+					//console.log('email...', data);
 				});
 			});
 		} else {
@@ -546,7 +546,7 @@ var applicationController = exports.applicationController = function application
 	global.get_info = function (_userInfo) {
 		$scope.$apply(function () {
 			// user info get here
-			console.log("ant's get_info function:", _userInfo);
+			//console.log("ant's get_info function:", _userInfo);
 
 			// fill userInfo to FORM đăng ký
 			_this.userName = _userInfo.name || '';
@@ -947,7 +947,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 		$rootScope.localization = _helper.localization[$rootScope.activeLanguage.lang];
 		$rootScope.$watch('activeLanguage', function () {
 			$rootScope.localization = _helper.localization[$rootScope.activeLanguage.lang];
-			console.log($rootScope.localization);
+			//console.log($rootScope.localization);
 		});
 
 		$rootScope.changeLanguage = function (language) {
@@ -998,7 +998,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 					_this.links = data.results;_this.configs = configs;
 					navigationResolve(_this.links);
 					configResolve(_this.configs);
-					console.log(_this.links);
+					//console.log(this.links);
 					$timeout(function () {
 						$rootScope.$broadcast('metaServiceReady');
 						_this.ready = true;

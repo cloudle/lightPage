@@ -10,7 +10,7 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 		$rootScope.localization = localization[$rootScope.activeLanguage.lang];
 		$rootScope.$watch('activeLanguage', () => {
 			$rootScope.localization = localization[$rootScope.activeLanguage.lang];
-			console.log($rootScope.localization);
+			//console.log($rootScope.localization);
 		});
 
 		$rootScope.changeLanguage = (language) => {
@@ -36,7 +36,7 @@ export default ['$rootScope', '$http', '$timeout', function ($rootScope, $http, 
 					this.links = data.results; this.configs = configs;
 					navigationResolve(this.links);
 					configResolve(this.configs);
-					console.log(this.links);
+					//console.log(this.links);
 					$timeout(() => {
 						$rootScope.$broadcast('metaServiceReady');
 						this.ready = true;

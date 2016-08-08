@@ -118,7 +118,7 @@ export class applicationController {
 
 		this.submitRegister = $rootScope.submitRegister = (event) => {
 			let { apiHost, domain, production } = metaService.configs;
-			console.log("production mode:", production);
+			//console.log("production mode:", production);
 			event.preventDefault(); this.resetRegisterError();
 
 			if (this['userName'].length < 1) this['userNameError'] = 'Nhập tên';
@@ -166,7 +166,7 @@ export class applicationController {
 
 			//	ants_userInfoListener(formData, false, true);
 			else {
-				console.log(ants_userInfoListener)
+				//console.log(ants_userInfoListener)
 			}
 
 			//Facebook tracking Lead/CompleteRegistration event
@@ -206,7 +206,7 @@ export class applicationController {
 				}).success(data => {
 					this.subscriptionSuccessHandler();
 					$http.get(`${apiHost}/mail/sent/json`, {params: formData}).success(data => {
-						console.log('email...', data);
+						//console.log('email...', data);
 					});
 				});
 			} else {
@@ -217,7 +217,7 @@ export class applicationController {
 		global.get_info = (_userInfo) => {
 			$scope.$apply(() => {
 				// user info get here
-				console.log("ant's get_info function:", _userInfo);
+				//console.log("ant's get_info function:", _userInfo);
 
 				// fill userInfo to FORM đăng ký
 				this.userName = _userInfo.name || '';
