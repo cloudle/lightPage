@@ -491,6 +491,12 @@ var applicationController = exports.applicationController = function application
 			adx_analytic.trackingEvent('tup', userInfo, true);
 			/* Google Adword tracking event conversion */
 			goog_report_conversion();
+
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'Subscription',
+				eventAction: 'Submit'
+			});
 		}
 
 		//Send form information to Ants!
@@ -505,13 +511,6 @@ var applicationController = exports.applicationController = function application
 		if (production) fbq('track', 'CompleteRegistration');
 
 		//Tracking Google Analytic goal!
-		if (production) {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'Subscription',
-				eventAction: 'Submit'
-			});
-		}
 
 		if (production) {
 			ants_analytic.push({
