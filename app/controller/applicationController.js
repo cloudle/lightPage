@@ -141,7 +141,7 @@ export class applicationController {
 
 
 			//Fire Ants trackingGoal hook!
-			if (production)
+			if (production){
 			/* Ants Insight Goal Tracking */
 				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 
@@ -160,12 +160,12 @@ export class applicationController {
       adx_analytic.trackingEvent('tup', userInfo, true);
 			/* Google Adword tracking event conversion */
 			goog_report_conversion();
-
+			}
 
 			//Send form information to Ants!
-			if (production) {
+
 			//	ants_userInfoListener(formData, false, true);
-			} else {
+			else {
 				console.log(ants_userInfoListener)
 			}
 

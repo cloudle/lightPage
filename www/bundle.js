@@ -472,32 +472,33 @@ var applicationController = exports.applicationController = function application
 		});
 
 		//Fire Ants trackingGoal hook!
-		if (production)
+		if (production) {
 			/* Ants Insight Goal Tracking */
 			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 
-		var userInfo = {
+			var userInfo = {
 
-			name: _this['userName'],
+				name: _this['userName'],
 
-			phone: _this['userPhone'],
+				phone: _this['userPhone'],
 
-			email: _this['userEmail'],
+				email: _this['userEmail'],
 
-			description: _this['userNote'] // Ghi chú
+				description: _this['userNote'] // Ghi chú
 
-		};
+			};
 
-		adx_analytic.trackingEvent('tup', userInfo, true);
-		/* Google Adword tracking event conversion */
-		goog_report_conversion();
+			adx_analytic.trackingEvent('tup', userInfo, true);
+			/* Google Adword tracking event conversion */
+			goog_report_conversion();
+		}
 
 		//Send form information to Ants!
-		if (production) {
-			//	ants_userInfoListener(formData, false, true);
-		} else {
-			console.log(ants_userInfoListener);
-		}
+
+		//	ants_userInfoListener(formData, false, true);
+		else {
+				console.log(ants_userInfoListener);
+			}
 
 		//Facebook tracking Lead/CompleteRegistration event
 		if (production) fbq('track', 'Lead');
