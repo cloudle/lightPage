@@ -49,10 +49,7 @@ export default ['$rootScope', '$state', 'metaService', function ($rootScope, $st
 						 ui-sref="product({alias: product.Post.alias})"></div></div>
 					</div>
 				        
-				    
-				
-					  
-					
+		
 						<div class="menu-item-wrapper" ng-class="{active: item.active}" ng-repeat="item in linkburger">
 					      	<accordion title="item.name" collapse="false"> 
 					  	<!--<div class="menu-item" ng-bind="item.name" ng-click=""></div>-->
