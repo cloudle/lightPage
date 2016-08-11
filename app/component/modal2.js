@@ -20,12 +20,12 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			
 			<label for="job">Chọn dòng xe:   </label>
 			<select id="job" name="user_job" ng-model="appCtrl.userType">
-				<option>Fore Fiesta</option>
-				<option>Fore Ranger</option>
-				<option>Fore Everest</option>
-				<option>Fore Transit</option>
-				<option>Fore New Focus</option>
-				<option>Fore EcoSport</option>				
+				<option>Ford Fiesta</option>
+				<option>Ford Ranger</option>
+				<option>Ford Everest</option>
+				<option>Ford Transit</option>
+				<option>Ford New Focus</option>
+				<option>Ford EcoSport</option>				
 			</select>
 			
 			<label>Hình thức thanh toán:</label>
