@@ -7,7 +7,7 @@ module.exports = {
     apiHost: "http://103.56.157.66/realestate",
     cssPatch: "./app/style/patches/fordphoquang.scss",
     googleAnalyticId: "UA-82400640-1",
-    facebookAppId: "",
+    facebookAppId: "291083267924458",
     googleConversionId:"875917002",
     facebookPixelId: "",
     antsSiteId: "579727748",
