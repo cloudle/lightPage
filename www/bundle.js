@@ -621,7 +621,7 @@ var applicationController = exports.applicationController = function application
         $http.get(apiHost + '/banner/get/json', {
             params: { domain: domain, type: 'product', lang: $rootScope.activeLanguage.id }
         }).success(function (data) {
-            fbq('track', 'ViewContent');
+
             $rootScope.allProduct = data.results;
         });
     };

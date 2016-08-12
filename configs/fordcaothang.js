@@ -9,7 +9,7 @@ module.exports = {
     googleAnalyticId: "UA-82400640-1",
     facebookAppId: "291083267924458",
     googleConversionId:"875917002",
-    facebookPixelId: "",
+    facebookPixelId: "291083267924458",
     antsSiteId: "579727748",
     antsRegisterGoalId1: "579751744",
     antsRegisterGoalId2: "579751745",
