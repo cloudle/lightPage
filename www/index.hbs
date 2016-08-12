@@ -21,7 +21,7 @@
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="lib/angular-touch/angular-touch.min.js"></script>
-
+{{#if facebookPixelId}}
         <!--Google Analytics!-->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -53,7 +53,7 @@
     /></noscript>
 
 
-
+{{/if}}
 
 </head>
 <body ng-controller="appCtrl as appCtrl">
@@ -87,37 +87,17 @@
           var google_remarketing_only = false;
           /* ]]> */
       </script>
-      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js"></script>
       <noscript>
           <div style="display:inline;">
               <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=bGLtCNOXz2gQt_OuogM&amp;guid=ON&amp;script=0"/>
           </div>
+          <div style="display:inline;">
+              <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
+          </div>
       </noscript>
   {{/if}}
-
-
-	{{#if googleConversionId}}
-        <!-- Google Code for Form Dang Ky Lai Thu Conversion Page -->
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            var google_conversion_id = {{googleConversionId}};
-            var google_conversion_language = "en";
-            var google_conversion_format = "3";
-            var google_conversion_color = "ffffff";
-            var google_conversion_label = "JiQZCOTH1GgQt_OuogM";
-            var google_remarketing_only = false;
-            /* ]]> */
-        </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
-        <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
-            </div>
-        </noscript>
-
-    {{/if}}
 
   <!-- Google Code dành cho Thẻ tiếp thị lại -->
   <!--------------------------------------------------
@@ -132,6 +112,8 @@
   </script>
   <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
   </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js">
+  </script>
   <noscript>
       <div style="display:inline;">
           <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/875917002/?value=0&amp;guid=ON&amp;script=0"/>
@@ -142,34 +124,34 @@
 
   <!--Facebook scripts-->
   <div id="fb-root"></div>
-  {{#if facebookAppId}}
-		<script>
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId={{facebookAppId}}";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
-  {{/if}}
+  <!--{{#if facebookAppId}}-->
+		<!--<script>-->
+			<!--(function(d, s, id) {-->
+				<!--var js, fjs = d.getElementsByTagName(s)[0];-->
+				<!--if (d.getElementById(id)) return;-->
+				<!--js = d.createElement(s); js.id = id;-->
+				<!--js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId={{facebookAppId}}";-->
+				<!--fjs.parentNode.insertBefore(js, fjs);-->
+			<!--}(document, 'script', 'facebook-jssdk'));-->
+		<!--</script>-->
+  <!--{{/if}}-->
 
-	{{#if facebookPixelId}}
-		<script>
-			//Pixel code!
-			!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-					n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-				n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-				t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-					document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	<!--{{#if facebookPixelId}}-->
+		<!--<script>-->
+			<!--//Pixel code!-->
+			<!--!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?-->
+					<!--n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;-->
+				<!--n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;-->
+				<!--t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,-->
+					<!--document,'script','https://connect.facebook.net/en_US/fbevents.js');-->
 
-			fbq('init', '{{facebookPixelId}}');
-			fbq('track', "PageView");
-		</script>
-	{{/if}}
+			<!--fbq('init', '{{facebookPixelId}}');-->
+			<!--fbq('track', "PageView");-->
+		<!--</script>-->
+	<!--{{/if}}-->
 
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{facebookPixelId}}&ev=PageView&noscript=1"></noscript>
+  <!--<noscript>-->
+    <!--<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{facebookPixelId}}&ev=PageView&noscript=1"></noscript>-->
 
   <!--&lt;!&ndash;Start of Zopim Live Chat Script&ndash;&gt;-->
   <!--<script type="text/javascript">-->
@@ -204,6 +186,7 @@
 
 	<script type="text/javascript">
 		fixAnalyticMissing();
+        googleTrackConversion("JiQZCOTH1GgQt_OuogM");
 	</script>
 </body>
 </html>
