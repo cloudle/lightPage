@@ -85,37 +85,20 @@
           var google_remarketing_only = false;
           /* ]]> */
       </script>
-      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js"></script>
       <noscript>
           <div style="display:inline;">
               <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=bGLtCNOXz2gQt_OuogM&amp;guid=ON&amp;script=0"/>
+          </div>
+          <div style="display:inline;">
+              <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
           </div>
       </noscript>
   {{/if}}
 
 
-	{{#if googleConversionId}}
-        <!-- Google Code for Form Dang Ky Lai Thu Conversion Page -->
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            var google_conversion_id = {{googleConversionId}};
-            var google_conversion_language = "en";
-            var google_conversion_format = "3";
-            var google_conversion_color = "ffffff";
-            var google_conversion_label = "JiQZCOTH1GgQt_OuogM";
-            var google_remarketing_only = false;
-            /* ]]> */
-        </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
-        <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
-            </div>
-        </noscript>
 
-    {{/if}}
 
   <!-- Google Code dành cho Thẻ tiếp thị lại -->
   <!--------------------------------------------------
@@ -200,8 +183,9 @@
 		</script>
 	{{/if}}
 
-	<script type="text/javascript">
-		fixAnalyticMissing();
-	</script>
+  <script type="text/javascript">
+      fixAnalyticMissing();
+      googleTrackConversion("JiQZCOTH1GgQt_OuogM");
+  </script>
 </body>
 </html>

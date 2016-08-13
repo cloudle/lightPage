@@ -2142,6 +2142,7 @@ exports.findParentMenuByAlias = findParentMenuByAlias;
 exports.isEmailValid = isEmailValid;
 exports.generateNumberUUID = generateNumberUUID;
 exports.safeRange = safeRange;
+exports.googleTrackConversion = googleTrackConversion;
 var apiHost = exports.apiHost = 'http://128.199.227.132'; //'rivercity99.vn';//http://103.56.157.66/realestate';
 var registerFields = exports.registerFields = ['userName', 'userPhone', 'userEmail', 'userNote', 'userType', 'userCate', 'userDate'];
 var languages = exports.languages = [{ lang: "vietnamese", id: 1, display: "Tiếng Việt" }];
@@ -2327,6 +2328,22 @@ String.prototype.width = function (font) {
 };
 
 global.uuid = generateNumberUUID;
+
+function googleTrackConversion(conversionLabel, callback) {
+	window.google_conversion_format = "3";
+	window.google_conversion_label = conversionLabel;
+
+	//Trigger Google conversion call from Global function
+	var logger = window.google_trackConversion ? console.info : console.error;
+	logger('Calling google\'s conversion function with callback', callback);
+	if (window.google_trackConversion) {
+		window.google_trackConversion({
+			onload_callback: callback
+		});
+	}
+}
+
+window.googleTrackConversion = googleTrackConversion;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}]},{},[22]);
