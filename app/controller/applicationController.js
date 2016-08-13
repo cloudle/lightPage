@@ -112,7 +112,7 @@ export class applicationController {
             $http.get(`${apiHost}/banner/get/json`, {
                 params: {domain, type: 'product', lang: $rootScope.activeLanguage.id}
             }).success(data => {
-                fbq('track', 'ViewContent');
+               // fbq('track', 'ViewContent');
                 $rootScope.allProduct = data.results;
             });
         };
