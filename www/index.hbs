@@ -33,7 +33,7 @@
         ga('send', 'pageview');
 
     </script>
-
+{{#if facebookPixelId}}
     <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -51,6 +51,7 @@
     <noscript><img height="1" width="1" style="display:none"
                    src="https://www.facebook.com/tr?id=291083267924458&ev=PageView&noscript=1"
     /></noscript>
+    {{/if}}
 
 </head>
 <body ng-controller="appCtrl as appCtrl">
@@ -80,35 +81,19 @@
       var google_remarketing_only = false;
       /* ]]> */
   </script>
-  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js"></script>
+
   <noscript>
       <div style="display:inline;">
           <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/875917002/?label=bGLtCNOXz2gQt_OuogM&amp;guid=ON&amp;script=0"/>
       </div>
+      <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
+      </div>
   </noscript>
 
-	{{#if googleConversionId}}
-        <!-- Google Code for Form Dang Ky Lai Thu Conversion Page -->
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            var google_conversion_id = {{googleConversionId}};
-            var google_conversion_language = "en";
-            var google_conversion_format = "3";
-            var google_conversion_color = "ffffff";
-            var google_conversion_label = "JiQZCOTH1GgQt_OuogM";
-            var google_remarketing_only = false;
-            /* ]]> */
-        </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
-        <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label=JiQZCOTH1GgQt_OuogM&amp;guid=ON&amp;script=0"/>
-            </div>
-        </noscript>
 
-    {{/if}}
 
   <!-- Google Code dành cho Thẻ tiếp thị lại -->
   <!--------------------------------------------------
@@ -145,22 +130,22 @@
 		</script>
   {{/if}}
 
-	{{#if facebookPixelId}}
-		<script>
-			//Pixel code!
-			!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-					n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-				n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-				t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-					document,'script','https://connect.facebook.net/en_US/fbevents.js');
+	<!--{{#if facebookPixelId}}-->
+		<!--<script>-->
+			<!--//Pixel code!-->
+			<!--!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?-->
+					<!--n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;-->
+				<!--n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;-->
+				<!--t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,-->
+					<!--document,'script','https://connect.facebook.net/en_US/fbevents.js');-->
 
-			fbq('init', '{{facebookPixelId}}');
-			fbq('track', "PageView");
-		</script>
-	{{/if}}
+			<!--fbq('init', '{{facebookPixelId}}');-->
+			<!--fbq('track', "PageView");-->
+		<!--</script>-->
+	<!--{{/if}}-->
 
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{facebookPixelId}}&ev=PageView&noscript=1"></noscript>
+  <!--<noscript>-->
+    <!--<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{facebookPixelId}}&ev=PageView&noscript=1"></noscript>-->
 
   <!--&lt;!&ndash;Start of Zopim Live Chat Script&ndash;&gt;-->
   <!--<script type="text/javascript">-->
@@ -193,8 +178,9 @@
 		</script>
 	{{/if}}
 
-	<script type="text/javascript">
-		fixAnalyticMissing();
-	</script>
+  <script type="text/javascript">
+      fixAnalyticMissing();
+      googleTrackConversion("JiQZCOTH1GgQt_OuogM");
+  </script>
 </body>
 </html>

@@ -114,3 +114,19 @@ String.prototype.width = function(font) {
 };
 
 global.uuid = generateNumberUUID;
+
+export function googleTrackConversion (conversionLabel, callback) {
+	window.google_conversion_format = "3";
+	window.google_conversion_label = conversionLabel;
+
+	//Trigger Google conversion call from Global function
+	let logger = window.google_trackConversion ? console.info : console.error;
+	logger(`Calling google's conversion function with callback`, callback);
+	if (window.google_trackConversion) {
+		window.google_trackConversion({
+			onload_callback: callback,
+		});
+	}
+}
+
+window.googleTrackConversion = googleTrackConversion;
