@@ -1,0 +1,53 @@
+body {
+  background-color: #191919;
+}
+
+.navigation-wrapper {
+  background-image: url('images/bg_Millennium.jpg');
+
+  .site-logo {
+    background-image: url('images/logo-millennium.png');
+    width: 220px; height: 60px; margin-top: 5px;
+
+    @media screen and (max-width: 600px) {
+      width: 85px;
+    }
+  }
+
+  .subscription-activator {
+    background-color: #da2900;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      color: white;
+      &:hover{
+        background-color: #af6701;
+      }
+
+      &.active {
+        background-color: #c57400;
+        color: white;
+      }
+
+      .sub-navigations {
+        background-color: #A47B32;
+        border-top-color: #a2741c;
+
+        .sub-link {
+          &:hover {
+            background-color: #af6701;
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color:  #c57400;
+
+  .copyright {
+    background-color: darken(#191919, 10);
+  }
+}
