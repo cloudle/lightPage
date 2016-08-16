@@ -14,7 +14,7 @@
 
   .modalOne-wrapper {
     margin: 0 auto;
-    width: auto;
+    max-width: 480px;
     margin-top: 5%;
     transform: scale(0.8);
     transition: transform 0.2s $bounceAnimation;
