@@ -1,7 +1,7 @@
 module.exports = {
   domain: "mone.vn",
   siteName: "mOne",
-  siteFav: "images/logo-millenium.png",
+  siteFav: "images/vaviconmone.png",
   serverPort: 7033,
   production: false,
   apiHost: "http://103.56.157.66/realestate",
