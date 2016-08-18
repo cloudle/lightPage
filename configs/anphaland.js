@@ -16,6 +16,8 @@ module.exports = {
 	translation: {
 		hotline: "098 113 8333",
 		vietnamese: {
+			designCompany: `<a style="text-decoration:none;color:#2EB3D3;" target="_blank">TWIN Software Solutions</a>`,
+
 			register: "LIÊN HỆ",
 			news: 'TIN TỨC',
 			registerTitleHead: `
