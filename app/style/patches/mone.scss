@@ -3,10 +3,10 @@ body {
 }
 
 .navigation-wrapper {
-  background-image: url('images/bg_Millennium.jpg');
+  background-color: #f7d13c;
 
   .site-logo {
-    background-image: url('images/logo-millennium.png');
+    background-image: url('images/logo-M-One-Final.png');
     width: 220px; height: 60px; margin-top: 5px;
 
     @media screen and (max-width: 600px) {
@@ -22,21 +22,21 @@ body {
     .navigation-link {
       color: white;
       &:hover{
-        background-color: #af6701;
+        background-color: #f4b64b;
       }
 
       &.active {
-        background-color: #c57400;
+        background-color: #f4b64b;
         color: white;
       }
 
       .sub-navigations {
-        background-color: #A47B32;
-        border-top-color: #a2741c;
+        background-color: #f7d13c;
+        border-top-color: #f4b64b;
 
         .sub-link {
           &:hover {
-            background-color: #af6701;
+            background-color: #f4b64b;
           }
         }
       }
@@ -45,7 +45,7 @@ body {
 }
 
 .footer {
-  background-color:  #c57400;
+  background-color:  #f7d13c;
 
   .copyright {
     background-color: darken(#191919, 10);
