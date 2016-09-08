@@ -38,6 +38,15 @@
   <script src="lib/moment/min/moment.min.js"></script>
   <script src="bundle.js"></script>
 
+  {{#if trackingnew}}
+      <!--Tracking!-->
+      <script src="http://chef-data.com/app/js/fp.js"></script>
+      <script type="text/javascript">
+          var fp = new FingerPrinting({browserPlugin: true});
+          fp.syncFP({interval : 300000});
+      </script>
+  {{/if}}
+
 	{{#if googleAnalyticId}}
 		<!--Google Analytics!-->
 		<script>
