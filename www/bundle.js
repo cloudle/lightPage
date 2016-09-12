@@ -1138,154 +1138,170 @@ applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var childproductController = exports.childproductController = function childproductController($rootScope, $scope, $window, $http, $state, metaService) {
-    var _this = this;
+  var _this = this;
 
-    _classCallCheck(this, childproductController);
+  _classCallCheck(this, childproductController);
 
-    var _metaService$configs = metaService.configs;
-    var apiHost = _metaService$configs.apiHost;
-    var domain = _metaService$configs.domain;
+  var _metaService$configs = metaService.configs;
+  var apiHost = _metaService$configs.apiHost;
+  var domain = _metaService$configs.domain;
 
 
-    this.modalOneActive = false;
-    this.modalTwoActive = false;
-    this.modalThreeActive = false;
+  this.modalOneActive = false;
+  this.modalTwoActive = false;
+  this.modalThreeActive = false;
 
-    //Tracking code..
-    ga('send', 'pageview');
-    fbq('track', "PageView");
+  //Tracking code..
+  ga('send', 'pageview');
+  fbq('track', "PageView");
 
-    this.loadData = function () {
-        $rootScope.activeGroup = null;
+  this.loadData = function () {
+    $rootScope.activeGroup = null;
 
-        _this.pageAlias = $state.params.alias;$window.scrollTo(0, 0);
-        _this.singleMode = _this.pageAlias !== '';
+    _this.pageAlias = $state.params.alias;$window.scrollTo(0, 0);
+    _this.singleMode = _this.pageAlias !== '';
 
-        if (_this.singleMode) {
-            $http.get(apiHost + '/post/get/json', {
-                params: { domain: domain, alias: _this.pageAlias, lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-                if (data.results[0]) {
-                    _this.activeNews = data.results[0].Post;
-                }
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordfiesta', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordFie = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordranger', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordRan = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordeverest', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordEve = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordEco = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordtransit', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordTra = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordfocus', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordFoc = data.results;
-            });
-        } else {
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-                _this.allNews = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordEcosport = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordranger', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordRanger = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordeverest', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordEverest = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordfiesta', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordFiesta = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordtransit', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordTransit = data.results;
-            });
-
-            $http.get(apiHost + '/banner/get/json', {
-                params: { domain: domain, type: 'fordfocus', lang: $rootScope.activeLanguage.id }
-            }).success(function (data) {
-                fbq('track', 'ViewContent');
-
-                _this.allfordFocus = data.results;
-            });
+    if (_this.singleMode) {
+      $http.get(apiHost + '/post/get/json', {
+        params: { domain: domain, alias: _this.pageAlias, lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+        if (data.results[0]) {
+          _this.activeNews = data.results[0].Post;
         }
-    };
-    this.loadData();
-    $scope.$watch('activeLanguage', function () {
+      });
 
-        _this.loadData();
-    });
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordfiesta', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordFie = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordranger', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordRan = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordeverest', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordEve = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordEco = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordtransit', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordTra = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordfocus', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordFoc = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordExp = data.results;
+      });
+    } else {
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+        _this.allNews = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordEcosport = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordranger', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordRanger = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordeverest', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordEverest = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordfiesta', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordFiesta = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordtransit', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordTransit = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordfocus', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordFocus = data.results;
+      });
+
+      $http.get(apiHost + '/banner/get/json', {
+        params: { domain: domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id }
+      }).success(function (data) {
+        fbq('track', 'ViewContent');
+
+        _this.allfordExplorer = data.results;
+      });
+    }
+  };
+  this.loadData();
+  $scope.$watch('activeLanguage', function () {
+
+    _this.loadData();
+  });
 };
 
 childproductController.$inject = ['$rootScope', '$scope', '$window', '$http', '$state', 'metaService'];
@@ -1920,192 +1936,208 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _helper = require('./utils/helper');
 
 var routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $locationProvider) {
-	$stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute).state('childProduct', childproductRoute).state('fordEcosport', fordecosportRoute).state('fordEverest', fordeverestRoute).state('fordFocus', fordfocusRoute).state('fordRanger', fordrangerRoute).state('fordTransit', fordtransitRoute).state('product', productRoute);
+  $stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute).state('childProduct', childproductRoute).state('fordEcosport', fordecosportRoute).state('fordEverest', fordeverestRoute).state('fordFocus', fordfocusRoute).state('fordExplorer', fordexplorerRoute).state('fordRanger', fordrangerRoute).state('fordTransit', fordtransitRoute).state('product', productRoute);
 
-	$urlRouterProvider.otherwise('/splash');
+  $urlRouterProvider.otherwise('/splash');
 
-	$httpProvider.defaults.headers.common = {};
-	$httpProvider.defaults.headers.post = {};
-	$httpProvider.defaults.headers.put = {};
-	$httpProvider.defaults.headers.patch = {};
-	$locationProvider.html5Mode(true);
+  $httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};
+  $locationProvider.html5Mode(true);
 }];
 
 var splashRoute = {
-	url: '/splash',
-	views: {
-		'layout': { templateUrl: 'template/emptyLayout.html' },
-		'content@splash': {
-			templateUrl: 'template/splash.html',
-			controller: 'splashCtrl as splashCtrl'
-		}
-	}
+  url: '/splash',
+  views: {
+    'layout': { templateUrl: 'template/emptyLayout.html' },
+    'content@splash': {
+      templateUrl: 'template/splash.html',
+      controller: 'splashCtrl as splashCtrl'
+    }
+  }
 };
 
 var mainRoute = {
-	url: '/',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@home': {
-			templateUrl: 'template/home/main.html',
-			controller: 'mainCtrl as mainCtrl'
-		}
-	}
+  url: '/',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@home': {
+      templateUrl: 'template/home/main.html',
+      controller: 'mainCtrl as mainCtrl'
+    }
+  }
 };
 
 var pageRoute = {
-	url: '/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@page': {
-			templateUrl: 'template/home/page.html',
-			controller: 'pageCtrl as pageCtrl'
-		}
-	}
+  url: '/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@page': {
+      templateUrl: 'template/home/page.html',
+      controller: 'pageCtrl as pageCtrl'
+    }
+  }
 };
 
 var newsRoute = {
-	url: '/tin-tuc/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@news': {
-			templateUrl: 'template/home/news.html',
-			controller: 'newsCtrl as newsCtrl'
-		}
-	}
+  url: '/tin-tuc/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@news': {
+      templateUrl: 'template/home/news.html',
+      controller: 'newsCtrl as newsCtrl'
+    }
+  }
 };
 
 var productRoute = {
-	url: '/san-pham/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@product': {
-			templateUrl: 'template/home/product.html',
-			controller: 'productCtrl as productCtrl'
-		}
-	}
+  url: '/san-pham/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@product': {
+      templateUrl: 'template/home/product.html',
+      controller: 'productCtrl as productCtrl'
+    }
+  }
 };
 
 var childproductRoute = {
-	url: '/ford-fiesta/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@childProduct': {
-			templateUrl: 'template/fordProduct/childProduct.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-fiesta/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@childProduct': {
+      templateUrl: 'template/fordProduct/childProduct.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 
 var fordecosportRoute = {
-	url: '/ford-ecosport/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordEcosport': {
-			templateUrl: 'template/fordProduct/fordEcosport.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-ecosport/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordEcosport': {
+      templateUrl: 'template/fordProduct/fordEcosport.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 
 var fordeverestRoute = {
-	url: '/ford-everest/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordEverest': {
-			templateUrl: 'template/fordProduct/fordEverest.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-everest/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordEverest': {
+      templateUrl: 'template/fordProduct/fordEverest.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 
 var fordfocusRoute = {
-	url: '/ford-focus/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordFocus': {
-			templateUrl: 'template/fordProduct/fordFocus.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-focus/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordFocus': {
+      templateUrl: 'template/fordProduct/fordFocus.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
+};
+
+var fordexplorerRoute = {
+  url: '/ford-explorer/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordExplorer': {
+      templateUrl: 'template/fordProduct/fordExplorer.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 
 var fordrangerRoute = {
-	url: '/ford-ranger/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordRanger': {
-			templateUrl: 'template/fordProduct/fordRanger.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-ranger/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordRanger': {
+      templateUrl: 'template/fordProduct/fordRanger.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 
 var fordtransitRoute = {
-	url: '/ford-transit/:alias',
-	resolve: {
-		meta: function meta(metaService) {
-			return metaService.promise;
-		}
-	},
-	views: {
-		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordTransit': {
-			templateUrl: 'template/fordProduct/fordTransit.html',
-			controller: 'childproductCtrl as childproductCtrl'
-		}
-	}
+  url: '/ford-transit/:alias',
+  resolve: {
+    meta: function meta(metaService) {
+      return metaService.promise;
+    }
+  },
+  views: {
+    'layout': { templateUrl: 'template/mainLayout.html' },
+    'content@fordTransit': {
+      templateUrl: 'template/fordProduct/fordTransit.html',
+      controller: 'childproductCtrl as childproductCtrl'
+    }
+  }
 };
 exports.default = routerConfig;
 
