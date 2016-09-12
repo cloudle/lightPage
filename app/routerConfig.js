@@ -71,10 +71,10 @@ var pageRoute = {
 
 var newsRoute = {
 	url: '/tin-tuc/:alias',
-resolve: {
-	meta: (metaService) => {
-		return metaService.promise;
-	}
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
 	},
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
@@ -174,7 +174,7 @@ var fordexplorerRoute = {
 	},
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
-		'content@fordFocus': {
+		'content@fordExplorer': {
 			templateUrl: 'template/fordProduct/fordExplorer.html',
 			controller: 'childproductCtrl as childproductCtrl'
 		}

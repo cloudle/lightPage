@@ -2100,7 +2100,7 @@ var fordexplorerRoute = {
 	},
 	views: {
 		'layout': { templateUrl: 'template/mainLayout.html' },
-		'content@fordFocus': {
+		'content@fordExplorer': {
 			templateUrl: 'template/fordProduct/fordExplorer.html',
 			controller: 'childproductCtrl as childproductCtrl'
 		}
