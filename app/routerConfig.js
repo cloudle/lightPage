@@ -11,6 +11,7 @@ let routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', 
 			.state('fordEcosport', fordecosportRoute)
 			.state('fordEverest', fordeverestRoute)
 			.state('fordFocus', fordfocusRoute)
+			.state('fordExplorer', fordexplorerRoute)
 			.state('fordRanger', fordrangerRoute)
 			.state('fordTransit', fordtransitRoute)
 			.state('product', productRoute);
@@ -70,10 +71,10 @@ var pageRoute = {
 
 var newsRoute = {
 	url: '/tin-tuc/:alias',
-resolve: {
-	meta: (metaService) => {
-		return metaService.promise;
-	}
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
 	},
 	views: {
 		'layout': {templateUrl: 'template/mainLayout.html'},
@@ -159,6 +160,22 @@ var fordfocusRoute = {
 		'layout': {templateUrl: 'template/mainLayout.html'},
 		'content@fordFocus': {
 			templateUrl: 'template/fordProduct/fordFocus.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordexplorerRoute = {
+	url: '/ford-explorer/:alias',
+	resolve: {
+		meta: (metaService) => {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': {templateUrl: 'template/mainLayout.html'},
+		'content@fordExplorer': {
+			templateUrl: 'template/fordProduct/fordExplorer.html',
 			controller: 'childproductCtrl as childproductCtrl'
 		}
 	}

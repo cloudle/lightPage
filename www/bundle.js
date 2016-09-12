@@ -1224,6 +1224,14 @@ var childproductController = exports.childproductController = function childprod
 
                 _this.allfordFoc = data.results;
             });
+
+            $http.get(apiHost + '/banner/get/json', {
+                params: { domain: domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id }
+            }).success(function (data) {
+                fbq('track', 'ViewContent');
+
+                _this.allfordExp = data.results;
+            });
         } else {
             $http.get(apiHost + '/banner/get/json', {
                 params: { domain: domain, type: 'news', lang: $rootScope.activeLanguage.id }
@@ -1278,6 +1286,14 @@ var childproductController = exports.childproductController = function childprod
                 fbq('track', 'ViewContent');
 
                 _this.allfordFocus = data.results;
+            });
+
+            $http.get(apiHost + '/banner/get/json', {
+                params: { domain: domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id }
+            }).success(function (data) {
+                fbq('track', 'ViewContent');
+
+                _this.allfordExplorer = data.results;
             });
         }
     };
@@ -1926,7 +1942,7 @@ Object.defineProperty(exports, "__esModule", {
 var _helper = require('./utils/helper');
 
 var routerConfig = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$httpProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $compileProvider, $httpProvider, $locationProvider) {
-	$stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute).state('childProduct', childproductRoute).state('fordEcosport', fordecosportRoute).state('fordEverest', fordeverestRoute).state('fordFocus', fordfocusRoute).state('fordRanger', fordrangerRoute).state('fordTransit', fordtransitRoute).state('product', productRoute);
+	$stateProvider.state('splash', splashRoute).state('home', mainRoute).state('page', pageRoute).state('news', newsRoute).state('childProduct', childproductRoute).state('fordEcosport', fordecosportRoute).state('fordEverest', fordeverestRoute).state('fordFocus', fordfocusRoute).state('fordExplorer', fordexplorerRoute).state('fordRanger', fordrangerRoute).state('fordTransit', fordtransitRoute).state('product', productRoute);
 
 	$urlRouterProvider.otherwise('/splash');
 
@@ -2071,6 +2087,22 @@ var fordfocusRoute = {
 		'layout': { templateUrl: 'template/mainLayout.html' },
 		'content@fordFocus': {
 			templateUrl: 'template/fordProduct/fordFocus.html',
+			controller: 'childproductCtrl as childproductCtrl'
+		}
+	}
+};
+
+var fordexplorerRoute = {
+	url: '/ford-explorer/:alias',
+	resolve: {
+		meta: function meta(metaService) {
+			return metaService.promise;
+		}
+	},
+	views: {
+		'layout': { templateUrl: 'template/mainLayout.html' },
+		'content@fordExplorer': {
+			templateUrl: 'template/fordProduct/fordExplorer.html',
 			controller: 'childproductCtrl as childproductCtrl'
 		}
 	}

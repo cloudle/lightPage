@@ -76,6 +76,14 @@ export class childproductController {
                     this.allfordFoc = data.results;
                 });
 
+                $http.get(`${apiHost}/banner/get/json`, {
+                    params: {domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id}
+                }).success(data => {
+                    fbq('track', 'ViewContent');
+
+                    this.allfordExp = data.results;
+                });
+
             } else {
                 $http.get(`${apiHost}/banner/get/json`, {
                     params: { domain, type: 'news', lang: $rootScope.activeLanguage.id }
@@ -132,6 +140,14 @@ export class childproductController {
                     fbq('track', 'ViewContent');
 
                     this.allfordFocus = data.results;
+                });
+
+                $http.get(`${apiHost}/banner/get/json`, {
+                    params: {domain, type: 'fordexplorer', lang: $rootScope.activeLanguage.id}
+                }).success(data => {
+                    fbq('track', 'ViewContent');
+
+                    this.allfordExplorer = data.results;
                 });
             }
         }
