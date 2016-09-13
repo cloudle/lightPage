@@ -102,7 +102,7 @@ var productRoute = {
 };
 
 var childproductRoute = {
-	url: '/ford-fiesta/:alias',
+	url: '/san-pham/ford-fiesta/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -118,7 +118,7 @@ var childproductRoute = {
 };
 
 var fordecosportRoute = {
-	url: '/ford-ecosport/:alias',
+	url: '/san-pham/ford-ecosport/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -134,7 +134,7 @@ var fordecosportRoute = {
 };
 
 var fordeverestRoute = {
-	url: '/ford-everest/:alias',
+	url: '/san-pham/ford-everest/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -150,7 +150,7 @@ var fordeverestRoute = {
 };
 
 var fordfocusRoute = {
-	url: '/ford-focus/:alias',
+	url: '/san-pham/ford-focus/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -166,7 +166,7 @@ var fordfocusRoute = {
 };
 
 var fordexplorerRoute = {
-	url: '/ford-explorer/:alias',
+	url: '/san-pham/ford-explorer/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -182,7 +182,7 @@ var fordexplorerRoute = {
 };
 
 var fordrangerRoute = {
-	url: '/ford-ranger/:alias',
+	url: '/san-pham/ford-ranger/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;
@@ -198,7 +198,7 @@ var fordrangerRoute = {
 };
 
 var fordtransitRoute = {
-	url: '/ford-transit/:alias',
+	url: '/san-pham/ford-transit/:alias',
 	resolve: {
 		meta: (metaService) => {
 			return metaService.promise;

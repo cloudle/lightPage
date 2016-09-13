@@ -33,7 +33,9 @@ export class childproductController {
                 }).success(data => {
                     fbq('track', 'ViewContent');
 
-                    this.allfordFie = data.results;
+                    this.allfordFie = data.results.results.map(item => {
+                        return {...item, category: 'ford'};
+                    });;
                 });
 
                 $http.get(`${apiHost}/banner/get/json`, {
@@ -98,8 +100,9 @@ export class childproductController {
                     params: {domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id}
                 }).success(data => {
                     fbq('track', 'ViewContent');
-
-                    this.allfordEcosport = data.results;
+                    this.allfordEcosport = data.results.map(item => {
+                        return {...item, category: 'fordecosport'};
+                    });
                 });
 
                 $http.get(`${apiHost}/banner/get/json`, {
@@ -107,7 +110,9 @@ export class childproductController {
                 }).success(data => {
                     fbq('track', 'ViewContent');
 
-                    this.allfordRanger = data.results;
+                    this.allfordRanger = data.results.map(item => {
+                        return {...item, category: 'fordranger'};
+                    });;
                 });
 
                 $http.get(`${apiHost}/banner/get/json`, {

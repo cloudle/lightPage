@@ -2,17 +2,65 @@
     <div class="content-wrapper">
         <div class="page-content news">
             <div class="single-news" ng-if="productCtrl.singleMode">
+                Search: <input ng-model="searchText.$">
                 <!--<div class="title" ng-bind="productCtrl.activeNews.title"></div>-->
                 <!--<div class="timestamp">-->
                 <!--<span>Cập nhật gần nhất: </span>-->
                 <!--<span ng-bind="productCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
                 <!--</div>-->
-                <div class="news-details" ng-bind-html="productCtrl.activeNews.content | unsafe"></div>
+                <div class="news-details" ng-bind-html="productCtrl.activeNews.content | unsafe "></div>
             </div>
-
+            <!--Search: <input ng-model="searchText">-->
             <div class="all-news light-row" ng-if="!singleMode">
-                <div style="border:1px solid #e8e8e8;" class="column" ui-sref="product({alias: product.Post.alias})"
-                     ng-repeat="product in productCtrl.allProduct">
+                <div style="border:1px solid #e8e8e8;" class="column"
+                     ng-repeat="product in productCtrl.allProduct | filter:searchText">
+                    <div ng-if="product.Post.alias == 'ford-fiesta'" ui-sref="childProduct({alias: fie.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+                    <div ng-if="product.Post.alias == 'ford-ranger'" ui-sref="fordRanger({alias: ran.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+                    <div ng-if="product.Post.alias == 'ford-new-everest'" ui-sref="fordEverest({alias: eve.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+                    <div ng-if="product.Post.alias == 'ford-transit'" ui-sref="fordTransit({alias: tra.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+
+                    <div ng-if="product.Post.alias == 'ford-new-focus'" ui-sref="fordFocus({alias: foc.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+
+                    <div ng-if="product.Post.alias == 'ford-ecosport'" ui-sref="fordEcosport({alias: news.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+
+
+                    <div ng-if="product.Post.alias == 'ford-explorer-2017'" ui-sref="fordExplorer({alias: news.Post.alias})"> <div class="thumb-image-wrapper">
+                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
+                    </div>
+
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div></div>
+
                     <!--<div class="title" ng-bind="product.Post.title"></div>-->
                     <!--<div class="timestamp">-->
                     <!--&lt;!&ndash;<span>Cập nhật gần nhất: </span>&ndash;&gt;-->
@@ -23,12 +71,13 @@
                     <!--<div class="image image-hover-effect-zoom-120"-->
                     <!--ng-style="{'background-image': 'url('+product.Post.image+')'}"></div>-->
                     <!--</div>-->
-                    <div class="thumb-image-wrapper">
-                        <div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>
-                    </div>
+                    <!--<div class="thumb-image-wrapper">-->
+                        <!--<div class="image" ng-style="{'background-image': 'url('+product.Post.image+')'}" style="height:265px;background-image: url(&quot;https://c1.staticflickr.com/9/8715/28525235376_bafd8fe611_m.jpg&quot;);"></div>-->
+                    <!--</div>-->
 
-                    <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
-                    <div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div>
+                    <!--<div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="product.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>-->
+                    <!--<div class="summary ng-binding" ng-bind-html="product.Post.description | unsafe"></div>-->
+
 
                 </div>
                 <div class="column">

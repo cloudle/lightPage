@@ -1,6 +1,7 @@
 <div class="page-content-section">
     <div class="content-wrapper">
         <div class="page-content news">
+
             <div class="single-news" ng-if="childproductCtrl.singleMode">
                 <div ng-include="'template/home/productCateMenu.html'"></div>
                 <div class="news-details" ng-bind-html="childproductCtrl.activeNews.content | unsafe"></div>
@@ -17,10 +18,13 @@
                     </div>
                 </news-area>
             </div>
+            <div ng-if="!childproductCtrl.singleMode">
+                <!--Search: <input ng-model="searchText.$">-->
+            <div class="all-news light-row">
 
-            <div class="all-news light-row" ng-if="!singleMode">
-                <div class="column" ui-sref="childProduct({alias: fiesta.Post.alias})" ng-repeat="fiesta in childproductCtrl.allfordFiesta">
+                <div class="column" ui-sref="childProduct({alias: fiesta.Post.alias})" ng-repeat="fiesta in childproductCtrl.allfordFiesta | filter:searchText">
                     <!--<div class="title" ng-bind="fiesta.Post.title"></div>-->
+
                     <!--<div class="timestamp">-->
                         <!--<span>Cập nhật gần nhất: </span>-->
                         <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
@@ -47,7 +51,7 @@
             <!--</div>-->
             <!--</div>-->
             <!--</news-area>-->
-        </div>
+        </div></div>
 
         <light-sidebar>
             <card></card>

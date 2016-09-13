@@ -17,9 +17,11 @@
                     </div>
                 </news-area>
             </div>
+            <div ng-if="!childproductCtrl.singleMode">
+                <!--Search: <input ng-model="searchText.$">-->
+            <div class="all-news light-row">
 
-            <div class="all-news light-row" ng-if="!singleMode">
-                <div class="column" ui-sref="fordRanger({alias: ranger.Post.alias})" ng-repeat="ranger in childproductCtrl.allfordRanger">
+                <div class="column" ui-sref="fordRanger({alias: ranger.Post.alias})" ng-repeat="ranger in childproductCtrl.allfordRanger | filter:searchText">
                     <!--<div class="title" ng-bind="ranger.Post.title"></div>-->
                     <!--<div class="timestamp">-->
                         <!--<span>Cập nhật gần nhất: </span>-->
@@ -47,7 +49,7 @@
             <!--</div>-->
             <!--</div>-->
             <!--</news-area>-->
-        </div>
+        </div></div>
 
         <light-sidebar>
             <card></card>

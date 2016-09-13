@@ -17,9 +17,10 @@
                     </div>
                 </news-area>
             </div>
-
-            <div class="all-news light-row" ng-if="!singleMode">
-                <div class="column" ui-sref="fordEverest({alias: everest.Post.alias})" ng-repeat="everest in childproductCtrl.allfordEverest">
+            <div ng-if="!childproductCtrl.singleMode">
+                <!--Search: <input ng-model="searchText.$">-->
+            <div class="all-news light-row">
+                <div class="column" ui-sref="fordEverest({alias: everest.Post.alias})" ng-repeat="everest in childproductCtrl.allfordEverest | filter:searchText">
                     <!--<div class="title" ng-bind="everest.Post.title"></div>-->
                     <!--<div class="timestamp">-->
                         <!--<span>Cập nhật gần nhất: </span>-->
@@ -47,7 +48,7 @@
             <!--</div>-->
             <!--</div>-->
             <!--</news-area>-->
-        </div>
+        </div></div>
 
         <light-sidebar>
             <card></card>
