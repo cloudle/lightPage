@@ -17,37 +17,37 @@
                     </div>
                 </news-area>
             </div>
-
-            <div class="all-news light-row" ng-if="!singleMode">
-                <div class="column" ui-sref="fordTransit({alias: transit.Post.alias})" ng-repeat="transit in childproductCtrl.allfordTransit">
-                    <!--<div class="title" ng-bind="transit.Post.title"></div>-->
-                    <!--<div class="timestamp">-->
+            <div ng-if="!childproductCtrl.singleMode">Search: <input ng-model="searchText.$">
+                <div class="all-news light-row">
+                    <div class="column" ui-sref="fordTransit({alias: transit.Post.alias})" ng-repeat="transit in childproductCtrl.allfordTransit | filter:searchText">
+                        <!--<div class="title" ng-bind="transit.Post.title"></div>-->
+                        <!--<div class="timestamp">-->
                         <!--<span>Cập nhật gần nhất: </span>-->
                         <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
-                    <!--</div>-->
-                    <!--<div class="summary" ng-bind-html="transit.Post.description | unsafe"></div>-->
-                    <div class="thumb-image-wrapper">
-                        <div class="image" ng-style="{'background-image': 'url('+transit.Post.image+')'}" style="height:265px;"></div>
+                        <!--</div>-->
+                        <!--<div class="summary" ng-bind-html="transit.Post.description | unsafe"></div>-->
+                        <div class="thumb-image-wrapper">
+                            <div class="image" ng-style="{'background-image': 'url('+transit.Post.image+')'}" style="height:265px;"></div>
+                        </div>
+                        <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="transit.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
+                        <div class="summary ng-binding" ng-bind-html="transit.Post.description | unsafe"></div>
                     </div>
-                    <div class=" image-hover-effect-zoom-120" style=" margin: 0 10%; padding: 10px; background: #0353ad; color: white; text-align: center; "><p ng-bind="transit.Post.title" style="margin:0;"><span style="font-size: 18px; font-weight: normal; text-transform:uppercase;"></span></p></div>
-                    <div class="summary ng-binding" ng-bind-html="transit.Post.description | unsafe"></div>
                 </div>
-            </div>
-            <!--<news-area>-->
-            <!--<div class="content-wrapper">-->
-            <!--<div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>-->
-            <!--<div class="light-row quatro">-->
-            <!--<div class="column light-column click-able" ng-repeat="news in childproductCtrl.allfordEcosport" ui-sref="fordEcosport({alias: news.Post.alias})">-->
-            <!--&lt;!&ndash;<div class="title" ng-bind="fordeco.Post.title"></div>&ndash;&gt;-->
-            <!--<div class="thumb-image-wrapper">-->
-            <!--<div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>-->
-            <!--</div>-->
-            <!--<div class="description" ng-bind="news.Post.description"></div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</news-area>-->
-        </div>
+                <!--<news-area>-->
+                <!--<div class="content-wrapper">-->
+                <!--<div class="light-heading section"><span class="highlight" ng-bind="$root.localization.productnews"></span></div>-->
+                <!--<div class="light-row quatro">-->
+                <!--<div class="column light-column click-able" ng-repeat="news in childproductCtrl.allfordEcosport" ui-sref="fordEcosport({alias: news.Post.alias})">-->
+                <!--&lt;!&ndash;<div class="title" ng-bind="fordeco.Post.title"></div>&ndash;&gt;-->
+                <!--<div class="thumb-image-wrapper">-->
+                <!--<div class="image image-hover-effect-zoom-120" ng-style="{'background-image': 'url('+news.Post.image+')'}"></div>-->
+                <!--</div>-->
+                <!--<div class="description" ng-bind="news.Post.description"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</news-area>-->
+            </div></div>
 
         <light-sidebar>
             <card></card>
