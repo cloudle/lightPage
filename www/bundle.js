@@ -1141,6 +1141,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var childproductController = exports.childproductController = function childproductController($rootScope, $scope, $window, $http, $state, metaService) {
@@ -1182,7 +1184,9 @@ var childproductController = exports.childproductController = function childprod
       }).success(function (data) {
         fbq('track', 'ViewContent');
 
-        _this.allfordFie = data.results;
+        _this.allfordFie = data.results.map(function (item) {
+          return _extends({}, item, { category: 'ford' });
+        });;
       });
 
       $http.get(apiHost + '/banner/get/json', {
@@ -1244,8 +1248,9 @@ var childproductController = exports.childproductController = function childprod
         params: { domain: domain, type: 'fordecosport', lang: $rootScope.activeLanguage.id }
       }).success(function (data) {
         fbq('track', 'ViewContent');
-
-        _this.allfordEcosport = data.results;
+        _this.allfordEcosport = data.results.map(function (item) {
+          return _extends({}, item, { category: 'fordecosport' });
+        });
       });
 
       $http.get(apiHost + '/banner/get/json', {
@@ -1253,7 +1258,9 @@ var childproductController = exports.childproductController = function childprod
       }).success(function (data) {
         fbq('track', 'ViewContent');
 
-        _this.allfordRanger = data.results;
+        _this.allfordRanger = data.results.map(function (item) {
+          return _extends({}, item, { category: 'fordranger' });
+        });;
       });
 
       $http.get(apiHost + '/banner/get/json', {
@@ -2029,7 +2036,7 @@ var productRoute = {
 };
 
 var childproductRoute = {
-  url: '/ford-fiesta/:alias',
+  url: '/san-pham/ford-fiesta/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2045,7 +2052,7 @@ var childproductRoute = {
 };
 
 var fordecosportRoute = {
-  url: '/ford-ecosport/:alias',
+  url: '/san-pham/ford-ecosport/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2061,7 +2068,7 @@ var fordecosportRoute = {
 };
 
 var fordeverestRoute = {
-  url: '/ford-everest/:alias',
+  url: '/san-pham/ford-everest/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2077,7 +2084,7 @@ var fordeverestRoute = {
 };
 
 var fordfocusRoute = {
-  url: '/ford-focus/:alias',
+  url: '/san-pham/ford-focus/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2093,7 +2100,7 @@ var fordfocusRoute = {
 };
 
 var fordexplorerRoute = {
-  url: '/ford-explorer/:alias',
+  url: '/san-pham/ford-explorer/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2109,7 +2116,7 @@ var fordexplorerRoute = {
 };
 
 var fordrangerRoute = {
-  url: '/ford-ranger/:alias',
+  url: '/san-pham/ford-ranger/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
@@ -2125,7 +2132,7 @@ var fordrangerRoute = {
 };
 
 var fordtransitRoute = {
-  url: '/ford-transit/:alias',
+  url: '/san-pham/ford-transit/:alias',
   resolve: {
     meta: function meta(metaService) {
       return metaService.promise;
