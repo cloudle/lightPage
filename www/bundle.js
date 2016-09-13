@@ -1184,7 +1184,7 @@ var childproductController = exports.childproductController = function childprod
             }).success(function (data) {
                 fbq('track', 'ViewContent');
 
-                _this.allfordFie = data.results.results.map(function (item) {
+                _this.allfordFie = data.results.map(function (item) {
                     return _extends({}, item, { category: 'ford' });
                 });;
             });

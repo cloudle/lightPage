@@ -33,7 +33,7 @@ export class childproductController {
                 }).success(data => {
                     fbq('track', 'ViewContent');
 
-                    this.allfordFie = data.results.results.map(item => {
+                    this.allfordFie = data.results.map(item => {
                         return {...item, category: 'ford'};
                     });;
                 });

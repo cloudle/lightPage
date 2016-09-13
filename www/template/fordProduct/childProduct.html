@@ -1,7 +1,6 @@
 <div class="page-content-section">
     <div class="content-wrapper">
         <div class="page-content news">
-
             <div class="single-news" ng-if="childproductCtrl.singleMode">
                 <div ng-include="'template/home/productCateMenu.html'"></div>
                 <div class="news-details" ng-bind-html="childproductCtrl.activeNews.content | unsafe"></div>
@@ -21,13 +20,11 @@
             <div ng-if="!childproductCtrl.singleMode">
                 <!--Search: <input ng-model="searchText.$">-->
             <div class="all-news light-row">
-
-                <div class="column" ui-sref="childProduct({alias: fiesta.Post.alias})" ng-repeat="fiesta in childproductCtrl.allfordFiesta | filter:searchText">
+                <div class="column" ui-sref="childProduct({alias: fiesta.Post.alias})" ng-repeat="fiesta in childproductCtrl.allfordFiesta">
                     <!--<div class="title" ng-bind="fiesta.Post.title"></div>-->
-
                     <!--<div class="timestamp">-->
-                        <!--<span>Cập nhật gần nhất: </span>-->
-                        <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
+                    <!--<span>Cập nhật gần nhất: </span>-->
+                    <!--<span ng-bind="childproductCtrl.activeNews.modified | niceDate: 'H:mm a, DD-MM-YYYY'"></span>-->
                     <!--</div>-->
                     <!--<div class="summary" ng-bind-html="fiesta.Post.description | unsafe"></div>-->
                     <div class="thumb-image-wrapper">
