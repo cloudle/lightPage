@@ -17,7 +17,8 @@
                     </div>
                 </news-area>
             </div>
-            <div ng-if="!childproductCtrl.singleMode">Search: <input ng-model="searchText.$">
+            <div ng-if="!childproductCtrl.singleMode">
+                <!--Search: <input ng-model="searchText.$">-->
                 <div class="all-news light-row">
 
                     <div class="column" ui-sref="fordRanger({alias: ranger.Post.alias})" ng-repeat="ranger in childproductCtrl.allfordRanger | filter:searchText">
