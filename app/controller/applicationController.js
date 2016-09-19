@@ -136,9 +136,18 @@ export class applicationController {
 					note: this['userNote']
 				};
 
-
-
-
+			var data = {
+				email : this['userEmail'],
+				phone: this['userPhone'],
+				name: this['userName'],
+				address: '',
+				action: 'text - explain',
+				description: this['userNote'],
+				your_key1: '',
+				your_key2: ''
+			}
+			//sent form Tracking note
+			if (production) new UActL({}).syncWithParams(data);
 
 			//Fire Ants trackingGoal hook!
 			if (production){

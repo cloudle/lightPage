@@ -12,7 +12,7 @@ module.exports = {
 	// 	img: "images/1-luong-vang.gif"
 	// },
 	apiHost: "http://103.56.157.66/realestate",
-	trackingnew: "abc",
+	trackingnew: "run",
 	googleAnalyticId: "UA-77901914-1",
 	googleConversionId: "921153228",
 	googleConversionIdrmk: "921153228",
