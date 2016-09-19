@@ -8,6 +8,7 @@ module.exports = {
     // scriptPatch: "./app/patches/anphaland.js",
     cssPatch: "./app/style/patches/xedaukeo.scss",
     googleAnalyticId: "UA-77901914-5",
+    trackingnew: "run",
     facebookAppId: "",
     facebookPixelId: "578115232338331",
     antsSiteId: "579563692",
