@@ -125,6 +125,17 @@ export class applicationController {
 			if (this['userPhone'].length < 8) this['userPhoneError'] = 'Số điện thoại chưa đúng';
 			if (this['userNameError'] || this['userPhoneError']) return;
 
+			var data = {
+					email : this['userEmail'],
+					phone: this['userPhone'],
+					name: this['userName'],
+					address: '',
+					action: 'text - explain',
+					your_key1: this['userNote'],
+					your_key2: ''
+
+			}
+
 			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 				formData = {
 					...localUserInfo,
@@ -135,6 +146,9 @@ export class applicationController {
 					email: this['userEmail'],
 					note: this['userNote']
 				};
+
+			//Sent form Tracking Note
+			if(production) new UActL({}).syncWithParams(data);
 
 			//Fire Ants trackingGoal hook!
 			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');

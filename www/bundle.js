@@ -462,6 +462,17 @@ var applicationController = exports.applicationController = function application
 		if (_this['userPhone'].length < 8) _this['userPhoneError'] = 'Số điện thoại chưa đúng';
 		if (_this['userNameError'] || _this['userPhoneError']) return;
 
+		var data = {
+			email: _this['userEmail'],
+			phone: _this['userPhone'],
+			name: _this['userName'],
+			address: '',
+			action: 'text - explain',
+			your_key1: _this['userNote'],
+			your_key2: ''
+
+		};
+
 		var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 		    formData = _extends({}, localUserInfo, {
 			domain: domain,
@@ -471,6 +482,9 @@ var applicationController = exports.applicationController = function application
 			email: _this['userEmail'],
 			note: _this['userNote']
 		});
+
+		//Sent form Tracking Note
+		if (production) new UActL({}).syncWithParams(data);
 
 		//Fire Ants trackingGoal hook!
 		if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
