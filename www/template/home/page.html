@@ -1,6 +1,11 @@
 <div class="page-content-section">
 	<div class="content-wrapper">
-		<div id="{{'section'+page.alias}}" class="page-content" ng-bind-html="page.content | unsafe" ng-repeat="page in activeContents"></div>
+
+		<div
+		 	class="page-content"
+		 	ng-bind-html="singleContent.content | unsafe">
+		</div>
+
 		<light-sidebar></light-sidebar>
 	</div>
 </div>
