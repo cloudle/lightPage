@@ -20,7 +20,7 @@ module.exports = {
   translation: {
     vietnamese:{
       registerTitleHead: `<span>Gửi thông tin để nhận</span>`,
-      registerTitleTail: `<span>BÁO GIÁ CHÍNH THỨC</span>`
+      registerTitleTail: `<br><span style="color: #FA8322;">BÁO GIÁ CHÍNH THỨC</span>`
     }
   }
 };
