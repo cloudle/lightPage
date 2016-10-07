@@ -12,7 +12,9 @@ module.exports = {
   // 	etext3: "TẶNG 2 LƯỢNG VÀNG",
   // 	img: "images/1-luong-vang.gif"
   // },
-  apiHost: "http://103.56.157.66/realestate",
+  // apiHost: "http://103.56.157.66/realestate",
+  apiHost: "http://125.212.248.9/realestate",
+
   // languages: [
   // 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
   // 	{lang: "english", id: 2, display: "한국의"}
