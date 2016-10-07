@@ -5,7 +5,7 @@ module.exports = {
 	serverPort: 7026,
 	production: true,
 	// apiHost: "http://103.56.157.66/realestate",
-	apiHost: "http://125.212.248.9/realestate",
+	apiHost: "http://cms.twin.vn/",
 	// scriptPatch: "./app/patches/viettaste.js",
 	cssPatch: "./app/style/patches/viettaste.scss",
 	disableZopim: true,

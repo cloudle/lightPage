@@ -12,7 +12,7 @@ module.exports = {
 	// 	img: "images/1-luong-vang.gif"
 	// },
 	// apiHost: "http://103.56.157.66/realestate",
-	apiHost: "http://125.212.248.9/realestate",
+	apiHost: "http://cms.twin.vn/",
 	cssPatch: "./app/style/patches/urv.scss",
 	googleAnalyticId: "UA-77901914-3",
 	facebookAppId: "",

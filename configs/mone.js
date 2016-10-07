@@ -5,7 +5,7 @@ module.exports = {
   serverPort: 7033,
   production: false,
   // apiHost: "http://103.56.157.66/realestate",
-  apiHost: "http://125.212.248.9/realestate",
+  apiHost: "http://cms.twin.vn/",
   //  scriptPatch: "./app/patches/goldenRiver.js",
   cssPatch: "./app/style/patches/mone.scss",
   googleAnalyticId: "",
