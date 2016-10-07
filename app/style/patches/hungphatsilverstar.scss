@@ -1,3 +1,6 @@
+@import "../variables";
+@import "../mixins";
+
 body {
   background-color: #191919;
 }
@@ -35,8 +38,14 @@ body {
 }
 
 .footer {
-
+  background-color: #11294a;
   .copyright {
     background-color: darken(#191919, 10);
+  }
+}
+
+.subscription-form {
+  .heading{
+    font-size: 16px;
   }
 }
