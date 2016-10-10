@@ -3,8 +3,12 @@ module.exports = {
   siteName: "Hưng Phát Silver Star",
   siteFav: "images/vaviconhungphat.png",
   serverPort: 7034,
-  production: false,
+  production: true,
   cssPatch: "./app/style/patches/hungphatsilverstar.scss",
+  facebookPixelId: "1762625813992970",
+  googleConversionHungPhatSilverStar: "run",
+  antsInsightHungPhatSilverStar: "run",
+  antsRegisterGoalId: "580521516",
   // marquee: {
   // 	etext0: "Đặc biệt mở bán ",
   // 	etext1: "1 NGÀY DUY NHẤT 23/7 ",
