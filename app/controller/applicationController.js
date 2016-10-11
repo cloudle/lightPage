@@ -165,15 +165,16 @@ export class applicationController {
 				description: this['userNote'] // Ghi chú
 
 			};
+				adx_analytic.trackingEvent('tup', userInfo, true);
+				if (metaService.configs.googleConversionId){
 
-      adx_analytic.trackingEvent('tup', userInfo, true);
 			/* Google Adword tracking event conversion */
 			goog_report_conversion();
 				ga('send', {
 					hitType: 'event',
 					eventCategory: 'Goal Complete',
 					eventAction: 'register'
-				});
+				});}
 
 			}
 
@@ -189,11 +190,8 @@ export class applicationController {
 			if (production) fbq('track', 'CompleteRegistration');
 
 			//Tracking Google Analytic goal!
-			if (production) {
 
-			}
-
-			if (production) {
+			if (production && metaService.configs.antsConversionId) {
 				ants_analytic.push({
 					conversionId : metaService.configs.antsConversionId,
 					customParams : [
