@@ -1,13 +1,13 @@
 module.exports = {
-  domain: "hungphatsilverstar.com",
+  domain: "hungphatsilverstar.net.vn",
   siteName: "Hưng Phát Silver Star",
   siteFav: "images/vaviconhungphat.png",
   serverPort: 7034,
   production: true,
   cssPatch: "./app/style/patches/hungphatsilverstar.scss",
   facebookPixelId: "1762625813992970",
-  googleConversionHungPhatSilverStar: "run",
-  antsInsightHungPhatSilverStar: "run",
+  googleConversionHungPhatSilverStar: "871639554",
+  antsInsightHungPhatSilverStar: "580521513",
   antsRegisterGoalId: "580521516",
   // marquee: {
   // 	etext0: "Đặc biệt mở bán ",
