@@ -14,6 +14,7 @@ module.exports = {
 	// apiHost: "http://103.56.157.66/realestate",
 	apiHost: "http://cms.twin.vn/",
 	trackingnew: "run",
+	iframeCodeNew: "run",
 	googleAnalyticId: "UA-77901914-1",
 	googleConversionId: "921153228",
 	googleConversionIdrmk: "921153228",
