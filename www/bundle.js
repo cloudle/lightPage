@@ -482,7 +482,7 @@ var applicationController = exports.applicationController = function application
 			your_key2: ''
 		};
 		//sent form Tracking note
-		if (production && metaService.configs.trackingnew) new UActL({}).syncWithParams(data);
+		// if (production && metaService.configs.trackingnew) new UActL({}).syncWithParams(data);
 
 		//Fire Ants trackingGoal hook!
 		if (production) {
