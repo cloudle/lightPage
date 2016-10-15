@@ -148,7 +148,7 @@ export class applicationController {
 				};
 
 			//Sent form Tracking Note
-			if(production) new UActL({}).syncWithParams(data);
+			// if(production) new UActL({}).syncWithParams(data);
 
 			//Fire Ants trackingGoal hook!
 			if (production) adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
