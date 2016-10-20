@@ -1,5 +1,7 @@
 export class pageController {
 	static $inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
+	threeSitesOn = '';
+
 
 	constructor ($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
 		let { apiHost, domain } = metaService.configs;
@@ -13,6 +15,11 @@ export class pageController {
 			previousGroup = $rootScope.activeGroup; $rootScope.activeGroup = parentGroup;
 
 		if(pageAlias == 'trang-chu') { $state.go('home'); return; }
+		if(pageAlias == 'tien-do' || pageAlias == 'uu-dai' || pageAlias == 'thanh-toan'){
+			this.threeSitesOn = 'run';
+		} else {
+			this.threeSitesOn = 'stop';
+		}
 
 		//Kick back to the Home page if it's not a link in menu
 		if (!parentGroup || !parentGroup.children) {

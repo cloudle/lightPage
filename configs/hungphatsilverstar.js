@@ -6,7 +6,6 @@ module.exports = {
   production: true,
   cssPatch: "./app/style/patches/hungphatsilverstar.scss",
   facebookPixelId: "1762625813992970",
-  iframeCodeNew: "run",
   googleConversionHungPhatSilverStar: "871639554",
   antsInsightHungPhatSilverStar: "580521513",
   antsRegisterGoalId: "580521516",

@@ -703,6 +703,7 @@ var pageController = exports.pageController = function () {
 	function pageController($rootScope, $scope, $element, $interval, $timeout, $state, $window, $http, metaService) {
 		_classCallCheck(this, pageController);
 
+		this.threeSitesOn = '';
 		var _metaService$configs = metaService.configs;
 		var apiHost = _metaService$configs.apiHost;
 		var domain = _metaService$configs.domain;
@@ -719,6 +720,11 @@ var pageController = exports.pageController = function () {
 
 		if (pageAlias == 'trang-chu') {
 			$state.go('home');return;
+		}
+		if (pageAlias == 'tien-do' || pageAlias == 'uu-dai' || pageAlias == 'thanh-toan') {
+			this.threeSitesOn = 'run';
+		} else {
+			this.threeSitesOn = 'stop';
 		}
 
 		//Kick back to the Home page if it's not a link in menu
