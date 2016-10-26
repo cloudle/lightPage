@@ -153,3 +153,17 @@
     color: #AAAAAA;
   }
 }
+
+.call {
+  display: none;
+  color: #fff; padding: 15px;
+  background-color: red;padding: 15px; border-radius: 50%;
+
+  @media screen and (max-width:600px) {
+    display: block;
+    text-align: center; position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 4500;
+  }
+}
