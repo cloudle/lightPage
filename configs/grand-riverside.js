@@ -3,7 +3,8 @@ module.exports = {
     siteName: "Grand Riverside",
     siteFav: "images/logo-navicon.png",
     serverPort: 7035,
-    production: false,
+    production: true,
+    iframeCodeNew: "run",
     // marquee: {
     // 	etext0: "Đặc biệt mở bán ",
     // 	etext1: "1 NGÀY DUY NHẤT 23/7 ",v
