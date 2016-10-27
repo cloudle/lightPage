@@ -147,7 +147,7 @@ export class applicationController {
 				your_key2: ''
 			}
 			//sent form Tracking note
-			// if (production && metaService.configs.trackingnew) new UActL({}).syncWithParams(data);
+			if (production && metaService.configs.iframeCodeNew) try { new UActL({}).syncWithParams(data); } catch (error) {console.log(error)};
 
 			//Fire Ants trackingGoal hook!
 			if (production){

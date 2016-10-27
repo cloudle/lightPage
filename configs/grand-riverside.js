@@ -22,6 +22,6 @@ module.exports = {
     ogImage: "",
     ogDescription: ``,
     translation: {
-        hotline: "0934 027 558"
+        hotline: "0938 591 369"
     }
 };
