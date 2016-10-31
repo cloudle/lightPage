@@ -5,6 +5,7 @@ module.exports = {
     serverPort: 7035,
     production: true,
     iframeCodeNew: "run",
+    googleAnalyticId: "UA-82993823-28",
     // marquee: {
     // 	etext0: "Đặc biệt mở bán ",
     // 	etext1: "1 NGÀY DUY NHẤT 23/7 ",v
