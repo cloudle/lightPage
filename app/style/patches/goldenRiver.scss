@@ -44,8 +44,10 @@ body {
 
 .subscription-form.sidebar {
   border: 1px solid #eee;
-  box-shadow: none; width: auto;
-  padding-top: 0; padding-bottom: 0;
+  box-shadow: none;
+  width: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: transparent;
 
   .close-command {
