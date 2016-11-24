@@ -20,10 +20,10 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 								 ng-click="$root.changeLanguage(language)"
 								 ng-bind="language.display"></div>
 					</div>
-					<div class="column">
-						<span ng-bind="$root.localization.designedBy"></span>
-						<a ng-bind-html="$root.localization.designCompany | unsafe"></a>	
-					</div>
+					<!--<div class="column">-->
+						<!--<span ng-bind="$root.localization.designedBy"></span>-->
+						<!--<a ng-bind-html="$root.localization.designCompany | unsafe"></a>	-->
+					<!--</div>-->
 				</div>
 			</div>
 		</div>`,
