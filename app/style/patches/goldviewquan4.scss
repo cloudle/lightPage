@@ -1,0 +1,51 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+  background-color: #191919;
+}
+
+.navigation-wrapper {
+  background-color: #153661;
+
+  .site-logo {
+    background-image: url('images/logo_HP_SilverStarhungphat.png');
+    width: 220px; height: 50px; margin-top: 10px;
+
+    @media screen and (max-width: 600px) {
+      width: 85px;
+    }
+  }
+
+  .subscription-activator {
+    //  background-color: #da2900;
+  }
+
+  .navigation-menu {
+    .navigation-link {
+      color: white;
+      &:hover{
+        background-color: #194174;
+      }
+
+      &.active {
+        background-color: #11294a;
+        color: white;
+      }
+
+    }
+  }
+}
+
+.footer {
+  background-color: #11294a;
+  .copyright {
+    background-color: darken(#191919, 10);
+  }
+}
+
+.subscription-form {
+  .heading{
+    font-size: 16px;
+  }
+}
