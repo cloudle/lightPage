@@ -6,10 +6,10 @@ body {
 }
 
 .navigation-wrapper {
-  background-color: #153661;
+  background-color: #debc32;
 
   .site-logo {
-    background-image: url('images/logo_HP_SilverStarhungphat.png');
+    background-image: url('images/goldviewlog.png');
     width: 220px; height: 50px; margin-top: 10px;
 
     @media screen and (max-width: 600px) {
@@ -25,11 +25,11 @@ body {
     .navigation-link {
       color: white;
       &:hover{
-        background-color: #194174;
+        background-color: #ceb136;
       }
 
       &.active {
-        background-color: #11294a;
+        background-color: #ceb136;
         color: white;
       }
 
@@ -38,7 +38,7 @@ body {
 }
 
 .footer {
-  background-color: #11294a;
+  background-color: #debc32;
   .copyright {
     background-color: darken(#191919, 10);
   }

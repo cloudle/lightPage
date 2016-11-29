@@ -1,11 +1,12 @@
 module.exports = {
     domain: "goldviewquan4.com",
     siteName: "Gold View Quan 4",
-    siteFav: "images/vaviconhungphat.png",
+    siteFav: "images/goldviewfavicon.png",
     serverPort: 7036,
     production: false,
     cssPatch: "./app/style/patches/goldviewquan4.scss",
     facebookPixelId: "",
+    googleAnalyticId: "UA-88118502-1",
     // googleConversionHungPhatSilverStar: "871639554",
     // antsInsightHungPhatSilverStar: "580521513",
     // antsRegisterGoalId: "580521516",
