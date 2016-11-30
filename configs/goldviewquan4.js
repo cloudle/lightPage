@@ -26,6 +26,7 @@ module.exports = {
     // 	{lang: "english", id: 2, display: "한국의"}
     // ],
     translation: {
+        hotline: "0934 027 558",
         vietnamese:{
             registerTitleHead: `<span>Gửi thông tin để nhận</span>`,
             registerTitleTail: `<br><span style="color: #FA8322;">BÁO GIÁ CHÍNH THỨC</span>`
