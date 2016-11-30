@@ -5,7 +5,7 @@ module.exports = {
   serverPort: 7023,
   production: true,
   // apiHost: "http://103.56.157.66/realestate",
-  apiHost: "http://cms.twin.vn/",
+  apiHost: "http://cmsbackend.twin.vn/",
   // scriptPatch: "./app/patches/anphaland.js",
   cssPatch: "./app/style/patches/toyota.scss",
   googleAnalyticId: "UA-77901914-5",
