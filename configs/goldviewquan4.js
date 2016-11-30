@@ -28,8 +28,10 @@ module.exports = {
     translation: {
         hotline: "0934 027 558",
         vietnamese:{
-            registerTitleHead: `<span>Gửi thông tin để nhận</span>`,
-            registerTitleTail: `<br><span style="color: #FA8322;">BÁO GIÁ CHÍNH THỨC</span>`
+            registerTitleTail: `<span class="ultra strong" ng-bind="configs.translation.hotline"></span>
+			<span> hoặc gửi thông tin để</span> 
+			<span class="strong">NHẬN BÁO GIÁ</span>`
+
         }
     }
 };
