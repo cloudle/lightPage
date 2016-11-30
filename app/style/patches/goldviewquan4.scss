@@ -33,6 +33,17 @@ body {
         color: white;
       }
 
+      .sub-navigations {
+        background-color: #debc32;
+        border-top-color: #ceb136;
+
+        .sub-link {
+          &:hover {
+            background-color: #ceb136;
+          }
+        }
+      }
+
     }
   }
 }
