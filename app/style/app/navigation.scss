@@ -7,7 +7,7 @@ $navigationBackground: $themeColor;
   z-index: 5000;
   position: fixed; top: 0; left: 0; right: 0;
   height: $navigationHeight;
-  background-color: $themeColor;
+  background-color: #d3a029;
   //transform: translate(0, -100%);
   transition: transform 0.5s $frenzyAnimation;
   //border-bottom: solid 3px $navigationBackground;
@@ -35,7 +35,7 @@ $navigationBackground: $themeColor;
     cursor: pointer;
     float: left; height: 48px; width: 180px;
     margin-top: 10px; //margin-left: 20px;
-    background-image: url('images/logo-grand-riverside_small.png');
+    background-image: url('images/logo_centrosa.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
     //border-bottom-left-radius: 4px;
@@ -43,7 +43,7 @@ $navigationBackground: $themeColor;
     //box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     @media screen and (max-width: 600px) {
       width: 70px;
-      background-image: url('images/logo-grand-riverside_small.png');
+      background-image: url('images/favicon_centrosa.png');
     }
   }
 
@@ -58,7 +58,7 @@ $navigationBackground: $themeColor;
       line-height: $navigationHeight; text-align: center;
       box-sizing: border-box;
       text-transform: uppercase; user-select: none;
-      color: #9AABC8; font-size: 14px;
+      color: white; font-size: 14px;
       position: relative;
 
       .parent-link {
@@ -105,11 +105,11 @@ $navigationBackground: $themeColor;
       }
 
       &.active {
-        background-color: #273B69; color: white;
+        background-color: #cc9310; color: white;
       }
 
       &:hover {
-        background-color: lighten(#273B69, 5); color: white;
+        background-color: #cc9310; color: white;
 
         .sub-navigations {
           visibility: visible;

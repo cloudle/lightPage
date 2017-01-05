@@ -1,10 +1,9 @@
 module.exports = {
-    domain: "hadocentrosa.com",
+    domain: "canhoq10.net",
     siteName: "Hà Đô Centrosa",
-    siteFav: "images/logo-navicon.png",
+    siteFav: "images/favicon_centrosa.png",
     serverPort: 7037,
     production: false,
-    apiHost: "http://cmsbackend.twin.vn/",
     // iframeCodeNew: "run",
     // googleAnalyticId: "UA-82993823-28",
     // marquee: {
@@ -16,6 +15,7 @@ module.exports = {
     // },
     // apiHost: "http://103.56.157.66/realestate",
     // apiHost: "http://cms.twin.vn/",
+    apiHost: "http://cmsbackend.twin.vn/",
     // languages: [
     // 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
     // 	{lang: "english", id: 2, display: "한국의"}
@@ -24,6 +24,6 @@ module.exports = {
     ogImage: "",
     ogDescription: ``,
     translation: {
-        hotline: "0934 027 558"
+        hotline: "0977 303 303"
     }
 };
