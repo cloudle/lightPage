@@ -127,14 +127,14 @@ export class applicationController {
 
 			var localUserInfo = JSON.parse(localStorage.getItem("_userInfo")),
 				formData = {
-					...localUserInfo,
-					domain,
-					fullName: this['userName'],
-					name: this['userName'],
-					phone: this['userPhone'],
-					email: this['userEmail'],
-					note: this['userNote']
-				};
+                ...localUserInfo,
+                domain,
+                fullName: this['userName'],
+                name: this['userName'],
+                phone: this['userPhone'],
+                email: this['userEmail'],
+                note: this['userNote']
+            };
 
 			var data = {
 				email : this['userEmail'],
@@ -150,7 +150,7 @@ export class applicationController {
 			if (production && metaService.configs.iframeCodeNew) try { new UActL({}).syncWithParams(data); } catch (error) {console.log(error)};
 
 			//Fire Ants trackingGoal hook!
-			if (production){
+			if (production && metaService.configs.antsRegisterGoalId){
 			/* Ants Insight Goal Tracking */
 				adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 

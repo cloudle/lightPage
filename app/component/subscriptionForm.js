@@ -23,8 +23,8 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>
 			
 			<div class="commands">
-				<div class="social-button facebook" ng-click="facebookLogin()"></div>
-				<div class="social-button google" ng-click="googleLogin()"></div>
+				<!--<div class="social-button facebook" ng-click="facebookLogin()"></div>-->
+				<!--<div class="social-button google" ng-click="googleLogin()"></div>-->
 				<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>
 			</div>
 		</form>`,
