@@ -3,7 +3,7 @@ module.exports = {
     siteName: "Hà Đô Centrosa",
     siteFav: "images/favicon_centrosa.png",
     serverPort: 7037,
-    production: false,
+    production: true,
     // iframeCodeNew: "run",
     // googleAnalyticId: "UA-82993823-28",
     // marquee: {
