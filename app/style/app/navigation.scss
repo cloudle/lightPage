@@ -35,7 +35,7 @@ $navigationBackground: $themeColor;
     cursor: pointer;
     float: left; height: 48px; width: 180px;
     margin-top: 10px; //margin-left: 20px;
-    background-image: url('images/logo_centrosa_garden.png');
+    background-image: url('images/LogoRichland.png');
     background-size: contain; background-position: center center;
     background-repeat: no-repeat;
     //border-bottom-left-radius: 4px;
@@ -43,7 +43,7 @@ $navigationBackground: $themeColor;
     //box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     @media screen and (max-width: 600px) {
       width: 70px;
-      background-image: url('images/favicon_centrosa.png');
+      background-image: url('images/LogoRichland.png');
     }
   }
 
