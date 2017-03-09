@@ -9,7 +9,6 @@ export default ['$rootScope', '$http', function ($rootScope, $http) {
 			<div class="content-wrapper">
 				<div class="columns">
 					<div class="col" ng-repeat="column in columns" ng-bind-html="column.Post.content | unsafe"></div>
-					
 				</div>
 			</div>
 			
