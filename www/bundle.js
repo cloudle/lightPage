@@ -158,7 +158,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		replace: true,
 		transclude: true,
 		scope: { enable: '=' },
-		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<div class="sidebar-news">\n\t\t\t\t<div class="heading" ng-bind="$root.localization.news"></div>\n\t\t\t\t<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">\n\t\t\t\t\t<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<!--<div class="sidebar-news">-->\n\t\t\t\t<!--<div class="heading" ng-bind="$root.localization.news"></div>-->\n\t\t\t\t<!--<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">-->\n\t\t\t\t\t<!--<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>-->\n\t\t\t\t\t<!--<div class="title" ng-bind="newsItem.Post.title"></div>-->\n\t\t\t\t<!--</div>-->\n\t\t\t<!--</div>-->\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			var sidebarHeight, footerHeight;scope.topPosition = 0;
 

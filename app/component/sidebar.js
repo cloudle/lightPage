@@ -9,13 +9,13 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		template: `<div class="sidebar-wrapper" ng-style="{transform: 'translate(0,'+topPosition+'px)'}">
 			<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>
 			<!--<div class="small-banner"></div>-->
-			<div class="sidebar-news">
-				<div class="heading" ng-bind="$root.localization.news"></div>
-				<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">
-					<div class="thumb-image" ng-style="{'background-image': 'url('+newsItem.Post.image+')'}"></div>
-					<div class="title" ng-bind="newsItem.Post.title"></div>
-				</div>
-			</div>
+			<!--<div class="sidebar-news">-->
+				<!--<div class="heading" ng-bind="$root.localization.news"></div>-->
+				<!--<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">-->
+					<!--<div class="thumb-image" ng-style="{'background-image': 'url('+newsItem.Post.image+')'}"></div>-->
+					<!--<div class="title" ng-bind="newsItem.Post.title"></div>-->
+				<!--</div>-->
+			<!--</div>-->
 		</div>`,
 		link: function (scope, element, attrs) {
 			var sidebarHeight, footerHeight; scope.topPosition = 0;
