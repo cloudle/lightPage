@@ -5,29 +5,8 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: `<form ng-class="wrapperClass" ng-submit="submit($event)">
-			<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>
-			<div class="heading">
-				<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>
-				<a style="text-decoration: none" href="tel:{{configs.translation.hotline}}" class="ultra strong" ng-bind="configs.translation.hotline"></a>
-				<span ng-bind-html="$root.localization.registerTitleTail | unsafe"></span>
-			</div>
-			
-			<input type="text" placeholder="{{$root.localization.fullNamePlaceholder}}" ng-model="appCtrl.userName"/>
-			<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>
-			<input type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>
-			<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>
-			<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>
-			<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>
-
-			<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>
-			
-			<div class="commands">
-				<div class="social-button facebook" ng-click="facebookLogin()"></div>
-				<div class="social-button google" ng-click="googleLogin()"></div>
-				<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>
-			</div>
-		</form>`,
+		template: `
+			<div id="iframeTwinGAGoal" style="height:100%;"></div>`,
 		link: function (scope, element, attrs) {
 			let {apiHost, domain} = metaService.configs;
 			scope.configs = metaService.configs;
@@ -38,6 +17,13 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
 			};
+			console.log(element, );
+
+			ga(function (tracker) {
+				var clientId = tracker.get('clientId');
+				element.context.innerHTML = `<iframe style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/FormManagement/Embed?code=TForm0006&clientId=${clientId}'></iframe>`
+			});
+
 
 			scope.facebookLogin = function () {
 				ants_fbAuthClick('login');

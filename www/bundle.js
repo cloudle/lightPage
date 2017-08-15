@@ -284,7 +284,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '<form ng-class="wrapperClass" ng-submit="submit($event)">\n\t\t\t<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>\n\t\t\t<div class="heading">\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleHead | unsafe"></span>\n\t\t\t\t<a style="text-decoration: none" href="tel:{{configs.translation.hotline}}" class="ultra strong" ng-bind="configs.translation.hotline"></a>\n\t\t\t\t<span ng-bind-html="$root.localization.registerTitleTail | unsafe"></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t<input type="text" placeholder="{{$root.localization.fullNamePlaceholder}}" ng-model="appCtrl.userName"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userNameError" ng-if="appCtrl.userNameError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.phonePlaceholder}}" ng-model="appCtrl.userPhone"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userPhoneError" ng-if="appCtrl.userPhoneError"></div>\n\t\t\t<input type="text" placeholder="{{$root.localization.emailPlaceholder}}" ng-model="appCtrl.userEmail"/>\n\t\t\t<div class="error-row" ng-bind="appCtrl.userEmailError" ng-if="appCtrl.userEmailError"></div>\n\n\t\t\t<textarea rows="4" placeholder="{{$root.localization.notePlaceholder}}" ng-model="appCtrl.userNote"></textarea>\n\t\t\t\n\t\t\t<div class="commands">\n\t\t\t\t<div class="social-button facebook" ng-click="facebookLogin()"></div>\n\t\t\t\t<div class="social-button google" ng-click="googleLogin()"></div>\n\t\t\t\t<button type="submit" class="submit" ng-bind="submitText || $root.localization.send"></button>\n\t\t\t</div>\n\t\t</form>',
+		template: '\n\t\t\t<div id="iframeTwinGAGoal" style="height:100%;"></div>',
 		link: function link(scope, element, attrs) {
 			var _metaService$configs = metaService.configs;
 			var apiHost = _metaService$configs.apiHost;
@@ -298,6 +298,12 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
 			};
+			console.log(element);
+
+			ga(function (tracker) {
+				var clientId = tracker.get('clientId');
+				element.context.innerHTML = '<iframe style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/FormManagement/Embed?code=TForm0006&clientId=' + clientId + '\'></iframe>';
+			});
 
 			scope.facebookLogin = function () {
 				ants_fbAuthClick('login');
