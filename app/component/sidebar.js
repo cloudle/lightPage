@@ -1,4 +1,4 @@
-const initialTopOffset = 121;
+const initialTopOffset = 300;
 
 export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	return {
@@ -7,7 +7,7 @@ export default ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		transclude: true,
 		scope: { enable: '=' },
 		template: `<div class="sidebar-wrapper" ng-style="{transform: 'translate(0,'+topPosition+'px)'}">
-			<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>
+			<!--<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>-->
 			<!--<div class="small-banner"></div>-->
 			<div class="sidebar-news">
 				<div class="heading" ng-bind="$root.localization.news"></div>

@@ -17,11 +17,11 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
 			};
-			console.log(element, );
+			// console.log(element, );
 
 			ga(function (tracker) {
 				var clientId = tracker.get('clientId');
-				element.context.innerHTML = `<iframe style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/FormManagement/Embed?code=TForm0006&clientId=${clientId}'></iframe>`
+				element.context.innerHTML = `<iframe style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/FormManagement/Share?code=TForm0006&clientId=${clientId}'></iframe>`
 			});
 
 

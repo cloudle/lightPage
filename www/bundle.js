@@ -150,7 +150,7 @@ exports.default = [function () {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var initialTopOffset = 121;
+var initialTopOffset = 300;
 
 exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	return {
@@ -158,7 +158,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 		replace: true,
 		transclude: true,
 		scope: { enable: '=' },
-		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<div class="sidebar-news">\n\t\t\t\t<div class="heading" ng-bind="$root.localization.news"></div>\n\t\t\t\t<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">\n\t\t\t\t\t<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="sidebar-wrapper" ng-style="{transform: \'translate(0,\'+topPosition+\'px)\'}">\n\t\t\t<!--<subscription-form wrapper-class="subscription-form sidebar"></subscription-form>-->\n\t\t\t<!--<div class="small-banner"></div>-->\n\t\t\t<div class="sidebar-news">\n\t\t\t\t<div class="heading" ng-bind="$root.localization.news"></div>\n\t\t\t\t<div class="news-summary" ng-repeat="newsItem in news" ui-sref="news({alias: newsItem.Post.alias})">\n\t\t\t\t\t<div class="thumb-image" ng-style="{\'background-image\': \'url(\'+newsItem.Post.image+\')\'}"></div>\n\t\t\t\t\t<div class="title" ng-bind="newsItem.Post.title"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
 			var sidebarHeight, footerHeight;scope.topPosition = 0;
 
@@ -298,11 +298,11 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
 			};
-			console.log(element);
+			// console.log(element, );
 
 			ga(function (tracker) {
 				var clientId = tracker.get('clientId');
-				element.context.innerHTML = '<iframe style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/FormManagement/Embed?code=TForm0006&clientId=' + clientId + '\'></iframe>';
+				element.context.innerHTML = '<iframe style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/FormManagement/Share?code=TForm0006&clientId=' + clientId + '\'></iframe>';
 			});
 
 			scope.facebookLogin = function () {
