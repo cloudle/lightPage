@@ -15,7 +15,7 @@
 
 .sidebar-wrapper {
   width: $sidebarSize;
-  position: absolute; top: 50px; right: 20px;
+  position: absolute; top: 0px; right: 20px;
   transition: transform 0.2s $cubicAnimation;
 
   .small-banner {
