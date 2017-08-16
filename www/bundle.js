@@ -129,14 +129,21 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.default = [function () {
+exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
 	return {
 		restrict: 'E',
 		replace: true,
 		transclude: true,
 		scope: { enable: '=' },
-		template: '<div class="popup-wrapper" ng-class="{active: enable}">\n\t\t\t<div class="popup-backdrop" ng-click="toggle()"></div>\n\t\t\t<div class="popup-content">\n\t\t\t\t<ng-transclude></ng-transclude>\n\t\t\t</div>\n\t\t</div>',
+		template: '<div class="popup-wrapper" ng-class="{active: enable}">\n\t\t\t<div class="popup-backdrop" ng-click="toggle()"></div>\n\t\t\t<div class="popup-content">\n\t\t\t\t<div class="subscription-form-newcontact">\n\t\t\t\t\t<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>\n</div>\n\t\t\t\t<ng-transclude></ng-transclude>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
+			var _metaService$configs = metaService.configs;
+			var apiHost = _metaService$configs.apiHost;
+			var domain = _metaService$configs.domain;
+
+			scope.configs = metaService.configs;
+			scope.appCtrl = $rootScope.appCtrl;
+
 			scope.toggle = function () {
 				scope.enable = !scope.enable;
 			};
@@ -284,7 +291,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '\n\t\t\t<div id="iframeTwinGAGoal" style="height:100%;"></div>',
+		template: '\n\t\t\t<div id="iframeTwinGAGoal" style="height:100%;"></div>\n\t\t',
 		link: function link(scope, element, attrs) {
 			var _metaService$configs = metaService.configs;
 			var apiHost = _metaService$configs.apiHost;

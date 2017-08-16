@@ -6,7 +6,8 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `
-			<div id="iframeTwinGAGoal" style="height:100%;"></div>`,
+			<div id="iframeTwinGAGoal" style="height:100%;"></div>
+		`,
 		link: function (scope, element, attrs) {
 			let {apiHost, domain} = metaService.configs;
 			scope.configs = metaService.configs;
