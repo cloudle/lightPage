@@ -137,9 +137,9 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		scope: { enable: '=' },
 		template: '<div class="popup-wrapper" ng-class="{active: enable}">\n\t\t\t<div class="popup-backdrop" ng-click="toggle()"></div>\n\t\t\t<div class="popup-content">\n\t\t\t\t<div class="subscription-form-newcontact">\n\t\t\t\t\t<div class="close-command icon-navigation-close" ng-click="appCtrl.closeRegisterForm()"></div>\n</div>\n\t\t\t\t<ng-transclude></ng-transclude>\n\t\t\t</div>\n\t\t</div>',
 		link: function link(scope, element, attrs) {
-			var _metaService$configs = metaService.configs;
-			var apiHost = _metaService$configs.apiHost;
-			var domain = _metaService$configs.domain;
+			var _metaService$configs = metaService.configs,
+			    apiHost = _metaService$configs.apiHost,
+			    domain = _metaService$configs.domain;
 
 			scope.configs = metaService.configs;
 			scope.appCtrl = $rootScope.appCtrl;
@@ -291,11 +291,11 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '\n\t\t\t<div id="iframeTwinGAGoal" style="height:100%;"></div>\n\t\t',
+		template: '\n\t\t\t<div style="height:100%;">\n\t\t\t\t<iframe id="iframeTwinGAGoal"  style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/FormManagement/Share?code=TForm0006\'></iframe>\n\t\t\t</div>\n\t\t',
 		link: function link(scope, element, attrs) {
-			var _metaService$configs = metaService.configs;
-			var apiHost = _metaService$configs.apiHost;
-			var domain = _metaService$configs.domain;
+			var _metaService$configs = metaService.configs,
+			    apiHost = _metaService$configs.apiHost,
+			    domain = _metaService$configs.domain;
 
 			scope.configs = metaService.configs;
 			scope.appCtrl = $rootScope.appCtrl;
@@ -305,12 +305,13 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 			scope.googleLogin = function () {
 				ants_googleAuthClick();
 			};
-			// console.log(element, );
 
-			ga(function (tracker) {
-				var clientId = tracker.get('clientId');
-				element.context.innerHTML = '<iframe style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/FormManagement/Share?code=TForm0006&clientId=' + clientId + '\'></iframe>';
-			});
+			element.context.children[0].addEventListener("load", function () {
+				ga(function (tracker) {
+					var clientId = tracker.get('clientId');
+					element.context.children[0].contentWindow.postMessage({ "action": "GA_Client_ID", "gaCid": clientId, "href": window.location.href }, "*");
+				});
+			}, false);
 
 			scope.facebookLogin = function () {
 				ants_fbAuthClick('login');
@@ -397,9 +398,9 @@ var applicationController = exports.applicationController = function application
 	});
 
 	var fetchEssentialData = function fetchEssentialData(source) {
-		var _metaService$configs = metaService.configs;
-		var apiHost = _metaService$configs.apiHost;
-		var domain = _metaService$configs.domain;
+		var _metaService$configs = metaService.configs,
+		    apiHost = _metaService$configs.apiHost,
+		    domain = _metaService$configs.domain;
 
 		$http.get(apiHost + '/banner/get/json', {
 			params: { domain: domain, type: 'footer', lang: $rootScope.activeLanguage.id }
@@ -462,10 +463,10 @@ var applicationController = exports.applicationController = function application
 	};
 
 	this.submitRegister = $rootScope.submitRegister = function (event) {
-		var _metaService$configs2 = metaService.configs;
-		var apiHost = _metaService$configs2.apiHost;
-		var domain = _metaService$configs2.domain;
-		var production = _metaService$configs2.production;
+		var _metaService$configs2 = metaService.configs,
+		    apiHost = _metaService$configs2.apiHost,
+		    domain = _metaService$configs2.domain,
+		    production = _metaService$configs2.production;
 		//console.log("production mode:", production);
 
 		event.preventDefault();_this.resetRegisterError();
@@ -493,12 +494,11 @@ var applicationController = exports.applicationController = function application
 			description: _this['userNote'],
 			your_key1: '',
 			your_key2: ''
-		};
-		//sent form Tracking note
-		// if (production && metaService.configs.trackingnew) new UActL({}).syncWithParams(data);
+			//sent form Tracking note
+			// if (production && metaService.configs.trackingnew) new UActL({}).syncWithParams(data);
 
-		//Fire Ants trackingGoal hook!
-		if (production) {
+			//Fire Ants trackingGoal hook!
+		};if (production) {
 			/* Ants Insight Goal Tracking */
 			adx_analytic.trackingGoal(metaService.configs.antsRegisterGoalId, 1, 'event');
 
@@ -605,9 +605,9 @@ var mainController = exports.mainController = function mainController($rootScope
 
 	this.features = [];
 	this.sliders = [];
-	var _metaService$configs = metaService.configs;
-	var apiHost = _metaService$configs.apiHost;
-	var domain = _metaService$configs.domain;
+	var _metaService$configs = metaService.configs,
+	    apiHost = _metaService$configs.apiHost,
+	    domain = _metaService$configs.domain;
 
 	this.marqueSentence = metaService.configs.marquee;
 	//Tracking code..
@@ -668,9 +668,9 @@ var newsController = exports.newsController = function newsController($rootScope
 
 	_classCallCheck(this, newsController);
 
-	var _metaService$configs = metaService.configs;
-	var apiHost = _metaService$configs.apiHost;
-	var domain = _metaService$configs.domain;
+	var _metaService$configs = metaService.configs,
+	    apiHost = _metaService$configs.apiHost,
+	    domain = _metaService$configs.domain;
 
 	//Tracking code..
 
@@ -717,9 +717,9 @@ var pageController = exports.pageController = function () {
 		_classCallCheck(this, pageController);
 
 		this.threeSitesOn = '';
-		var _metaService$configs = metaService.configs;
-		var apiHost = _metaService$configs.apiHost;
-		var domain = _metaService$configs.domain;
+		var _metaService$configs = metaService.configs,
+		    apiHost = _metaService$configs.apiHost,
+		    domain = _metaService$configs.domain;
 
 		//Tracking code..
 
@@ -751,31 +751,29 @@ var pageController = exports.pageController = function () {
 				TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
 			}, 800);
 		} else {
-			(function () {
-				//Finally, load the page => set page's children content!
-				var loadedCount = 0;$rootScope.activeContents = [];
-				$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
-				parentGroup.children.forEach(function (child, index) {
-					$rootScope.activeContents[index] = {};
-					$http.get(apiHost + '/page/get/json', { params: { domain: domain, alias: child.alias } }).success(function (data) {
-						var childResult = data.results[0];
-						if (childResult && childResult.Page) {
-							$rootScope.activeContents[index] = childResult.Page;
-						}
-					}).finally(function () {
-						loadedCount++;
+			//Finally, load the page => set page's children content!
+			var loadedCount = 0;$rootScope.activeContents = [];
+			$window.scrollTo(0, 0); //Reset the scroll if loading from the beginning!
+			parentGroup.children.forEach(function (child, index) {
+				$rootScope.activeContents[index] = {};
+				$http.get(apiHost + '/page/get/json', { params: { domain: domain, alias: child.alias } }).success(function (data) {
+					var childResult = data.results[0];
+					if (childResult && childResult.Page) {
+						$rootScope.activeContents[index] = childResult.Page;
+					}
+				}).finally(function () {
+					loadedCount++;
 
-						if (loadedCount >= parentGroup.children.length) {
-							//Scroll after 1 second (after all content are ready from server!)
-							// to have better performance (after stuffs had been rendered).
-							$timeout(function () {
-								var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
-								TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
-							}, 500);
-						}
-					});
+					if (loadedCount >= parentGroup.children.length) {
+						//Scroll after 1 second (after all content are ready from server!)
+						// to have better performance (after stuffs had been rendered).
+						$timeout(function () {
+							var scrollOffset = angular.element('#section' + pageAlias).offset().top - 50;
+							TweenLite.to(window, 1, { scrollTo: { y: scrollOffset }, ease: Power2.easeOut });
+						}, 500);
+					}
 				});
-			})();
+			});
 		}
 	}
 
@@ -988,10 +986,10 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 
 		$http.get('/configs').success(function (data) {
 			data.domain = data.domain || location.host;
-			var configs = data;var apiHost = configs.apiHost;
-			var domain = configs.domain;
+			var configs = data,
+			    apiHost = configs.apiHost,
+			    domain = configs.domain;
 			//Override translation (if possible)..
-
 			_helper.languages.forEach(function (_ref) {
 				var lang = _ref.lang;
 
@@ -1137,7 +1135,7 @@ function register(moduleInstance) {
 
 function niceDate() {
 	return function (date) {
-		var format = arguments.length <= 1 || arguments[1] === undefined ? 'DD-MM-YYYY' : arguments[1];
+		var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'DD-MM-YYYY';
 
 		return moment(date).format(format);
 	};
@@ -1164,8 +1162,8 @@ var localization = exports.localization = {
 	vietnamese: {
 		register: "ĐĂNG KÝ",
 		news: "TIN TỨC",
-		registerTitleHead: '<span>Gọi </span>',
-		registerTitleTail: ' \n\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t<span> hoặc gửi thông tin để nhận</span> \n\t\t\t<span class="strong">BÁO GIÁ</span>\n\t\t\t<span>từ</span> \n\t\t\t<span class="strong">CHỦ ĐẦU TƯ</span>',
+		registerTitleHead: '<span>G\u1ECDi </span>',
+		registerTitleTail: ' \n\t\t\t<span class="ultra strong" ng-bind="configs.translation.hotline"></span>\n\t\t\t<span> ho\u1EB7c g\u1EEDi th\xF4ng tin \u0111\u1EC3 nh\u1EADn</span> \n\t\t\t<span class="strong">B\xC1O GI\xC1</span>\n\t\t\t<span>t\u1EEB</span> \n\t\t\t<span class="strong">CH\u1EE6 \u0110\u1EA6U T\u01AF</span>',
 		fullNamePlaceholder: "Họ và tên*",
 		phonePlaceholder: "Điện thoại*",
 		emailPlaceholder: "Email (không bắt buộc)",
