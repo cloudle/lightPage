@@ -23,8 +23,16 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 
 			element.context.children[0].addEventListener("load",function(){
 				ga(function (tracker) {
-					var clientId = tracker.get('clientId');
-					element.context.children[0].contentWindow.postMessage({"action":"GA_Client_ID","gaCid": clientId ,"href":window.location.href}, "*");
+					var trackingId = tracker.get('clientId');
+					var gaId = ga.getAll()[0].b.data.values[':trackingId'];
+					var location = window.location.href;
+
+					element.context.children[0].contentWindow.postMessage({
+						"action": "GA_Data",
+						"gaId": gaId,
+						"trackingId": trackingId,
+						"location": location
+					}, "*");
 				});
 			},false);
 
