@@ -7,7 +7,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `
 			<div style="height:100%;">
-				<iframe id="iframeTwinGAGoal"  style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/FormManagement/Share?code=TForm0006'></iframe>
+				<iframe id="iframeTwinGAGoal"  style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/twForm/20170901154337Fj5z2'></iframe>
 			</div>
 		`,
 		link: function (scope, element, attrs) {
@@ -33,6 +33,19 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 						"trackingId": trackingId,
 						"location": location
 					}, "*");
+
+					window.__lc = window.__lc || {};
+					window.__lc.license = 9045060;
+					window.__lc.params = [
+						{ name: 'gaId', value: gaId },
+						{ name: 'trackingId', value: trackingId },
+						{ name: 'location', value: location + "&twSource=livechat" }
+					];
+					(function() {
+						var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+						lc.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+					})();
 				});
 			},false);
 
