@@ -7,8 +7,8 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 		scope: { wrapperClass: '@', submitText: '@' },
 		template: `
 			<div style="height:100%;">
-				<iframe id="iframeTwinGAGoal"  style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/twForm/20170901154337Fj5z2'></iframe>
-			</div>
+				<iframe id="iframeTwinGAGoal"  style='border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar' src='https://crm.twin.vn/twForm/20170903223844n6TZg'></iframe>
+			</div> 
 		`,
 		link: function (scope, element, attrs) {
 			let {apiHost, domain} = metaService.configs;
@@ -39,7 +39,7 @@ export default ['$rootScope', '$http', 'metaService', function ($rootScope, $htt
 					window.__lc.params = [
 						{ name: 'gaId', value: gaId },
 						{ name: 'trackingId', value: trackingId },
-						{ name: 'location', value: location + "&twSource=livechat" }
+						{ name: 'location', value: location }
 					];
 					(function() {
 						var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;

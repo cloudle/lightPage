@@ -291,7 +291,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 		restrict: 'E',
 		replace: true,
 		scope: { wrapperClass: '@', submitText: '@' },
-		template: '\n\t\t\t<div style="height:100%;">\n\t\t\t\t<iframe id="iframeTwinGAGoal"  style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/twForm/20170901154337Fj5z2\'></iframe>\n\t\t\t</div>\n\t\t',
+		template: '\n\t\t\t<div style="height:100%;">\n\t\t\t\t<iframe id="iframeTwinGAGoal"  style=\'border:none; width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; -ms-overflow-style: scrollbar\' src=\'https://crm.twin.vn/twForm/20170903223844n6TZg\'></iframe>\n\t\t\t</div> \n\t\t',
 		link: function link(scope, element, attrs) {
 			var _metaService$configs = metaService.configs,
 			    apiHost = _metaService$configs.apiHost,
@@ -321,7 +321,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 					window.__lc = window.__lc || {};
 					window.__lc.license = 9045060;
-					window.__lc.params = [{ name: 'gaId', value: gaId }, { name: 'trackingId', value: trackingId }, { name: 'location', value: location + "&twSource=livechat" }];
+					window.__lc.params = [{ name: 'gaId', value: gaId }, { name: 'trackingId', value: trackingId }, { name: 'location', value: location }];
 					(function () {
 						var lc = document.createElement('script');lc.type = 'text/javascript';lc.async = true;
 						lc.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
