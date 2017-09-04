@@ -2,7 +2,7 @@ module.exports = {
 	domain: "goldenstar.top",
 	siteName: "Golden Star",
 	siteFav: "images/vaviconhungphat.png",
-	serverPort: 7038,
+	serverPort: 7039,
 	production: true,
 	cssPatch: "./app/style/patches/goldenstar.scss",
 	facebookPixelId: "1762625813992970",
