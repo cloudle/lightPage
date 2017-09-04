@@ -1,7 +1,7 @@
 module.exports = {
 	domain: "goldenstar.top",
 	siteName: "Golden Star",
-	siteFav: "images/vaviconhungphat.png",
+	siteFav: "images/favicon-the-golden-star.ico",
 	serverPort: 7039,
 	production: true,
 	cssPatch: "./app/style/patches/goldenstar.scss",
