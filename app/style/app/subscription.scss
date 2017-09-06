@@ -142,9 +142,9 @@
   .close-command {
     width: 50px; height: 30px; cursor: pointer;
     text-align: center; line-height: 30px;
-    color: white; display: none;
+    color: white; display: block;
     font-size: 20px;
-    position: absolute; top: 0; right: 0;
+    position: absolute; top: 0; right: 5px;
     background-color: $orangeColor;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 3px;
