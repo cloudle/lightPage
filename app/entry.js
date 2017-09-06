@@ -12,6 +12,7 @@ import navigationLink from "./component/navigationLink";
 import footer from "./component/footer";
 import sidebar from "./component/sidebar";
 import subscriptionForm from "./component/subscriptionForm";
+import callForm from "./component/callForm";
 import popup from "./component/popup";
 import slider from "./component/slider";
 import newsArea from "./component/newsArea";
@@ -34,6 +35,7 @@ let App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress',
 	.directive('lightSlider', slider)
 	.directive('newsArea', newsArea)
 	.directive('subscriptionForm', subscriptionForm)
+	.directive('callForm', callForm)
 	.directive('navigationLink', navigationLink);
 
 registerFilter(App);

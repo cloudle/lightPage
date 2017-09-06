@@ -4,6 +4,56 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _helper = require('../utils/helper');
+
+exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $http, metaService) {
+	return {
+		restrict: 'E',
+		replace: true,
+		scope: { wrapperClass: '@', submitText: '@' },
+		template: '\n\t\t\t<div id="iframeTwinCall" style="height:100%; position: fixed; bottom: 0px; left: 15px"></div>\n\t\t',
+		link: function link(scope, element, attrs) {
+			var _metaService$configs = metaService.configs,
+			    apiHost = _metaService$configs.apiHost,
+			    domain = _metaService$configs.domain;
+
+			scope.configs = metaService.configs;
+			scope.appCtrl = $rootScope.appCtrl;
+
+			scope.submit = $rootScope.submitRegister;
+
+			scope.googleLogin = function () {
+				ants_googleAuthClick();
+			};
+
+			element.context.children[0].addEventListener("load", function () {
+				ga(function (tracker) {
+					var clientId = tracker.get('clientId');
+					var trackingId = tracker.get('clientId');
+					var gaId = ga.getAll()[0].b.data.values[':trackingId'];
+					var location = window.location.href;
+
+					element.context.innerHTML = '<iframe src=\'http://demo.cloudteam.vn/googleapi/ifr/index.html?trackingId=' + trackingId + '&gaId=' + gaId + '&location=' + encodeURIComponent(location) + '\' width="120px" height="50px" style="width: 300px;height: 100px;border: none;"></iframe>';
+				});
+			}, false);
+
+			scope.facebookLogin = function () {
+				ants_fbAuthClick('login');
+			};
+		}
+	};
+}];
+
+
+var fields = ['userName', 'userPhone', 'userEmail'];
+
+},{"../utils/helper":19}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 
 	return {
@@ -19,7 +69,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -62,7 +112,7 @@ exports.default = ['$rootScope', '$state', 'metaService', function ($rootScope, 
 	};
 }];
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -108,7 +158,7 @@ exports.default = ['$http', '$rootScope', '$state', 'metaService', function ($ht
 	};
 }];
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -123,7 +173,7 @@ exports.default = ['$rootScope', '$http', function ($rootScope, $http) {
 	};
 }];
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -151,7 +201,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 	};
 }];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -200,7 +250,7 @@ exports.default = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 	};
 }];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -277,7 +327,7 @@ exports.default = ['$interval', '$timeout', function ($interval, $timeout) {
 }];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -327,6 +377,10 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 						lc.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
 						var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
 					})();
+
+					//call rolling
+					// 					document.body.innerHTML += `<div style="position: fixed;bottom:0px;left:15px; background-color: transparent;  display: block;
+					// "><iframe src='http://demo.cloudteam.vn/googleapi/ifr/index.html?trackingId=${trackingId}&gaId=${gaId}&location=${encodeURIComponent(location)}' width="120px" height="50px" style="width: 300px;height: 100px;border: none;"></iframe></div>`;
 				});
 			}, false);
 
@@ -340,7 +394,7 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 
 var fields = ['userName', 'userPhone', 'userEmail'];
 
-},{"../utils/helper":18}],9:[function(require,module,exports){
+},{"../utils/helper":19}],10:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -606,7 +660,7 @@ var applicationController = exports.applicationController = function application
 applicationController.$inject = ['$rootScope', '$scope', '$state', '$timeout', '$interval', '$window', '$http', 'ngProgressFactory', 'metaService'];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utils/helper":18}],10:[function(require,module,exports){
+},{"../utils/helper":19}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -671,7 +725,7 @@ var mainController = exports.mainController = function mainController($rootScope
 
 mainController.$inject = ['$rootScope', '$scope', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -718,7 +772,7 @@ var newsController = exports.newsController = function newsController($rootScope
 
 newsController.$inject = ['$rootScope', '$window', '$http', '$state', 'metaService'];
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -858,7 +912,7 @@ var pageController = exports.pageController = function () {
 
 pageController.$inject = ['$rootScope', '$scope', '$element', '$interval', '$timeout', '$state', '$window', '$http', 'metaService'];
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -893,7 +947,7 @@ var splashController = exports.splashController = function () {
 
 splashController.$inject = ['$rootScope', '$scope', '$state', '$interval', '$timeout'];
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -933,6 +987,10 @@ var _subscriptionForm = require("./component/subscriptionForm");
 
 var _subscriptionForm2 = _interopRequireDefault(_subscriptionForm);
 
+var _callForm = require("./component/callForm");
+
+var _callForm2 = _interopRequireDefault(_callForm);
+
 var _popup = require("./component/popup");
 
 var _popup2 = _interopRequireDefault(_popup);
@@ -956,7 +1014,7 @@ var _filter2 = _interopRequireDefault(_filter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.fixAnalyticMissing = _helper.fixAnalyticMissing;
-var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('splashCtrl', _splashController.splashController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('navigationLink', _navigationLink2.default);
+var App = angular.module('application', ['ui.router', 'ngAnimate', 'ngProgress', 'ngTouch', 'ngParallax', 'angular-spinkit']).config(_routerConfig2.default).controller('appCtrl', _applicationController.applicationController).controller('mainCtrl', _mainController.mainController).controller('pageCtrl', _pageController.pageController).controller('newsCtrl', _newsController.newsController).controller('splashCtrl', _splashController.splashController).service('metaService', _metaService2.default).directive('popup', _popup2.default).directive('lightNavigation', _navigation2.default).directive('lightSidebar', _sidebar2.default).directive('lightFooter', _footer2.default).directive('lightSlider', _slider2.default).directive('newsArea', _newsArea2.default).directive('subscriptionForm', _subscriptionForm2.default).directive('callForm', _callForm2.default).directive('navigationLink', _navigationLink2.default);
 
 (0, _filter2.default)(App);
 
@@ -973,7 +1031,7 @@ App.filter('unsafe', ['$sce', function ($sce) {
 angular.bootstrap(document, ['application']);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/footer":1,"./component/navigation":2,"./component/navigationLink":3,"./component/newsArea":4,"./component/popup":5,"./component/sidebar":6,"./component/slider":7,"./component/subscriptionForm":8,"./controller/applicationController":9,"./controller/mainController":10,"./controller/newsController":11,"./controller/pageController":12,"./controller/splashController":13,"./metaService":15,"./routerConfig":16,"./utils/filter":17,"./utils/helper":18}],15:[function(require,module,exports){
+},{"./component/callForm":1,"./component/footer":2,"./component/navigation":3,"./component/navigationLink":4,"./component/newsArea":5,"./component/popup":6,"./component/sidebar":7,"./component/slider":8,"./component/subscriptionForm":9,"./controller/applicationController":10,"./controller/mainController":11,"./controller/newsController":12,"./controller/pageController":13,"./controller/splashController":14,"./metaService":16,"./routerConfig":17,"./utils/filter":18,"./utils/helper":19}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1056,7 +1114,7 @@ exports.default = ['$rootScope', '$http', '$timeout', function ($rootScope, $htt
 	});
 }];
 
-},{"./utils/helper":18}],16:[function(require,module,exports){
+},{"./utils/helper":19}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1138,7 +1196,7 @@ var newsRoute = {
 
 exports.default = routerConfig;
 
-},{"./utils/helper":18}],17:[function(require,module,exports){
+},{"./utils/helper":19}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1158,7 +1216,7 @@ function niceDate() {
 	};
 }
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1359,4 +1417,4 @@ String.prototype.width = function (font) {
 global.uuid = generateNumberUUID;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[14]);
+},{}]},{},[15]);
