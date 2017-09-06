@@ -153,3 +153,16 @@
     color: #AAAAAA;
   }
 }
+
+.call {
+  width: 100px;
+  height: 100px;
+  color: #fff; padding: 15px;
+  background-image: url('images/call.png');
+  padding: 15px;
+  display: block;
+  text-align: center; position: fixed;
+  bottom: 0px;
+  left: 20px;
+  z-index: 4500;
+}
