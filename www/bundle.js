@@ -378,9 +378,8 @@ exports.default = ['$rootScope', '$http', 'metaService', function ($rootScope, $
 						var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
 					})();
 
-					//call rolling
-					// 					document.body.innerHTML += `<div style="position: fixed;bottom:0px;left:15px; background-color: transparent;  display: block;
-					// "><iframe src='http://demo.cloudteam.vn/googleapi/ifr/index.html?trackingId=${trackingId}&gaId=${gaId}&location=${encodeURIComponent(location)}' width="120px" height="50px" style="width: 300px;height: 100px;border: none;"></iframe></div>`;
+					// call rolling
+					angular.element(document.body).append('<div class="divCall"><iframe src=\'http://demo.cloudteam.vn/googleapi/ifr/index.html?trackingId=' + trackingId + '&gaId=' + gaId + '&location=' + encodeURIComponent(location) + '\' style="width: 300px;height: 60px;border: none;"></iframe></div>');
 				});
 			}, false);
 
