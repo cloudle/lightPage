@@ -19,7 +19,8 @@ module.exports = {
 	// },
 	// apiHost: "http://103.56.157.66/realestate",
 	// apiHost: "http://cms.twin.vn/",
-	apiHost: "http://cmsbackend.twin.vn/",
+	// apiHost: "http://cmsbackend.twin.vn/",
+	apiHost: "https://backend.goldenstar.top/",
 	// languages: [
 	// 	{lang: "vietnamese", id: 1, display: "Tiếng Việt"},
 	// 	{lang: "english", id: 2, display: "한국의"}
