@@ -22,15 +22,6 @@
   <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="lib/angular-touch/angular-touch.min.js"></script>
 
-  {{#if antsInsightHungPhatSilverStar}}
-    <script type="text/javascript">
-      var _siteId="580521513";
-      (function(){
-        var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//st-a.anthill.vn/insight.js";
-        var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
-    </script>
-  {{/if}}
-
 </head>
 <body ng-controller="appCtrl as appCtrl">
   <div ui-view="layout" id="root" ng-class="{ready: appCtrl.ready}"></div>
@@ -63,125 +54,9 @@
 
 
 
-	{{#if googleConversionIdold}}
-		<!-- Google Code Conversion Page -->
-        {{#if googleConversionLabel}}
-		<script type="text/javascript">
-			/* <![CDATA[ */
-			var google_conversion_id = {{googleConversionId}};
-			var google_conversion_language = "en";
-			var google_conversion_format = "3";
-			var google_conversion_color = "ffffff";
-			var google_conversion_label = "{{googleConversionLabel}}";
-            var google_remarketing_only = true;
-            var google_custom_params = window.google_tag_params;
-			/* ]]> */
-		</script>
-		<script type="text/javascript"  src="//www.googleadservices.com/pagead/conversion.js">
-		</script>
-		<noscript>
-			<div style="display:inline;">
-				<img height="1" width="1" style="border-style:none;" alt=""  src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label={{googleConversionLabel}}&amp;guid=ON&amp;script=0"/>
-			</div>
-		</noscript>
-        <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/{{googleConversionIdrmk}}/?value=0&amp;guid=ON&amp;script=0"/>
-            </div>
-        </noscript>
-            {{/if}}
-	{{/if}}
-
-  {{#if googleConversionId}}
-      <!-- Google Code Conversion Page -->
-      {{#if googleConversionLabel}}
-          <!-- Google Code for Conversion Page -->
-
-          <script type="text/javascript">
-              /* <![CDATA[ */
-              goog_snippet_vars = function() {
-                  var w = window;
-                  w.google_conversion_id = {{googleConversionId}};
-                  w.google_conversion_label = "Cj8ECM3N-mgQzN2etwM";
-                  w.google_remarketing_only = false;
-              }
-
-              goog_report_conversion = function(url) {
-                  goog_snippet_vars();
-                  window.google_conversion_format = "3";
-                  window.google_conversion_language = "en";
-                  window.google_conversion_color = "ffffff";
-
-                  var opt = new Object();
-                  opt.onload_callback = function() {
-                      if (typeof(url) != 'undefined') {
-                          window.location = url;
-                      }
-                  }
-                  var conv_handler = window['google_trackConversion'];
-                  if (typeof(conv_handler) == 'function') {
-                      conv_handler(opt);
-                  }
-              }
-              /* ]]> */
-          </script>
-
-          <script type="text/javascript"
-                  src="//www.googleadservices.com/pagead/conversion_async.js">
-          </script>
-
-          <!-- End google conversion -->
-          <noscript>
-              <div style="display:inline;">
-                  <img height="1" width="1" style="border-style:none;" alt=""  src="//www.googleadservices.com/pagead/conversion/{{googleConversionId}}/?label={{googleConversionLabel}}&amp;guid=ON&amp;script=0"/>
-              </div>
-          </noscript>
-          <noscript>
-              <div style="display:inline;">
-                  <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/{{googleConversionId}}/?value=0&amp;guid=ON&amp;script=0"/>
-              </div>
-          </noscript>
-      {{/if}}
-  {{/if}}
-
-
-  {{#if googleConversionHungPhatSilverStar}}
-    <script type="text/javascript">
-      /* <![CDATA[ */
-      var google_conversion_id = 871639554;
-      var google_custom_params = window.google_tag_params;
-      var google_conversion_language = "en";
-      var google_conversion_format = "3";
-      var google_conversion_color = "ffffff";
-      var google_conversion_label = "_qLbCPKu1GoQgtTQnwM";
-      var google_remarketing_only = true;
-      /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-    </script>
-    <noscript>
-      <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/871639554/?guid=ON&amp;script=0"/>
-      </div>
-      <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/871639554/?label=_qLbCPKu1GoQgtTQnwM&amp;guid=ON&amp;script=0"/>
-      </div>
-    </noscript>
-  {{/if}}
 
   <!--Facebook scripts-->
-  <div id="fb-root"></div>
-  {{#if facebookAppId}}
-		<script>
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId={{facebookAppId}}";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
-  {{/if}}
+
 
 	{{#if facebookPixelId}}
 		<script>
@@ -200,29 +75,5 @@
         </noscript>
 	{{/if}}
 
-
-
-
-
-	{{#if antsSiteId}}
-		<!--Ants scripts-->
-		<script type="text/javascript" src="http://st-a.anthill.vn/fb_app.js"></script>
-		<script type="text/javascript">
-			var _siteId="{{antsSiteId}}";
-			(function(){
-        var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//st-a.anthill.vn/insight.js";
-        var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
-		</script>
-	{{/if}}
-
-	{{#if antsConversionId}}
-		<!--- Script ANTS - remarketing -->
-		<script type="text/javascript" async src="//e-vcdn.anthill.vn/delivery-ants/conversion.js"></script>
-		<!--- end ANTS - remarketing -->
-		<script type="text/javascript">
-			var ants_analytic = ants_analytic || [];
-			ants_analytic.push({conversionId : "{{antsConversionId}}"});
-		</script>
-	{{/if}}
 </body>
 </html>
